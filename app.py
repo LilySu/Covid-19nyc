@@ -52,7 +52,7 @@ meta_tags=[
     {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
 ]
 
-application = dash.Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=meta_tags)
-application.config.suppress_callback_exceptions = True # see https://dash.plot.ly/urls
-application.title = 'Covid-19 Cases NYC' # appears in browser title bar
-server = application.server
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=meta_tags)
+app.config.suppress_callback_exceptions = True # see https://dash.plot.ly/urls
+app.title = 'Covid-19 Cases NYC' # appears in browser title bar
+application = app.server

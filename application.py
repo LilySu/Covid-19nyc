@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-from app import application, server
+from app import application, app
 from pages import index, actions, bulletin, predictions
 import dash_html_components as html
 import dash_core_components as dcc
@@ -110,7 +110,7 @@ footer = dbc.Container(
 # html.Div: https://dash.plot.ly/getting-started
 # dcc.Location: https://dash.plot.ly/dash-core-components/location
 # dbc.Container: https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
-application.layout = html.Div([
+app.layout = html.Div([
     dcc.Location(id='url', refresh=False), 
     navbar, 
     dbc.Container(id='page-content', className='mt-12', fluid=True), 
@@ -120,7 +120,7 @@ application.layout = html.Div([
 
 
 # URL Routing for Multi-Page Apps: https://dash.plot.ly/urls
-@application.callback(Output('page-content', 'children'),
+@app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/':
@@ -136,4 +136,4 @@ def display_page(pathname):
 
 # Run app server: https://dash.plot.ly/getting-started
 if __name__ == '__main__':
-    application.run_server(debug=True)
+    application.run(debug=True)
