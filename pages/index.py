@@ -465,6 +465,11 @@ column2 = dbc.Col(
             ]
         ),
         #dcc.Graph(figure=fig5),#fig4
+        html.Center(
+            children=[
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-01-15.gif'), style={'display': 'block', 'width':'100%'})
+            ]
+        )
     ],
     md=3,
 )
