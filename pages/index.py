@@ -374,63 +374,63 @@ fig3.update_layout(barmode='group')
 # fig.show()
 
 #------------------------------------------------------
-fig5 = go.Figure()
+# fig5 = go.Figure()
 
-# Constants
-img_width = 900
-img_height = 700
-scale_factor = 0.5
+# # Constants
+# img_width = 900
+# img_height = 700
+# scale_factor = 0.5
 
-# Add invisible scatter trace.
-# This trace is added to help the autoresize logic work.
-fig5.add_trace(
-    go.Scatter(
-        x=[0, img_width * scale_factor],
-        y=[0, img_height * scale_factor],
-        mode="markers",
-        marker_opacity=0
-    )
-)
+# # Add invisible scatter trace.
+# # This trace is added to help the autoresize logic work.
+# fig5.add_trace(
+#     go.Scatter(
+#         x=[0, img_width * scale_factor],
+#         y=[0, img_height * scale_factor],
+#         mode="markers",
+#         marker_opacity=0
+#     )
+# )
 
-# Configure axes
-fig5.update_xaxes(
-    visible=False,
-    range=[0, img_width * scale_factor]
-)
+# # Configure axes
+# fig5.update_xaxes(
+#     visible=False,
+#     range=[0, img_width * scale_factor]
+# )
 
-fig5.update_yaxes(
-    visible=False,
-    range=[0, img_height * scale_factor],
-    # the scaleanchor attribute ensures that the aspect ratio stays constant
-    scaleanchor="x"
-)
+# fig5.update_yaxes(
+#     visible=False,
+#     range=[0, img_height * scale_factor],
+#     # the scaleanchor attribute ensures that the aspect ratio stays constant
+#     scaleanchor="x"
+# )
 
-# Add image
-fig5.add_layout_image(
-    dict(
-        x=0,
-        sizex=img_width * scale_factor,
-        y=img_height * scale_factor,
-        sizey=img_height * scale_factor,
-        xref="x",
-        yref="y",
-        opacity=1.0,
-        layer="below",
-        sizing="stretch",
-        source="https://i.ibb.co/x5tbNfh/Covid-19-Cases-NYS-2020-03-01-15.gif")
-)
+# # Add image
+# fig5.add_layout_image(
+#     dict(
+#         x=0,
+#         sizex=img_width * scale_factor,
+#         y=img_height * scale_factor,
+#         sizey=img_height * scale_factor,
+#         xref="x",
+#         yref="y",
+#         opacity=1.0,
+#         layer="below",
+#         sizing="stretch",
+#         source="https://i.ibb.co/x5tbNfh/Covid-19-Cases-NYS-2020-03-01-15.gif")
+# )
 
-# Configure other layout
-fig5.update_layout(
-    width=img_width * scale_factor,
-    height=img_height * scale_factor,
-    margin={"l": 0, "r": 0, "t": 0, "b": 0},
-    autosize=True,
-)
+# # Configure other layout
+# fig5.update_layout(
+#     width=img_width * scale_factor,
+#     height=img_height * scale_factor,
+#     margin={"l": 0, "r": 0, "t": 0, "b": 0},
+#     autosize=True,
+# )
 
-# Disable the autosize on double click because it adds unwanted margins around the image
-# More detail: https://plot.ly/python/configuration-options/
-fig5.show(config={'doubleClick': 'reset'})
+# # Disable the autosize on double click because it adds unwanted margins around the image
+# # More detail: https://plot.ly/python/configuration-options/
+# fig5.show(config={'doubleClick': 'reset'})
 
 
 column1a = dbc.Col(
@@ -464,7 +464,7 @@ column2 = dbc.Col(
             html.H1('7', style={'fontSize':60, 'color':'rgba(206, 248, 218, 1)', 'marginBottom':0}),#fig4
             ]
         ),
-        dcc.Graph(figure=fig5),#fig4
+        #dcc.Graph(figure=fig5),#fig4
     ],
     md=3,
 )

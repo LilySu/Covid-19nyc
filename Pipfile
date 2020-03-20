@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pandas = "*"
+numpy = "*"
+dash-bootstrap-components = "*"
+scipy = "*"
+dash = "*"
+
+[requires]
+python_version = "3.7"
