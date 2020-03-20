@@ -6,7 +6,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 # Imports from this application
-from app import app
+from app import application
 
 # 1 column layout
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout

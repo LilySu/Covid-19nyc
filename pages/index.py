@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 
 # Imports from this application
-from app import app
+from app import application
 import plotly.figure_factory as ff
 import numpy as np
 import plotly.graph_objects as go
@@ -91,7 +91,6 @@ import pandas as pd
 #            hover_name="country", log_x=True, size_max=60)
 
 
-import plotly.graph_objects as go
 
 top_labels = ['Strongly<br>agree', 'Agree', 'Neutral', 'Disagree',
               'Strongly<br>disagree']
