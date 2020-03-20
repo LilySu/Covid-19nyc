@@ -6,11 +6,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+dash = "*"
 pandas = "*"
 numpy = "*"
-dash-bootstrap-components = "*"
-scipy = "*"
-dash = "*"
 
 [requires]
 python_version = "3.7"
