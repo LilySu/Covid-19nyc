@@ -14,105 +14,22 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
+df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/China_Covid19-3-20.csv")
+df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/Italy_Covid19-3-20.csv")
+df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/Usa_Covid19-3-20.csv")
+df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/UsaTotal_Covid19-3-20.csv")
 
 
-# 2 column layout. 1st column width = 4/12
-# https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
-# column1 = dbc.Col(
-#     [
-#         dcc.Markdown(
-#             """
-        
-#             #### Your Value Proposition
+#-----------------------fig
 
-#             Emphasize how the app will benefit users. Don't emphasize the underlying technology.
+top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
+top_labels_l = ['confirmed', 'recovered', 'deaths']
 
-#             ✅ RUN is a running app that adapts to your fitness levels and designs personalized workouts to help you improve your running.
+colors = ['#d9f0f2', '#38cedc',
+          '#f2d4e0']
 
-#             ❌ RUN is the only intelligent running app that uses sophisticated deep neural net machine learning to make your run smarter because we believe in ML driven workouts.
-
-#             """
-#         ),
-#         dcc.Link(dbc.Button('Your Call To Action', color='primary'), href='/predictions')
-#     ],
-#     md=2,
-# )
-
-
-# table_data = [['Team', 'Wins', 'Losses'],
-#               ['Montréal<br>Canadiens', 18, 4],
-#               ['Dallas Stars', 18, 5],
-#               ['NY Rangers', 16, 5],
-#               ['Boston<br>Bruins', 13, 8],
-#               ['Chicago<br>Blackhawks', 13, 8],
-#               ['LA Kings', 13, 8],
-#               ['Ottawa<br>Senators', 12, 5],
-#               ['Boston<br>Bruins', 13, 8],
-#               ['Chicago<br>Blackhawks', 13, 8],
-#               ['LA Kings', 13, 8],
-#               ['Ottawa<br>Senators', 12, 5]]
-
-# fig4 = ff.create_table(table_data, height_constant=60)
-
-# # Update the margins to add a title and see graph x-labels.
-# fig4.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 50})
-
-#------------------------------------
-
-# import plotly.graph_objects as go
-# from plotly.colors import n_colors
-# import numpy as np
-# np.random.seed(1)
-
-# colors = n_colors('rgba(255, 255, 255, 0)', 'rgba(205, 248, 215, 0.6)', 9, colortype='rgb')
-# a = np.random.randint(low=0, high=9, size=10)
-# b = np.random.randint(low=0, high=9, size=10)
-# c = np.random.randint(low=0, high=9, size=10)
-
-# fig4 = go.Figure(data=[go.Table(
-#   header=dict(
-#     values=['<b>Column A</b>', '<b>Column B</b>', '<b>Column C</b>'],
-#     line_color='white', fill_color='white',
-#     align='center',font=dict(color='rgba(50, 112, 90, 0.8)', size=23)
-#   ),
-#   cells=dict(
-#     values=[a, b, c],
-#     line_color=[np.array(colors)[a],np.array(colors)[b], np.array(colors)[c]],
-#     fill_color=[np.array(colors)[a],np.array(colors)[b], np.array(colors)[c]],
-#     align=['center', 'center'], font=dict(color='rgba(50, 112, 90, 0.8)', size=30), height = 80
-#     ))
-# ])
-# fig4.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 60})
-
-
-
-# gapminder = px.data.gapminder()
-# fig1 = px.scatter(gapminder.query("year==2007"), x="gdpPercap", y="lifeExp", size="pop", color="continent",
-#            hover_name="country", log_x=True, size_max=60)
-
-
-import plotly.graph_objects as go
-
-top_labels = ['Strongly<br>agree', 'Agree', 'Neutral', 'Disagree',
-              'Strongly<br>disagree']
-
-colors = ['rgba(191, 253, 229, 0.68)', 'rgba(208, 251, 222, 0.48)',
-          'rgba(208, 251, 222, 0.8)', 'rgba(208, 251, 222, 0.8)',
-          'rgba(223, 251, 234, 1)']
-
-x_data = [[21, 30, 21, 16, 12],
-          [24, 31, 19, 15, 11],
-          [27, 26, 23, 11, 13],
-          [27, 26, 23, 11, 13],
-          [29, 24, 15, 18, 14]]
-
-y_data = ['03-17-2020',
-          '03-16-2020',
-          '03-15-2020',
-          '03-14-2020',
-          '03-13-2020',
-          '03-12-2020']
-
+x_data = df_usa_total_h[['Confirmed_normalized','Recovered_normalized','Deaths_normalized']].values
+y_data = df_usa_total_h['date'].values
 fig = go.Figure()
 
 for i in range(0, len(x_data[0])):
@@ -132,7 +49,7 @@ fig.update_layout(
         showline=False,
         showticklabels=False,
         zeroline=False,
-        domain=[0.15, 1]
+        domain=[0.02, 1]
     ),
     yaxis=dict(
         showgrid=False,
@@ -143,69 +60,75 @@ fig.update_layout(
     barmode='stack',
     paper_bgcolor='rgb(248, 248, 255)',
     plot_bgcolor='rgb(248, 248, 255)',
-    margin=dict(l=120, r=10, t=140, b=25),
+    # margin=dict(l=95, r=0, t=50, b=0),
+    margin=dict(l=7, r=0, t=50, b=0),
+    #margin=dict(l=40, r=0, t=50, b=0),
     showlegend=False,
 )
 
 annotations = []
-
 for yd, xd in zip(y_data, x_data):
     # labeling the y-axis
     annotations.append(dict(xref='paper', yref='y',
                             x=0.14, y=yd,
                             xanchor='right',
-                            text=str(yd),
-                            font=dict(family='Arial', size=14,
-                                      color='rgb(67, 67, 67)'),
+                            text="", #str(yd)[5:],
+                            font=dict(family='Arial', size=15,
+                                      color='rgba(0, 0, 0, 0.25)'),
                             showarrow=False, align='right'))
     # labeling the first percentage of each bar (x_axis)
     annotations.append(dict(xref='x', yref='y',
-                            x=xd[0] / 2, y=yd,
-                            text=str(xd[0]) + '%',
+                            x= xd[0] / 2, y=yd,
+                            text= str(yd)[5:],#str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
+                            hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
                             font=dict(family='Arial', size=14,
-                                      color='rgb(248, 248, 255)'),
+                                      color='#6cc3cb'),
                             showarrow=False))
     # labeling the first Likert scale (on the top)
     if yd == y_data[-1]:
         annotations.append(dict(xref='x', yref='paper',
-                                x=xd[0] / 2, y=1.1,
+                                x=(xd[0] / 2) - 30, y=1.05,
                                 text=top_labels[0],
-                                font=dict(family='Arial', size=14,
-                                          color='rgb(67, 67, 67)'),
+                                hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+                                font=dict(family='Arial', size=10,
+                                          color='rgb(186, 186, 186)'),
                                 showarrow=False))
     space = xd[0]
     for i in range(1, len(xd)):
             # labeling the rest of percentages for each bar (x_axis)
             annotations.append(dict(xref='x', yref='y',
-                                    x=space + (xd[i]/2), y=yd,
-                                    text=str(xd[i]) + '%',
-                                    font=dict(family='Arial', size=14,
-                                              color='rgb(248, 248, 255)'),
+                                    x=space + (xd[i]/10)-53.5, y=yd,
+                                    text= " ", 
+                                    hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+                                    font=dict(family='Arial', size=24,
+                                              color='rgba(20, 137, 16, 0.77)'),
+                                    #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
                                     showarrow=False))
             # labeling the Likert scale
             if yd == y_data[-1]:
                 annotations.append(dict(xref='x', yref='paper',
-                                        x=space + (xd[i]/2), y=1.1,
+                                        x=(space + (xd[i]/10))-45, y=1.05,
                                         text=top_labels[i],
-                                        font=dict(family='Arial', size=14,
-                                                  color='rgb(67, 67, 67)'),
+                                        hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+                                        font=dict(family='Arial', size=10,
+                                                  color='rgb(186, 186, 186)'),
                                         showarrow=False))
-            space += xd[i]
+            space += xd[i]+30
 
-fig.update_layout(annotations=annotations)
-fig.layout.margin.update({'t':0, 'b':0, 'r': 25, 'l': 50})
+fig.update_layout(annotations=annotations,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+# fig.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 #---------------------------------------------
 
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txcjE4NDAwNngzZms0ZndzNGM3dG0ifQ.gXrN0wMYVhqUp7t1LOHEwA"
 #open(".mapbox_token").read()
 
-df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-16-2020.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-20-2020.csv')
 
 fig1 = go.Figure()
 
 fig1 = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_data=["Country/Region",'Confirmed', 'Deaths'],
-                        size='Confirmed', zoom=2, color = 'Confirmed', color_continuous_scale=px.colors.sequential.Purp, size_max=50,height=600)
+                        size='Confirmed', zoom=2.5, color = 'Confirmed', color_continuous_scale=px.colors.sequential.Purp, size_max=40,height=600)
 
 fig1.update_layout(
     mapbox_style="white-bg",
@@ -215,7 +138,8 @@ fig1.update_layout(
             "below": 'traces',
             "sourcetype": "raster",
             "source": [
-                "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                "https://api.mapbox.com/styles/v1/lilysu/ck811j4xp18kf1iphb7bv365a/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                # green "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
             ] 
         },
         # {
@@ -228,44 +152,120 @@ fig1.update_layout(
 fig1.update_layout(coloraxis_showscale = False)
 fig1.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
-#---------------------------------------------------------------------------
+#---------------------------------------------------------------------------SYMPTOM FIGURE
 
-import plotly.graph_objects as go
-import numpy as np
+# x1 = np.random.randn(200)
+# x2 = np.random.randn(200) + 2
 
-title = 'Main Source for News'
-labels = ['Television', 'Newspaper', 'Internet', 'Radio']
-colors = ['rgb(67,67,67)', 'rgb(115,115,115)', 'rgba(206, 248, 218, 1)', 'rgb(189,189,189)']
+# group_labels = ['Disease Transmitted', 'Signs of Symptoms']
 
-mode_size = [8, 8, 12, 8]
-line_size = [2, 2, 4, 2]
+# colors = ['#7FA6EE', '#B8F7D4']
 
-x_data = np.vstack((np.arange(2001, 2014),)*4)
+# # Create distplot with curve_type set to 'normal'
+# figA = ff.create_distplot([x1, x2], group_labels, bin_size=.5,
+#                          curve_type='normal', # override default 'kde'
+#                          colors=colors)
 
-y_data = np.array([
-    [74, 82, 80, 74, 73, 72, 74, 70, 70, 66, 66, 69],
-    [45, 42, 50, 46, 36, 36, 34, 35, 32, 31, 31, 28],
-    [13, 14, 20, 24, 20, 24, 24, 40, 35, 41, 43, 50],
-    [18, 21, 18, 21, 16, 14, 13, 18, 17, 16, 19, 23],
-])
+# # Add title
+# figA.update_layout(title_text='IT TAKES ON AVERAGE OF 14 DAYS FOR THE SYMPTOMS TO APPEAR')
+
+#------------------------------------------FIG 2
+
+fig2 = go.Figure()
+
+fig2.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], #fill='tozeroy',fillcolor='#B0DAAE',
+                    mode= 'lines', name = 'Italy',legendgroup="group3",
+                    stackgroup='two',
+                    line=dict(width=0.5, color='rgba(183, 224, 240, 0.94)'),
+                    text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'points+fills', 
+                    hoverinfo = 'text+y'))
+
+fig2.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],##fill='toself',fillcolor='rgba(133, 70, 216, 0.3)',
+                    mode='lines',legendgroup="group2",
+                    stackgroup='one',
+                    line=dict(width=0.5, color='rgba(238, 175, 206, 0.82)'),
+                    text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'points+fills', name = 'U.S.',
+                    hoverinfo = 'text+y' # override default markers+lines
+                    ))
+
+fig2.add_trace(go.Scatter(x=df_china["date"], y=df_china["new_Confirmed"], #fill='tozeroy',fillcolor='#F4DBE5',
+                    mode='lines', legendgroup="group1",
+                    stackgroup='three',
+                    line=dict(width=0.5, color='rgba(159, 133, 229, 0.51)'),
+                    text="China<br>New Confirmed Cases <br>from the day before",hoveron = 'points+fills', name = 'China',
+                    hoverinfo = 'text+y' # override default markers+lines
+                    ))
+
+fig2.update_layout(
+    title = "Day-to-day Changes in Cases in U.S. vs China vs Italy",paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
+)
+
+#--------------------------------------------------------
+
+fig3 = go.Figure()
+fig3.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"], fill='tozeroy',fillcolor='#F4DBE5',
+                    mode='none', legendgroup="group1",
+                    text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', name = 'U.S.',
+                    hoverinfo = 'text+y' # override default markers+lines
+                    ))
+
+fig3.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],fill='tonexty',fillcolor='rgba(133, 70, 216, 0)',
+                    mode='markers',marker=dict(color="rgba(133, 70, 216, 0.19)", size=12),legendgroup="group2",
+                    text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'points', name = 'U.S.',
+                    hoverinfo = 'text+y' # override default markers+lines
+                    ))
+
+fig3.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], fill='tonexty',fillcolor='#B0DAAE',
+                    mode= 'none', name = 'Italy',legendgroup="group3",
+                    text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', 
+                    hoverinfo = 'text+y'))
+
+fig3.update_layout(
+    title = "Day-to-day Increased Cases U.S. vs. Italy",paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
+)
+
+
+#--------------------------------------------------fig4
+
 
 fig4 = go.Figure()
 
-for i in range(0, 4):
-    fig4.add_trace(go.Scatter(x=x_data[i], y=y_data[i], mode='lines',
-        name=labels[i],
-        line=dict(color=colors[i]),
-        connectgaps=True,
-    ))
+# Add surface trace
+fig4.add_trace(go.Scatter(x=df_italy['date'], y=df_italy['Confirmed'],
+                    name = "Italy",
+                    hovertext=df_italy["Confirmed"],
+                    hoverinfo='text',
+                    hovertemplate =
+                    '<i>Date: </i>: %{x}'+
+                    '<br><b>Confirmed: </b>: %{y:,}<br>',
+                    line_shape='spline',
+                    line_color='#68CEF3',
+                    ))
 
-    # endpoints
-    fig4.add_trace(go.Scatter(
-        x=[x_data[i][0], x_data[i][-1]],
-        y=[y_data[i][0], y_data[i][-1]],
-        mode='markers',
-        marker=dict(color=colors[i], size=mode_size[i])
-    ))
+fig4.add_trace(go.Scatter(x=df_china['date'], y=df_china['Confirmed'],
+                    name = "China",
+                    hovertext=df_china["Confirmed"],
+                    hoverinfo='text',
+                    hovertemplate =
+                    '<i>Date: </i>: %{x}'+
+                    '<br><b>Confirmed: </b>: %{y:,}<br>',
+                    line_shape='spline',
+                    line_color='#9e92f6',
+                    ))
+fig4.add_trace(go.Scatter(x=df_usa['date'], y=df_usa['Confirmed'],
+                    name = "US",
+                    hovertext=df_usa["Confirmed"],
+                    hoverinfo='text',
+                    hovertemplate =
+                    '<i>Date: </i>: %{x}'+
+                    '<br><b>Confirmed: </b>: %{y:,}<br>',
+                    line_shape='spline',
+                    line_color = '#e7b1c7',
+                    ))
 
+fig4.update_traces(hoverinfo='text+name', mode='lines+markers')
+
+# Update plot sizing
 fig4.update_layout(
     xaxis=dict(
         showline=True,
@@ -287,38 +287,49 @@ fig4.update_layout(
         showticklabels=False,
     ),
     autosize=True,
-    # margin=dict(
-    #     autoexpand=False,
-    #     l=100,
-    #     r=100,
-    #     t=110,
-    # ),
+    margin=dict(
+        autoexpand=False,
+        l=100,
+        r=20,
+        t=110,
+    ),
     showlegend=False,
     plot_bgcolor='white'
 )
 
-annotations = []
+# Update 3D scene options
+fig4.update_scenes(
+    aspectratio=dict(x=1, y=1, z=0.7),
+    aspectmode="manual"
+)
 
-# Adding labels
-for y_trace, label, color in zip(y_data, labels, colors):
+# Default annotations
+annotations = []
+# for y_trace, label, color in zip(y_data, labels, colors):
     # labeling the left_side of the plot
-    annotations.append(dict(xref='paper', x=0.05, y=y_trace[0],
-                                  xanchor='right', yanchor='middle',
-                                  text=label + ' {}%'.format(y_trace[0]),
-                                  font=dict(family='Arial',
-                                            size=16),
-                                  showarrow=False))
-    # labeling the right_side of the plot
-    annotations.append(dict(xref='paper', x=0.95, y=y_trace[11],
-                                  xanchor='left', yanchor='middle',
-                                  text='{}%'.format(y_trace[11]),
-                                  font=dict(family='Arial',
-                                            size=16),
-                                  showarrow=False))
+annotations.append(dict(xref='paper', x=.990, y=39500,
+                              xanchor='right', yanchor='bottom',
+                              text='Italy',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False))
+
+annotations.append(dict(xref='paper',  x=.99, y=11000,
+                              xanchor='right', yanchor='bottom',
+                              text='U.S.',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False))
+annotations.append(dict(xref='paper', x=1.01, y=78600,
+                              xanchor='right', yanchor='bottom',
+                              text='China',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False))
 # Title
 annotations.append(dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Main Source for News',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
                               font=dict(family='Arial',
                                         size=30,
                                         color='rgb(37,37,37)'),
@@ -326,52 +337,138 @@ annotations.append(dict(xref='paper', yref='paper', x=0.0, y=1.05,
 # Source
 annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
-                              text='Source: PewResearch Center & ' +
-                                   'Storytelling with data',
+                              text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
                                         color='rgb(150,150,150)'),
                               showarrow=False))
 
-fig4.update_layout(annotations=annotations)
+# Add Annotations with Buttons
 
-fig4.update_layout(margin={"r":50,"t":0,"l":12,"b":30})
+all_annotations = [dict(xref='paper', x=1.01, y=78600,
+                              xanchor='right', yanchor='bottom',
+                              text='China',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False),
+                   dict(xref='paper', x=.990, y=39500,
+                              xanchor='right', yanchor='bottom',
+                              text='Italy',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False),
+                     dict(xref='paper', x=.99, y=11000,
+                              xanchor='right', yanchor='bottom',
+                              text='U.S.',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False),
+                     dict(xref='paper', yref='paper', x=0.0, y=1.05,
+                              xanchor='left', yanchor='bottom',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              font=dict(family='Arial',
+                                        size=30,
+                                        color='rgb(37,37,37)'),
+                              showarrow=False),
+                     dict(xref='paper', yref='paper', x=0.5, y=-0.1,
+                              xanchor='center', yanchor='top',
+                              text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
+                              font=dict(family='Arial',
+                                        size=12,
+                                        color='rgb(150,150,150)'),
+                              showarrow=False)]
+
+
+italy_annotations = [dict(xref='paper', x=.990, y=45000,
+                              xanchor='right', yanchor='bottom',
+                              text='Italy',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False),
+                     dict(xref='paper', x=.99, y=17000,
+                              xanchor='right', yanchor='bottom',
+                              text='U.S.',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False),
+                     dict(xref='paper', yref='paper', x=0.0, y=1.05,
+                              xanchor='left', yanchor='bottom',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              font=dict(family='Arial',
+                                        size=30,
+                                        color='rgb(37,37,37)'),
+                              showarrow=False),
+                     dict(xref='paper', yref='paper', x=0.5, y=-0.1,
+                              xanchor='center', yanchor='top',
+                              text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
+                              font=dict(family='Arial',
+                                        size=12,
+                                        color='rgb(150,150,150)'),
+                              showarrow=False)]
+
+china_annotations = [dict(xref='paper', x=1.01, y=78600,
+                              xanchor='right', yanchor='bottom',
+                              text='China',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False),
+                     dict(xref='paper', x=.99, y=45000,
+                              xanchor='right', yanchor='bottom',
+                              text='U.S.',
+                              font=dict(family='Arial',
+                                        size=20),
+                              showarrow=False),
+                     dict(xref='paper', yref='paper', x=0.0, y=1.05,
+                              xanchor='left', yanchor='bottom',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              font=dict(family='Arial',
+                                        size=30,
+                                        color='rgb(37,37,37)'),
+                              showarrow=False),
+                     dict(xref='paper', yref='paper', x=0.5, y=-0.1,
+                              xanchor='center', yanchor='top',
+                              text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
+                              font=dict(family='Arial',
+                                        size=12,
+                                        color='rgb(150,150,150)'),
+                              showarrow=False)]
+
+fig4.update_layout(
+    updatemenus=[
+        dict(
+            type="buttons",
+            direction="right",
+            active=0,
+            pad={"r": 10, "t": 40},
+            showactive=True,
+            x=0.06,
+            xanchor="left",
+            y=1.1,
+            buttons=list([
+                dict(label="Show All",
+                     method="update",
+                     args=[{"visible": [True, True, True]},
+                           {
+                            "annotations": all_annotations}]),
+                dict(label="Compare with Italy",
+                     method="update",
+                     args=[{"visible": [True, False, True]},
+                           {
+                            "annotations": italy_annotations}]),
+                dict(label="Compare with China",
+                     method="update",
+                     args=[{"visible": [True, True, False]},
+                           {
+                            "annotations": china_annotations}]),
+            ]),
+        )
+    ])
+
+
+fig4.update_layout(annotations=annotations)
 
 #========================================================================
 
-x1 = np.random.randn(200)
-x2 = np.random.randn(200) + 2
-
-group_labels = ['Group 1', 'Group 2']
-
-colors = ['#7FA6EE', '#B8F7D4']
-
-# Create distplot with curve_type set to 'normal'
-fig2 = ff.create_distplot([x1, x2], group_labels, bin_size=.5,
-                         curve_type='normal', # override default 'kde'
-                         colors=colors)
-
-# Add title
-fig2.update_layout(title_text='Onset of Symptoms vs Confirmed Cases')
-# fig.show()
-
-
-
-
-
-fig3 = go.Figure()
-fig3.add_trace(go.Bar(
-    name='Control',
-    x=['Trial 1', 'Trial 2', 'Trial 3'], y=[3, 6, 4],
-    error_y=dict(type='data', array=[1, 0.5, 1.5])
-))
-fig3.add_trace(go.Bar(
-    name='Experimental',
-    x=['Trial 1', 'Trial 2', 'Trial 3'], y=[4, 7, 3],
-    error_y=dict(type='data', array=[0.5, 1, 2])
-))
-fig3.update_layout(barmode='group')
-# fig.show()
 
 #------------------------------------------------------
 # fig5 = go.Figure()
@@ -433,35 +530,40 @@ fig3.update_layout(barmode='group')
 # fig5.show(config={'doubleClick': 'reset'})
 
 
-column1a = dbc.Col(
+columnTopLeft = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('% Hospitalized', style={'fontSize':16, 'color':'rgba(206, 248, 218, 1)', 'marginTop':22, 'marginBottom':0}),#fig4
-            html.H1('19', style={'fontSize':92, 'color':'rgba(206, 248, 218, 1)', 'marginBottom':0}),#fig4
+            html.H6('% Sick Enough to Be Hospitalized younger than 55', style={'fontSize':17, 'color':'#a5e3be', 'marginTop':22, 'marginBottom':10}),#fig4
+            html.H1('38', style={'fontSize':60, 'color':'#a5e3be', 'marginBottom':0}),#fig4
             ]
         ),
         dcc.Graph(figure=fig),
     ],
     md=2,
+    #style={'paddingLeft':0,'paddingRight':0},
 )
 
-column1 = dbc.Col(
+columnTopCenter = dbc.Col(
     [
-        dcc.Graph(figure=fig1),
+
+        dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
+
     ],
     md=7,
-)
+    )
 
 
-column2 = dbc.Col(
+columnTopRight = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Positive Cases NYC', style={'fontSize':16, 'color':'rgba(206, 248, 218, 1)', 'marginTop':22, 'marginBottom':0}),#fig4
-            html.H1('644', style={'fontSize':90, 'color':'rgba(206, 248, 218, 1)', 'marginBottom':0}),#fig4
-            html.H6('Deaths NYC', style={'fontSize':16, 'color':'rgba(206, 248, 218, 1)', 'marginBottom':0}),#fig4
-            html.H1('7', style={'fontSize':60, 'color':'rgba(206, 248, 218, 1)', 'marginBottom':0}),#fig4
+            html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#a5e3be', 'marginTop':22, 'marginBottom':10}),#fig4
+            html.H1('4,408', style={'fontSize':90, 'color':'#a5e3be', 'marginBottom':0}),#fig4
+            html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
+            html.H6('Deaths NYC', style={'fontSize':16, 'color':'#a5e3be', 'marginBottom':10}),
+            html.H1('43', style={'fontSize':68, 'color':'#a5e3be', 'marginBottom':0}),#fig4
+            html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
         ),
         #dcc.Graph(figure=fig5),#fig4
@@ -473,29 +575,41 @@ column2 = dbc.Col(
     ],
     md=3,
 )
-
-# column2a = dbc.Col(
+# column0CenterAll = dbc.Col(
 #     [
-#         html.H1('644'
-#         ),#fig4
-#     ],
-#     md=3,
+#         dcc.Graph(figure=figA),
+#     ]
 # )
 
-column3 = dbc.Col(
+column1CenterAll = dbc.Col(
+    [
+        html.Center()
+    ]
+)
+
+column2CenterAll = dbc.Col(
     [
         dcc.Graph(figure=fig2),
     ]
 )
 
-column4 = dbc.Col(
+column3CenterAll = dbc.Col(
     [
         dcc.Graph(figure=fig3),
     ]
 )
 
+column4CenterAll = dbc.Col(
+    [
+        dcc.Graph(figure=fig4),
+    ]
+)
+
 # layout = dbc.Row([column1, column2])
-layout = [dbc.Row([column1a, column1, column2]), 
-        dbc.Row([column3]),
-        dbc.Row([column4]),]
+layout = [dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
+        # dbc.Row([column0CenterAll]),
+        dbc.Row([column1CenterAll]),
+        dbc.Row([column2CenterAll]),
+        dbc.Row([column3CenterAll]),
+        dbc.Row([column4CenterAll]),]
 
