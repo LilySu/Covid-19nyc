@@ -82,7 +82,7 @@ for yd, xd in zip(y_data, x_data):
                             text= str(yd)[5:],#str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
                             hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
                             font=dict(family='Arial', size=14,
-                                      color='#6cc3cb'),
+                                      color='#008582'),
                             showarrow=False))
     # labeling the first Likert scale (on the top)
     if yd == y_data[-1]:
@@ -128,7 +128,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/mast
 fig1 = go.Figure()
 
 fig1 = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_data=["Country/Region",'Confirmed', 'Deaths'],
-                        size='Confirmed', zoom=2.5, color = 'Confirmed', color_continuous_scale=px.colors.sequential.Purp, size_max=40,height=600)
+                        size='Confirmed', zoom=1.5, color = 'Confirmed', color_continuous_scale=px.colors.sequential.Purp, size_max=40,height=600)
 
 fig1.update_layout(
     mapbox_style="white-bg",
@@ -138,7 +138,8 @@ fig1.update_layout(
             "below": 'traces',
             "sourcetype": "raster",
             "source": [
-                "https://api.mapbox.com/styles/v1/lilysu/ck811j4xp18kf1iphb7bv365a/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                # purple "https://api.mapbox.com/styles/v1/lilysu/ck811j4xp18kf1iphb7bv365a/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
                 # green "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
             ] 
         },
@@ -534,8 +535,8 @@ columnTopLeft = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('% Sick Enough to Be Hospitalized younger than 55', style={'fontSize':17, 'color':'#a5e3be', 'marginTop':22, 'marginBottom':10}),#fig4
-            html.H1('38', style={'fontSize':60, 'color':'#a5e3be', 'marginBottom':0}),#fig4
+            html.H6('% Sick Enough to Be Hospitalized younger than 55', style={'fontSize':17, 'color':'#009996', 'marginTop':22, 'marginBottom':10}),#fig4
+            html.H1('38', style={'fontSize':60, 'color':'#009996', 'marginBottom':0}),#fig4
             ]
         ),
         dcc.Graph(figure=fig),
@@ -558,11 +559,11 @@ columnTopRight = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#a5e3be', 'marginTop':22, 'marginBottom':10}),#fig4
-            html.H1('4,408', style={'fontSize':90, 'color':'#a5e3be', 'marginBottom':0}),#fig4
+            html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':22, 'marginBottom':10}),#fig4
+            html.H1('4,408', style={'fontSize':90, 'color':'#009996', 'marginBottom':0}),#fig4
             html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
-            html.H6('Deaths NYC', style={'fontSize':16, 'color':'#a5e3be', 'marginBottom':10}),
-            html.H1('43', style={'fontSize':68, 'color':'#a5e3be', 'marginBottom':0}),#fig4
+            html.H6('Deaths NYC', style={'fontSize':16, 'color':'#009996', 'marginBottom':10}),
+            html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
             html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
         ),

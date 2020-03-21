@@ -53,7 +53,7 @@ navbar = dbc.NavbarSimple(
     brand_href='/', 
     children=[
         #dbc.NavItem(dcc.Link('Predictions', href='/predictions', className='nav-link')), # Virtual Fitness
-        dbc.NavItem(dcc.Link('This too shall pass', href='/actions', className='nav-link')), # Affirmations #follow therapists # new ideas to manage and engage with wellness, committing to best practices with what we can control
+        #dbc.NavItem(dcc.Link('This too shall pass', href='/actions', className='nav-link')), # Affirmations #follow therapists # new ideas to manage and engage with wellness, committing to best practices with what we can control
         # dbc.NavItem(dcc.Link('Bulletin Board', href='/bulletin', className='nav-link')), # changes that better reflect the humanity that we want to see in our systems
     ],
     sticky='top',
