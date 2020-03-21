@@ -128,7 +128,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/mast
 fig1 = go.Figure()
 
 fig1 = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_data=["Country/Region",'Confirmed', 'Deaths'],
-                        size='Confirmed', zoom=1.5, color = 'Confirmed', color_continuous_scale=px.colors.sequential.Purp, size_max=40,height=600)
+                        size='Confirmed', zoom=1, color = 'Confirmed', color_continuous_scale=px.colors.sequential.Purp, size_max=40,height=600)
 
 fig1.update_layout(
     mapbox_style="white-bg",
@@ -152,6 +152,32 @@ fig1.update_layout(
       ])
 fig1.update_layout(coloraxis_showscale = False)
 fig1.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
+#---------------------------------------------------------------------------FIG 1Half
+import requests
+df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/NYS_County_Covid19-3-20.csv")
+
+r = requests.get('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/new-york-counties.geojson')
+geojson = r.json()
+
+fig1Half = px.choropleth_mapbox(df, geojson=geojson, 
+                           animation_frame="date", animation_group="total",
+                           locations="county_full", 
+                           featureidkey="properties.name",
+                           center={"lat": 42.85, "lon":-75.9},
+                           mapbox_style="carto-positron", zoom=6,
+                           opacity = .9,
+                           height = 750,
+                           color = 'total',
+                           color_continuous_scale=px.colors.sequential.Teal,
+                           custom_data = ['15_Mar_Cov_Pos'],
+                           #hover_data = ["date"],
+                           labels = {"total":"Positive Cases", "county_full": "location"},
+                           )
+
+
+fig1Half.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig1Half.update_layout(coloraxis_showscale = False, showlegend = False)
+
 
 #---------------------------------------------------------------------------SYMPTOM FIGURE
 
@@ -203,28 +229,56 @@ fig2.update_layout(
 
 #--------------------------------------------------------
 
+df_usa_t = df_usa.tail()
+# df_italy_t = df_italy.tail()
+
 fig3 = go.Figure()
-fig3.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"], fill='tozeroy',fillcolor='#F4DBE5',
+fig3.add_trace(go.Scatter(x=df_usa_t["date"], y=df_usa_t["new_Confirmed"], fill='tozeroy',fillcolor='#F4DBE5',
+                    mode='none', legendgroup="group1", showlegend=False,
+                    text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', name = 'U.S.',
+                    hoverinfo = 'text+y' # override default markers+lines
+                    ))
+
+# fig3.add_trace(go.Scatter(x=df_usa_t["date"], y=df_usa_t["new_Confirmed"],fill='tonexty',fillcolor='rgba(133, 70, 216, 0)',
+#                     mode='markers',marker=dict(color="rgba(133, 70, 216, 0.19)", size=12),legendgroup="group2",
+#                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'points', name = 'U.S.',
+#                     hoverinfo = 'text+y' # override default markers+lines
+#                     ))
+
+# fig3.add_trace(go.Scatter(x=df_italy_t["date"], y=df_italy_t["new_Confirmed"], fill='tonexty',fillcolor='#B0DAAE',
+#                     mode= 'none', name = 'Italy',legendgroup="group3",
+#                     text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', 
+#                     hoverinfo = 'text+y'))
+
+fig3.update_layout(
+    title = "Day-to-day Increase<br>of Cases U.S.",paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
+)
+# fig3.update_layout(legend=dict(x=.07, y=0.92))
+fig3.layout.margin.update({'t':30, 'b':0, 'r': 0, 'l': 10})
+
+#--------------------------------------------------fig3a
+fig3a = go.Figure()
+fig3a.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"], fill='tozeroy',fillcolor='#F4DBE5',
                     mode='none', legendgroup="group1",
                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', name = 'U.S.',
                     hoverinfo = 'text+y' # override default markers+lines
                     ))
 
-fig3.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],fill='tonexty',fillcolor='rgba(133, 70, 216, 0)',
+fig3a.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],fill='tonexty',fillcolor='rgba(133, 70, 216, 0)',
                     mode='markers',marker=dict(color="rgba(133, 70, 216, 0.19)", size=12),legendgroup="group2",
                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'points', name = 'U.S.',
                     hoverinfo = 'text+y' # override default markers+lines
                     ))
 
-fig3.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], fill='tonexty',fillcolor='#B0DAAE',
+fig3a.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], fill='tonexty',fillcolor='#B0DAAE',
                     mode= 'none', name = 'Italy',legendgroup="group3",
                     text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', 
                     hoverinfo = 'text+y'))
 
-fig3.update_layout(
+fig3a.update_layout(
     title = "Day-to-day Increased Cases U.S. vs. Italy",paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
 )
-
+fig3a.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 #--------------------------------------------------fig4
 
@@ -539,7 +593,7 @@ columnTopLeft = dbc.Col(
             html.H1('38', style={'fontSize':60, 'color':'#009996', 'marginBottom':0}),#fig4
             ]
         ),
-        dcc.Graph(figure=fig),
+        dcc.Graph(figure=fig3),
     ],
     md=2,
     #style={'paddingLeft':0,'paddingRight':0},
@@ -551,7 +605,7 @@ columnTopCenter = dbc.Col(
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
 
     ],
-    md=7,
+    md=5,
     )
 
 
@@ -560,21 +614,21 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':22, 'marginBottom':10}),#fig4
-            html.H1('4,408', style={'fontSize':90, 'color':'#009996', 'marginBottom':0}),#fig4
-            html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
-            html.H6('Deaths NYC', style={'fontSize':16, 'color':'#009996', 'marginBottom':10}),
-            html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
-            html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
+            html.H1('4,408', style={'fontSize':80, 'color':'#009996', 'marginBottom':0}),#fig4
+            # html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
+            # html.H6('Deaths NYC', style={'fontSize':16, 'color':'#009996', 'marginBottom':10}),
+            # html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
+            # html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
         ),
-        #dcc.Graph(figure=fig5),#fig4
+
         html.Center(
             children=[
             html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-01-15.gif'), style={'display': 'block', 'width':'100%'})
             ]
         )
     ],
-    md=3,
+    md=5,
 )
 # column0CenterAll = dbc.Col(
 #     [
@@ -582,10 +636,26 @@ columnTopRight = dbc.Col(
 #     ]
 # )
 
-column1CenterAll = dbc.Col(
+column1Left = dbc.Col(
     [
-        html.Center()
-    ]
+        html.Center(
+            children=[
+                dcc.Graph(figure=fig1Half),
+            ]
+        )
+    ],
+    md=6
+)
+
+column1Right = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dcc.Graph(figure=fig),
+            ]
+        )
+    ],
+    md=6
 )
 
 column2CenterAll = dbc.Col(
@@ -596,7 +666,7 @@ column2CenterAll = dbc.Col(
 
 column3CenterAll = dbc.Col(
     [
-        dcc.Graph(figure=fig3),
+        dcc.Graph(figure=fig3a),
     ]
 )
 
@@ -608,8 +678,8 @@ column4CenterAll = dbc.Col(
 
 # layout = dbc.Row([column1, column2])
 layout = [dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
-        # dbc.Row([column0CenterAll]),
-        dbc.Row([column1CenterAll]),
+        dbc.Row([column1Left, column1Right]),
+        # dbc.Row([column1CenterAll]),
         dbc.Row([column2CenterAll]),
         dbc.Row([column3CenterAll]),
         dbc.Row([column4CenterAll]),]
