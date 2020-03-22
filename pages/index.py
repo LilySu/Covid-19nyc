@@ -90,7 +90,7 @@ for yd, xd in zip(y_data, x_data):
                                 x=(xd[0] / 2) - 30, y=1.05,
                                 text=top_labels[0],
                                 hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                font=dict(family='Arial', size=10,
+                                font=dict(family='Arial', size=14,
                                           color='rgb(186, 186, 186)'),
                                 showarrow=False))
     space = xd[0]
@@ -110,7 +110,7 @@ for yd, xd in zip(y_data, x_data):
                                         x=(space + (xd[i]/10))-45, y=1.05,
                                         text=top_labels[i],
                                         hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                        font=dict(family='Arial', size=10,
+                                        font=dict(family='Arial', size=14,
                                                   color='rgb(186, 186, 186)'),
                                         showarrow=False))
             space += xd[i]+30
@@ -605,7 +605,7 @@ columnTopCenter = dbc.Col(
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
 
     ],
-    md=5,
+    md=6,
     )
 
 
@@ -614,9 +614,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':22, 'marginBottom':10}),#fig4
-            html.H1('4,408', style={'fontSize':80, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H1('4,408', style={'fontSize':85, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H6('last updated march 21st 10:35PM', style={'fontSize':12, 'color':'#009996', 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
-            # html.H6('Deaths NYC', style={'fontSize':16, 'color':'#009996', 'marginBottom':10}),
+            html.H6('Positive Cases by County', style={'fontSize':18, 'color':'#9a76c6', 'marginTop':20}),
             # html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
@@ -624,11 +625,11 @@ columnTopRight = dbc.Col(
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-01-15.gif'), style={'display': 'block', 'width':'100%'})
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-20.gif'), style={'display': 'block', 'width':'100%'})
             ]
         )
     ],
-    md=5,
+    md=4,
 )
 # column0CenterAll = dbc.Col(
 #     [
@@ -651,6 +652,7 @@ column1Right = dbc.Col(
     [
         html.Center(
             children=[
+                html.H6('Proportion of Recovered and Deaths in New York State', style={'fontSize':18, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),#fig4
                 dcc.Graph(figure=fig),
             ]
         )
