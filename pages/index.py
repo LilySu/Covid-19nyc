@@ -718,7 +718,7 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('12339', style={'fontSize':70, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H1('12,339', style={'fontSize':70, 'color':'#009996', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),#fig4
             html.H6('99', style={'fontSize':22, 'color':'#009996', 'marginBottom':0}),#fig4
             html.H6('Data above from NYC Dept. of Health march 23, 9 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
@@ -741,7 +741,7 @@ columnTopRight = dbc.Col(
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 21, 6 p.m.', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NYC DOH, last updated there on March 23, 9 a.m.', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
             ]
         ),
     ],
