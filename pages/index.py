@@ -668,8 +668,8 @@ columnTopAlert = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('New York State: 20,000 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),
-            html.H6('Data Above from gov. cuomo march 23, 11 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+            html.H6('New York State: 20,875 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data Above from gov. cuomo and New York State Dept. of Health march 23, 3 pm', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':15}),
             ]
         ),
     ],
@@ -718,10 +718,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('10,764', style={'fontSize':70, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H1('12339', style={'fontSize':70, 'color':'#009996', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),#fig4
             html.H6('99', style={'fontSize':22, 'color':'#009996', 'marginBottom':0}),#fig4
-            html.H6('Data above from gov. cuomo march 23, 11 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('Data above from NYC Dept. of Health march 23, 9 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
             # dbc.Alert(
             # [
             # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
