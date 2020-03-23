@@ -753,10 +753,10 @@ column2CenterAll = dbc.Col(
             html.H6('NUMBER OF CASES IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
             html.H6('MARCH 21, 2020', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
             html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-21_annotated.png'), style={'display': 'block', 'width':'100%'})
-            ]
+            ],
+            md=7,
         )
-    ],
-    md=7,
+    ]
 )
 
 column3CenterAll = dbc.Col(
