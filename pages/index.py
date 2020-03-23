@@ -746,17 +746,31 @@ column1Right = dbc.Col(
     md=6
 )
 
-column2CenterAll = dbc.Col(
+column2Left = dbc.Col(
+    [
+        html.Center(
+        )
+    ],
+    md=2,
+)
+column2Center = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NUMBER OF CASES IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
-            html.H6('MARCH 21, 2020', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-21_annotated.png'), style={'display': 'block', 'width':'100%'})
-            ],
-            md=7,
+            html.H6('NUMBER OF CASES IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
+            html.H6('MARCH 22, 2020', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-22_annotated.jpg'), style={'display': 'block', 'width':'100%'})
+            ]
         )
-    ]
+    ],
+    md=8,
+)
+column2Right = dbc.Col(
+    [
+        html.Center(
+        )
+    ],
+    md=2,
 )
 
 column3CenterAll = dbc.Col(
@@ -803,7 +817,7 @@ column6CenterAll = dbc.Col(
 layout = [dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
         dbc.Row([column1Left,column1Right]),
         # dbc.Row([column1CenterAll]),
-        dbc.Row([column2CenterAll]),
+        dbc.Row([column2Left, column2Center, column2Right]),
         dbc.Row([column3CenterAll]),
         dbc.Row([column4CenterAll]),
         dbc.Row([column5CenterAll]),
