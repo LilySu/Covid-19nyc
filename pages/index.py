@@ -67,12 +67,12 @@ percentage_change = percentage_change.tail(6)
 
 fig_percentage_change = go.Figure()
 
-collist = ['Nassau','New York', 'Onondaga', 'Putnam', 'Rockland', 'Rensselaer','Rockland', 'Westchester']
+collist = ['Rockland','New York', 'Suffolk', 'Putnam', 'Rockland', 'Rensselaer','Nassau', 'Westchester']
 colors = ['#99d1ce', '#56b3ae', '#3c8682', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991']
 
 for i, j in zip(collist, colors):
   fig_percentage_change.add_trace(go.Scatter(x = percentage_change['date_found_positive'], y = percentage_change[i],line_shape='spline',
-                           name = i, text=percentage_change[i],hovertemplate= " %{y:.0f}%<br>",
+                           name = i, text=percentage_change[i],hovertemplate= "%{text:.0%}"+" Up in Cases <br>on " + percentage_change['date_found_positive'],#" %{y:.0f}%<br>",
                            line=dict(color=j, width=4)))
     
 fig_percentage_change.update_traces(hoverinfo='text+name', mode='lines+markers')
@@ -282,7 +282,17 @@ fig2.add_trace(go.Scatter(x=df_china["date"], y=df_china["new_Confirmed"], #fill
                     hoverinfo = 'text+y' # override default markers+lines
                     ))
 
+annotat = []
+annotat.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
+            xanchor='center', yanchor='top',
+            text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
+            font=dict(family='Arial',
+                    size=12,
+                    color='rgb(150,150,150)'),
+            showarrow=False))
+
 fig2.update_layout(
+    annotations = annotat,
     yaxis=dict(title_text="Confirmed Cases",color='rgb(150,150,150)'),
     title = "DAY-TO-DAY ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
     font=dict(family='Arial',
@@ -654,6 +664,18 @@ fig4.update_layout(annotations=annotations)
 # # More detail: https://plot.ly/python/configuration-options/
 # fig5.show(config={'doubleClick': 'reset'})
 
+columnTopAlert = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.H6('New York State: 20,000 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
+            html.H6('Data from gov. cuomo march 23, 11 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),
+            ]
+        ),
+    ],
+    md=12,
+    #style={'paddingLeft':0,'paddingRight':0},
+)
 
 columnTopLeft = dbc.Col(
     [
@@ -695,10 +717,17 @@ columnTopRight = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('9,045', style={'fontSize':90, 'color':'#009996', 'marginBottom':0}),#fig4
-            html.H6('Data from NY STATE DOH last updated THERE march 22, 2 PM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
-            # html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
+            html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H1('10,764', style={'fontSize':70, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),#fig4
+            html.H6('99', style={'fontSize':22, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H6('Data from gov. cuomo march 23, 11 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
+            # dbc.Alert(
+            # [
+            # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
+            # ],
+            # color = "primary",
+            # ),
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             # html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
@@ -825,7 +854,9 @@ column6CenterAll = dbc.Col(
 )
 
 # layout = dbc.Row([column1, column2])
-layout = [dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
+layout = [
+        dbc.Row([columnTopAlert]),
+        dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
         dbc.Row([column1Left,column1Right]),
         # dbc.Row([column1CenterAll]),
         dbc.Row([column2Center, column2Right]),
