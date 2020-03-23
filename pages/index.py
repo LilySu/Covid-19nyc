@@ -668,8 +668,8 @@ columnTopAlert = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('New York State: 20,000 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
-            html.H6('Data Above from gov. cuomo march 23, 11 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),
+            html.H6('New York State: 20,000 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data Above from gov. cuomo march 23, 11 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
             ]
         ),
     ],
