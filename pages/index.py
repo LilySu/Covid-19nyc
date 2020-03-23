@@ -78,7 +78,7 @@ for i, j in zip(collist, colors):
 fig_percentage_change.update_traces(hoverinfo='text+name', mode='lines+markers')
 fig_percentage_change.update_layout(
     plot_bgcolor='white',
-    height=260,
+    height=200,
     # showlegend=True,
     #title_text='PERCENTAGE INCREASES IN DAY-TO-DAY CONFIRMED CASES BY COUNTY'
 )
@@ -98,7 +98,7 @@ fig_percentage_change.update_layout(
 fig_percentage_change.update_layout(
     showlegend=False,
     font=dict(
-    size=10,
+    size=11,
     # family="Arial",
     color="#a3a3a3",
 )
@@ -684,11 +684,11 @@ columnTopRight = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':22, 'marginBottom':10}),#fig4
-            html.H1('4,408', style={'fontSize':85, 'color':'#009996', 'marginBottom':0}),#fig4
-            html.H6('last updated march 21st 10:35PM', style={'fontSize':12, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H1('9,045', style={'fontSize':90, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H6('last updated march 22st 08:05PM', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
-            html.H6('Positive Cases by County', style={'fontSize':18, 'color':'#9a76c6', 'marginTop':20}),
+            html.H6('Positive Cases by County', style={'fontSize':20, 'color':'#9a76c6', 'marginTop':20}),
             # html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
