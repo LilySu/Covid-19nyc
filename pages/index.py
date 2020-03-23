@@ -163,7 +163,7 @@ fig1Half = px.choropleth_mapbox(df, geojson=geojson,
                            )
 
 
-fig1Half.update_layout(margin={"r":0,"t":10,"l":0,"b":0})
+fig1Half.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig1Half.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
@@ -224,7 +224,7 @@ countydaytoday.update_layout(
     plot_bgcolor='white',
     showlegend=True,
     #title_text='DAILY NUMBER OF CASES BY COUNTY'
-        font=dict(
+    font=dict(
     # family="Arial",
     color="#a3a3a3")
 )
@@ -283,7 +283,11 @@ fig2.add_trace(go.Scatter(x=df_china["date"], y=df_china["new_Confirmed"], #fill
                     ))
 
 fig2.update_layout(
-    title = "Day-to-day Changes in Cases in U.S. vs China vs Italy",paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
+    yaxis=dict(title_text="Confirmed Cases",color='rgb(150,150,150)'),
+    title = "DAY-TO-DAY ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
+    font=dict(family='Arial',
+    color='rgb(150,150,150)'),
+    plot_bgcolor='rgba(0,0,0,0)', 
 )
 
 #--------------------------------------------------------
@@ -398,7 +402,8 @@ fig4.update_layout(
         showgrid=False,
         zeroline=False,
         showline=False,
-        showticklabels=False,
+        showticklabels=True,
+        title_text="Confirmed Cases"
     ),
     autosize=True,
     margin=dict(
@@ -408,7 +413,10 @@ fig4.update_layout(
         t=110,
     ),
     showlegend=False,
-    plot_bgcolor='white'
+    plot_bgcolor='white',
+    font=dict(
+    # family="Arial",
+    color="#a3a3a3")
 )
 
 # Update 3D scene options
@@ -443,10 +451,10 @@ annotations.append(dict(xref='paper', x=1.01, y=78600,
 # Title
 annotations.append(dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
-                                        size=30,
-                                        color='rgb(37,37,37)'),
+                                        size=20,
+                                        color='rgb(150,150,150)'),
                               showarrow=False))
 # Source
 annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
@@ -459,19 +467,19 @@ annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
 
 # Add Annotations with Buttons
 
-all_annotations = [dict(xref='paper', x=1.01, y=78600,
+all_annotations = [dict(xref='paper', x=1.01, y=78100,
                               xanchor='right', yanchor='bottom',
                               text='China',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                   dict(xref='paper', x=.990, y=39500,
+                   dict(xref='paper', x=1.05, y=43000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=.99, y=11000,
+                     dict(xref='paper', x=1.05, y=14000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -479,10 +487,10 @@ all_annotations = [dict(xref='paper', x=1.01, y=78600,
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
-                                        size=30,
-                                        color='rgb(37,37,37)'),
+                                        size=20,
+                                        color='rgb(150,150,150)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
@@ -507,10 +515,10 @@ italy_annotations = [dict(xref='paper', x=.990, y=45000,
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
-                                        size=30,
-                                        color='rgb(37,37,37)'),
+                                        size=20,
+                                        color='rgb(150,150,150)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
@@ -534,10 +542,10 @@ china_annotations = [dict(xref='paper', x=1.01, y=78600,
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
-                                        size=30,
-                                        color='rgb(37,37,37)'),
+                                        size=20,
+                                        color='rgb(150,150,150)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
@@ -555,9 +563,12 @@ fig4.update_layout(
             active=0,
             pad={"r": 10, "t": 40},
             showactive=True,
-            x=0.06,
+            x=0.05,
             xanchor="left",
-            y=1.1,
+            y=1.18,
+            font=dict(
+            # family="Arial",
+            color="#a3a3a3"),
             buttons=list([
                 dict(label="Show All",
                      method="update",
@@ -658,9 +669,9 @@ columnTopLeft = dbc.Col(
             children=[
             html.H6('TOP NY STATE', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
             html.H6('COUNTIES', style={'fontSize':15, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('WITH THE MOST DRASTIC', style={'fontSize':9, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
+            html.H6('WITH THE MOST DRASTIC', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
             html.H6('Day-to-Day', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('Percentage Increase', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
+            html.H6('Percentage Increase', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
             # html.H1('38', style={'fontSize':60, 'color':'#009996', 'marginBottom':0}),#fig4
             ]
         ),
@@ -686,7 +697,7 @@ columnTopRight = dbc.Col(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
             html.H1('9,045', style={'fontSize':90, 'color':'#009996', 'marginBottom':0}),#fig4
-            html.H6('last updated march 22st 08:05PM', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('last updated march 22nd 08:05PM', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
             html.H6('Positive Cases by County', style={'fontSize':20, 'color':'#9a76c6', 'marginTop':20}),
             # html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
@@ -723,10 +734,10 @@ column1Right = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+                html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#009996', 'marginTop':40, 'marginBottom':10}),
                 html.H6('FOR THE TOP 15 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
                 dcc.Graph(figure=fig_daily_county_cases),
-                html.H6('DAY-TO-DAY POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
+                html.H6('DAY-TO-DAY POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
                 html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
                 dcc.Graph(figure=countydaytoday),
             ]
@@ -737,15 +748,28 @@ column1Right = dbc.Col(
 
 column2CenterAll = dbc.Col(
     [
-        dcc.Graph(figure=fig2),
+        html.Center(
+            children=[
+            html.H6('NUMBER OF CASES IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+            html.H6('MARCH 21, 2020', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-21_annotated.png'), style={'display': 'block', 'width':'100%'})
+            ]
+        )
+    ],
+    md=7,
+)
+
+column3CenterAll = dbc.Col(
+    [
+        html.Center(
+            children=[
+                #html.H6('DAY-TO-DAY CHANGES IN CONFIRMED CASES ITALY VS U.S. VS CHINA', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+                dcc.Graph(figure=fig2),
+            ]
+        )
     ]
 )
 
-# column3CenterAll = dbc.Col(
-#     [
-#         dcc.Graph(figure=fig3a),
-#     ]
-# )
 
 column4CenterAll = dbc.Col(
     [
@@ -753,11 +777,35 @@ column4CenterAll = dbc.Col(
     ]
 )
 
+column5CenterAll = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.Img(src=app.get_asset_url('WashHands.jpg'), style={'display': 'block', 'width':'100%'})
+            ]
+        )
+    ],
+    md=12,
+)
+
+column6CenterAll = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.Img(src=app.get_asset_url('SocialDistancing.jpg'), style={'display': 'block', 'width':'100%'})
+            ]
+        )
+    ],
+    md=12,
+)
+
 # layout = dbc.Row([column1, column2])
 layout = [dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
         dbc.Row([column1Left,column1Right]),
         # dbc.Row([column1CenterAll]),
         dbc.Row([column2CenterAll]),
-        # dbc.Row([column3CenterAll]),
-        dbc.Row([column4CenterAll]),]
+        dbc.Row([column3CenterAll]),
+        dbc.Row([column4CenterAll]),
+        dbc.Row([column5CenterAll]),
+        dbc.Row([column6CenterAll]),]
 
