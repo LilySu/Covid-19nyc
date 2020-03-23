@@ -697,9 +697,9 @@ columnTopRight = dbc.Col(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
             html.H1('9,045', style={'fontSize':90, 'color':'#009996', 'marginBottom':0}),#fig4
-            html.H6('last updated march 22nd 08:05PM', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('Data from NY STATE DOH last updated THERE march 22, 2 PM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':10, 'marginTop':22, 'marginBottom':0}),
-            html.H6('Positive Cases by County', style={'fontSize':20, 'color':'#9a76c6', 'marginTop':20}),
+            html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             # html.H1('43', style={'fontSize':68, 'color':'#009996', 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
@@ -707,12 +707,19 @@ columnTopRight = dbc.Col(
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-22.gif'), style={'display': 'block', 'width':'100%'})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-22_01.png'), style={'display': 'block', 'width':'88%'})
             ]
-        )
+        ),
+        html.Center(
+            children=[
+            html.H6('Data from NYC DOH, last updated there on March 21, 6 p.m.', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
+            ]
+        ),
     ],
     md=4,
 )
+
+# Covid-19_Cases_NYS_2020-03-22.gif
 # column0CenterAll = dbc.Col(
 #     [
 #         dcc.Graph(figure=figA),
@@ -746,31 +753,35 @@ column1Right = dbc.Col(
     md=6
 )
 
-column2Left = dbc.Col(
-    [
-        html.Center(
-        )
-    ],
-    md=2,
-)
+# column2Left = dbc.Col(
+#     [
+#         html.Center(
+#         )
+#     ],
+#     md=2,
+# )
 column2Center = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NUMBER OF CASES IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
+            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19 IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
             html.H6('MARCH 22, 2020', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
             html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-22_annotated.jpg'), style={'display': 'block', 'width':'100%'})
             ]
         )
     ],
-    md=8,
+    md=7,
 )
 column2Right = dbc.Col(
     [
         html.Center(
+            children=[
+            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19 IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-22.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100})
+            ]
         )
     ],
-    md=2,
+    md=5,
 )
 
 column3CenterAll = dbc.Col(
@@ -817,7 +828,7 @@ column6CenterAll = dbc.Col(
 layout = [dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
         dbc.Row([column1Left,column1Right]),
         # dbc.Row([column1CenterAll]),
-        dbc.Row([column2Left, column2Center, column2Right]),
+        dbc.Row([column2Center, column2Right]),
         dbc.Row([column3CenterAll]),
         dbc.Row([column4CenterAll]),
         dbc.Row([column5CenterAll]),
