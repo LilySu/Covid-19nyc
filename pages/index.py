@@ -736,7 +736,7 @@ columnTopRight = dbc.Col(
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-22_01.png'), style={'display': 'block', 'width':'88%'})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-23_01.png'), style={'display': 'block', 'width':'88%'})
             ]
         ),
         html.Center(
