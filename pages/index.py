@@ -254,8 +254,8 @@ fig_daily_county_cases.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
 
 table_h = table.tail(7)
-collist = ['Nassau','New York', 'Onondaga', 'Putnam', 'Rockland', 'Rensselaer','Rockland', 'Westchester']
-colors = ['#99d1ce', '#56b3ae', '#3c8682', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991']
+collist = ['Albany','Nassau','New York', 'Suffolk', 'Erie', 'Dutchess', 'Monroe', 'Westchester']
+colors = ['#99d1ce', '#88daec', '#52bad1', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991']
 
 countydaytoday = go.Figure()
 
