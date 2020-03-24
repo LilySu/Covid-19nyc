@@ -83,6 +83,89 @@ fig_percentage_change.update_layout(
 fig_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------
 
+
+age = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over", "Unknown"]
+color1 = ["#b6c649","#046162","#d16666","#ffcece","#0497AE", "#047484"]
+
+gender =["Female","Male"]
+color2 = ["#52D3C3","#047484"]
+
+# Create subplots: use 'domain' type for Pie subplot
+fig_nyc_demo = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
+fig_nyc_demo.add_trace(go.Pie(labels=age, values=[341, 6035, 4343, 1402, 988, 10], name="Age Group",marker=dict(colors=color1)),
+              1, 1)
+fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[5612,7490], name="Gender",marker=dict(colors=color2)),
+              1, 2)
+
+
+# Use `hole` to create a donut-like pie chart
+fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+                  hovertemplate = '<b>%{label}</b>'
+                        '<br><b>Percentage</b>: %{percent}<br>'
+                        '<b><b>Number of People</b>: %{value}<br>',
+                  textposition='inside', textinfo='percent+label')
+
+fig_nyc_demo.update_layout(
+    title={
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 IN<br>NYC AS OF MARCH 23, 2020 5PM",
+        'y':0.9,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+    font_size=14,
+    font_color="rgb(150,150,150)",
+    showlegend=False,
+    # Add annotations in the center of the donut pies.
+    annotations=[dict(text='Age Groups', x=0.18, y=0.5, font_size=13, showarrow=False),
+        dict(text='Gender', x=0.81, y=0.5, font_size=18, showarrow=False)])
+
+
+#---------------------------------------------
+
+
+#DEATHS
+age = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over"]
+color1 = ["#0497AE","#046162","#d16666","#ffcece","#0497AE"]
+
+gender =["Female","Male"]
+color2 = ["#b6c649","#047484"]
+
+underlying_illness =["Had Underlying Illness","Did Not"]
+color3 = ["#52D3C3","#046162"]
+
+# Create subplots: use 'domain' type for Pie subplot
+fig_nyc_death = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
+fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 3, 31, 23, 68], name="Age Group",marker=dict(colors=color1)),
+              1, 1)
+fig_nyc_death.add_trace(go.Pie(labels=gender, values=[47,78], name="Gender",marker=dict(colors=color2)),
+              1, 2)
+fig_nyc_death.add_trace(go.Pie(labels=underlying_illness, values=[101,9,15], name="Underlying Illness",marker=dict(colors=color3)),
+              1, 3)
+
+# Use `hole` to create a donut-like pie chart
+fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+                  hovertemplate = '<b>%{label}</b>'
+                        '<br><b>Percentage</b>: %{percent}<br>'
+                        '<b><b>Number of People</b>: %{value}<br>',
+                  textposition='inside', textinfo='percent+label')
+
+fig_nyc_death.update_layout(
+    title={
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED OF COVID-19 IN <br>NYC AS OF MARCH 23, 2020 5PM",
+        'y':0.9,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+    font_size=14,
+    font_color="rgb(150,150,150)",
+    showlegend=False,
+    # Add annotations in the center of the donut pies.
+    annotations=[dict(text='Age Groups', x=0.10, y=0.5, font_size=13, showarrow=False),
+                dict(text='Gender', x=0.5, y=0.5, font_size=18, showarrow=False),
+                dict(text='Underlying Illness', x=0.91, y=0.5, font_size=11, showarrow=False)])
+
+#---------------------------------------------
+
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txcjE4NDAwNngzZms0ZndzNGM3dG0ifQ.gXrN0wMYVhqUp7t1LOHEwA"
 #open(".mapbox_token").read()
 
@@ -894,16 +977,31 @@ columnTopRight = dbc.Col(
     md=4,
 )
 
-# column0bottomCenter = dbc.Col(
-#     [
-#         html.Center(
-#             children=[
-#             html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#009996', 'marginTop':15, 'marginBottom':0}),#fig4
-#             ]
-#         )
-#     ],
-#     md=12,
-# )
+column0bottomCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+
+            dcc.Graph(figure=fig_nyc_demo),
+            ]
+        )
+    ],
+    md=12,
+)
+
+
+column0bottomCenter2 = dbc.Col(
+    [
+        html.Center(
+            children=[
+
+            dcc.Graph(figure=fig_nyc_death),
+            html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
+            ]
+        )
+    ],
+    md=12,
+)
 
 column1Left = dbc.Col(
     [
@@ -915,6 +1013,8 @@ column1Left = dbc.Col(
     ],
     md=6
 )
+
+
 
 column1Right = dbc.Col(
     [
@@ -932,13 +1032,18 @@ column1Right = dbc.Col(
     md=6
 )
 
-# column2Left = dbc.Col(
-#     [
-#         html.Center(
-#         )
-#     ],
-#     md=2,
-# )
+column1bottomCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.H6('Data for above pie charts from NY State DOH', style={'fontSize':8, 'color':'#009996', 'marginTop':20, 'marginBottom':20}),
+            ]
+        )
+    ],
+    md=12,
+)
+
+
 column2Center = dbc.Col(
     [
         html.Center(
@@ -1087,9 +1192,12 @@ column6CenterAll = dbc.Col(
 layout = [
         dbc.Row([columnTopAlert]),
         dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
-        # dbc.Row([column0bottomCenter]),
+        dbc.Row([column0bottomCenter]),
+        dbc.Row([column0bottomCenter2]),
+
         dbc.Row([column1Left,column1Right]),
-        # dbc.Row([column1CenterAll]),
+        dbc.Row([column1bottomCenter]),
+
         dbc.Row([column2Center, column2Right]),
         dbc.Row([column2bottomCenter]),
         dbc.Row([column3CenterAll]),
