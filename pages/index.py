@@ -777,11 +777,11 @@ for yd, xd in zip(y_data, x_data):
             # labeling the rest of percentages for each bar (x_axis)
             if i == 1:
               annotations1.append(dict(xref='x', yref='y',
-                                      x=space+20, y=yd,
+                                      x=space+22.5, y=yd,
                                       text= str(xd[i])[:4] + '% Recovered' ,
                                       hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
                                       font=dict(family='Arial', size=16,
-                                                color='#9adfdd'),
+                                                color='#b1e7e5'),
                                       #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
                                       showarrow=False))
               # labeling the Likert scale
@@ -979,7 +979,7 @@ columnDistL = dbc.Col(
         html.Center(
             children=[
                 html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in the U.S.', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
                 html.H6('U.S.', style={'fontSize':22, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
                 html.Div(
                     [
@@ -997,7 +997,7 @@ columnDistC = dbc.Col(
         html.Center(
             children=[
                 html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in Italy', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
                 html.H6('Italy', style={'fontSize':22, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
                 html.Div(
                     [
@@ -1029,6 +1029,16 @@ columnDistR = dbc.Col(
     md=4,
 )
 
+columnDistbottomCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#009996', 'marginTop':20, 'marginBottom':8}),#fig4
+            ]
+        )
+    ],
+    md=12,
+)
 
 
 
@@ -1071,6 +1081,7 @@ layout = [
         dbc.Row([column3CenterAll]),
 
         dbc.Row([columnDistL, columnDistC, columnDistR]),
+        dbc.Row([columnDistbottomCenter]),
 
         dbc.Row([column4CenterAll]),
         dbc.Row([column5CenterAll]),
