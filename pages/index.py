@@ -72,7 +72,7 @@ fig_percentage_change = px.area(table_h, x='dates', y='New York',
              text = 'New York',
             color_discrete_sequence=px.colors.qualitative.Pastel,
              line_shape='spline',
-             height=230)
+             height=210)
 
 
 fig_percentage_change.update_layout(
@@ -780,7 +780,7 @@ for yd, xd in zip(y_data, x_data):
                                       x=space+22.5, y=yd,
                                       text= str(xd[i])[:4] + '% Recovered' ,
                                       hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                      font=dict(family='Arial', size=16,
+                                      font=dict(family='Arial', size=11,
                                                 color='#b1e7e5'),
                                       #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
                                       showarrow=False))
@@ -822,19 +822,25 @@ columnTopLeft = dbc.Col(
             children=[
             html.H6('NYC', style={'fontSize':19, 'color':'#009996', 'marginTop':0, 'marginBottom':5}),
             html.H6('Confirmed Cases', style={'fontSize':13, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
-            html.H6('Last 5 Days', style={'fontSize':10, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
+            html.H6('Last 5 Days', style={'fontSize':10, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
             # html.H1('38', style={'fontSize':60, 'color':'#009996', 'marginBottom':0}),#fig4
             ]
         ),
         dcc.Graph(figure=fig_daily_num_NYC),
         html.Center(
             children=[
-            html.H6('% Increases in', style={'fontSize':14, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('Number of Confirmed ', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('Cases NYC', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
+            html.H6('Day-to-day % Increases', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
+            html.H6('in Number of', style={'fontSize':10, 'color':'#009996', 'marginTop':6, 'marginBottom':0}),
+            html.H6('Confirmed Cases', style={'fontSize':10, 'color':'#009996', 'marginTop':6, 'marginBottom':0}),
+            html.H6('NYC', style={'fontSize':19, 'color':'#009996', 'marginTop':6, 'marginBottom':10}),
             ]
         ),
         dcc.Graph(figure=fig_percentage_change),
+        html.Center(
+            children=[
+        html.H6('Data from NYC DOH, last updated there on March 23, 9 a.m.', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':8}),
+            ]
+        ),
     ],
     md=2,
     #style={'paddingLeft':0,'paddingRight':0},
@@ -842,9 +848,12 @@ columnTopLeft = dbc.Col(
 
 columnTopCenter = dbc.Col(
     [
-
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
-
+        html.Center(
+            children=[
+                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 22nd', style={'fontSize':8, 'color':'#009996', 'marginTop':15, 'marginBottom':0}),#fig4
+            ]
+        ),
     ],
     md=6,
     )
@@ -857,7 +866,7 @@ columnTopRight = dbc.Col(
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
             html.H1('12,339', style={'fontSize':70, 'color':'#009996', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('99', style={'fontSize':22, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H6('99', style={'fontSize':32, 'color':'#009996', 'marginBottom':0}),#fig4
             html.H6('Data above from NYC Dept. of Health march 23, 9 AM', style={'fontSize':8, 'color':'#009996', 'marginTop':10, 'marginBottom':0}),#fig4
             # dbc.Alert(
             # [
@@ -873,23 +882,27 @@ columnTopRight = dbc.Col(
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-23_01.png'), style={'display': 'block', 'width':'88%'})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-23_01.png'), style={'display': 'block', 'height':380})
             ]
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 23, 9 a.m.', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NYC DOH, last updated there on March 23, 9 a.m.', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),
             ]
         ),
     ],
     md=4,
 )
 
-# Covid-19_Cases_NYS_2020-03-22.gif
-# column0CenterAll = dbc.Col(
+# column0bottomCenter = dbc.Col(
 #     [
-#         dcc.Graph(figure=figA),
-#     ]
+#         html.Center(
+#             children=[
+#             html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#009996', 'marginTop':15, 'marginBottom':0}),#fig4
+#             ]
+#         )
+#     ],
+#     md=12,
 # )
 
 column1Left = dbc.Col(
@@ -1074,6 +1087,7 @@ column6CenterAll = dbc.Col(
 layout = [
         dbc.Row([columnTopAlert]),
         dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
+        # dbc.Row([column0bottomCenter]),
         dbc.Row([column1Left,column1Right]),
         # dbc.Row([column1CenterAll]),
         dbc.Row([column2Center, column2Right]),
