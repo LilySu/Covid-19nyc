@@ -108,7 +108,7 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 IN<br>NYC AS OF MARCH 23, 2020 5PM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (13119) IN<br>NYC AS OF MARCH 23, 2020 5PM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -152,7 +152,7 @@ fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_death.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED OF COVID-19 IN <br>NYC AS OF MARCH 23, 2020 5PM",
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (125) OF COVID-19 IN <br>NYC AS OF MARCH 23, 2020 5PM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1175,7 +1175,11 @@ columnDistbottomCenter = dbc.Col(
 
 column4CenterAll = dbc.Col(
     [
+        html.Br(),
+        html.Span(' ', className='mr-1'),
         dcc.Graph(figure=fig4),
+        html.Br(),
+        html.Span(' ', className='mr-1'),
     ]
 )
 
