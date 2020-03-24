@@ -602,7 +602,7 @@ fig4.update_layout(annotations=annotations)
 #========================================================================
 
 top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
-top_labels_l = ['confirmed', 'recovered', 'deaths']
+top_labels_l = ['Confirmed', 'Recover', 'Die']
 
 colors = ['#d9f0f2', '#38cedc',
           '#f2d4e0']
@@ -698,7 +698,7 @@ fig_us_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #------------------------------------------------------
 
 top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
-top_labels_l = ['confirmed', 'recovered', 'deaths']
+top_labels_l = ['Confirmed', 'Recover', 'Die']
 
 colors = ['#d9f0f2', '#38cedc',
           '#f2d4e0']
@@ -766,11 +766,11 @@ for yd, xd in zip(y_data, x_data):
     for i in range(1, len(xd)):
             # labeling the rest of percentages for each bar (x_axis)
             annotations1.append(dict(xref='x', yref='y',
-                                    x=space + (xd[i]/10), y=yd,
-                                    text= " ", 
+                                    x=space + (xd[i]/10)+3.95, y=yd,
+                                    text= str(xd[i])[:1] + '% ' + top_labels_l[i], 
                                     hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                    font=dict(family='Arial', size=24,
-                                              color='rgba(20, 137, 16, 0.77)'),
+                                    font=dict(family='Arial', size=14,
+                                              color='#2c8590'),
                                     #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
                                     showarrow=False))
             # labeling the Likert scale
@@ -782,7 +782,7 @@ for yd, xd in zip(y_data, x_data):
                                         font=dict(family='Arial', size=10,
                                                   color='rgb(186, 186, 186)'),
                                         showarrow=False))
-            space += xd[i]+7
+            space += xd[i]-1.5
 
 fig_italy_compare.update_layout(annotations=annotations1 ,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
 
@@ -792,7 +792,7 @@ fig_italy_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 
 top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
-top_labels_l = ['confirmed', 'recovered', 'deaths']
+top_labels_l = ['Confirmed', 'Recover', 'Die']
 
 colors = ['#d9f0f2', '#38cedc',
           '#f2d4e0']
@@ -862,10 +862,10 @@ for yd, xd in zip(y_data, x_data):
             if i == 1:
               annotations1.append(dict(xref='x', yref='y',
                                       x=space+22.5, y=yd,
-                                      text= str(xd[i])[:4] + '% Recovered' ,
+                                      text= str(xd[i])[:4] + '% Recover',
                                       hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
                                       font=dict(family='Arial', size=14,
-                                                color='#b1e7e5'),
+                                                color='#d0f1f0'),
                                       #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
                                       showarrow=False))
               # labeling the Likert scale
@@ -922,7 +922,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NYC DOH, last updated there on March 23, 9 a.m.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on March 23, 5 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1209,7 +1209,7 @@ layout = [
         dbc.Row([column2bottomCenter]),
         dbc.Row([column3CenterAll]),
 
-        dbc.Row([columnDistL, columnDistC, columnDistR]),
+        dbc.Row([columnDistC, columnDistR, columnDistL]),
         dbc.Row([columnDistbottomCenter]),
 
         dbc.Row([column4CenterAll]),
