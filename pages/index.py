@@ -94,9 +94,9 @@ color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_demo = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo.add_trace(go.Pie(labels=age, values=[341, 6035, 4343, 1402, 988, 10], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_demo.add_trace(go.Pie(labels=age, values=[374, 6786, 4906, 1591, 1109, 10], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[5612,7490], name="Gender",marker=dict(colors=color2)),
+fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[6374,8379], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
@@ -109,7 +109,7 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (13119) IN<br>NYC AS OF MARCH 23, 2020 5PM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (13119) IN<br>NYC AS OF MARCH 24, 2020 9 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
