@@ -769,7 +769,7 @@ for yd, xd in zip(y_data, x_data):
                                     x=space + (xd[i]/10)+3.95, y=yd,
                                     text= str(xd[i])[:1] + '% ' + top_labels_l[i], 
                                     hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                    font=dict(family='Arial', size=14,
+                                    font=dict(family='Arial', size=13,
                                               color='#2c8590'),
                                     #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
                                     showarrow=False))
@@ -984,6 +984,8 @@ column0bottomCenter = dbc.Col(
             children=[
             html.Br(),
             html.Span(' ', className='mr-1'),
+            html.Br(),
+            html.Span(' ', className='mr-1'),
             dcc.Graph(figure=fig_nyc_demo),
             ]
         )
@@ -997,7 +999,7 @@ column0bottomCenter2 = dbc.Col(
         html.Center(
             children=[
             dcc.Graph(figure=fig_nyc_death),
-            html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':50}),
+            html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':80}),
             ]
         )
     ],
@@ -1051,7 +1053,7 @@ column2Center = dbc.Col(
             children=[
             html.Br(),
             html.Span(' ', className='mr-1'),
-            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
+            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
             html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-23_annotated.png'), style={'display': 'block', 'width':'100%'}),
             ]
@@ -1063,6 +1065,8 @@ column2Right = dbc.Col(
     [
         html.Center(
             children=[
+            html.Br(),
+            html.Span(' ', className='mr-1'),
             html.Br(),
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
@@ -1091,6 +1095,8 @@ column3CenterAll = dbc.Col(
             children=[
                 html.Br(),
                 html.Span(' ', className='mr-1'),
+                html.Br(),
+                html.Span(' ', className='mr-1'),
                 #html.H6('DAY-TO-DAY CHANGES IN CONFIRMED CASES ITALY VS U.S. VS CHINA', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
                 dcc.Graph(figure=fig2),
             ]
@@ -1103,7 +1109,7 @@ columnDistL = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':50, 'marginBottom':10}),
+                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':80, 'marginBottom':10}),
                 html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
                 html.H6('U.S.', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
                 html.Div(
