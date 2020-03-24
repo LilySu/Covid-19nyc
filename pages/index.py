@@ -24,8 +24,8 @@ df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-1
 
 #-----------------------fig
 
-top5 = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
-# top4 = top5.tail(4)
+top = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
+top5 = top.tail()
 
 fig_daily_num_NYC = px.bar(top5, x='date_found_positive', y='New York',
              hover_data=['New York', 'date_found_positive'], color='New York',
@@ -64,13 +64,14 @@ fig_daily_num_NYC.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------
 
 table_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/percentage_change_County.csv")
+table_h = table_h.tail(7)
 
 fig_percentage_change = go.Figure()
 
 fig_percentage_change = px.area(table_h, x='dates', y='New York',
              hover_data=['New York', 'dates'],
              text = 'New York',
-            color_discrete_sequence=px.colors.qualitative.Pastel,
+             color_discrete_sequence=px.colors.qualitative.Pastel,
              line_shape='spline',
              height=210)
 
@@ -226,15 +227,16 @@ fig1Half.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig1Half.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/daily_num_cases_CountyNYS.csv")
+fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_table.csv")
 fig_daily_county_cases = fig_daily_county_cases.head(15)
 
-fig_daily_county_cases = px.bar(fig_daily_county_cases, x='New York State Counties', y='23_Mar_Cov_Pos', 
-             text='23_Mar_Cov_Pos', 
-             color = '23_Mar_Cov_Pos',
+
+fig_daily_county_cases = px.bar(fig_daily_county_cases, x='index', y='March 24', 
+             text='March 24', 
+             color = 'March 24',
              height = 350,
              color_continuous_scale=px.colors.diverging.BrBG,
-             labels={'New York State Counties':'County','23_Mar_Cov_Pos':'March 23rd Confirmed Cases'})
+             labels={'New York State Counties':'County','March 24':'March 24rd Confirmed Cases'})
 fig_daily_county_cases.update_traces(texttemplate='%{text}', textposition='outside')
 fig_daily_county_cases.update_layout(
     plot_bgcolor='white',
@@ -249,7 +251,7 @@ fig_daily_county_cases.update_layout(coloraxis_showscale=False)
 fig_daily_county_cases.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
 #------------------------------------------------------------------------------------------COUNTY day-to-day changes
-table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_table.csv")
+table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
 
 table_h = table.tail(7)
 collist = ['Nassau','New York', 'Onondaga', 'Putnam', 'Rockland', 'Rensselaer','Rockland', 'Westchester']
@@ -891,8 +893,8 @@ columnTopAlert = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('New York State: 20,875 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
-            html.H6('Data Above from gov. cuomo and New York State Dept. of Health march 23, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':15}),
+            html.H6('New York State: 25,665 Confirmed cases', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data Above from the New York State Dept. of Health march 24, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':15}),
             ]
         ),
     ],
@@ -948,10 +950,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('13,119', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('14,776', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('125', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYC Dept. of Health march 23, 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('131', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Data above from NYC Dept. of Health march 24, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             # dbc.Alert(
             # [
             # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
@@ -966,12 +968,12 @@ columnTopRight = dbc.Col(
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-23_01.png'), style={'display': 'block', 'height':380})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-24_01.png'), style={'display': 'block', 'height':380})
             ]
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 23, 5 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 24, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1082,7 +1084,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on March 23, 3 p.m.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NY State DOH, last updated there on March 24, 5 p.m.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
             ]
         )
     ],
