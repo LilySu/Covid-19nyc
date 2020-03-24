@@ -40,7 +40,7 @@ fig_daily_num_NYC.update_traces(texttemplate='%{text}', textposition='inside')
 #                               text='Data Provided by the New York State Department of Health',
 #                               font=dict(family='Arial',
 #                                         size=12,
-#                                         color='#32bde7'),
+#                                         color='#05b9f0'),
 #                               showarrow=False)]
 fig_daily_num_NYC.update_layout(
     showlegend=False,
@@ -78,6 +78,7 @@ fig_percentage_change = px.area(table_h, x='dates', y='New York',
 fig_percentage_change.update_layout(
     plot_bgcolor='white',
     showlegend=False,
+    font_color="#05b9f0",
 )
 
 fig_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
@@ -85,7 +86,7 @@ fig_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 
 age = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over", "Unknown"]
-color1 = ["#b6c649","#046162","#d16666","#ffcece","#0497AE", "#047484"]
+color1 = ["#d7e76f","#046162","#F686A9","#ffcece","#0497AE", "#047484"]
 
 gender =["Female","Male"]
 color2 = ["#52D3C3","#047484"]
@@ -108,12 +109,12 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_nyc_demo.update_layout(
     title={
         'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 IN<br>NYC AS OF MARCH 23, 2020 5PM",
-        'y':0.9,
+        'y':0.95,
         'x':0.5,
         'xanchor': 'center',
         'yanchor': 'top'},
     font_size=14,
-    font_color="#32bde7",
+    font_color="#05b9f0",
     showlegend=False,
     # Add annotations in the center of the donut pies.
     annotations=[dict(text='Age Groups', x=0.18, y=0.5, font_size=13, showarrow=False),
@@ -125,10 +126,10 @@ fig_nyc_demo.update_layout(
 
 #DEATHS
 age = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over"]
-color1 = ["#0497AE","#046162","#d16666","#ffcece","#0497AE"]
+color1 = ["#0497AE","#046162","#F686A9","#ffcece","#0497AE"]
 
 gender =["Female","Male"]
-color2 = ["#b6c649","#047484"]
+color2 = ["#d7e76f","#26505E"]
 
 underlying_illness =["Had Underlying Illness","Did Not"]
 color3 = ["#52D3C3","#046162"]
@@ -152,12 +153,12 @@ fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_nyc_death.update_layout(
     title={
         'text':"DEMOGRAPHICS OF PEOPLE WHO DIED OF COVID-19 IN <br>NYC AS OF MARCH 23, 2020 5PM",
-        'y':0.9,
+        'y':0.95,
         'x':0.5,
         'xanchor': 'center',
         'yanchor': 'top'},
     font_size=14,
-    font_color="#32bde7",
+    font_color="#05b9f0",
     showlegend=False,
     # Add annotations in the center of the donut pies.
     annotations=[dict(text='Age Groups', x=0.10, y=0.5, font_size=13, showarrow=False),
@@ -279,7 +280,7 @@ annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.122,
                               text='Data Provided by the New York State Department of Health',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False)]
 countydaytoday.update_layout(annotations=annotations)
 
@@ -334,15 +335,15 @@ annotat.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
             text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
             font=dict(family='Arial',
                     size=12,
-                    color='#32bde7'),
+                    color='#05b9f0'),
             showarrow=False))
 
 fig2.update_layout(
     annotations = annotat,
-    yaxis=dict(title_text="Confirmed Cases",color='#32bde7'),
+    yaxis=dict(title_text="Confirmed Cases",color='#05b9f0'),
     title = "DAY-TO-DAY ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
     font=dict(family='Arial',
-    color='#32bde7'),
+    color='#05b9f0'),
     plot_bgcolor='rgba(0,0,0,0)', 
 )
 
@@ -460,7 +461,7 @@ annotations.append(dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
                                         size=20,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False))
 # Source
 annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
@@ -468,7 +469,7 @@ annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False))
 
 # Add Annotations with Buttons
@@ -496,14 +497,14 @@ all_annotations = [dict(xref='paper', x=1.01, y=78600,
                               text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
                                         size=20,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False)]
 
 
@@ -524,14 +525,14 @@ italy_annotations = [dict(xref='paper', x=.990, y=54000,
                               text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
                                         size=20,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False)]
 
 china_annotations = [dict(xref='paper', x=1.01, y=78600,
@@ -551,14 +552,14 @@ china_annotations = [dict(xref='paper', x=1.01, y=78600,
                               text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
                               font=dict(family='Arial',
                                         size=20,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#32bde7'),
+                                        color='#05b9f0'),
                               showarrow=False)]
 
 fig4.update_layout(
@@ -863,7 +864,7 @@ for yd, xd in zip(y_data, x_data):
                                       x=space+22.5, y=yd,
                                       text= str(xd[i])[:4] + '% Recovered' ,
                                       hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                      font=dict(family='Arial', size=11,
+                                      font=dict(family='Arial', size=14,
                                                 color='#b1e7e5'),
                                       #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
                                       showarrow=False))
@@ -890,8 +891,8 @@ columnTopAlert = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('New York State: 20,875 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#32bde7', 'marginTop':0, 'marginBottom':8}),
-            html.H6('Data Above from gov. cuomo and New York State Dept. of Health march 23, 3 pm', style={'fontSize':8, 'color':'#32bde7', 'marginTop':10, 'marginBottom':15}),
+            html.H6('New York State: 20,875 Confirmed cases, 150 deaths. 78,000 people tested in NYS, 16,000 tested overnight (03/22-23). ', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data Above from gov. cuomo and New York State Dept. of Health march 23, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':15}),
             ]
         ),
     ],
@@ -903,25 +904,25 @@ columnTopLeft = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NYC', style={'fontSize':19, 'color':'#32bde7', 'marginTop':0, 'marginBottom':5}),
-            html.H6('Confirmed Cases', style={'fontSize':13, 'color':'#32bde7', 'marginTop':0, 'marginBottom':0}),
-            html.H6('Last 5 Days', style={'fontSize':10, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
-            # html.H1('38', style={'fontSize':60, 'color':'#32bde7', 'marginBottom':0}),#fig4
+            html.H6('NYC', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':5}),
+            html.H6('Confirmed Cases', style={'fontSize':13, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
+            html.H6('Last 5 Days', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+            # html.H1('38', style={'fontSize':60, 'color':'#05b9f0', 'marginBottom':0}),#fig4
             ]
         ),
         dcc.Graph(figure=fig_daily_num_NYC),
         html.Center(
             children=[
-            html.H6('Day-to-day % Increases', style={'fontSize':11, 'color':'#32bde7', 'marginTop':0, 'marginBottom':10}),
-            html.H6('in Number of', style={'fontSize':10, 'color':'#32bde7', 'marginTop':6, 'marginBottom':0}),
-            html.H6('Confirmed Cases', style={'fontSize':10, 'color':'#32bde7', 'marginTop':6, 'marginBottom':0}),
-            html.H6('NYC', style={'fontSize':19, 'color':'#32bde7', 'marginTop':6, 'marginBottom':10}),
+            html.H6('Day-to-day % Increases', style={'fontSize':11, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
+            html.H6('in Number of', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':6, 'marginBottom':0}),
+            html.H6('Confirmed Cases', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':6, 'marginBottom':0}),
+            html.H6('NYC', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':6, 'marginBottom':10}),
             ]
         ),
         dcc.Graph(figure=fig_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NYC DOH, last updated there on March 23, 9 a.m.', style={'fontSize':8, 'color':'#32bde7', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NYC DOH, last updated there on March 23, 9 a.m.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -934,7 +935,7 @@ columnTopCenter = dbc.Col(
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
         html.Center(
             children=[
-                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 22nd', style={'fontSize':8, 'color':'#32bde7', 'marginTop':15, 'marginBottom':0}),#fig4
+                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 22nd', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
             ]
         ),
     ],
@@ -946,11 +947,11 @@ columnTopRight = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#32bde7', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('13,119', style={'fontSize':70, 'color':'#32bde7', 'marginBottom':0}),#fig4
-            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#32bde7', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('125', style={'fontSize':32, 'color':'#32bde7', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYC Dept. of Health march 23, 5 PM', style={'fontSize':8, 'color':'#32bde7', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H1('13,119', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
+            html.H6('125', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Data above from NYC Dept. of Health march 23, 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             # dbc.Alert(
             # [
             # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
@@ -958,7 +959,7 @@ columnTopRight = dbc.Col(
             # color = "primary",
             # ),
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
-            # html.H1('43', style={'fontSize':68, 'color':'#32bde7', 'marginBottom':0}),#fig4
+            # html.H1('43', style={'fontSize':68, 'color':'#05b9f0', 'marginBottom':0}),#fig4
             # html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
         ),
@@ -970,7 +971,7 @@ columnTopRight = dbc.Col(
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 23, 5 pm', style={'fontSize':8, 'color':'#32bde7', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 23, 5 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
             ]
         ),
     ],
@@ -981,7 +982,8 @@ column0bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-
+            html.Br(),
+            html.Span(' ', className='mr-1'),
             dcc.Graph(figure=fig_nyc_demo),
             ]
         )
@@ -994,9 +996,8 @@ column0bottomCenter2 = dbc.Col(
     [
         html.Center(
             children=[
-
             dcc.Graph(figure=fig_nyc_death),
-            html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#32bde7', 'marginTop':0, 'marginBottom':0}),
+            html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':50}),
             ]
         )
     ],
@@ -1020,11 +1021,11 @@ column1Right = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#32bde7', 'marginTop':40, 'marginBottom':10}),
-                html.H6('FOR THE TOP 15 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#32bde7', 'marginTop':0, 'marginBottom':0}),
+                html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':40, 'marginBottom':10}),
+                html.H6('FOR THE TOP 15 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
                 dcc.Graph(figure=fig_daily_county_cases),
-                html.H6('DAY-TO-DAY POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#32bde7', 'marginTop':0, 'marginBottom':10}),
-                html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#32bde7', 'marginTop':0, 'marginBottom':0}),
+                html.H6('DAY-TO-DAY POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
+                html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
                 dcc.Graph(figure=countydaytoday),
             ]
         )
@@ -1036,7 +1037,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above pie charts from NY State DOH', style={'fontSize':8, 'color':'#32bde7', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
@@ -1048,8 +1049,10 @@ column2Center = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#32bde7', 'marginTop':30, 'marginBottom':10}),
-            html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
+            html.Br(),
+            html.Span(' ', className='mr-1'),
+            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
+            html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
             html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-23_annotated.png'), style={'display': 'block', 'width':'100%'}),
             ]
         )
@@ -1060,8 +1063,10 @@ column2Right = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#32bde7', 'marginTop':30, 'marginBottom':10}),
-            html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
+            html.Br(),
+            html.Span(' ', className='mr-1'),
+            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
+            html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
             html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-23.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
             ]
         )
@@ -1073,7 +1078,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on March 23, 3 p.m.', style={'fontSize':8, 'color':'#32bde7', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NY State DOH, last updated there on March 23, 3 p.m.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
             ]
         )
     ],
@@ -1084,7 +1089,9 @@ column3CenterAll = dbc.Col(
     [
         html.Center(
             children=[
-                #html.H6('DAY-TO-DAY CHANGES IN CONFIRMED CASES ITALY VS U.S. VS CHINA', style={'fontSize':19, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
+                html.Br(),
+                html.Span(' ', className='mr-1'),
+                #html.H6('DAY-TO-DAY CHANGES IN CONFIRMED CASES ITALY VS U.S. VS CHINA', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
                 dcc.Graph(figure=fig2),
             ]
         )
@@ -1096,9 +1103,9 @@ columnDistL = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
-                html.H6('U.S.', style={'fontSize':22, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
+                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':50, 'marginBottom':10}),
+                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+                html.H6('U.S.', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
                 html.Div(
                     [
                         dbc.Button("Confirmed", color="light", size="sm"),
@@ -1108,15 +1115,15 @@ columnDistL = dbc.Col(
                      ],
                 ),
             ],
-    md=4,
+    md=12,
 )
 columnDistC = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
-                html.H6('Italy', style={'fontSize':22, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
+                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
+                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+                html.H6('Italy', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
                 html.Div(
                     [
                         dbc.Button("Confirmed", color="light", size="sm"),
@@ -1126,15 +1133,15 @@ columnDistC = dbc.Col(
                      ],
                 ),
             ],
-    md=4,
+    md=12,
 )
 columnDistR = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
-                html.H6('China', style={'fontSize':22, 'color':'#32bde7', 'marginTop':10, 'marginBottom':10}),
+                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
+                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+                html.H6('China', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
                 html.Div(
                     [
                         dbc.Button("Confirmed", color="light", size="sm"),
@@ -1144,14 +1151,14 @@ columnDistR = dbc.Col(
                      ],
                 ),
             ],
-    md=4,
+    md=12,
 )
 
 columnDistbottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#32bde7', 'marginTop':20, 'marginBottom':8}),#fig4
+            html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':8}),#fig4
             ]
         )
     ],
