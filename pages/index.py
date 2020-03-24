@@ -23,9 +23,9 @@ df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19n
 #-----------------------fig
 
 top5 = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
-top4 = top5.tail(4)
+# top4 = top5.tail(4)
 
-fig_daily_num_NYC = px.bar(top4, x='date_found_positive', y='New York',
+fig_daily_num_NYC = px.bar(top5, x='date_found_positive', y='New York',
              hover_data=['New York', 'date_found_positive'], color='New York',
              color_continuous_scale=px.colors.diverging.BrBG,
              labels={'date_found_positive':'Date'},
@@ -61,51 +61,24 @@ fig_daily_num_NYC.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 #---------------------------------------------
 
-percentage_change = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/percentage_change_County.csv")
-
-percentage_change = percentage_change.tail(6)
+table_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/percentage_change_County.csv")
 
 fig_percentage_change = go.Figure()
 
-collist = ['Rockland','New York', 'Suffolk', 'Putnam', 'Rockland', 'Rensselaer','Nassau', 'Westchester']
-colors = ['#99d1ce', '#56b3ae', '#3c8682', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991']
+fig_percentage_change = px.area(table_h, x='dates', y='New York',
+             hover_data=['New York', 'dates'],
+             text = 'New York',
+            color_discrete_sequence=px.colors.qualitative.Pastel,
+             line_shape='spline',
+             height=230)
 
-for i, j in zip(collist, colors):
-  fig_percentage_change.add_trace(go.Scatter(x = percentage_change['date_found_positive'], y = percentage_change[i],line_shape='spline',
-                           name = i, text=percentage_change[i],hovertemplate= "%{text:.0%}"+" Up in Cases <br>on " + percentage_change['date_found_positive'],#" %{y:.0f}%<br>",
-                           line=dict(color=j, width=4)))
-    
-fig_percentage_change.update_traces(hoverinfo='text+name', mode='lines+markers')
+
 fig_percentage_change.update_layout(
     plot_bgcolor='white',
-    height=200,
-    # showlegend=True,
-    #title_text='PERCENTAGE INCREASES IN DAY-TO-DAY CONFIRMED CASES BY COUNTY'
-)
-# annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.13,
-#                               xanchor='center', yanchor='top',
-#                               text='Data Provided by the New York State Department of Health',
-#                               font=dict(family='Arial',
-#                                         size=12,
-#                                         color='rgb(150,150,150)'),
-#                               showarrow=False)]
-# fig.update_layout(annotations=annotations)
-
-fig_percentage_change.update_layout(
-    yaxis_title="% Change",
-)
-
-fig_percentage_change.update_layout(
     showlegend=False,
-    font=dict(
-    size=11,
-    # family="Arial",
-    color="#a3a3a3",
-)
 )
 
-fig_percentage_change.layout.margin.update({'t':0, 'b':40, 'r': 0, 'l': 0})
-
+fig_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------
 
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txcjE4NDAwNngzZms0ZndzNGM3dG0ifQ.gXrN0wMYVhqUp7t1LOHEwA"
@@ -170,12 +143,12 @@ fig1Half.update_layout(coloraxis_showscale = False, showlegend = False)
 fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/daily_num_cases_CountyNYS.csv")
 fig_daily_county_cases = fig_daily_county_cases.head(15)
 
-fig_daily_county_cases = px.bar(fig_daily_county_cases, x='New York State Counties', y='22_Mar_Cov_Pos', 
-             text='22_Mar_Cov_Pos', 
-             color = '22_Mar_Cov_Pos',
+fig_daily_county_cases = px.bar(fig_daily_county_cases, x='New York State Counties', y='23_Mar_Cov_Pos', 
+             text='23_Mar_Cov_Pos', 
+             color = '23_Mar_Cov_Pos',
              height = 350,
              color_continuous_scale=px.colors.diverging.BrBG,
-             labels={'New York State Counties':'County','22_Mar_Cov_Pos':'March 22nd Confirmed Cases'})
+             labels={'New York State Counties':'County','23_Mar_Cov_Pos':'March 23rd Confirmed Cases'})
 fig_daily_county_cases.update_traces(texttemplate='%{text}', textposition='outside')
 fig_daily_county_cases.update_layout(
     plot_bgcolor='white',
@@ -681,20 +654,18 @@ columnTopLeft = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NYC', style={'fontSize':18, 'color':'#009996', 'marginTop':0, 'marginBottom':5}),
-            html.H6('Confirmed Cases Last 4 Days', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
+            html.H6('NYC', style={'fontSize':19, 'color':'#009996', 'marginTop':0, 'marginBottom':5}),
+            html.H6('Confirmed Cases', style={'fontSize':13, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
+            html.H6('Last 5 Days', style={'fontSize':10, 'color':'#009996', 'marginTop':0, 'marginBottom':10}),
             # html.H1('38', style={'fontSize':60, 'color':'#009996', 'marginBottom':0}),#fig4
             ]
         ),
         dcc.Graph(figure=fig_daily_num_NYC),
         html.Center(
             children=[
-            html.H6('TOP NY STATE', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('COUNTIES', style={'fontSize':15, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('WITH THE MOST DRASTIC', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('Day-to-Day', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
-            html.H6('Percentage Increase', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':0}),
-            # html.H1('38', style={'fontSize':60, 'color':'#009996', 'marginBottom':0}),#fig4
+            html.H6('% Increases in', style={'fontSize':14, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
+            html.H6('Number of Confirmed ', style={'fontSize':12, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
+            html.H6('Cases NYC', style={'fontSize':11, 'color':'#009996', 'marginTop':0, 'marginBottom':3}),
             ]
         ),
         dcc.Graph(figure=fig_percentage_change),
@@ -793,9 +764,9 @@ column2Center = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19 IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
-            html.H6('MARCH 22, 2020', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-22_annotated.jpg'), style={'display': 'block', 'width':'100%'})
+            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
+            html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-23_annotated.png'), style={'display': 'block', 'width':'100%'}),
             ]
         )
     ],
@@ -805,12 +776,24 @@ column2Right = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19 IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-22.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100})
+            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#009996', 'marginTop':30, 'marginBottom':10}),
+            html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#009996', 'marginTop':10, 'marginBottom':10}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-23.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
             ]
         )
     ],
     md=5,
+)
+
+column2bottomCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.H6('Data from NY State DOH, last updated there on March 23, 3 p.m.', style={'fontSize':8, 'color':'#009996', 'marginTop':0, 'marginBottom':8}),#fig4
+            ]
+        )
+    ],
+    md=12,
 )
 
 column3CenterAll = dbc.Col(
@@ -860,6 +843,7 @@ layout = [
         dbc.Row([column1Left,column1Right]),
         # dbc.Row([column1CenterAll]),
         dbc.Row([column2Center, column2Right]),
+        dbc.Row([column2bottomCenter]),
         dbc.Row([column3CenterAll]),
         dbc.Row([column4CenterAll]),
         dbc.Row([column5CenterAll]),
