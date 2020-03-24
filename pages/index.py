@@ -14,10 +14,12 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
-df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-20.csv")
-df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-20.csv")
-df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-20.csv")
-df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-20.csv")
+df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-23.csv")
+df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-23.csv")
+df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-23.csv")
+df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-23.csv")
+df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-23.csv")
+df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-23.csv")
 
 
 #-----------------------fig
@@ -84,7 +86,7 @@ fig_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txcjE4NDAwNngzZms0ZndzNGM3dG0ifQ.gXrN0wMYVhqUp7t1LOHEwA"
 #open(".mapbox_token").read()
 
-df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-20-2020.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-22-2020.csv')
 
 fig1 = go.Figure()
 
@@ -166,22 +168,10 @@ fig_daily_county_cases.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_table.csv")
 
 table_h = table.tail(7)
-# collist = ['Albany', 'Allegany', 'Broome',
-#        'Chenango', 'Clinton', 'Columbia', 'Delaware', 'Dutchess', 'Erie',
-#        'Essex', 'Fulton', 'Genesee', 'Greene', 'Hamilton', 'Herkimer',
-#        'Jefferson', 'Livingston', 'Monroe', 'Montgomery', 'Nassau',
-#        'New York', 'Niagara', 'Oneida', 'Onondaga', 'Ontario', 'Orange',
-#        'Putnam','Rensselaer', 'Rockland', 'Saratoga',
-#        'Schenectady', 'Schoharie', 'Steuben', 'Suffolk', 'Sullivan', 'Tioga',
-#        'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne', 'Westchester',
-#        'Wyoming']
-countydaytoday = go.Figure()
-# for i in collist:
-#   countydaytoday.add_trace(go.Scatter(x=table_h['date_found_positive'], y=table_h[i], name = i, text=table_h[i],mode='lines+markers',hoverinfo='text+name',))
-
-
 collist = ['Nassau','New York', 'Onondaga', 'Putnam', 'Rockland', 'Rensselaer','Rockland', 'Westchester']
 colors = ['#99d1ce', '#56b3ae', '#3c8682', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991']
+
+countydaytoday = go.Figure()
 
 for i, j in zip(collist, colors):
     countydaytoday.add_trace(go.Scatter(x=table_h['date_found_positive'], y=table_h[i], name = i, text=table_h[i],mode='lines+markers',
@@ -275,56 +265,6 @@ fig2.update_layout(
 
 #--------------------------------------------------------
 
-# df_usa_t = df_usa.tail()
-# # df_italy_t = df_italy.tail()
-
-# fig3 = go.Figure()
-# fig3.add_trace(go.Scatter(x=df_usa_t["date"], y=df_usa_t["new_Confirmed"], fill='tozeroy',fillcolor='#F4DBE5',
-#                     mode='none', legendgroup="group1", showlegend=False,
-#                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', name = 'U.S.',
-#                     hoverinfo = 'text+y' # override default markers+lines
-#                     ))
-
-# # fig3.add_trace(go.Scatter(x=df_usa_t["date"], y=df_usa_t["new_Confirmed"],fill='tonexty',fillcolor='rgba(133, 70, 216, 0)',
-# #                     mode='markers',marker=dict(color="rgba(133, 70, 216, 0.19)", size=12),legendgroup="group2",
-# #                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'points', name = 'U.S.',
-# #                     hoverinfo = 'text+y' # override default markers+lines
-# #                     ))
-
-# # fig3.add_trace(go.Scatter(x=df_italy_t["date"], y=df_italy_t["new_Confirmed"], fill='tonexty',fillcolor='#B0DAAE',
-# #                     mode= 'none', name = 'Italy',legendgroup="group3",
-# #                     text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', 
-# #                     hoverinfo = 'text+y'))
-
-# fig3.update_layout(
-#     title = "Day-to-day Increase<br>of Cases U.S.",paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
-# )
-# # fig3.update_layout(legend=dict(x=.07, y=0.92))
-# fig3.layout.margin.update({'t':30, 'b':0, 'r': 0, 'l': 10})
-
-#--------------------------------------------------fig3a
-# fig3a = go.Figure()
-# fig3a.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"], fill='tozeroy',fillcolor='#F4DBE5',
-#                     mode='none', legendgroup="group1",
-#                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', name = 'U.S.',
-#                     hoverinfo = 'text+y' # override default markers+lines
-#                     ))
-
-# fig3a.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],fill='tonexty',fillcolor='rgba(133, 70, 216, 0)',
-#                     mode='markers',marker=dict(color="rgba(133, 70, 216, 0.19)", size=12),legendgroup="group2",
-#                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'points', name = 'U.S.',
-#                     hoverinfo = 'text+y' # override default markers+lines
-#                     ))
-
-# fig3a.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], fill='tonexty',fillcolor='#B0DAAE',
-#                     mode= 'none', name = 'Italy',legendgroup="group3",
-#                     text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'fills', 
-#                     hoverinfo = 'text+y'))
-
-# fig3a.update_layout(
-#     title = "Day-to-day Increased Cases U.S. vs. Italy",paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
-# )
-# fig3a.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 #--------------------------------------------------fig4
 
@@ -412,14 +352,14 @@ fig4.update_scenes(
 annotations = []
 # for y_trace, label, color in zip(y_data, labels, colors):
     # labeling the left_side of the plot
-annotations.append(dict(xref='paper', x=.990, y=39500,
+annotations.append(dict(xref='paper', x=.990, y=54500,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.99, y=11000,
+annotations.append(dict(xref='paper',  x=.99, y=29000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -450,19 +390,19 @@ annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
 
 # Add Annotations with Buttons
 
-all_annotations = [dict(xref='paper', x=1.01, y=78100,
+all_annotations = [dict(xref='paper', x=1.01, y=78600,
                               xanchor='right', yanchor='bottom',
                               text='China',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                   dict(xref='paper', x=1.05, y=43000,
+                   dict(xref='paper', x=1.05, y=54500,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=1.05, y=14000,
+                     dict(xref='paper', x=1.05, y=29000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -484,13 +424,13 @@ all_annotations = [dict(xref='paper', x=1.01, y=78100,
                               showarrow=False)]
 
 
-italy_annotations = [dict(xref='paper', x=.990, y=45000,
+italy_annotations = [dict(xref='paper', x=.990, y=54000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=.99, y=17000,
+                     dict(xref='paper', x=.99, y=29000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -517,7 +457,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=78600,
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=.99, y=45000,
+                     dict(xref='paper', x=.99, y=54000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -579,63 +519,7 @@ fig4.update_layout(annotations=annotations)
 
 
 #------------------------------------------------------
-# fig5 = go.Figure()
 
-# # Constants
-# img_width = 900
-# img_height = 700
-# scale_factor = 0.5
-
-# # Add invisible scatter trace.
-# # This trace is added to help the autoresize logic work.
-# fig5.add_trace(
-#     go.Scatter(
-#         x=[0, img_width * scale_factor],
-#         y=[0, img_height * scale_factor],
-#         mode="markers",
-#         marker_opacity=0
-#     )
-# )
-
-# # Configure axes
-# fig5.update_xaxes(
-#     visible=False,
-#     range=[0, img_width * scale_factor]
-# )
-
-# fig5.update_yaxes(
-#     visible=False,
-#     range=[0, img_height * scale_factor],
-#     # the scaleanchor attribute ensures that the aspect ratio stays constant
-#     scaleanchor="x"
-# )
-
-# # Add image
-# fig5.add_layout_image(
-#     dict(
-#         x=0,
-#         sizex=img_width * scale_factor,
-#         y=img_height * scale_factor,
-#         sizey=img_height * scale_factor,
-#         xref="x",
-#         yref="y",
-#         opacity=1.0,
-#         layer="below",
-#         sizing="stretch",
-#         source="https://i.ibb.co/x5tbNfh/Covid-19-Cases-NYS-2020-03-01-15.gif")
-# )
-
-# # Configure other layout
-# fig5.update_layout(
-#     width=img_width * scale_factor,
-#     height=img_height * scale_factor,
-#     margin={"l": 0, "r": 0, "t": 0, "b": 0},
-#     autosize=True,
-# )
-
-# # Disable the autosize on double click because it adds unwanted margins around the image
-# # More detail: https://plot.ly/python/configuration-options/
-# fig5.show(config={'doubleClick': 'reset'})
 
 columnTopAlert = dbc.Col(
     [
