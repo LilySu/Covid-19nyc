@@ -1098,7 +1098,7 @@ column2Center = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-23_annotated.png'), style={'display': 'block', 'width':'100%'}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-24_annotated.png'), style={'display': 'block', 'width':'100%'}),
             ]
         )
     ],
@@ -1114,7 +1114,7 @@ column2Right = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-23.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-24.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
             ]
         )
     ],
