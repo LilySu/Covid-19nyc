@@ -126,7 +126,7 @@ columnTop = dbc.Col(
         dbc.Table(
             html.Center(
                 children=[
-                        html.Img(src=app.get_asset_url('logo.JPG'), style={'display': 'block', 'paddingBottom':13, 'paddingTop':11,'width': 200}),
+                        html.Img(src=app.get_asset_url('logo.png'), style={'display': 'block', 'paddingBottom':13, 'paddingTop':11,'width': 100}),
                 ]
             ),
             bordered=True,

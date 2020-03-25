@@ -993,7 +993,7 @@ columnTopRight = dbc.Col(
             html.H1('17,856', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
             html.H6('199', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYC Dept. of Health march 25, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('Data above from NYS Dept. of Health march 25, 2 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             # dbc.Alert(
             # [
             # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
@@ -1376,22 +1376,31 @@ collapseEniqueArticleR = dbc.Col(
     md=2,
 )
 
-
-@app.callback(
-    Output("alert-auto", "is_open"),
-    [Input("alert-toggle-auto", "n_clicks")],
-    [State("alert-auto", "is_open")],
+washHandsL = dbc.Col(
+    [],
+    md=3,
 )
-def toggle_alert(n, is_open):
-    if n:
-        return not is_open
-    return is_open
+washHandsC = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.Img(src=app.get_asset_url('WashHands.jpg'), style={'display': 'block', 'width':'100%'})
+            ]
+        )
+    ],
+    md=6,
+)
+washHandsR = dbc.Col(
+    [],
+    md=3,
+)
+
 
 column6CenterAll = dbc.Col(
     [
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('SocialDistancing.jpg'), style={'display': 'block', 'width':'100%'})
+            html.Img(src=app.get_asset_url('SocialDistancing.png'), style={'display': 'block', 'width':'100%'})
             ]
         )
     ],
@@ -1432,6 +1441,8 @@ layout = [
         dbc.Row([column5L, column5CenterAll, column5R]),
 
         dbc.Row([collapseEniqueArticleL,collapseEniqueArticle,collapseEniqueArticleR]),
+
+        dbc.Row([washHandsL,washHandsC,washHandsR]),
 
         dbc.Row([column6CenterAll]),]
 
