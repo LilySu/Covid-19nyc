@@ -236,7 +236,7 @@ fig1.update_layout(
             lon=-98
         ),
         pitch=0,
-        zoom=3.2,
+        zoom=3,
 
     ),
 )
@@ -268,16 +268,16 @@ fig1Half.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig1Half.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_table.csv")
+fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch25.csv")
 fig_daily_county_cases = fig_daily_county_cases.head(15)
 
 
-fig_daily_county_cases = px.bar(fig_daily_county_cases, x='index', y='March 24', 
-             text='March 24', 
-             color = 'March 24',
+fig_daily_county_cases = px.bar(fig_daily_county_cases, x='index', y='March 25', 
+             text='March 25', 
+             color = 'March 25',
              height = 350,
              color_continuous_scale=px.colors.diverging.BrBG,
-             labels={'New York State Counties':'County','March 24':'March 24rd Confirmed Cases'})
+             labels={'New York State Counties':'County','March 25':'March 25th Confirmed Cases'})
 fig_daily_county_cases.update_traces(texttemplate='%{text}', textposition='outside')
 fig_daily_county_cases.update_layout(
     plot_bgcolor='white',
@@ -292,13 +292,11 @@ fig_daily_county_cases.update_layout(coloraxis_showscale=False)
 fig_daily_county_cases.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
 #------------------------------------------------------------------------------------------COUNTY day-to-day changes
-table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
+table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv") #table
 
-table_h = table.tail(8)
-table_h = table_h.head(7)
-
-collist = ['Albany','Nassau','New York', 'Suffolk', 'Erie', 'Dutchess', 'Monroe', 'Westchester']
-colors = ['#99d1ce', '#88daec', '#52bad1', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991']
+table_h = table.tail(7)
+collist = ['Nassau','New York', 'Suffolk', 'Rockland', 'Dutchess', 'Monroe','Dutchess', 'Westchester']
+colors = [ '#56b3ae', '#3c8682', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991','#4bd2fb']#'#99d1ce',
 
 countydaytoday = go.Figure()
 
@@ -328,7 +326,6 @@ annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.122,
                                         color='#05b9f0'),
                               showarrow=False)]
 countydaytoday.update_layout(annotations=annotations)
-
 countydaytoday.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 #---------------------------------------------------------------------------SYMPTOM FIGURE
 
@@ -993,7 +990,7 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('16,788', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('17,856', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
             html.H6('199', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Data above from NYC Dept. of Health march 25, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
