@@ -109,7 +109,7 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (13119) IN<br>NYC AS OF MARCH 24, 2020 9 AM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (14,776) IN<br>NYC AS OF MARCH 24, 2020 9 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -201,14 +201,14 @@ fig1.add_trace(go.Scattermapbox(
         lat=us_cities["Lat"],
         lon=us_cities["Long_"],
         mode='markers',
-        text= us_cities[["Province_State", "Confirmed","Deaths"]],
+        text= us_cities[["Province_State","FIPS", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
             size=((us_cities['log_conf']+1.5)**1.6)-(us_cities['log_conf']**1.7)*(0.08),
             color='rgba(166, 247, 235, 0.38)',
             opacity=1
         ),
         hoverinfo='text',
-        hovertemplate = '<b>Location, Confirmed, Deaths: '+ '%{text}'
+        hovertemplate = '<b>General Location, FIPS Census Codes, Confirmed, Deaths: '+ '%{text}'
     ))
 
 fig1.update_layout(
@@ -232,10 +232,10 @@ fig1.update_layout(
         bearing=0,
         center=dict(
             lat=38,
-            lon=-94
+            lon=-98
         ),
         pitch=0,
-        zoom=3,
+        zoom=3.2,
 
     ),
 )
@@ -977,7 +977,7 @@ columnTopCenter = dbc.Col(
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
         html.Center(
             children=[
-                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 24nd', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
+                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 24th. The locations are based on FIPS Census codes, which we will convert into zipcodes soon.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
             ]
         ),
     ],
