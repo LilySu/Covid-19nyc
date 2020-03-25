@@ -94,9 +94,9 @@ color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_demo = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo.add_trace(go.Pie(labels=age, values=[374, 6786, 4906, 1591, 1109, 10], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_demo.add_trace(go.Pie(labels=age, values=[400, 7556, 5619, 1843, 1360, 10], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[6374,8379], name="Gender",marker=dict(colors=color2)),
+fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[7303,9460], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
@@ -109,7 +109,7 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (14,776) IN<br>NYC AS OF MARCH 24, 2020 9 AM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (16,788) IN<br>NYC AS OF MARCH 25, 2020 9 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -137,11 +137,11 @@ color3 = ["#52D3C3","#046162"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_death = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
-fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 3, 31, 23, 68], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 5, 45, 46, 103], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_death.add_trace(go.Pie(labels=gender, values=[47,78], name="Gender",marker=dict(colors=color2)),
+fig_nyc_death.add_trace(go.Pie(labels=gender, values=[77,122], name="Gender",marker=dict(colors=color2)),
               1, 2)
-fig_nyc_death.add_trace(go.Pie(labels=underlying_illness, values=[101,9,15], name="Underlying Illness",marker=dict(colors=color3)),
+fig_nyc_death.add_trace(go.Pie(labels=underlying_illness, values=[166,9,24], name="Underlying Illness",marker=dict(colors=color3)),
               1, 3)
 
 # Use `hole` to create a donut-like pie chart
@@ -153,7 +153,7 @@ fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_death.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (125) OF COVID-19 IN <br>NYC AS OF MARCH 23, 2020 5PM",
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (125) OF COVID-19 IN <br>NYC AS OF MARCH 25, 2020 9AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -991,10 +991,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('14,776', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('16,788', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('131', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYC Dept. of Health march 24, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('199', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Data above from NYC Dept. of Health march 25, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             # dbc.Alert(
             # [
             # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
