@@ -142,7 +142,7 @@ footer2 = dbc.Col([
                     html.Center(
                                     [
                                         html.Br(),
-                                        html.Span(' Powered by Data Analytics NYC', className='mr-2'), 
+                                        html.Span('Please bear with us as the page loads...', className='mr-2'), 
                                         html.Br(),
                                         html.Span(' ', className='mr-1'), 
                                         html.Br(),

@@ -168,41 +168,81 @@ fig_nyc_death.update_layout(
 
 #---------------------------------------------
 
-mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txcjE4NDAwNngzZms0ZndzNGM3dG0ifQ.gXrN0wMYVhqUp7t1LOHEwA"
-#open(".mapbox_token").read()
+mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
 
-df = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-22-2020.csv')
+
+us_cities = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-24_USMap.csv')
 
 fig1 = go.Figure()
+fig1.add_trace(go.Scattermapbox(
+        lat=us_cities["Lat"],
+        lon=us_cities["Long_"],
+        mode='markers',
+        marker=go.scattermapbox.Marker(
+            size=(us_cities['log_conf']+1.5)**1.6,
+            color=(us_cities['log_conf']+.1)**0.001,
+            opacity=0.6
+        ),
+    ))
 
-fig1 = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_data=["Country/Region",'Confirmed', 'Deaths'],
-                        size='Confirmed', zoom=1, color = 'Confirmed', color_continuous_scale=px.colors.sequential.Purp, size_max=40,height=600)
+fig1.add_trace(go.Scattermapbox(
+        lat=us_cities["Lat"],
+        lon=us_cities["Long_"],
+        mode='markers',
+        marker=go.scattermapbox.Marker(
+            size=((us_cities['log_conf']+1.5)**1.6)-(us_cities['log_conf']**1.7)*(0.04),
+            color='rgba(224, 21, 163, 0.31)',
+            opacity=0.5
+        ),
+        hoverinfo='none'
+    ))
+
+fig1.add_trace(go.Scattermapbox(
+        lat=us_cities["Lat"],
+        lon=us_cities["Long_"],
+        mode='markers',
+        text= us_cities[["Province_State", "Confirmed","Deaths"]],
+        marker=go.scattermapbox.Marker(
+            size=((us_cities['log_conf']+1.5)**1.6)-(us_cities['log_conf']**1.7)*(0.08),
+            color='rgba(166, 247, 235, 0.38)',
+            opacity=1
+        ),
+        hoverinfo='text',
+        hovertemplate = '<b>Location, Confirmed, Deaths: '+ '%{text}'
+    ))
 
 fig1.update_layout(
-    mapbox_style="white-bg",
-    hovermode='closest',
     mapbox_layers=[
         {
             "below": 'traces',
             "sourcetype": "raster",
             "source": [
-                "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-                # purple "https://api.mapbox.com/styles/v1/lilysu/ck811j4xp18kf1iphb7bv365a/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-                # green "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                       "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                #"https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
             ] 
         },
-        # {
-        #     "sourcetype": "raster",
-        #     "source": ["https://geo.weather.gc.ca/geomet/?"
-        #                "SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX={bbox-epsg-3857}&CRS=EPSG:3857"
-        #                "&WIDTH=1000&HEIGHT=1000&LAYERS=RADAR_1KM_RDBR&TILED=true&FORMAT=image/png"],
-        # }
-      ])
-fig1.update_layout(coloraxis_showscale = False)
+
+      ],
+    autosize=True,
+    hovermode='closest',
+    showlegend=False,
+    mapbox=dict(
+        style='white-bg',
+        accesstoken=mapbox_access_token,
+        bearing=0,
+        center=dict(
+            lat=38,
+            lon=-94
+        ),
+        pitch=0,
+        zoom=3,
+
+    ),
+)
 fig1.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------------------------------------FIG 1Half
 import requests
-df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_map.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
 
 r = requests.get('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/nys_geojson/new-york-counties.geojson')
 geojson = r.json()
@@ -217,7 +257,7 @@ fig1Half = px.choropleth_mapbox(df, geojson=geojson,
                            height = 720,
                            color = 'total',
                            color_continuous_scale=px.colors.sequential.Teal,
-                           custom_data = ['22_Mar_Cov_Pos'],
+                           custom_data = ['24_Mar_Cov_Pos'],
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -937,7 +977,7 @@ columnTopCenter = dbc.Col(
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
         html.Center(
             children=[
-                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 22nd', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
+                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 24nd', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
             ]
         ),
     ],
