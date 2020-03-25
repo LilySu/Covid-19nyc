@@ -14,12 +14,12 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
-df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-23.csv")
-df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-23.csv")
-df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-23.csv")
-df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-23.csv")
-df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-23.csv")
-df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-23.csv")
+df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-24.csv")
+df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-24.csv")
+df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-24.csv")
+df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-24.csv")
+# df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-23.csv")
+# df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-23.csv")
 
 
 #-----------------------fig
@@ -353,14 +353,14 @@ fig2.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], #fill
                     stackgroup='two',
                     line=dict(width=0.5, color='rgba(183, 224, 240, 0.94)'),
                     text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'points+fills', 
-                    hoverinfo = 'text+y'))
+                    hoverinfo = 'x+text+y'))
 
 fig2.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],##fill='toself',fillcolor='rgba(133, 70, 216, 0.3)',
                     mode='lines',legendgroup="group2",
                     stackgroup='one',
                     line=dict(width=0.5, color='rgba(238, 175, 206, 0.82)'),
                     text="U.S.<br>New Confirmed Cases <br>from the day before",hoveron = 'points+fills', name = 'U.S.',
-                    hoverinfo = 'text+y' # override default markers+lines
+                    hoverinfo = 'x+text+y' # override default markers+lines
                     ))
 
 fig2.add_trace(go.Scatter(x=df_china["date"], y=df_china["new_Confirmed"], #fill='tozeroy',fillcolor='#F4DBE5',
@@ -368,7 +368,7 @@ fig2.add_trace(go.Scatter(x=df_china["date"], y=df_china["new_Confirmed"], #fill
                     stackgroup='three',
                     line=dict(width=0.5, color='rgba(159, 133, 229, 0.51)'),
                     text="China<br>New Confirmed Cases <br>from the day before",hoveron = 'points+fills', name = 'China',
-                    hoverinfo = 'text+y' # override default markers+lines
+                    hoverinfo = 'x+text+y' # override default markers+lines
                     ))
 
 annotat = []
@@ -478,14 +478,14 @@ fig4.update_scenes(
 annotations = []
 # for y_trace, label, color in zip(y_data, labels, colors):
     # labeling the left_side of the plot
-annotations.append(dict(xref='paper', x=.990, y=54500,
+annotations.append(dict(xref='paper', x=.990, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.99, y=29000,
+annotations.append(dict(xref='paper',  x=.99, y=65000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -516,19 +516,19 @@ annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
 
 # Add Annotations with Buttons
 
-all_annotations = [dict(xref='paper', x=1.01, y=78600,
+all_annotations = [dict(xref='paper', x=1.005, y=78600,
                               xanchor='right', yanchor='bottom',
                               text='China',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                   dict(xref='paper', x=1.05, y=54500,
+                   dict(xref='paper', x=1.05, y=65000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=1.05, y=29000,
+                     dict(xref='paper', x=1.05, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -550,13 +550,13 @@ all_annotations = [dict(xref='paper', x=1.01, y=78600,
                               showarrow=False)]
 
 
-italy_annotations = [dict(xref='paper', x=.990, y=54000,
+italy_annotations = [dict(xref='paper', x=.990, y=65500,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=.99, y=29000,
+                     dict(xref='paper', x=.99, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -583,7 +583,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=78600,
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=.99, y=54000,
+                     dict(xref='paper', x=.99, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -643,289 +643,289 @@ fig4.update_layout(annotations=annotations)
 
 #========================================================================
 
-top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
-top_labels_l = ['Confirmed', 'Recover', 'Die']
+# top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
+# top_labels_l = ['Confirmed', 'Recover', 'Die']
 
-colors = ['#d9f0f2', '#38cedc',
-          '#f2d4e0']
+# colors = ['#d9f0f2', '#38cedc',
+#           '#f2d4e0']
 
-x_data = df_usa_total_h[['Confirmed_normalized','Recovered_normalized','Deaths_normalized']].values
+# x_data = df_usa_total_h[['Confirmed_normalized','Recovered_normalized','Deaths_normalized']].values
 
-y_data = df_usa_total_h['date'].values
+# y_data = df_usa_total_h['date'].values
 
-fig_us_compare = go.Figure()
+# fig_us_compare = go.Figure()
 
-for i in range(0, len(x_data[0])):
-    for xd, yd in zip(x_data, y_data):
-        fig_us_compare.add_trace(go.Bar(
-            x=[xd[i]], y=[yd],
-            orientation='h',
-            marker=dict(
-                color=colors[i],
-                line=dict(color='rgb(248, 248, 249)', width=1)
-            )
-        ))
+# for i in range(0, len(x_data[0])):
+#     for xd, yd in zip(x_data, y_data):
+#         fig_us_compare.add_trace(go.Bar(
+#             x=[xd[i]], y=[yd],
+#             orientation='h',
+#             marker=dict(
+#                 color=colors[i],
+#                 line=dict(color='rgb(248, 248, 249)', width=1)
+#             )
+#         ))
 
-fig_us_compare.update_layout(
-    xaxis=dict(
-        showgrid=False,
-        showline=False,
-        showticklabels=False,
-        zeroline=False,
-        domain=[0.15, 1]
-    ),
-    yaxis=dict(
-        showgrid=False,
-        showline=False,
-        showticklabels=False,
-        zeroline=False,
-    ),
-    barmode='stack',
-    paper_bgcolor='rgb(248, 248, 255)',
-    plot_bgcolor='rgb(248, 248, 255)',
-    margin=dict(l=120, r=10, t=140, b=25),
-    # margin=dict(l=1.20, r=.10, t=1.40, b=.25),
-    showlegend=False,
-)
+# fig_us_compare.update_layout(
+#     xaxis=dict(
+#         showgrid=False,
+#         showline=False,
+#         showticklabels=False,
+#         zeroline=False,
+#         domain=[0.15, 1]
+#     ),
+#     yaxis=dict(
+#         showgrid=False,
+#         showline=False,
+#         showticklabels=False,
+#         zeroline=False,
+#     ),
+#     barmode='stack',
+#     paper_bgcolor='rgb(248, 248, 255)',
+#     plot_bgcolor='rgb(248, 248, 255)',
+#     margin=dict(l=120, r=10, t=140, b=25),
+#     # margin=dict(l=1.20, r=.10, t=1.40, b=.25),
+#     showlegend=False,
+# )
 
-annotations1 = []
+# annotations1 = []
 
-for yd, xd in zip(y_data, x_data):
-    # labeling the first percentage of each bar (x_axis)
-    annotations1.append(dict(xref='x', yref='y',
-                            x=xd[0] / 2, y=yd,
-                            text= yd, # str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
-                            hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                            font=dict(family='Arial', size=14,
-                                      color='#6cc3cb'),
-                            showarrow=False))
-    # labeling the first Likert scale (on the top)
-    if yd == y_data[-1]:
-        annotations1.append(dict(xref='x', yref='paper',
-                                x=(xd[0] / 2), y=1.05,
-                                text=top_labels[0],
-                                hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                font=dict(family='Arial', size=10,
-                                          color='rgb(186, 186, 186)'),
-                                showarrow=False))
-    space = xd[0]
-    for i in range(1, len(xd)):
-            # labeling the rest of percentages for each bar (x_axis)
-            annotations1.append(dict(xref='x', yref='y',
-                                    x=space + (xd[i]/10), y=yd,
-                                    text= " ", 
-                                    hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                    font=dict(family='Arial', size=24,
-                                              color='rgba(20, 137, 16, 0.77)'),
-                                    #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
-                                    showarrow=False))
-            # labeling the Likert scale
-            if yd == y_data[-1]:
-                annotations1.append(dict(xref='x', yref='paper',
-                                        x=(space + (xd[i]/10))-8, y=1.05,
-                                        text=top_labels[i],
-                                        hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                        font=dict(family='Arial', size=10,
-                                                  color='rgb(186, 186, 186)'),
-                                        showarrow=False))
-            space += xd[i]+7
+# for yd, xd in zip(y_data, x_data):
+#     # labeling the first percentage of each bar (x_axis)
+#     annotations1.append(dict(xref='x', yref='y',
+#                             x=xd[0] / 2, y=yd,
+#                             text= yd, # str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
+#                             hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                             font=dict(family='Arial', size=14,
+#                                       color='#6cc3cb'),
+#                             showarrow=False))
+#     # labeling the first Likert scale (on the top)
+#     if yd == y_data[-1]:
+#         annotations1.append(dict(xref='x', yref='paper',
+#                                 x=(xd[0] / 2), y=1.05,
+#                                 text=top_labels[0],
+#                                 hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                 font=dict(family='Arial', size=10,
+#                                           color='rgb(186, 186, 186)'),
+#                                 showarrow=False))
+#     space = xd[0]
+#     for i in range(1, len(xd)):
+#             # labeling the rest of percentages for each bar (x_axis)
+#             annotations1.append(dict(xref='x', yref='y',
+#                                     x=space + (xd[i]/10), y=yd,
+#                                     text= " ", 
+#                                     hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                     font=dict(family='Arial', size=24,
+#                                               color='rgba(20, 137, 16, 0.77)'),
+#                                     #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
+#                                     showarrow=False))
+#             # labeling the Likert scale
+#             if yd == y_data[-1]:
+#                 annotations1.append(dict(xref='x', yref='paper',
+#                                         x=(space + (xd[i]/10))-8, y=1.05,
+#                                         text=top_labels[i],
+#                                         hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                         font=dict(family='Arial', size=10,
+#                                                   color='rgb(186, 186, 186)'),
+#                                         showarrow=False))
+#             space += xd[i]+7
 
-fig_us_compare.update_layout(annotations=annotations1 ,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-
-
+# fig_us_compare.update_layout(annotations=annotations1 ,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
 
 
-fig_us_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
-
-#------------------------------------------------------
-
-top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
-top_labels_l = ['Confirmed', 'Recover', 'Die']
-
-colors = ['#d9f0f2', '#38cedc',
-          '#f2d4e0']
-
-x_data = df_italy_total_h[['Confirmed_normalized','Recovered_normalized','Deaths_normalized']].values
-
-y_data = df_italy_total_h['date'].values
-
-fig_italy_compare = go.Figure()
-
-for i in range(0, len(x_data[0])):
-    for xd, yd in zip(x_data, y_data):
-        fig_italy_compare.add_trace(go.Bar(
-            x=[xd[i]], y=[yd],
-            orientation='h',
-            marker=dict(
-                color=colors[i],
-                line=dict(color='rgb(248, 248, 249)', width=1)
-            )
-        ))
-
-fig_italy_compare.update_layout(
-    xaxis=dict(
-        showgrid=False,
-        showline=False,
-        showticklabels=False,
-        zeroline=False,
-        domain=[0.15, 1]
-    ),
-    yaxis=dict(
-        showgrid=False,
-        showline=False,
-        showticklabels=False,
-        zeroline=False,
-    ),
-    barmode='stack',
-    paper_bgcolor='rgb(248, 248, 255)',
-    plot_bgcolor='rgb(248, 248, 255)',
-    margin=dict(l=120, r=10, t=140, b=25),
-    # margin=dict(l=1.20, r=.10, t=1.40, b=.25),
-    showlegend=False,
-)
-
-annotations1 = []
-
-for yd, xd in zip(y_data, x_data):
-    # labeling the first percentage of each bar (x_axis)
-    annotations1.append(dict(xref='x', yref='y',
-                            x=xd[0] / 2, y=yd,
-                            text= yd, # str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
-                            hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                            font=dict(family='Arial', size=14,
-                                      color='#6cc3cb'),
-                            showarrow=False))
-    # labeling the first Likert scale (on the top)
-    if yd == y_data[-1]:
-        annotations1.append(dict(xref='x', yref='paper',
-                                x=(xd[0] / 2), y=1.05,
-                                text=top_labels[0],
-                                hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                font=dict(family='Arial', size=10,
-                                          color='rgb(186, 186, 186)'),
-                                showarrow=False))
-    space = xd[0]
-    for i in range(1, len(xd)):
-            # labeling the rest of percentages for each bar (x_axis)
-            annotations1.append(dict(xref='x', yref='y',
-                                    x=space + (xd[i]/10)+3.95, y=yd,
-                                    text= str(xd[i])[:1] + '% ' + top_labels_l[i], 
-                                    hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                    font=dict(family='Arial', size=13,
-                                              color='#2c8590'),
-                                    #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
-                                    showarrow=False))
-            # labeling the Likert scale
-            if yd == y_data[-1]:
-                annotations1.append(dict(xref='x', yref='paper',
-                                        x=(space + (xd[i]/10))-8, y=1.05,
-                                        text=top_labels[i],
-                                        hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                        font=dict(family='Arial', size=10,
-                                                  color='rgb(186, 186, 186)'),
-                                        showarrow=False))
-            space += xd[i]-1.5
-
-fig_italy_compare.update_layout(annotations=annotations1 ,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
-
-fig_italy_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
-
-#------------------------------------------------------
 
 
-top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
-top_labels_l = ['Confirmed', 'Recover', 'Die']
+# fig_us_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
-colors = ['#d9f0f2', '#38cedc',
-          '#f2d4e0']
+# #------------------------------------------------------
 
-x_data = df_china_total_h[['Confirmed_normalized','Recovered_normalized','Deaths_normalized']].values
+# top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
+# top_labels_l = ['Confirmed', 'Recover', 'Die']
 
-y_data = df_china_total_h['date'].values
+# colors = ['#d9f0f2', '#38cedc',
+#           '#f2d4e0']
 
-fig_china_compare = go.Figure()
+# x_data = df_italy_total_h[['Confirmed_normalized','Recovered_normalized','Deaths_normalized']].values
 
-for i in range(0, len(x_data[0])):
-    for xd, yd in zip(x_data, y_data):
-        fig_china_compare.add_trace(go.Bar(
-            x=[xd[i]], y=[yd],
-            orientation='h',
-            marker=dict(
-                color=colors[i],
-                line=dict(color='rgb(248, 248, 249)', width=1)
-            )
-        ))
+# y_data = df_italy_total_h['date'].values
 
-fig_china_compare.update_layout(
-    xaxis=dict(
-        showgrid=False,
-        showline=False,
-        showticklabels=False,
-        zeroline=False,
-        domain=[0.15, 1]
-    ),
-    yaxis=dict(
-        showgrid=False,
-        showline=False,
-        showticklabels=False,
-        zeroline=False,
-    ),
-    barmode='stack',
-    paper_bgcolor='rgb(248, 248, 255)',
-    plot_bgcolor='rgb(248, 248, 255)',
-    margin=dict(l=120, r=10, t=140, b=25),
-    # margin=dict(l=1.20, r=.10, t=1.40, b=.25),
-    showlegend=False,
-)
+# fig_italy_compare = go.Figure()
 
-annotations1 = []
+# for i in range(0, len(x_data[0])):
+#     for xd, yd in zip(x_data, y_data):
+#         fig_italy_compare.add_trace(go.Bar(
+#             x=[xd[i]], y=[yd],
+#             orientation='h',
+#             marker=dict(
+#                 color=colors[i],
+#                 line=dict(color='rgb(248, 248, 249)', width=1)
+#             )
+#         ))
 
-for yd, xd in zip(y_data, x_data):
-    # labeling the first percentage of each bar (x_axis)
-    annotations1.append(dict(xref='x', yref='y',
-                            x=xd[0] / 2, y=yd,
-                            text= yd, # str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
-                            hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                            font=dict(family='Arial', size=14,
-                                      color='#6cc3cb'),
-                            showarrow=False))
-    # labeling the first Likert scale (on the top)
-    if yd == y_data[-1]:
-        annotations1.append(dict(xref='x', yref='paper',
-                                x=(xd[0] / 2), y=1.05,
-                                text=top_labels[0],
-                                hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                font=dict(family='Arial', size=10,
-                                          color='rgb(186, 186, 186)'),
-                                showarrow=False))
-    space = xd[0]
-    for i in range(1, len(xd)):
-            # labeling the rest of percentages for each bar (x_axis)
-            if i == 1:
-              annotations1.append(dict(xref='x', yref='y',
-                                      x=space+22.5, y=yd,
-                                      text= str(xd[i])[:4] + '% Recover',
-                                      hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                      font=dict(family='Arial', size=14,
-                                                color='#d0f1f0'),
-                                      #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
-                                      showarrow=False))
-              # labeling the Likert scale
-              if yd == y_data[-1]:
-                  annotations1.append(dict(xref='x', yref='paper',
-                                          x=(space + (xd[i])), y=1.05,
-                                          text=top_labels_l[i],
-                                          hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
-                                          font=dict(family='Arial', size=10,
-                                                    color='rgb(186, 186, 186)'),
-                                          showarrow=False))
-              space += xd[i]
+# fig_italy_compare.update_layout(
+#     xaxis=dict(
+#         showgrid=False,
+#         showline=False,
+#         showticklabels=False,
+#         zeroline=False,
+#         domain=[0.15, 1]
+#     ),
+#     yaxis=dict(
+#         showgrid=False,
+#         showline=False,
+#         showticklabels=False,
+#         zeroline=False,
+#     ),
+#     barmode='stack',
+#     paper_bgcolor='rgb(248, 248, 255)',
+#     plot_bgcolor='rgb(248, 248, 255)',
+#     margin=dict(l=120, r=10, t=140, b=25),
+#     # margin=dict(l=1.20, r=.10, t=1.40, b=.25),
+#     showlegend=False,
+# )
+
+# annotations1 = []
+
+# for yd, xd in zip(y_data, x_data):
+#     # labeling the first percentage of each bar (x_axis)
+#     annotations1.append(dict(xref='x', yref='y',
+#                             x=xd[0] / 2, y=yd,
+#                             text= yd, # str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
+#                             hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                             font=dict(family='Arial', size=14,
+#                                       color='#6cc3cb'),
+#                             showarrow=False))
+#     # labeling the first Likert scale (on the top)
+#     if yd == y_data[-1]:
+#         annotations1.append(dict(xref='x', yref='paper',
+#                                 x=(xd[0] / 2), y=1.05,
+#                                 text=top_labels[0],
+#                                 hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                 font=dict(family='Arial', size=10,
+#                                           color='rgb(186, 186, 186)'),
+#                                 showarrow=False))
+#     space = xd[0]
+#     for i in range(1, len(xd)):
+#             # labeling the rest of percentages for each bar (x_axis)
+#             annotations1.append(dict(xref='x', yref='y',
+#                                     x=space + (xd[i]/10)+3.95, y=yd,
+#                                     text= str(xd[i])[:1] + '% ' + top_labels_l[i], 
+#                                     hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                     font=dict(family='Arial', size=13,
+#                                               color='#2c8590'),
+#                                     #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
+#                                     showarrow=False))
+#             # labeling the Likert scale
+#             if yd == y_data[-1]:
+#                 annotations1.append(dict(xref='x', yref='paper',
+#                                         x=(space + (xd[i]/10))-8, y=1.05,
+#                                         text=top_labels[i],
+#                                         hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                         font=dict(family='Arial', size=10,
+#                                                   color='rgb(186, 186, 186)'),
+#                                         showarrow=False))
+#             space += xd[i]-1.5
+
+# fig_italy_compare.update_layout(annotations=annotations1 ,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+
+# fig_italy_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
+
+# #------------------------------------------------------
 
 
-fig_china_compare.update_layout(annotations=annotations1 ,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+# top_labels = ['CONFIRMED', 'RECOVERED','DEATHS']
+# top_labels_l = ['Confirmed', 'Recover', 'Die']
+
+# colors = ['#d9f0f2', '#38cedc',
+#           '#f2d4e0']
+
+# x_data = df_china_total_h[['Confirmed_normalized','Recovered_normalized','Deaths_normalized']].values
+
+# y_data = df_china_total_h['date'].values
+
+# fig_china_compare = go.Figure()
+
+# for i in range(0, len(x_data[0])):
+#     for xd, yd in zip(x_data, y_data):
+#         fig_china_compare.add_trace(go.Bar(
+#             x=[xd[i]], y=[yd],
+#             orientation='h',
+#             marker=dict(
+#                 color=colors[i],
+#                 line=dict(color='rgb(248, 248, 249)', width=1)
+#             )
+#         ))
+
+# fig_china_compare.update_layout(
+#     xaxis=dict(
+#         showgrid=False,
+#         showline=False,
+#         showticklabels=False,
+#         zeroline=False,
+#         domain=[0.15, 1]
+#     ),
+#     yaxis=dict(
+#         showgrid=False,
+#         showline=False,
+#         showticklabels=False,
+#         zeroline=False,
+#     ),
+#     barmode='stack',
+#     paper_bgcolor='rgb(248, 248, 255)',
+#     plot_bgcolor='rgb(248, 248, 255)',
+#     margin=dict(l=120, r=10, t=140, b=25),
+#     # margin=dict(l=1.20, r=.10, t=1.40, b=.25),
+#     showlegend=False,
+# )
+
+# annotations1 = []
+
+# for yd, xd in zip(y_data, x_data):
+#     # labeling the first percentage of each bar (x_axis)
+#     annotations1.append(dict(xref='x', yref='y',
+#                             x=xd[0] / 2, y=yd,
+#                             text= yd, # str(xd[0])[:2] + "% " + top_labels_l[0], #'{:.s}'.format(xd[0]) + '%',
+#                             hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                             font=dict(family='Arial', size=14,
+#                                       color='#6cc3cb'),
+#                             showarrow=False))
+#     # labeling the first Likert scale (on the top)
+#     if yd == y_data[-1]:
+#         annotations1.append(dict(xref='x', yref='paper',
+#                                 x=(xd[0] / 2), y=1.05,
+#                                 text=top_labels[0],
+#                                 hovertext = str(xd[0])[:4] + "% " + top_labels_l[0] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                 font=dict(family='Arial', size=10,
+#                                           color='rgb(186, 186, 186)'),
+#                                 showarrow=False))
+#     space = xd[0]
+#     for i in range(1, len(xd)):
+#             # labeling the rest of percentages for each bar (x_axis)
+#             if i == 1:
+#               annotations1.append(dict(xref='x', yref='y',
+#                                       x=space+22.5, y=yd,
+#                                       text= str(xd[i])[:4] + '% Recover',
+#                                       hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                       font=dict(family='Arial', size=14,
+#                                                 color='#d0f1f0'),
+#                                       #hovertext = str(xd[i])[:2] + "% " + top_labels_l[i], #str(xd[i]) + '%',
+#                                       showarrow=False))
+#               # labeling the Likert scale
+#               if yd == y_data[-1]:
+#                   annotations1.append(dict(xref='x', yref='paper',
+#                                           x=(space + (xd[i])), y=1.05,
+#                                           text=top_labels_l[i],
+#                                           hovertext = str(xd[i])[:4] + "% " + top_labels_l[i] + " on " + str(yd), #'{:.s}'.format(xd[0]) + '%',
+#                                           font=dict(family='Arial', size=10,
+#                                                     color='rgb(186, 186, 186)'),
+#                                           showarrow=False))
+#               space += xd[i]
 
 
-fig_china_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
+# fig_china_compare.update_layout(annotations=annotations1 ,paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+
+
+# fig_china_compare.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 #------------------------------------------------------
 
@@ -1147,71 +1147,71 @@ column3CenterAll = dbc.Col(
 )
 
 
-columnDistL = dbc.Col(
-    [
-        html.Center(
-            children=[
-                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':80, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-                html.H6('U.S.', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-                html.Div(
-                    [
-                        dbc.Button("Confirmed", color="light", size="sm"),
-                        dbc.Button("Recovered", color="light", size="sm"),
-                        dbc.Button("Deaths", color="light", size="sm"),]),
-                        dcc.Graph(figure=fig_us_compare),
-                     ],
-                ),
-            ],
-    md=12,
-)
-columnDistC = dbc.Col(
-    [
-        html.Center(
-            children=[
-                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-                html.H6('Italy', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-                html.Div(
-                    [
-                        dbc.Button("Confirmed", color="light", size="sm"),
-                        dbc.Button("Recovered", color="light", size="sm"),
-                        dbc.Button("Deaths", color="light", size="sm"),]),
-                        dcc.Graph(figure=fig_italy_compare),
-                     ],
-                ),
-            ],
-    md=12,
-)
-columnDistR = dbc.Col(
-    [
-        html.Center(
-            children=[
-                html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
-                html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-                html.H6('China', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-                html.Div(
-                    [
-                        dbc.Button("Confirmed", color="light", size="sm"),
-                        dbc.Button("Recovered", color="light", size="sm"),
-                        dbc.Button("Deaths", color="light", size="sm"),]),
-                        dcc.Graph(figure=fig_china_compare),
-                     ],
-                ),
-            ],
-    md=12,
-)
+# columnDistL = dbc.Col(
+#     [
+#         html.Center(
+#             children=[
+#                 html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':80, 'marginBottom':10}),
+#                 html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+#                 html.H6('U.S.', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+#                 html.Div(
+#                     [
+#                         dbc.Button("Confirmed", color="light", size="sm"),
+#                         dbc.Button("Recovered", color="light", size="sm"),
+#                         dbc.Button("Deaths", color="light", size="sm"),]),
+#                         dcc.Graph(figure=fig_us_compare),
+#                      ],
+#                 ),
+#             ],
+#     md=12,
+# )
+# columnDistC = dbc.Col(
+#     [
+#         html.Center(
+#             children=[
+#                 html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
+#                 html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+#                 html.H6('Italy', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+#                 html.Div(
+#                     [
+#                         dbc.Button("Confirmed", color="light", size="sm"),
+#                         dbc.Button("Recovered", color="light", size="sm"),
+#                         dbc.Button("Deaths", color="light", size="sm"),]),
+#                         dcc.Graph(figure=fig_italy_compare),
+#                      ],
+#                 ),
+#             ],
+#     md=12,
+# )
+# columnDistR = dbc.Col(
+#     [
+#         html.Center(
+#             children=[
+#                 html.H6('Status of Covid-19', style={'fontSize':16, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
+#                 html.H6('cumulative Cases Recorded in', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+#                 html.H6('China', style={'fontSize':22, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+#                 html.Div(
+#                     [
+#                         dbc.Button("Confirmed", color="light", size="sm"),
+#                         dbc.Button("Recovered", color="light", size="sm"),
+#                         dbc.Button("Deaths", color="light", size="sm"),]),
+#                         dcc.Graph(figure=fig_china_compare),
+#                      ],
+#                 ),
+#             ],
+#     md=12,
+# )
 
-columnDistbottomCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-            html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':8}),#fig4
-            ]
-        )
-    ],
-    md=12,
-)
+# columnDistbottomCenter = dbc.Col(
+#     [
+#         html.Center(
+#             children=[
+#             html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':8}),#fig4
+#             ]
+#         )
+#     ],
+#     md=12,
+# )
 
 
 
@@ -1434,8 +1434,9 @@ layout = [
         dbc.Row([column2bottomCenter]),
         dbc.Row([column3CenterAll]),
 
-        dbc.Row([columnDistC, columnDistR, columnDistL]),
-        dbc.Row([columnDistbottomCenter]),
+        #Deaths, Confirmed, Recovered
+        # dbc.Row([columnDistC, columnDistR, columnDistL]),
+        # dbc.Row([columnDistbottomCenter]),
 
         dbc.Row([column4CenterAll]),
         dbc.Row([column5L, column5CenterAll, column5R]),
