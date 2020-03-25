@@ -1097,7 +1097,7 @@ column2Center = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-24_annotated.png'), style={'display': 'block', 'width':'100%'}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-25_annotated.png'), style={'display': 'block', 'width':'100%'}),
             ]
         )
     ],
@@ -1113,7 +1113,7 @@ column2Right = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-24.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-25.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
             ]
         )
     ],
@@ -1124,7 +1124,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on March 24, 5 p.m.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NY State DOH, last updated there on March 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
             ]
         )
     ],
@@ -1410,11 +1410,11 @@ column6CenterAll = dbc.Col(
 
 
 @app.callback(
-    Output("collapse", "is_open"),
-    [Input("collapse-button", "n_clicks")],
-    [State("collapse", "is_open")],
+    Output("alert-auto", "is_open"),
+    [Input("alert-toggle-auto", "n_clicks")],
+    [State("alert-auto", "is_open")],
 )
-def toggle_collapse(n, is_open):
+def toggle_alert(n, is_open):
     if n:
         return not is_open
     return is_open
