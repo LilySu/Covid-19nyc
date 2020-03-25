@@ -1009,12 +1009,12 @@ columnTopRight = dbc.Col(
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-24_01.png'), style={'display': 'block', 'height':380})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-25_01.png'), style={'display': 'block', 'height':380})
             ]
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 24, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 25, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
             ]
         ),
     ],
