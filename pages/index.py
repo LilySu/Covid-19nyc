@@ -153,7 +153,7 @@ fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_death.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (125) OF COVID-19 IN <br>NYC AS OF MARCH 25, 2020 9AM",
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (199) OF COVID-19 IN <br>NYC AS OF MARCH 25, 2020 9AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -294,7 +294,9 @@ fig_daily_county_cases.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 #------------------------------------------------------------------------------------------COUNTY day-to-day changes
 table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
 
-table_h = table.tail(7)
+table_h = table.tail(8)
+table_h = table_h.head(7)
+
 collist = ['Albany','Nassau','New York', 'Suffolk', 'Erie', 'Dutchess', 'Monroe', 'Westchester']
 colors = ['#99d1ce', '#88daec', '#52bad1', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991']
 
@@ -965,7 +967,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on March 23, 5 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on March 24, 5 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
