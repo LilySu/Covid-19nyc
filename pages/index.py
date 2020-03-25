@@ -224,6 +224,7 @@ fig1.update_layout(
 
       ],
     autosize=True,
+    height=600,
     hovermode='closest',
     showlegend=False,
     mapbox=dict(
