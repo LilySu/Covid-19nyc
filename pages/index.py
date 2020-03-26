@@ -172,7 +172,7 @@ fig_nyc_death.update_layout(
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
 
 
-us_cities = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-24_USMap.csv')
+us_cities = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-25_USMap.csv')
 
 fig1 = go.Figure()
 fig1.add_trace(go.Scattermapbox(
@@ -180,8 +180,8 @@ fig1.add_trace(go.Scattermapbox(
         lon=us_cities["Long_"],
         mode='markers',
         marker=go.scattermapbox.Marker(
-            size=(us_cities['log_conf']+1.5)**1.6,
-            color=(us_cities['log_conf']+.1)**0.001,
+            size=(us_cities['log_conf'])**1.6,
+            color=(us_cities['log_conf'])**0.001,
             opacity=0.6
         ),
     ))
@@ -191,7 +191,7 @@ fig1.add_trace(go.Scattermapbox(
         lon=us_cities["Long_"],
         mode='markers',
         marker=go.scattermapbox.Marker(
-            size=((us_cities['log_conf']+1.5)**1.6)-(us_cities['log_conf']**1.7)*(0.04),
+            size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.04),
             color='rgba(224, 21, 163, 0.31)',
             opacity=0.5
         ),
@@ -204,7 +204,7 @@ fig1.add_trace(go.Scattermapbox(
         mode='markers',
         text= us_cities[["Province_State","FIPS", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
-            size=((us_cities['log_conf']+1.5)**1.6)-(us_cities['log_conf']**1.7)*(0.08),
+            size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.08),
             color='rgba(166, 247, 235, 0.38)',
             opacity=1
         ),
@@ -1117,7 +1117,7 @@ columnTopCenter = dbc.Col(
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
         html.Center(
             children=[
-                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 24th. The locations are based on FIPS Census codes, which we will convert into zipcodes soon.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
+                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 25th. The locations are based on FIPS Census codes, which we will convert into zipcodes soon.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
             ]
         ),
     ],
@@ -1592,10 +1592,9 @@ layout = [
         dbc.Row([column2bottomCenter]),
 
         dbc.Row([columnStackedCounty]),
-        dbc.Row([column4CenterAll]),
 
-        dbc.Row([column3CenterAll]),
-
+        dbc.Row([column3CenterAll]),# New Cases Worldwide
+        dbc.Row([column4CenterAll]),#Confirmed cases Italy, China US
 
 
         #Deaths, Confirmed, Recovered
