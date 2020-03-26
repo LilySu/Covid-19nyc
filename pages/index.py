@@ -1588,9 +1588,9 @@ pod1 = [
     dbc.CardImg(src=app.get_asset_url('podcastButtonL.jpg'), style={'display': 'block', 'width':'70%'}, top=True),
     dbc.CardBody(
         [
-            html.H5("What's your Plan'", className="card-title"),
+            html.H5("What's your Plan", className="card-title"),
             html.P(
-                "Let's face it, it's likely you will get sick. What's your plan?",
+                "Let's face it, it's likely you will get sick. Are you prepared if hospitalized?",
                 className="card-text",
             ),
             dbc.Button("Prepare a Binder", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
