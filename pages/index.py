@@ -80,7 +80,7 @@ fig_percentage_change = px.area(table_h, x='dates', y='New York',
 fig_percentage_change.update_layout(
     plot_bgcolor='white',
     showlegend=False,
-    font_color="#05b9f0",
+    font_color="#a3a3a3",
 )
 
 fig_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
@@ -184,12 +184,14 @@ fig1.add_trace(go.Scattermapbox(
             color=(us_cities['log_conf'])**0.001,
             opacity=0.6
         ),
+        hoverinfo='none',
     ))
 
 fig1.add_trace(go.Scattermapbox(
         lat=us_cities["Lat"],
         lon=us_cities["Long_"],
-        mode='markers',
+        text = us_cities[["Deaths_str"]],
+        mode='text',
         marker=go.scattermapbox.Marker(
             size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.04),
             color='rgba(224, 21, 163, 0.31)',
@@ -202,14 +204,16 @@ fig1.add_trace(go.Scattermapbox(
         lat=us_cities["Lat"],
         lon=us_cities["Long_"],
         mode='markers',
-        text= us_cities[["Province_State","FIPS", "Confirmed","Deaths"]],
+        text= us_cities[["Combined_Key", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
             size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.08),
             color='rgba(166, 247, 235, 0.38)',
             opacity=1
         ),
-        hoverinfo='text',
-        hovertemplate = '<b>General Location, FIPS Census Codes, Confirmed, Deaths: '+ '%{text}'
+        hovertemplate =
+      '<b>Location</b>: %{text[0]}<br>'+
+      '<b>Confirmed</b>: %{text[1]}<br>'+
+      '<b>Deaths</b>: %{text[2]}',
     ))
 
 fig1.update_layout(
@@ -237,10 +241,12 @@ fig1.update_layout(
             lon=-98
         ),
         pitch=0,
-        zoom=3,
+        zoom=2.9,
 
     ),
 )
+
+fig1.update_traces(textfont_size=14, texttemplate='%{text} Deaths')
 fig1.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------------------------------------FIG 1Half
 import requests
@@ -524,7 +530,7 @@ annotat.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
             text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
             font=dict(family='Arial',
                     size=12,
-                    color='#05b9f0'),
+                    color="#a3a3a3"),
             showarrow=False))
 
 fig2.update_layout(
@@ -1073,8 +1079,9 @@ columnTopAlert = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('New York State: 30,811 Confirmed cases', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
-            html.H6('Data Above from the New York State Dept. of Health march 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':15}),
+                # html.Img(src=app.get_asset_url('topBanner.png'), style={'display': 'block', 'height':80})
+            #html.H6('New York State: 30,811 Confirmed cases', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+            #html.H6('Data Above from the New York State Dept. of Health march 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':15}),
             ]
         ),
     ],
@@ -1108,7 +1115,7 @@ columnTopLeft = dbc.Col(
             ]
         ),
     ],
-    md=2,
+    md=3,
     #style={'paddingLeft':0,'paddingRight':0},
 )
 
@@ -1117,7 +1124,8 @@ columnTopCenter = dbc.Col(
         dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
         html.Center(
             children=[
-                html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) updated on March 25th. The locations are based on FIPS Census codes, which we will convert into zipcodes soon.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
+                html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 25th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig4
             ]
         ),
     ],
@@ -1148,7 +1156,7 @@ columnTopRight = dbc.Col(
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-25_01.png'), style={'display': 'block', 'height':380})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-25_01.png'), style={'display': 'block', 'height':300})
             ]
         ),
         html.Center(
@@ -1157,7 +1165,7 @@ columnTopRight = dbc.Col(
             ]
         ),
     ],
-    md=4,
+    md=3,
 )
 
 column0bottomCenter = dbc.Col(
@@ -1553,8 +1561,11 @@ washHandsR = dbc.Col(
     md=3,
 )
 
-
-column6CenterAll = dbc.Col(
+distanceL = dbc.Col(
+    [],
+    md=3,
+)
+distanceCenter = dbc.Col(
     [
         html.Center(
             children=[
@@ -1562,7 +1573,43 @@ column6CenterAll = dbc.Col(
             ]
         )
     ],
-    md=12,
+    md=6,
+)
+distanceR = dbc.Col(
+    [],
+    md=3,
+)
+
+recsL = dbc.Col(
+    [
+        html.Center(
+            children=[
+                # html.Img(src=app.get_asset_url('podcastButtonL.jpg'), style={'display': 'block', 'width':'65%'})
+            ]
+        )
+    ],
+    md=4,
+)
+recsCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+                html.Span(' ', className='mr-1'),
+                html.Img(src=app.get_asset_url('trisaBunny.gif'), style={'display': 'block', 'width':'100%'})
+            ]
+        )
+    ],
+    md=4,
+)
+recsR = dbc.Col(
+    [
+        html.Center(
+            children=[
+                # html.Img(src=app.get_asset_url('podcast2.jpg'), style={'display': 'block', 'width':'65%'})
+            ]
+        )
+    ],
+    md=4,
 )
 
 
@@ -1607,5 +1654,7 @@ layout = [
 
         dbc.Row([washHandsL,washHandsC,washHandsR]),
 
-        dbc.Row([column6CenterAll]),]
+        dbc.Row([distanceL, distanceCenter, distanceR]),
+        dbc.Row([recsL, recsCenter, recsR]),        
+        ]
 
