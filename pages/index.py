@@ -1416,7 +1416,7 @@ annoucementsCenter = dbc.Col(
                         [
                             html.H1("Transit", className="display-4", style={"color":"#03607d"}),
                             html.P(
-                                "MTA Bus Riders Ride for Free"
+                                "MTA Bus Riders Ride for Free "
                                 "(Express Bus Riders Still Pay)",
                                 className="lead", style={"color":"#03607d"},
                             ),
@@ -1668,7 +1668,7 @@ trisacard = [
         [
             html.H5("Trisa's Picks", className="card-title"),
             html.P(
-                "watch things that make you laugh, smile, or feel good.",
+                "Watch things that make you laugh, smile, or feel good.",
                 className="card-text",
             ),
             dbc.Button("Go to Youtube Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
