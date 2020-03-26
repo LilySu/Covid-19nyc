@@ -110,7 +110,7 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (16,788) IN<br>NYC AS OF MARCH 25, 2020 9 AM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (20,011) IN<br>NYC AS OF MARCH 25, 2020 5 PM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1161,7 +1161,7 @@ columnTopRight = dbc.Col(
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 25, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 25, 5 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
