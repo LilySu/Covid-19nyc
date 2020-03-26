@@ -1392,6 +1392,16 @@ column4CenterAll = dbc.Col(
 )
 
 
+announcementsHeader = dbc.Col(
+    [
+        html.Center(
+            children=[
+            html.Img(src=app.get_asset_url('helpfulInfo.png'), style={'display': 'block', 'width':'100%'})
+            ]
+        )
+    ],
+    md=8,
+)
 
 announcementsL = dbc.Col(
     [],
@@ -1658,7 +1668,7 @@ trisacard = [
         [
             html.H5("Trisa's Picks", className="card-title"),
             html.P(
-                "Need to step away from the world? Here are some channels we recommend.",
+                "watch things that make you laugh, smile, or feel good.",
                 className="card-text",
             ),
             dbc.Button("Go to Youtube Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
@@ -1757,8 +1767,9 @@ layout = [
 
         #Deaths, Confirmed, Recovered
         # dbc.Row([columnDistC, columnDistR, columnDistL]),
-        # dbc.Row([columnDistbottomCenter]),
+        # dbc.Row([columnDistbottomCenter]),  
 
+        dbc.Row([collapseEniqueArticleL,announcementsHeader,collapseEniqueArticleR]),
         dbc.Row([announcementsL, annoucementsCenter, announcementsR]),
         dbc.Row([announcementsL, shopAnnouncementsCenter, announcementsR]),
 
