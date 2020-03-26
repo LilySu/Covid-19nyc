@@ -18,8 +18,9 @@ df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/mas
 df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-24.csv")
 df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-24.csv")
 df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-24.csv")
-# df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-23.csv")
-# df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-23.csv")
+df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-24.csv")
+df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
+diff_from_day_before= pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/diff_from_day_before_county2.csv")
 
 
 #-----------------------fig
@@ -343,6 +344,152 @@ countydaytoday.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
 # # Add title
 # figA.update_layout(title_text='IT TAKES ON AVERAGE OF 14 DAYS FOR THE SYMPTOMS TO APPEAR')
+#-------------------------------------------------------------------------------------STACKED COUNTIES
+
+
+
+fig_stacked_change_county_cases = go.Figure()
+
+collist = ['Albany', 'Allegany', 'Broome',
+       'Chenango', 'Clinton', 'Columbia', 'Delaware', 'Dutchess', 'Erie',
+       'Essex', 'Fulton', 'Genesee', 'Greene', 'Hamilton', 'Herkimer',
+       'Jefferson', 'Livingston', 'Monroe', 'Montgomery', 'Nassau',
+       'New York', 'Niagara', 'Oneida', 'Onondaga', 'Ontario', 'Orange',
+       'Putnam','Rensselaer', 'Rockland', 'Saratoga',
+       'Schenectady', 'Schoharie', 'Steuben', 'Suffolk', 'Sullivan', 'Tioga',
+       'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne', 'Westchester',
+       'Wyoming']
+
+color43=["#EAE324", "#EA8AA1","#92CBD2", "#58B69A","#102A6B", "#103D58","#4788A8","#C979A6", "#F2DFE7", "#C5B6DF",
+         "#443947","#764D62","#EAE324", "#EA8AA1","#92CBD2", "#58B69A","#102A6B", "#103D58","#4788A8","#C979A6", 
+         "#F2DFE7", "#C5B6DF","#443947","#764D62","#EAE324", "#EA8AA1","#92CBD2", "#58B69A","#102A6B", "#103D58",
+         "#EAE324", "#EA8AA1","#92CBD2", "#58B69A","#102A6B", "#103D58","#4788A8","#C979A6", "#F2DFE7", "#C5B6DF",
+         "#443947","#764D62"]
+
+
+for i,j in zip(collist, color43):
+  fig_stacked_change_county_cases.add_trace(go.Scatter(x = diff_from_day_before['dates'], y = diff_from_day_before[i],line_shape='spline', mode='lines', stackgroup='one', # define stack group
+                           name = i, text=diff_from_day_before[i], hoveron = 'points+fills', fillcolor=j,line=dict(width=2.5, color=j),
+                           hovertemplate = "<b>" + i + " County</b>" +"<br><b>%{text} </b>"+" New Cases <br>on " + diff_from_day_before['dates']))
+    
+fig_stacked_change_county_cases.update_traces(hoverinfo='text+name', mode='lines+markers')
+fig_stacked_change_county_cases.update_layout(
+    title_text='DAY-TO-DAY CHANGES IN ACTUAL NUMBER OF POSITIVE CASES BY COUNTY (drag-zoom to see detail)'
+)
+annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.13,
+                              xanchor='center', yanchor='top',
+                              text='Data Provided by the New York State Department of Health (Missing March 16th)',
+                              font=dict(family='Arial',
+                                        size=12,
+                                        color='rgb(150,150,150)'),
+                              showarrow=False)]
+fig_stacked_change_county_cases.update_layout(annotations=annotations)
+
+fig_stacked_change_county_cases.update_layout(
+    showlegend=False,
+    annotations=[
+        dict(
+            x=15,
+            y=5,
+            xref="x",
+            yref="y",
+            text="missing data",
+            showarrow=True,
+            arrowhead=7,
+            ax=0,
+            ay=-40
+        )
+    ]
+)
+
+annotation4 = []
+for i,j in zip(range(25), diff_from_day_before['total']):
+  annotation4.append(
+        dict(
+            x=i,
+            y=-400,
+            xref="x",
+            yref="y",
+            text=str(j)[:-2]+"<br> total",
+            showarrow=False,
+            #arrowhead=7,
+            ax=0,
+            ay=-40))
+
+fig_stacked_change_county_cases.update_layout(
+    plot_bgcolor='white',
+    showlegend=True,
+    annotations = annotation4
+)
+
+
+
+#-----------------------------------------------------------SINGLE STACK NEW YORK
+
+
+
+fig_stacked_ny = go.Figure()
+
+collist = ['New York']
+
+color43=["#f8d8ed"]
+
+
+for i,j in zip(collist, color43):
+  fig_stacked_ny.add_trace(go.Scatter(x = diff_from_day_before['dates'], y = diff_from_day_before[i],line_shape='spline', mode='lines', stackgroup='one', # define stack group
+                           name = i, text=diff_from_day_before[i], hoveron = 'points+fills', fillcolor=j,line=dict(width=2.5, color=j),
+                           hovertemplate = "<b>" + i + " County</b>" +"<br><b>%{text} </b>"+" New Cases <br>on " + diff_from_day_before['dates']))
+    
+fig_stacked_ny.update_traces(hoverinfo='text+name', mode='lines+markers')
+fig_stacked_ny.update_layout(
+    title_text='DAY-TO-DAY CHANGES IN ACTUAL NUMBER OF POSITIVE CASES NEW YORK'
+)
+annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.13,
+                              xanchor='center', yanchor='top',
+                              text='Data Provided by the New York State Department of Health (Missing March 16th)',
+                              font=dict(family='Arial',
+                                        size=12,
+                                        color='rgb(150,150,150)'),
+                              showarrow=False)]
+fig_stacked_ny.update_layout(annotations=annotations)
+
+fig_stacked_ny.update_layout(
+    showlegend=False,
+    annotations=[
+        dict(
+            x=15,
+            y=5,
+            xref="x",
+            yref="y",
+            text="missing data",
+            showarrow=True,
+            arrowhead=7,
+            ax=0,
+            ay=-40
+        )
+    ]
+)
+
+annotation4 = []
+for i,j in zip(range(25), diff_from_day_before['total']):
+  annotation4.append(
+        dict(
+            x=i,
+            y=-400,
+            xref="x",
+            yref="y",
+            text=str(j)[:-2]+"<br> total",
+            showarrow=False,
+            #arrowhead=7,
+            ax=0,
+            ay=-40))
+
+fig_stacked_ny.update_layout(
+    plot_bgcolor='white',
+    showlegend=True,
+    annotations = annotation4
+)
+
 
 #------------------------------------------FIG 2
 
@@ -398,9 +545,9 @@ fig2.update_layout(
 fig4 = go.Figure()
 
 # Add surface trace
-fig4.add_trace(go.Scatter(x=df_italy['date'], y=df_italy['Confirmed'],
-                    name = "Italy",
-                    hovertext=df_italy["Confirmed"],
+fig4.add_trace(go.Scatter(x=df_usa['date'], y=df_usa['Confirmed'],
+                    name = "US",
+                    hovertext=df_usa["Confirmed"],
                     hoverinfo='text',
                     hovertemplate =
                     '<i>Date: </i>: %{x}'+
@@ -409,9 +556,9 @@ fig4.add_trace(go.Scatter(x=df_italy['date'], y=df_italy['Confirmed'],
                     line_color='#68CEF3',
                     ))
 
-fig4.add_trace(go.Scatter(x=df_china['date'], y=df_china['Confirmed'],
-                    name = "China",
-                    hovertext=df_china["Confirmed"],
+fig4.add_trace(go.Scatter(x=df_italy['date'], y=df_italy['Confirmed'],
+                    name = "Italy",
+                    hovertext=df_italy["Confirmed"],
                     hoverinfo='text',
                     hovertemplate =
                     '<i>Date: </i>: %{x}'+
@@ -419,9 +566,10 @@ fig4.add_trace(go.Scatter(x=df_china['date'], y=df_china['Confirmed'],
                     line_shape='spline',
                     line_color='#9e92f6',
                     ))
-fig4.add_trace(go.Scatter(x=df_usa['date'], y=df_usa['Confirmed'],
-                    name = "US",
-                    hovertext=df_usa["Confirmed"],
+
+fig4.add_trace(go.Scatter(x=df_china['date'], y=df_china['Confirmed'],
+                    name = "China",
+                    hovertext=df_china["Confirmed"],
                     hoverinfo='text',
                     hovertemplate =
                     '<i>Date: </i>: %{x}'+
@@ -451,8 +599,7 @@ fig4.update_layout(
         showgrid=False,
         zeroline=False,
         showline=False,
-        showticklabels=True,
-        title_text="Confirmed Cases"
+        showticklabels=False,
     ),
     autosize=True,
     margin=dict(
@@ -462,10 +609,7 @@ fig4.update_layout(
         t=110,
     ),
     showlegend=False,
-    plot_bgcolor='white',
-    font=dict(
-    # family="Arial",
-    color="#a3a3a3")
+    plot_bgcolor='white'
 )
 
 # Update 3D scene options
@@ -474,10 +618,9 @@ fig4.update_scenes(
     aspectmode="manual"
 )
 
-# Default annotations
+
 annotations = []
-# for y_trace, label, color in zip(y_data, labels, colors):
-    # labeling the left_side of the plot
+
 annotations.append(dict(xref='paper', x=.990, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
@@ -500,10 +643,10 @@ annotations.append(dict(xref='paper', x=1.01, y=78600,
 # Title
 annotations.append(dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
                               font=dict(family='Arial',
-                                        size=20,
-                                        color='#05b9f0'),
+                                        size=30,
+                                        color='rgb(37,37,37)'),
                               showarrow=False))
 # Source
 annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
@@ -511,7 +654,7 @@ annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#05b9f0'),
+                                        color='rgb(150,150,150)'),
                               showarrow=False))
 
 # Add Annotations with Buttons
@@ -522,13 +665,13 @@ all_annotations = [dict(xref='paper', x=1.005, y=78600,
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                   dict(xref='paper', x=1.05, y=65000,
+                   dict(xref='paper', x=0.99, y=65000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=1.05, y=50000,
+                     dict(xref='paper', x=0.99, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -536,27 +679,27 @@ all_annotations = [dict(xref='paper', x=1.005, y=78600,
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
                               font=dict(family='Arial',
-                                        size=20,
-                                        color='#05b9f0'),
+                                        size=30,
+                                        color='rgb(37,37,37)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#05b9f0'),
+                                        color='rgb(150,150,150)'),
                               showarrow=False)]
 
 
-italy_annotations = [dict(xref='paper', x=.990, y=65500,
+italy_annotations = [dict(xref='paper', x=0.99, y=65500,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=.99, y=50000,
+                     dict(xref='paper', x=0.99, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -564,17 +707,17 @@ italy_annotations = [dict(xref='paper', x=.990, y=65500,
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
                               font=dict(family='Arial',
-                                        size=20,
-                                        color='#05b9f0'),
+                                        size=30,
+                                        color='rgb(37,37,37)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#05b9f0'),
+                                        color='rgb(150,150,150)'),
                               showarrow=False)]
 
 china_annotations = [dict(xref='paper', x=1.01, y=78600,
@@ -583,7 +726,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=78600,
                               font=dict(family='Arial',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=.99, y=50000,
+                     dict(xref='paper', x=0.999, y=50000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -591,17 +734,17 @@ china_annotations = [dict(xref='paper', x=1.01, y=78600,
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='COVID-19 CONFIRMED CASES CHINA VS. ITALY VS. UNITED STATES',
+                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
                               font=dict(family='Arial',
-                                        size=20,
-                                        color='#05b9f0'),
+                                        size=30,
+                                        color='rgb(37,37,37)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                               xanchor='center', yanchor='top',
                               text='Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)',
                               font=dict(family='Arial',
                                         size=12,
-                                        color='#05b9f0'),
+                                        color='rgb(150,150,150)'),
                               showarrow=False)]
 
 fig4.update_layout(
@@ -612,12 +755,9 @@ fig4.update_layout(
             active=0,
             pad={"r": 10, "t": 40},
             showactive=True,
-            x=0.05,
+            x=0.06,
             xanchor="left",
-            y=1.18,
-            font=dict(
-            # family="Arial",
-            color="#a3a3a3"),
+            y=1.1,
             buttons=list([
                 dict(label="Show All",
                      method="update",
@@ -626,12 +766,12 @@ fig4.update_layout(
                             "annotations": all_annotations}]),
                 dict(label="Compare with Italy",
                      method="update",
-                     args=[{"visible": [True, False, True]},
+                     args=[{"visible": [True, True, False]},
                            {
                             "annotations": italy_annotations}]),
                 dict(label="Compare with China",
                      method="update",
-                     args=[{"visible": [True, True, False]},
+                     args=[{"visible": [True, False, True]},
                            {
                             "annotations": china_annotations}]),
             ]),
@@ -1131,6 +1271,24 @@ column2bottomCenter = dbc.Col(
     md=12,
 )
 
+columnStackedCounty = dbc.Col(
+    [
+        html.Center(
+            children=[
+            dcc.Graph(figure=fig_stacked_ny),
+            dcc.Graph(figure=fig_stacked_change_county_cases),
+            html.H6('Data from NY State DOH, last updated there on March 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
+            ]
+        )
+    ],
+    md=12,
+)
+
+
+
+
+
+
 column3CenterAll = dbc.Col(
     [
         html.Center(
@@ -1432,13 +1590,18 @@ layout = [
 
         dbc.Row([column2Center, column2Right]),
         dbc.Row([column2bottomCenter]),
+
+        dbc.Row([columnStackedCounty]),
+        dbc.Row([column4CenterAll]),
+
         dbc.Row([column3CenterAll]),
+
+
 
         #Deaths, Confirmed, Recovered
         # dbc.Row([columnDistC, columnDistR, columnDistL]),
         # dbc.Row([columnDistbottomCenter]),
 
-        dbc.Row([column4CenterAll]),
         dbc.Row([column5L, column5CenterAll, column5R]),
 
         dbc.Row([collapseEniqueArticleL,collapseEniqueArticle,collapseEniqueArticleR]),
