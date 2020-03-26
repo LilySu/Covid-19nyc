@@ -265,7 +265,7 @@ fig1Half = px.choropleth_mapbox(df, geojson=geojson,
                            height = 720,
                            color = 'total',
                            color_continuous_scale=px.colors.sequential.Teal,
-                           custom_data = ['24_Mar_Cov_Pos'],
+                           custom_data = ['26_Mar_Cov_Pos'],
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
