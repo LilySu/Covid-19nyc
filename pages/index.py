@@ -1580,37 +1580,94 @@ distanceR = dbc.Col(
     md=3,
 )
 
-recsL = dbc.Col(
-    [
-        html.Center(
-            children=[
-                # html.Img(src=app.get_asset_url('podcastButtonL.jpg'), style={'display': 'block', 'width':'65%'})
-            ]
-        )
-    ],
-    md=4,
-)
+
+
+
+
+pod1 = [
+    dbc.CardImg(src=app.get_asset_url('podcastButtonL.jpg'), style={'display': 'block', 'width':'70%'}, top=True),
+    dbc.CardBody(
+        [
+            html.H5("What's your Plan'", className="card-title"),
+            html.P(
+                "Let's face it, it's likely you will get sick. What's your plan?",
+                className="card-text",
+            ),
+            dbc.Button("Prepare a Binder", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
+        ]
+    ),
+]
+
+trisacard = [
+    dbc.CardImg(src=app.get_asset_url('trisaBunny.gif'), style={'display': 'block', 'width':'70%'}, top=True),
+    dbc.CardBody(
+        [
+            html.H5("Trisa's Picks", className="card-title"),
+            html.P(
+                "Need to step away from the world? Here are some channels we recommend.",
+                className="card-text",
+            ),
+            dbc.Button("Go to Youtube Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
+        ]
+    ),
+]
+
+pod2 = [
+    dbc.CardImg(src=app.get_asset_url('podcast2.jpg'), style={'display': 'block', 'width':'70%'}, top=True),
+    dbc.CardBody(
+        [
+            html.H5("Our go-to Podcasts", className="card-title"),
+            html.P(
+                "Let's get informed and work on a better version of ourselves.",
+                className="card-text",
+            ),
+            dbc.Button("Go to Spotify Playlist", className="mr-1", color="info", href="https://open.spotify.com/playlist/65XgqkWUTIdLZm9rXqTp3x"),
+        ]
+    ),
+]
+
+
+
+
+# recsL = dbc.Col(
+#     [
+#         html.Center(
+#             children=[
+#                 # html.Img(src=app.get_asset_url('podcastButtonL.jpg'), style={'display': 'block', 'width':'65%'})
+#             ]
+#         )
+#     ],
+#     md=3,
+# )
 recsCenter = dbc.Col(
     [
         html.Center(
             children=[
                 html.Span(' ', className='mr-1'),
-                html.Img(src=app.get_asset_url('trisaBunny.gif'), style={'display': 'block', 'width':'80%'})
+                dbc.CardGroup(
+                    dbc.CardColumns(
+                        [
+                            dbc.Card(pod1, color="light"),
+                            dbc.Card(trisacard, color="light"),
+                            dbc.Card(pod2, color="light"),
+                        ]
+                    )
+                )
             ]
         )
     ],
-    md=4,
+    md=12,
 )
-recsR = dbc.Col(
-    [
-        html.Center(
-            children=[
-                # html.Img(src=app.get_asset_url('podcast2.jpg'), style={'display': 'block', 'width':'65%'})
-            ]
-        )
-    ],
-    md=4,
-)
+# recsR = dbc.Col(
+#     [
+#         html.Center(
+#             children=[
+#                 # html.Img(src=app.get_asset_url('podcast2.jpg'), style={'display': 'block', 'width':'65%'})
+#             ]
+#         )
+#     ],
+#     md=4,
+# )
 
 
 
@@ -1655,6 +1712,6 @@ layout = [
         dbc.Row([washHandsL,washHandsC,washHandsR]),
 
         dbc.Row([distanceL, distanceCenter, distanceR]),
-        dbc.Row([recsL, recsCenter, recsR]),        
+        dbc.Row([recsCenter]),        
         ]
 
