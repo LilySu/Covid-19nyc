@@ -275,16 +275,16 @@ fig1Half.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig1Half.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch25.csv")
+fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch26.csv")
 fig_daily_county_cases = fig_daily_county_cases.head(15)
 
 
-fig_daily_county_cases = px.bar(fig_daily_county_cases, x='index', y='March 25', 
-             text='March 25', 
-             color = 'March 25',
+fig_daily_county_cases = px.bar(fig_daily_county_cases, x='index', y='March 26', 
+             text='March 26', 
+             color = 'March 26',
              height = 350,
              color_continuous_scale=px.colors.diverging.BrBG,
-             labels={'New York State Counties':'County','March 25':'March 25th Confirmed Cases'})
+             labels={'New York State Counties':'County','March 26':'March 26th Confirmed Cases'})
 fig_daily_county_cases.update_traces(texttemplate='%{text}', textposition='outside')
 fig_daily_county_cases.update_layout(
     plot_bgcolor='white',
@@ -409,7 +409,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(25), diff_from_day_before['total']):
+for i,j in zip(range(26), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -477,7 +477,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(25), diff_from_day_before['total']):
+for i,j in zip(range(26), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -1272,7 +1272,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on March 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NY State DOH, last updated there on March 26, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
             ]
         )
     ],
@@ -1285,7 +1285,7 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on March 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NY State DOH, last updated there on March 26, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
             ]
         )
     ],
