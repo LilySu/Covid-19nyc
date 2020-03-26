@@ -1391,17 +1391,77 @@ column4CenterAll = dbc.Col(
     ]
 )
 
-column5L = dbc.Col(
+
+
+announcementsL = dbc.Col(
+    [],
+    md=2,
+)
+
+annoucementsCenter = dbc.Col(
     [
         html.Center(
             children=[
-            # html.Img(src=app.get_asset_url('WashHands.jpg'), style={'display': 'block', 'width':'100%'})
+                    dbc.Jumbotron(
+                        [
+                            html.H1("Transit", className="display-4", style={"color":"#03607d"}),
+                            html.P(
+                                "MTA Bus Riders Ride for Free"
+                                "(Express Bus Riders Still Pay)",
+                                className="lead", style={"color":"#03607d"},
+                            ),
+                            html.Hr(className="my-2"),
+                            html.P(
+                                "Subway Service Cut by a Quarter", style={"color":"#03607d"}),
+                            html.P("No. 4, 5, 6, 7 and the J and D lines, will run locally on all or part of their routes", style={"color":"#03607d"}),
+                            html.P(dbc.Button("Read more", color="info", href="https://www.nytimes.com./2020/03/24/nyregion/coronavirus-nyc-mta-cuts-.html"), className="lead"),
+                        ]
+                    )
             ]
         )
     ],
+    md=8,
+)
+
+announcementsR = dbc.Col(
+    [],
     md=2,
 )
-column5CenterAll = dbc.Col(
+
+shopAnnouncementsCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+                    dbc.Jumbotron(
+                        [
+                            html.H1("Special Shopping Hours", className="display-6", style={"color":"#03607d"}),
+                            html.Span(' ', className='mr-1'),
+                            html.P("Whole Foods are open one hour before their normal opening time for seniors 60 and above every day.", style={"color":"#03607d"}, className="lead"),
+                            html.P("Trader Joe's are open just for seniors 65 and above 9 a.m. to 10 a.m. every day.", className="lead", style={"color":"#03607d"}),
+                            html.Hr(className="my-2"),
+                            html.P("Stop-and-Shop's are open 6 am to 7:30 am every day for those age 60 and older and younger customers with weakened immune systems.", style={"color":"#03607d"},className="lead"),
+                            html.P("Costco's are open for seniors over age 60 on Tuesdays and Thursdays from 8 to 9 a.m.", style={"color":"#03607d"},className="lead"),
+                            html.P("Walgreens has Tuesday weekly senior hour from 8 to 9 a.m., open to caregivers and immediate families, as well.", style={"color":"#03607d"},className="lead"),
+                            html.Hr(className="my-2"),
+                            html.P("Most top retailers have begun offering senior shopping hours, please look on their website for more information.", style={"color":"#03607d"}
+                            ),
+                            html.P(dbc.Button("Read more", color="info", href="https://www.cnbc.com/2020/03/19/coronavirus-how-senior-shopping-hours-work-at-stop-shop-other-grocers.html"), className="lead"),
+                        ]
+                    )
+            ]
+        )
+    ],
+    md=8,
+)
+
+
+
+
+selectedWritingsHeaderL = dbc.Col(
+    [],
+    md=2,
+)
+selectedWritingsHeaderCenter = dbc.Col(
     [
         html.Center(
             children=[
@@ -1414,14 +1474,8 @@ column5CenterAll = dbc.Col(
     ],
     md=8,
 )
-column5R = dbc.Col(
-    [
-        html.Center(
-            children=[
-            # html.Img(src=app.get_asset_url('WashHands.jpg'), style={'display': 'block', 'width':'100%'})
-            ]
-        )
-    ],
+selectedWritingsHeaderR = dbc.Col(
+    [],
     md=2,
 )
 
@@ -1705,7 +1759,10 @@ layout = [
         # dbc.Row([columnDistC, columnDistR, columnDistL]),
         # dbc.Row([columnDistbottomCenter]),
 
-        dbc.Row([column5L, column5CenterAll, column5R]),
+        dbc.Row([announcementsL, annoucementsCenter, announcementsR]),
+        dbc.Row([announcementsL, shopAnnouncementsCenter, announcementsR]),
+
+        dbc.Row([selectedWritingsHeaderL, selectedWritingsHeaderCenter, selectedWritingsHeaderR]),
 
         dbc.Row([collapseEniqueArticleL,collapseEniqueArticle,collapseEniqueArticleR]),
 
