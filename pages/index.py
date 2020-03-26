@@ -95,9 +95,9 @@ color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_demo = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo.add_trace(go.Pie(labels=age, values=[400, 7556, 5619, 1843, 1360, 10], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_demo.add_trace(go.Pie(labels=age, values=[446, 8880, 6786, 2226, 1633, 40], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[7303,9460], name="Gender",marker=dict(colors=color2)),
+fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[8655,11325], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
@@ -1138,10 +1138,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('17,856', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('20,011', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('199', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYS Dept. of Health march 25, 2 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('280', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Data above from NYS Dept. of Health march 25, 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             # dbc.Alert(
             # [
             # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
@@ -1595,7 +1595,7 @@ recsCenter = dbc.Col(
         html.Center(
             children=[
                 html.Span(' ', className='mr-1'),
-                html.Img(src=app.get_asset_url('trisaBunny.gif'), style={'display': 'block', 'width':'100%'})
+                html.Img(src=app.get_asset_url('trisaBunny.gif'), style={'display': 'block', 'width':'80%'})
             ]
         )
     ],
