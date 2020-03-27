@@ -168,53 +168,48 @@ fig_nyc_death.update_layout(
                 dict(text='Underlying Illness', x=0.91, y=0.5, font_size=11, showarrow=False)])
 
 #---------------------------------------------
-
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+  counties = json.load(response)
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-
-
-us_cities = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-25_USMap.csv')
-
+df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-26.csv')
 fig1 = go.Figure()
+
+
+fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
+                                    colorscale="YlOrRd", zmin=0, zmax=3,
+                                    marker_opacity=0.08, marker_line_width=0))
+fig1.update_traces(showscale=False)
+
 fig1.add_trace(go.Scattermapbox(
-        lat=us_cities["Lat"],
-        lon=us_cities["Long_"],
+        lat=df["Lat"],
+        lon=df["Long_"],
         mode='markers',
         marker=go.scattermapbox.Marker(
-            size=(us_cities['log_conf'])**1.6,
-            color=(us_cities['log_conf'])**0.001,
-            opacity=0.6
+            size=(df['log_conf'])**1.6,
+            color=(df['log_conf']+7)**0.001,
+            opacity=0.08
         ),
         hoverinfo='none',
     ))
 
 fig1.add_trace(go.Scattermapbox(
-        lat=us_cities["Lat"],
-        lon=us_cities["Long_"],
-        text = us_cities[["Deaths_str"]],
-        mode='text',
-        marker=go.scattermapbox.Marker(
-            size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.04),
-            color='rgba(224, 21, 163, 0.31)',
-            opacity=0.5
-        ),
-        hoverinfo='none'
-    ))
-
-fig1.add_trace(go.Scattermapbox(
-        lat=us_cities["Lat"],
-        lon=us_cities["Long_"],
+        lat=df["Lat"],
+        lon=df["Long_"],
         mode='markers',
-        text= us_cities[["Combined_Key", "Confirmed","Deaths"]],
+        text= df[["Combined_Key", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
-            size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.08),
+            size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
             color='rgba(166, 247, 235, 0.38)',
-            opacity=1
+            opacity=0.05
         ),
-        hovertemplate =
-      '<b>Location</b>: %{text[0]}<br>'+
+        hovertemplate ='<b>Location</b>: %{text[0]}<br>'+
       '<b>Confirmed</b>: %{text[1]}<br>'+
       '<b>Deaths</b>: %{text[2]}',
+
     ))
+
 
 fig1.update_layout(
     mapbox_layers=[
@@ -223,7 +218,6 @@ fig1.update_layout(
             "sourcetype": "raster",
             "source": [
                        "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-                #"https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
             ] 
         },
 
@@ -242,11 +236,83 @@ fig1.update_layout(
         ),
         pitch=0,
         zoom=2.9,
-
     ),
 )
 
-fig1.update_traces(textfont_size=14, texttemplate='%{text} Deaths')
+
+# fig1 = go.Figure()
+# fig1.add_trace(go.Scattermapbox(
+#         lat=us_cities["Lat"],
+#         lon=us_cities["Long_"],
+#         mode='markers',
+#         marker=go.scattermapbox.Marker(
+#             size=(us_cities['log_conf'])**1.6,
+#             color=(us_cities['log_conf'])**0.001,
+#             opacity=0.6
+#         ),
+#         hoverinfo='none',
+#     ))
+
+# fig1.add_trace(go.Scattermapbox(
+#         lat=us_cities["Lat"],
+#         lon=us_cities["Long_"],
+#         text = us_cities[["Deaths_str"]],
+#         mode='text',
+#         marker=go.scattermapbox.Marker(
+#             size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.04),
+#             color='rgba(224, 21, 163, 0.31)',
+#             opacity=0.5
+#         ),
+#         hoverinfo='none'
+#     ))
+
+# fig1.add_trace(go.Scattermapbox(
+#         lat=us_cities["Lat"],
+#         lon=us_cities["Long_"],
+#         mode='markers',
+#         text= us_cities[["Combined_Key", "Confirmed","Deaths"]],
+#         marker=go.scattermapbox.Marker(
+#             size=((us_cities['log_conf'])**1.6)-(us_cities['log_conf']**1.7)*(0.08),
+#             color='rgba(166, 247, 235, 0.38)',
+#             opacity=1
+#         ),
+#         hovertemplate =
+#       '<b>Location</b>: %{text[0]}<br>'+
+#       '<b>Confirmed</b>: %{text[1]}<br>'+
+#       '<b>Deaths</b>: %{text[2]}',
+#     ))
+
+# fig1.update_layout(
+#     mapbox_layers=[
+#         {
+#             "below": 'traces',
+#             "sourcetype": "raster",
+#             "source": [
+#                        "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+#                 #"https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+#             ] 
+#         },
+
+#       ],
+#     autosize=True,
+#     height=600,
+#     hovermode='closest',
+#     showlegend=False,
+#     mapbox=dict(
+#         style='white-bg',
+#         accesstoken=mapbox_access_token,
+#         bearing=0,
+#         center=dict(
+#             lat=38,
+#             lon=-98
+#         ),
+#         pitch=0,
+#         zoom=2.9,
+
+#     ),
+# )
+
+# fig1.update_traces(textfont_size=14, texttemplate='%{text} Deaths')
 fig1.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------------------------------------FIG 1Half
 import requests
@@ -1135,7 +1201,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 25th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig4
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 26th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig4
             ]
         ),
     ],
