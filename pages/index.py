@@ -1455,61 +1455,53 @@ announcementsHeader = dbc.Col(
     md=8,
 )
 
-announcementsL = dbc.Col(
-    [],
-    md=2,
-)
 
 annoucementsCenter = dbc.Col(
     [
         html.Center(
             children=[
-                    dbc.Jumbotron(
-                        [
-                            html.H1("Transit", className="display-4", style={"color":"#03607d"}),
-                            html.P(
-                                "MTA Bus Riders Ride for Free "
-                                "(Express Bus Riders Still Pay)",
-                                className="lead", style={"color":"#03607d"},
-                            ),
-                            html.Hr(className="my-2"),
-                            html.P(
-                                "Subway Service Cut by a Quarter", style={"color":"#03607d"}),
-                            html.P("No. 4, 5, 6, 7 and the J and D lines, will run locally on all or part of their routes", style={"color":"#03607d"}),
-                            html.P(dbc.Button("Read more", color="info", href="https://www.nytimes.com./2020/03/24/nyregion/coronavirus-nyc-mta-cuts-.html"), className="lead"),
-                        ]
-                    )
+                dbc.Jumbotron(
+                    [
+                        html.H1("Transit", className="display-4", style={"color":"#03607d"}),
+                        html.P(
+                            "MTA Bus Riders Ride for Free "
+                            "(Express Bus Riders Still Pay)",
+                            className="lead", style={"color":"#03607d"},
+                        ),
+                        html.Hr(className="my-2"),
+                        html.P(
+                            "Subway Service Cut by a Quarter", style={"color":"#03607d"}),
+                        html.P("No. 4, 5, 6, 7 and the J and D lines, will run locally on all or part of their routes", style={"color":"#03607d"}),
+                        html.P(dbc.Button("Read more", color="info", href="https://www.nytimes.com./2020/03/24/nyregion/coronavirus-nyc-mta-cuts-.html"), className="lead"),
+                    ]
+                )
             ]
         )
     ],
     md=8,
 )
 
-announcementsR = dbc.Col(
-    [],
-    md=2,
-)
 
 shopAnnouncementsCenter = dbc.Col(
     [
         html.Center(
             children=[
-                    dbc.Jumbotron(
-                        [
-                            html.H1("Special Shopping Hours", className="display-6", style={"color":"#03607d"}),
-                            html.Span(' ', className='mr-1'),
-                            html.P("Whole Foods are open one hour before their normal opening time for seniors 60 and above every day.", style={"color":"#03607d"}, className="lead"),
-                            html.P("Trader Joe's are open just for seniors 65 and above 9 a.m. to 10 a.m. every day.", className="lead", style={"color":"#03607d"}),
-                            html.Hr(className="my-2"),
-                            html.P("Stop-and-Shop's are open 6 am to 7:30 am every day for those age 60 and older and younger customers with weakened immune systems.", style={"color":"#03607d"},className="lead"),
-                            html.P("Costco's are open for seniors over age 60 on Tuesdays and Thursdays from 8 to 9 a.m.", style={"color":"#03607d"},className="lead"),
-                            html.P("Walgreens has Tuesday weekly senior hour from 8 to 9 a.m., open to caregivers and immediate families, as well.", style={"color":"#03607d"},className="lead"),
-                            html.Hr(className="my-2"),
-                            html.P("Most top retailers have begun offering senior shopping hours, please look on their website for more information.", style={"color":"#03607d"}
-                            ),
-                            html.P(dbc.Button("Read more", color="info", href="https://www.cnbc.com/2020/03/19/coronavirus-how-senior-shopping-hours-work-at-stop-shop-other-grocers.html"), className="lead"),
-                        ]
-                    )
+                dbc.Jumbotron(
+                    [
+                        html.H1("Special Shopping Hours", className="display-6", style={"color":"#03607d"}),
+                        html.Span(' ', className='mr-1'),
+                        html.P("Whole Foods are open one hour before their normal opening time for seniors 60 and above every day.", style={"color":"#03607d"}, className="lead"),
+                        html.P("Trader Joe's are open just for seniors 65 and above 9 a.m. to 10 a.m. every day.", className="lead", style={"color":"#03607d"}),
+                        html.Hr(className="my-2"),
+                        html.P("Stop-and-Shop's are open 6 am to 7:30 am every day for those age 60 and older and younger customers with weakened immune systems.", style={"color":"#03607d"},className="lead"),
+                        html.P("Costco's are open for seniors over age 60 on Tuesdays and Thursdays from 8 to 9 a.m.", style={"color":"#03607d"},className="lead"),
+                        html.P("Walgreens has Tuesday weekly senior hour from 8 to 9 a.m., open to caregivers and immediate families, as well.", style={"color":"#03607d"},className="lead"),
+                        html.Hr(className="my-2"),
+                        html.P("Most top retailers have begun offering senior shopping hours, please look on their website for more information.", style={"color":"#03607d"}
+                        ),
+                        html.P(dbc.Button("Read more", color="info", href="https://www.cnbc.com/2020/03/19/coronavirus-how-senior-shopping-hours-work-at-stop-shop-other-grocers.html"), className="lead"),
+                    ]
+                )
             ]
         )
     ],
@@ -1520,16 +1512,16 @@ taxesAnnouncementsCenter = dbc.Col(
     [
         html.Center(
             children=[
-                    dbc.Jumbotron(
-                        [
-                            html.H1("Filing Income Tax", className="display-6", style={"color":"#03607d"}),
-                            html.Span(' ', className='mr-1'),
-                            html.P("New York State's income tax filing deadline is delayed until July 15, 2020.", style={"color":"#03607d"}, className="lead"),
-                            html.Hr(className="my-2"),
-                            html.P("Because New York State requires electronic filing, the date for filing state personal income taxes automatically travels with the federal filing date, which is now July 15. ", style={"color":"#03607d"}),
-                            html.P(dbc.Button("Read more", color="info", href="https://www.tax.ny.gov/default.htm"), className="lead"),
-                        ]
-                    )
+                dbc.Jumbotron(
+                    [
+                        html.H1("Filing Income Tax", className="display-6", style={"color":"#03607d"}),
+                        html.Span(' ', className='mr-1'),
+                        html.P("New York State's income tax filing deadline is delayed until July 15, 2020.", style={"color":"#03607d"}, className="lead"),
+                        html.Hr(className="my-2"),
+                        html.P("Because New York State requires electronic filing, the date for filing state personal income taxes automatically travels with the federal filing date, which is now July 15. ", style={"color":"#03607d"}),
+                        html.P(dbc.Button("Read more", color="info", href="https://www.tax.ny.gov/default.htm"), className="lead"),
+                    ]
+                )
             ]
         )
     ],
@@ -1540,16 +1532,16 @@ unemploymentAnnouncementsCenter = dbc.Col(
     [
         html.Center(
             children=[
-                    dbc.Jumbotron(
-                        [
-                            html.H1("Filing for Unemployment", className="display-6", style={"color":"#03607d"}),
-                            html.Span(' ', className='mr-1'),
-                            html.P("If you filed for unemployment during the COVID-19 pandemic, you do not need to prove you are searching for employment to make a claim. ", style={"color":"#03607d"}, className="lead"),
-                            html.Hr(className="my-2"),
-                            html.P("Department of Labor Commissioner Reardon has signed a new order that limits all work search activities for all unemployment claimants. No activities are required during the pandemic to receive unemployment benefits.", style={"color":"#03607d"}),
-                            html.P(dbc.Button("Read more", color="info", href="https://labor.ny.gov/ui/how_to_file_claim.shtm"), className="lead"),
-                        ]
-                    )
+                dbc.Jumbotron(
+                    [
+                        html.H1("Filing for Unemployment", className="display-6", style={"color":"#03607d"}),
+                        html.Span(' ', className='mr-1'),
+                        html.P("If you filed for unemployment during the COVID-19 pandemic, you do not need to prove you are searching for employment to make a claim. ", style={"color":"#03607d"}, className="lead"),
+                        html.Hr(className="my-2"),
+                        html.P("Department of Labor Commissioner Reardon has signed a new order that limits all work search activities for all unemployment claimants. No activities are required during the pandemic to receive unemployment benefits.", style={"color":"#03607d"}),
+                        html.P(dbc.Button("Read more", color="info", href="https://labor.ny.gov/ui/how_to_file_claim.shtm"), className="lead"),
+                    ]
+                )
             ]
         )
     ],
@@ -1557,46 +1549,28 @@ unemploymentAnnouncementsCenter = dbc.Col(
 )
 
 
-
-selectedWritingsHeaderL = dbc.Col(
-    [],
-    md=2,
-)
 selectedWritingsHeaderCenter = dbc.Col(
     [
         html.Center(
             children=[
-                    html.Img(src=app.get_asset_url('Covid19-Website-R7-000_0038_Layer-28.png'), style={'display': 'block', 'width':'100%'}),
-                    html.Img(src=app.get_asset_url('mindfulnessShopping.gif'), style={'display': 'block', 'width':'100%'}),
-                    html.Br(),
-                    html.Span(' ', className='mr-1'),
+                html.Img(src=app.get_asset_url('Covid19-Website-R7-000_0038_Layer-28.png'), style={'display': 'block', 'width':'100%'}),
+                html.Img(src=app.get_asset_url('mindfulnessShopping.gif'), style={'display': 'block', 'width':'100%'}),
+                html.Br(),
+                html.Span(' ', className='mr-1'),
             ]
         )
     ],
     md=8,
 )
-selectedWritingsHeaderR = dbc.Col(
-    [],
-    md=2,
-)
 
 
-
-collapseEniqueArticleL = dbc.Col(
-    [],
-    md=2,
-)
 collapseEniqueArticle = dbc.Col(
     [
         html.Center(
-
             html.Div(
                 [
                     dbc.Card(
                         dbc.CardBody(
-                    # dbc.Button("Read More", id="alert-toggle-auto", className="mr-1", color="info"),
-                    # html.Hr(),
-                    # dbc.Alert(
                         [
                             html.H4("Mindfulness When Shopping",className="card-text",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
                             html.P(
@@ -1679,29 +1653,70 @@ collapseEniqueArticle = dbc.Col(
                             ),
                             html.Hr(),
                             html.P(
-                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':35, 'marginBottom':0},
+                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':28, 'marginBottom':0},
                                 className="card-text"),
-                        ])#,classname="w-75 mb-3",
-                    #     id="alert-auto",
-                    #     is_open=False,
-                    #     duration=3000000,#50 minutes
-                        # color="light",
-                    ),
+                            ]
+                        )
+                    )
                 ]
             )
         )
     ],
     md=8,
 )
-collapseEniqueArticleR = dbc.Col(
-    [],
-    md=2,
+
+
+restoringPeaceCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+                html.Img(src=app.get_asset_url('restoringPeace.png'), style={'display': 'block', 'width':'100%'}),
+                html.Br(),
+                html.Span(' ', className='mr-1'),
+                html.Div(
+                    [
+                        dbc.Card(
+                            dbc.CardBody(
+                            [
+                                html.H4("Restoring Peace Within Yourself",className="card-text",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
+                                html.P(
+                                    "We understand how a pandemic can create anxiety, panic and stress, especially with how fast the worldwide spread has been. We would like to help you restore peace of mind within yourself by introducing the mindfulness practice taught by Thich Nhat Hanh, the father of mindfulness. The following comes from the chapter “Restoring Peace Within Yourself” from his book True Love.",className="card-text"
+                                ),
+                                html.P(
+                                    "During the day, if you practice walking meditation, each step brings you back to the present moment; each step enables you to touch what is beautiful, what is true. And in this way, after a few weeks of practice, joy will become something possible, you will be able to undo many knots within yourself, and you will be able to transform negative energies into joy and peace. The Buddha said this: “The object of your practice should first of all be yourself. Your love for the other, your ability to love another person, depends on your ability to love yourself.” If you are not able to take care of yourself, if you are not able to accept yourself, how could you accept another person and how could you love him or her? So it is necessary to come back to yourself in order to be able to achieve the transformation.",className="card-text"
+                                ),
+                                html.P(
+                                    "Each of us is a king who reigns over a very vast territory that has five rivers. The first river is our body, which we do not know well enough. The second is the river of sensations. Each sensation is a drop of water in this river. There are pleasant sensations, others that are unpleasant, and neutral sensations. To meditate is to sit down on the bank of the river of sensations and identify each sensation as it arises. The third is the river of perceptions, which it is necessary to observe. You must look deeply into their nature in order to understand. The fourth is the river of mental formations, of which there are fifty-one. And finally, the fifth is the river of consciousness.",className="card-text"
+                                ),
+                                html.P(
+                                    "Our territory is really very vast, but we are not responsible kings or queens. We always try to dodge away and we do not keep up a real surveillance of our territory. We have the feeling that there are immense conflicts there, too much suffering, too much pain—that is the reason we are very hesitant to get back to our territory. Our daily practice consists in running away. If we have a moment free, we will make use of it to watch television or read a magazine article so we will not have to go back to our territory. We are afraid of the suffering that is inside us, afraid of war and conflicts.",className="card-text"
+                                ),
+                                html.P(
+                                    "The practice of mindfulness, the practice of meditation, consists of coming back to ourselves in order to restore peace and harmony. The energy with which we can do this is the energy of mindfulness. Mindfulness is a kind of energy that carries with it concentration, understanding, and love. If we come back to ourselves to restore peace and harmony, then helping another person will be a much easier thing."
+                                ),
+                                html.P(
+                                    "Caring for yourself, reestablishing peace in yourself, is the basic condition for helping someone else. So that the other can stop being a bomb, a source of pain for ourselves and others, you really have to help him to defuse the bomb. To be able to provide help, we have to have a little calm, a little joy, a little compassion in ourselves. This is what we get from mindfulness in everyday life, because mindfulness is not something that is only done in a meditation hall; it is also done in the kitchen, in the garden, when we are on the telephone, when we are driving a car, when we are doing the dishes."
+                                ),
+                                html.P(
+                                    "If you can do it this way, three weeks are enough to transform the pain inside you, to bring back your joy in living, to cultivate the energy of compassion with which you can help the person you love. The practice of being there with what is beautiful and with what is healing is something we should do every day, and it is possible to do this in everyday life."
+                                ),
+                                html.P(
+                                    "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!",className="card-text"
+                                ),
+                                html.Hr(),
+                                html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love:A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14}, className="card-text"),
+                                html.P('Intro and Afterword by',style={'fontSize':14},className="card-text"),
+                                dbc.Button('Wen Ping Lin', color="link",href = "www.linkedin.com/in/wenpinglin", size="sm",style={'marginBottom':0, 'marginTop':0}), 
+                            ])
+                        )
+                    ])
+                ]
+            )
+    ],
+    md=8,
 )
 
-washHandsL = dbc.Col(
-    [],
-    md=3,
-)
+
 washHandsC = dbc.Col(
     [
         html.Center(
@@ -1712,15 +1727,7 @@ washHandsC = dbc.Col(
     ],
     md=6,
 )
-washHandsR = dbc.Col(
-    [],
-    md=3,
-)
 
-distanceL = dbc.Col(
-    [],
-    md=3,
-)
 distanceCenter = dbc.Col(
     [
         html.Center(
@@ -1731,13 +1738,6 @@ distanceCenter = dbc.Col(
     ],
     md=6,
 )
-distanceR = dbc.Col(
-    [],
-    md=3,
-)
-
-
-
 
 
 pod1 = [
@@ -1783,21 +1783,6 @@ pod2 = [
 ]
 
 
-
-
-# recsL = dbc.Col(
-#     [
-#         html.Center(
-#             children=[
-#                 # html.Img(src=app.get_asset_url('podcastButtonL.jpg'), style={'display': 'block', 'width':'65%'})
-#             ]
-#         )
-#     ],
-#     md=3,
-# )
-
-singleColumn = dbc.Col([],md=1)
-
 recsCenter = dbc.Col(
     [
         html.Center(
@@ -1821,18 +1806,11 @@ recsCenter = dbc.Col(
     ],
     md=10,
 )
-# recsR = dbc.Col(
-#     [
-#         html.Center(
-#             children=[
-#                 # html.Img(src=app.get_asset_url('podcast2.jpg'), style={'display': 'block', 'width':'65%'})
-#             ]
-#         )
-#     ],
-#     md=4,
-# )
 
 
+singleColumn = dbc.Col([],md=1)
+doubleColumn = dbc.Col([],md=2)
+tripleColumn = dbc.Col([],md=3)
 
 @app.callback(
     Output("alert-auto", "is_open"),
@@ -1868,19 +1846,20 @@ layout = [
         # dbc.Row([columnDistC, columnDistR, columnDistL]),
         # dbc.Row([columnDistbottomCenter]),  
 
-        dbc.Row([collapseEniqueArticleL,announcementsHeader,collapseEniqueArticleR]),
-        dbc.Row([announcementsL, annoucementsCenter, announcementsR]),
-        dbc.Row([announcementsL, shopAnnouncementsCenter, announcementsR]),
-        dbc.Row([announcementsL, taxesAnnouncementsCenter, announcementsR]),
-        dbc.Row([announcementsL, unemploymentAnnouncementsCenter, announcementsR]),
+        dbc.Row([doubleColumn,announcementsHeader,doubleColumn]),
+        dbc.Row([doubleColumn, annoucementsCenter, doubleColumn]),
+        dbc.Row([doubleColumn, shopAnnouncementsCenter, doubleColumn]),
+        dbc.Row([doubleColumn, taxesAnnouncementsCenter, doubleColumn]),
+        dbc.Row([doubleColumn, unemploymentAnnouncementsCenter, doubleColumn]),
 
-        dbc.Row([selectedWritingsHeaderL, selectedWritingsHeaderCenter, selectedWritingsHeaderR]),
+        dbc.Row([doubleColumn, selectedWritingsHeaderCenter, doubleColumn]),
 
-        dbc.Row([collapseEniqueArticleL,collapseEniqueArticle,collapseEniqueArticleR]),
+        dbc.Row([doubleColumn,collapseEniqueArticle, doubleColumn]),
+        dbc.Row([doubleColumn,restoringPeaceCenter, doubleColumn]),
 
-        dbc.Row([washHandsL,washHandsC,washHandsR]),
+        dbc.Row([tripleColumn,washHandsC,tripleColumn]),
 
-        dbc.Row([distanceL, distanceCenter, distanceR]),
+        dbc.Row([tripleColumn, distanceCenter, tripleColumn]),
         dbc.Row([singleColumn,recsCenter,singleColumn]),        
         ]
 
