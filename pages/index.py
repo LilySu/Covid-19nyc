@@ -14,12 +14,12 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
-df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-24.csv")
-df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-24.csv")
-df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-24.csv")
-df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-24.csv")
-df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-24.csv")
-df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
+df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-26.csv")
+df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-26.csv")
+df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-26.csv")
+# df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-24.csv")
+# df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-24.csv")
+# df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
 diff_from_day_before= pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/diff_from_day_before_county2.csv")
 
 
@@ -481,7 +481,7 @@ for i,j in zip(range(26), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
-            y=-400,
+            y=-500,
             xref="x",
             yref="y",
             text=str(j)[:-2]+"<br> total",
@@ -538,7 +538,7 @@ fig2.update_layout(
     yaxis=dict(title_text="Confirmed Cases",color='#05b9f0'),
     title = "DAY-TO-DAY ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
     font=dict(family='Arial',
-    color='#05b9f0'),
+    color='rgb(37,37,37)'),
     plot_bgcolor='rgba(0,0,0,0)', 
 )
 
@@ -627,31 +627,34 @@ fig4.update_scenes(
 
 annotations = []
 
-annotations.append(dict(xref='paper', x=.990, y=50000,
+annotations.append(dict(xref='paper', x=.992, y=66000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
+                                        color='#9e92f6',
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.99, y=65000,
+annotations.append(dict(xref='paper',  x=.992, y=83000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
+                                        color='#68CEF3',
                                         size=20),
                               showarrow=False))
-annotations.append(dict(xref='paper', x=1.01, y=78600,
+annotations.append(dict(xref='paper', x=1.001, y=74500,
                               xanchor='right', yanchor='bottom',
                               text='China',
                               font=dict(family='Arial',
+                                        color = '#e7b1c7',
                                         size=20),
                               showarrow=False))
 # Title
 annotations.append(dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='CHINA VS. ITALY VS. UNITED STATES, COVID-19 CONFIRMED CASES',
                               font=dict(family='Arial',
-                                        size=30,
+                                        size=20,
                                         color='rgb(37,37,37)'),
                               showarrow=False))
 # Source
@@ -665,29 +668,32 @@ annotations.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
 
 # Add Annotations with Buttons
 
-all_annotations = [dict(xref='paper', x=1.005, y=78600,
+all_annotations = [dict(xref='paper', x=1.002, y=74500,
                               xanchor='right', yanchor='bottom',
                               text='China',
                               font=dict(family='Arial',
+                                        color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                   dict(xref='paper', x=0.99, y=65000,
+                   dict(xref='paper', x=0.992, y=66000,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
+                                        color='#9e92f6',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.99, y=50000,
+                     dict(xref='paper', x=0.992, y=83000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
+                                        color='#68CEF3',
                                         size=20),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='CHINA VS. ITALY VS. UNITED STATES, COVID-19 CONFIRMED CASES',
                               font=dict(family='Arial',
-                                        size=30,
+                                        size=20,
                                         color='rgb(37,37,37)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
@@ -699,23 +705,25 @@ all_annotations = [dict(xref='paper', x=1.005, y=78600,
                               showarrow=False)]
 
 
-italy_annotations = [dict(xref='paper', x=0.99, y=65500,
+italy_annotations = [dict(xref='paper', x=0.992, y=74500,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
+                                        color='#9e92f6',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.99, y=50000,
+                     dict(xref='paper', x=0.992, y=83000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
+                                        color='#68CEF3',
                                         size=20),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='China vs. Italy vs. United States, Covid-19 Confirmed Cases',
                               font=dict(family='Arial',
-                                        size=30,
+                                        size=20,
                                         color='rgb(37,37,37)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
@@ -726,23 +734,25 @@ italy_annotations = [dict(xref='paper', x=0.99, y=65500,
                                         color='rgb(150,150,150)'),
                               showarrow=False)]
 
-china_annotations = [dict(xref='paper', x=1.01, y=78600,
+china_annotations = [dict(xref='paper', x=1.01, y=74600,
                               xanchor='right', yanchor='bottom',
                               text='China',
                               font=dict(family='Arial',
+                                        color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=50000,
+                     dict(xref='paper', x=0.999, y=83000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
+                                        color='#68CEF3',
                                         size=20),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='Covid-19 Confirmed Cases China vs. Italy vs. United States',
+                              text='CHINA VS. ITALY VS. UNITED STATES, COVID-19 CONFIRMED CASES',
                               font=dict(family='Arial',
-                                        size=30,
+                                        size=20,
                                         color='rgb(37,37,37)'),
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.5, y=-0.1,
@@ -1161,7 +1171,7 @@ columnTopRight = dbc.Col(
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 26, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 26, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1586,7 +1596,7 @@ collapseEniqueArticle = dbc.Col(
                             ),
                             html.Hr(),
                             html.P(
-                                "Article written by E. Grijalva",style={'fontSize':14, 'marginTop':35, 'marginBottom':35},
+                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':35, 'marginBottom':35},
                                 className="mb-0",
                             ),
                         ],
