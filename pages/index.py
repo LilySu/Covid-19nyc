@@ -95,9 +95,9 @@ color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_demo = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo.add_trace(go.Pie(labels=age, values=[440, 9618, 7445, 2471, 1826, 43], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_demo.add_trace(go.Pie(labels=age, values=[495, 10145, 7869, 2627, 1935, 41], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[9557,12278], name="Gender",marker=dict(colors=color2)),
+fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[10124,12948], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
@@ -110,7 +110,7 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (21,873) IN<br>NYC AS OF MARCH 26, 2020 9 AM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (23,112) IN<br>NYC AS OF MARCH 26, 2020 9 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -138,9 +138,9 @@ color3 = ["#52D3C3","#046162"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_death = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
-fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 15, 57, 72, 137], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 16, 77, 91, 181], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_death.add_trace(go.Pie(labels=gender, values=[112,169], name="Gender",marker=dict(colors=color2)),
+fig_nyc_death.add_trace(go.Pie(labels=gender, values=[149,216], name="Gender",marker=dict(colors=color2)),
               1, 2)
 fig_nyc_death.add_trace(go.Pie(labels=underlying_illness, values=[238,10,33], name="Underlying Illness",marker=dict(colors=color3)),
               1, 3)
@@ -154,7 +154,7 @@ fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_death.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (281) OF COVID-19 IN <br>NYC AS OF MARCH 26, 2020 9AM",
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (365) OF COVID-19 IN <br>NYC AS OF MARCH 26, 2020 9AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1156,13 +1156,12 @@ columnTopAlert = dbc.Col(
         html.Center(
             children=[
                 # html.Img(src=app.get_asset_url('topBanner.png'), style={'display': 'block', 'height':80})
-            #html.H6('New York State: 30,811 Confirmed cases', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
-            #html.H6('Data Above from the New York State Dept. of Health march 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':15}),
+                #html.H6('New York State: 30,811 Confirmed cases', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+                #html.H6('Data Above from the New York State Dept. of Health march 25, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':15}),
             ]
         ),
     ],
     md=12,
-    #style={'paddingLeft':0,'paddingRight':0},
 )
 
 columnTopLeft = dbc.Col(
@@ -1192,7 +1191,6 @@ columnTopLeft = dbc.Col(
         ),
     ],
     md=3,
-    #style={'paddingLeft':0,'paddingRight':0},
 )
 
 columnTopCenter = dbc.Col(
@@ -1208,25 +1206,16 @@ columnTopCenter = dbc.Col(
     md=6,
     )
 
-
 columnTopRight = dbc.Col(
     [
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('21,873', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('23,112', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('281', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('365', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Data above from NYS Dept. of Health march 26, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
-            # dbc.Alert(
-            # [
-            # html.A("Data from gov. cuomo march 23, 11 AM'", ahref='https://www.nbcnewyork.com/news/local/this-is-not-a-joke-cuomo-rips-nyc-over-crowds-as-tri-state-case-total-nears-20000/2339351/', className="alert-link"),
-            # ],
-            # color = "primary",
-            # ),
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
-            # html.H1('43', style={'fontSize':68, 'color':'#05b9f0', 'marginBottom':0}),#fig4
-            # html.H6('', style={'fontSize':20, 'marginTop':22, 'marginBottom':0}),
             ]
         ),
 
@@ -1237,13 +1226,12 @@ columnTopRight = dbc.Col(
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 26, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 26, 5 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
     md=3,
 )
-
 column0bottomCenter = dbc.Col(
     [
         html.Center(
@@ -1258,8 +1246,6 @@ column0bottomCenter = dbc.Col(
     ],
     md=12,
 )
-
-
 column0bottomCenter2 = dbc.Col(
     [
         html.Center(
@@ -1282,9 +1268,6 @@ column1Left = dbc.Col(
     ],
     md=6
 )
-
-
-
 column1Right = dbc.Col(
     [
         html.Center(
@@ -1300,7 +1283,6 @@ column1Right = dbc.Col(
     ],
     md=6
 )
-
 column1bottomCenter = dbc.Col(
     [
         html.Center(
@@ -1343,7 +1325,6 @@ column2Right = dbc.Col(
     ],
     md=5,
 )
-
 column2bottomCenter = dbc.Col(
     [
         html.Center(
@@ -1354,7 +1335,6 @@ column2bottomCenter = dbc.Col(
     ],
     md=12,
 )
-
 columnStackedCounty = dbc.Col(
     [
         html.Center(
@@ -1367,10 +1347,6 @@ columnStackedCounty = dbc.Col(
     ],
     md=12,
 )
-
-
-
-
 
 
 column3CenterAll = dbc.Col(
@@ -1616,23 +1592,25 @@ collapseEniqueArticle = dbc.Col(
 
             html.Div(
                 [
-                    dbc.Button("Read More", id="alert-toggle-auto", className="mr-1", color="info"),
-                    html.Hr(),
-                    dbc.Alert(
+                    dbc.Card(
+                        dbc.CardBody(
+                    # dbc.Button("Read More", id="alert-toggle-auto", className="mr-1", color="info"),
+                    # html.Hr(),
+                    # dbc.Alert(
                         [
-                            html.H4("Mindfulness When Shopping", className="alert-heading",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
+                            html.H4("Mindfulness When Shopping",className="card-text",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
                             html.P(
-                                "It’s difficult to stay home during this crisis if we’re ill-prepared. We have to stock up on food, snacks, vitamins, hand sanitizer and, of course, toilet paper. It’s important to have a clean booty during a pandemic."
+                                "It’s difficult to stay home during this crisis if we’re ill-prepared. We have to stock up on food, snacks, vitamins, hand sanitizer and, of course, toilet paper. It’s important to have a clean booty during a pandemic.",className="card-text"
                             ),
                             html.P(
-                                "That’s why shopping for quarantine life has become an event. Thanks to the hours of predictive programming instilled into our minds by post-apocalyptic movies centering on societal collapse, we haven’t been reduced to chaotic creatures. However, as someone who is still assisting customers, both young and old, I have noticed an array of mindfulness and lack thereof when it comes to shopping. "
+                                "That’s why shopping for quarantine life has become an event. Thanks to the hours of predictive programming instilled into our minds by post-apocalyptic movies centering on societal collapse, we haven’t been reduced to chaotic creatures. However, as someone who is still assisting customers, both young and old, I have noticed an array of mindfulness and lack thereof when it comes to shopping. ",className="card-text"
                             ),
                             html.P(
-                                "So here are a few tips you can use to protect yourself and others when shopping."
+                                "So here are a few tips you can use to protect yourself and others when shopping.",className="card-text"
                             ),
-                            html.H5("Mask & Gloves ", className="alert-heading",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
+                            html.H5("Mask & Gloves ",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "Seriously. We’re at a point where you have to assume someone has touched the item you just grabbed, whether it’s an employee or another customer. It helps you, the employees, fellow customers, and your loved ones. The addition of the mask can help ease any anxieties that employees may have, and it adds a layer of protection for you, too. "
+                                "Seriously. We’re at a point where you have to assume someone has touched the item you just grabbed, whether it’s an employee or another customer. It helps you, the employees, fellow customers, and your loved ones. The addition of the mask can help ease any anxieties that employees may have, and it adds a layer of protection for you, too. ",className="card-text"
                             ),
                             html.P(
                                 "According to the Centers for Disease Control and Prevention (CDC), It is recommended to use nitrile gloves, natural rubber gloves, or polychloroprene gloves, as they provide higher elasticity than vinyl gloves. "
@@ -1646,69 +1624,68 @@ collapseEniqueArticle = dbc.Col(
                             html.P(
                                 "If possible, you can help by reaching out to local hospitals and donating masks. "
                             ),
-                            html.H5("What to Do", className="alert-heading",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
+                            html.H5("What to Do",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "One store will not operate like the other, especially if you are frequenting independent pharmacies, grocery stores, and food processors. Make an attempt to learn their style of operations, checkout procedures, payment options, hours, and safety precautions.For example, Stop and Shop allow senior citizens (60-year-olds and over) to shop between 6-7:30 am, while Trader Joe’s is only allowing 30 customers in the store at one time."
+                                "One store will not operate like the other, especially if you are frequenting independent pharmacies, grocery stores, and food processors. Make an attempt to learn their style of operations, checkout procedures, payment options, hours, and safety precautions.For example, Stop and Shop allow senior citizens (60-year-olds and over) to shop between 6-7:30 am, while Trader Joe’s is only allowing 30 customers in the store at one time.",className="card-text"
                             ),
                             html.P(
-                                "Generally, you can avoid the crowds during the early mornings, because as the saying goes: the early bird catches the worm. Just pay attention to any updates that shops may have via their social media accounts, or call ahead if you’re not sure."
+                                "Generally, you can avoid the crowds during the early mornings, because as the saying goes: the early bird catches the worm. Just pay attention to any updates that shops may have via their social media accounts, or call ahead if you’re not sure.",className="card-text"
                             ),
-                            html.H5("Know What You Want", className="alert-heading",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
+                            html.H5("Know What You Want",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
                                 "For real, this isn’t the time to be window shopping. With the ever-increasing descent upon grocery stores and pharmacies, it’s imperative to have a list of the items you will be needing. "
                             ),
                             html.P(
-                                "The quicker you are the quicker the checkout line will move, which will result in shorter exposure times. If you need help figuring out how to shop, refer to the god-awful film, “Jingle All the Way” starring Arnold Schwarzenegger and Sinbad."
+                                "The quicker you are the quicker the checkout line will move, which will result in shorter exposure times. If you need help figuring out how to shop, refer to the god-awful film, “Jingle All the Way” starring Arnold Schwarzenegger and Sinbad.",className="card-text"
                             ),
-                            html.H5("Gimme Some Space", className="alert-heading",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
+                            html.H5("Gimme Some Space",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
                                 "People are touching, smiling, and not respecting your personal space. The whole time my mind is thinking, 'Gimme some space, bro!' "
                             ),
                             html.P(
-                                "Do you people even understand what’s happening out here? I’m not trying to add to the fear-mongering tactics some have accused the media of using, but if we don’t take this seriously we will be risking people’s health by extending this pandemic’s life span."
+                                "Do you people even understand what’s happening out here? I’m not trying to add to the fear-mongering tactics some have accused the media of using, but if we don’t take this seriously we will be risking people’s health by extending this pandemic’s life span.",className="card-text"
                             ),
                             html.P(
-                                "Please practice social distancing. Communicate clearly and thoroughly from the recommended six-foot distance. Keep in mind, that if you’re on a possible collision course with someone waving is one of the best non-verbal cues that you can rely on if you’re having trouble commanding a person’s attention."
+                                "Please practice social distancing. Communicate clearly and thoroughly from the recommended six-foot distance. Keep in mind, that if you’re on a possible collision course with someone waving is one of the best non-verbal cues that you can rely on if you’re having trouble commanding a person’s attention.",className="card-text"
                             ),
                             html.P(
                                 "Remember, if you can smell someone’s breath, cologne, or body odor you are too close."
                             ),
-                            html.H5("Wipe Everything Down", className="alert-heading",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
+                            html.H5("Wipe Everything Down",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "Once you’re home, it’s important to wipe down any of the items you may have purchased, whether it’s packaged food products, produce, or home supplies. If it’s possible, designate an area at home that will be used to place outside items on. Wipe down this area after everything is put away. "
+                                "Once you’re home, it’s important to wipe down any of the items you may have purchased, whether it’s packaged food products, produce, or home supplies. If it’s possible, designate an area at home that will be used to place outside items on. Wipe down this area after everything is put away. ",className="card-text"
                             ),
                             html.P(
-                                "A thorough cleaning of fruits and veggies is crucial before they are stored away, even for fruits that are protected by an out layer, like oranges, bananas, and melons. A simple soak/wash in a bowl of water with vinegar (apple cider vinegar or white vinegar) and a gentle scrub with soap would suffice."
+                                "A thorough cleaning of fruits and veggies is crucial before they are stored away, even for fruits that are protected by an out layer, like oranges, bananas, and melons. A simple soak/wash in a bowl of water with vinegar (apple cider vinegar or white vinegar) and a gentle scrub with soap would suffice.",className="card-text"
                             ),
                             html.P(
-                                "For those of you that use reusable bags, especially those made from cloth, it’s also essential to clean the bag, too. "
+                                "For those of you that use reusable bags, especially those made from cloth, it’s also essential to clean the bag, too. ",className="card-text"
                             ),
-                            html.H5("R-E-S-P-E-C-T", className="alert-heading",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
+                            html.H5("R-E-S-P-E-C-T",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "In America, we live in such a desensitized society that people watch police killings on their phones while eating their avocado toast. "
+                                "In America, we live in such a desensitized society that people watch police killings on their phones while eating their avocado toast. ",className="card-text"
                             ),
                             html.P(
                                 "We lack empathy.", className="blockquote"
                             ),
                             html.P(
-                                "You don’t care about my plight or the social injustices that affect me? Whatever. That was before this new situation engulfed America, and now we’re in this together."
+                                "You don’t care about my plight or the social injustices that affect me? Whatever. That was before this new situation engulfed America, and now we’re in this together.",className="card-text"
                             ),
                             html.P(
-                                "So you may have looked down on or ignored the so-called low-skilled workers two months ago, but now we’re the ones you seek for cleanliness, supplies, food, transportation, education, and the normality that dissolved, due to this pandemic, yet you still yearn for to calm your anxieties. "
+                                "So you may have looked down on or ignored the so-called low-skilled workers two months ago, but now we’re the ones you seek for cleanliness, supplies, food, transportation, education, and the normality that dissolved, due to this pandemic, yet you still yearn for to calm your anxieties. ",className="card-text"
                             ),
                             html.P(
-                                "We don’t want to be out here, but we are. We’re risking our own health and that of our loved ones, which is making your life easier. Please take the time to show your appreciation in a non-condescending fashion. We are essential workers. "
+                                "We don’t want to be out here, but we are. We’re risking our own health and that of our loved ones, which is making your life easier. Please take the time to show your appreciation in a non-condescending fashion. We are essential workers. ",className="card-text"
                             ),
                             html.Hr(),
                             html.P(
-                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':35, 'marginBottom':35},
-                                className="mb-0",
-                            ),
-                        ],
-                        id="alert-auto",
-                        is_open=False,
-                        duration=3000000,#50 minutes
-                        color="info",
+                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':35, 'marginBottom':0},
+                                className="card-text"),
+                        ])#,classname="w-75 mb-3",
+                    #     id="alert-auto",
+                    #     is_open=False,
+                    #     duration=3000000,#50 minutes
+                        # color="light",
                     ),
                 ]
             )
@@ -1729,7 +1706,7 @@ washHandsC = dbc.Col(
     [
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('WashHands.jpg'), style={'display': 'block', 'width':'100%'})
+            html.Img(src=app.get_asset_url('WashHands.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':40})
             ]
         )
     ],
@@ -1769,10 +1746,10 @@ pod1 = [
         [
             html.H5("What's your Plan", className="card-title"),
             html.P(
-                "Let's face it, it's likely you will get sick. Are you prepared if hospitalized?",
+                "Let's face it, it's likely you will get sick. Are you prepared?",
                 className="card-text",
             ),
-            dbc.Button("Prepare a Binder", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
+            dbc.Button("Get Prepared", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
         ]
     ),
 ]
@@ -1786,7 +1763,7 @@ trisacard = [
                 "Watch things that make you laugh, smile, or feel good.",
                 className="card-text",
             ),
-            dbc.Button("Go to Youtube Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
+            dbc.Button("Go to Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
         ]
     ),
 ]
@@ -1800,7 +1777,7 @@ pod2 = [
                 "Let's get informed and work on a better version of ourselves.",
                 className="card-text",
             ),
-            dbc.Button("Go to Spotify Playlist", className="mr-1", color="info", href="https://open.spotify.com/playlist/65XgqkWUTIdLZm9rXqTp3x"),
+            dbc.Button("Listen Now", className="mr-1", color="info", href="https://open.spotify.com/playlist/65XgqkWUTIdLZm9rXqTp3x"),
         ]
     ),
 ]
@@ -1818,24 +1795,31 @@ pod2 = [
 #     ],
 #     md=3,
 # )
+
+singleColumn = dbc.Col([],md=1)
+
 recsCenter = dbc.Col(
     [
         html.Center(
             children=[
                 html.Span(' ', className='mr-1'),
                 dbc.CardGroup(
-                    dbc.CardColumns(
-                        [
-                            dbc.Card(pod1, color="light"),
-                            dbc.Card(trisacard, color="light"),
-                            dbc.Card(pod2, color="light"),
-                        ]
+                    dbc.Card(
+                        dbc.CardBody(
+                            dbc.CardColumns(
+                                [
+                                    dbc.Card(pod1, color="light"),
+                                    dbc.Card(trisacard, color="light"),
+                                    dbc.Card(pod2, color="light"),
+                                ]
+                            )
+                        )
                     )
                 )
             ]
         )
     ],
-    md=12,
+    md=10,
 )
 # recsR = dbc.Col(
 #     [
@@ -1897,6 +1881,6 @@ layout = [
         dbc.Row([washHandsL,washHandsC,washHandsR]),
 
         dbc.Row([distanceL, distanceCenter, distanceR]),
-        dbc.Row([recsCenter]),        
+        dbc.Row([singleColumn,recsCenter,singleColumn]),        
         ]
 

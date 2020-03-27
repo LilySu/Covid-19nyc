@@ -3,7 +3,7 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from app import application, app
 from pages import index, actions, bulletin, predictions
 import dash_html_components as html
@@ -12,44 +12,12 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output
 from flask import Flask, send_from_directory
 
-
-
-# app = dash.Dash(__name__)
-
-# app.layout = html.Div([
-#     dcc.Tabs(id="tabs-styled-with-props", value='tab-1', children=[
-#         dcc.Tab(label='1', value='tab-1'),
-#         dcc.Tab(label='2', value='tab-2'),
-#     ], colors={
-#         "border": "white",
-#         "primary": "gold",
-#         "background": "cornsilk"
-#     }),
-#     html.Div(id='tabs-content-props')
-# ])
-
-# @app.callback(Output('tabs-content-props', 'children'),
-#               [Input('tabs-styled-with-props', 'value')])
-# def render_content(tab):
-#     if tab == 'tab-1':
-#         return html.Div([
-#             html.H3('Tab content 1')
-#         ])
-#     elif tab == 'tab-2':
-#         return html.Div([
-#             html.H3('Tab content 2')
-#         ])
-
-# if __name__ == '__main__':
-#     app.run_server(debug=True)
-
+#serve favicon
 server = Flask(__name__, static_folder='static')
 @server.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(server.root_path, 'static'),
                                'favicon.ico', mimetype='assets/favicon.ico')
-
-
 
 
 # Navbar docs: https://dash-bootstrap-components.opensource.faculty.ai/l/components/navbar
@@ -83,45 +51,11 @@ def favicon():
 # fa (font awesome) : https://fontawesome.com/icons/github-square?style=brands
 # mr (margin right) : https://getbootstrap.com/docs/4.3/utilities/spacing/
 # className='lead' : https://getbootstrap.com/docs/4.3/content/typography/#lead
-footer = dbc.Container(
-    dbc.Row(
-        dbc.Col(
-            html.P(
-                html.Center(
-                    [
-                        html.Br(),
-                        html.Span(' Powered by Data Analytics NYC', className='mr-2'), 
-                        html.Br(),
-                        html.Span(' ', className='mr-1'), 
-                        html.Br(),
-                        html.A(html.I(className='fab fa-github-square mr-1'), href='https://github.com/LilySu/Covid-19nyc'), 
-                        html.Span(' Data Analytics by Lily Su', className='mr-1'), 
-                        html.A(html.I(className='fab fa-github-square mr-1'), href='https://www.linkedin.com/in/lilyxsu/'), 
-                        html.Br(),
-                        html.Span(' ', className='mr-1'), 
-                        html.Br(),
-                        html.A(html.I(className='fa fa-id-card mr-1'), href='http://www.joshmongeau.com/'), 
-                        html.Span(' Design by Josh Mongeau', className='mr-1'), 
-                        html.A(html.I(className='fa fa-id-card mr-1'), href='http://www.joshmongeau.com/'), 
-                        html.Br(),
-                        html.Span(' ', className='mr-1'), 
-                        html.Br(),
-                        html.A(html.I(className='fa fa-hand-spock mr-1'), href='http://dataanalyticsnyc.com/'), 
-                        html.Span(' ', className='mr-1'), 
-                        html.Br(),
-                        html.Span(' ', className='mr-1'),
-                        html.Br(), 
-                    ], 
-                    className='lead', style={ 'fontSize': 18}
-                )
-            )
-        )
-    )
-)
 
 
 
-columnTop = dbc.Col(
+
+staticNav = dbc.Col(
     [
         dbc.Table(
             html.Center(
@@ -136,7 +70,7 @@ columnTop = dbc.Col(
     md=12,
 )
 
-footer2 = dbc.Col([
+footer = dbc.Col([
             html.Div(
             [
                 dbc.Alert(
@@ -150,28 +84,6 @@ footer2 = dbc.Col([
                                         html.A(html.I(className='fab fa-twitter-square mr-1'), href='https://twitter.com/printing_3d'),
                                         html.A(html.I(className='fab fa-facebook-square mr-1'), href='https://www.facebook.com/dataAnalyticsNYC/?ref=bookmarks'),
                                         html.A(html.I(className='fa fa-inbox mr-1'), href='mailto:lilyxsu@gmail.com'),
-                                        
-                                        # html.Span(' Data Analytics by Lily Su', className='mr-1'), 
-                                        # html.A(html.I(className='fab fa-github-square mr-1'), href='https://www.linkedin.com/in/lilyxsu/'), 
-                                        # html.Br(),
-                                        # html.Span(' ', className='mr-1'), 
-                                        # html.Br(),
-                                        # html.A(html.I(className='fa fa-id-card mr-1'), href='http://www.joshmongeau.com/'), 
-                                        # html.Span(' Design by Josh Mongeau', className='mr-1'), 
-                                        # html.A(html.I(className='fa fa-id-card mr-1'), href='http://www.joshmongeau.com/'), 
-                                        # html.Br(),
-                                        # html.Span(' ', className='mr-1'), 
-                                        # html.Br(),
-                                        # html.A(html.I(className='fa fa-hand-spock mr-1'), href='http://dataanalyticsnyc.com/'), 
-                                        # html.Span(' ', className='mr-1'),
-                                        # html.Br(),
-                                        # html.Span(' ', className='mr-1'),
-                                        # html.Br(),
-                                        # html.Span('Please continue to practice social distancing', className='mr-1'), 
-                                        # html.Br(),
-                                        # html.Span(' ', className='mr-1'),
-                                        # html.Br(),
-                                        # html.Span('This too shall pass.', className='mr-1'), 
                                         html.Br(),
                                         html.Span(' ', className='mr-1'), 
                                         html.Br(),
@@ -183,11 +95,6 @@ footer2 = dbc.Col([
         )],
         md=12,
     )
-    # html.Div(
-#     [
-#         dbc.Alert("This is a danger alert. Scary!", color="danger"),
-#     ]
-# )
 
 
 # Layout docs:
@@ -196,25 +103,20 @@ footer2 = dbc.Col([
 # dbc.Container: https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 app.layout = html.Div([
                 dcc.Location(id='url', refresh=False), 
-                dbc.Row([columnTop]),
+                dbc.Row([staticNav]),
                 dbc.Spinner(html.Div(
                     children=[
                         dbc.Container(id='page-content', className='mt-12', fluid=True), 
                     ],
-                    id="loading-output"), color="info", style={ "width": "30rem", "height": "30rem"}),
+                    id="loading-output"), color="info"),
                 html.Hr(), 
-                footer2,
+                footer,
 ])
 
 
 @app.callback(
     Output("loading-output", "children"), [Input("loading-button", "n_clicks")]
 )
-
-def toggle_alert(n, is_open):
-    if n:
-        return not is_open
-    return is_open
 
 # URL Routing for Multi-Page Apps: https://dash.plot.ly/urls
 @app.callback(Output('page-content', 'children'),
