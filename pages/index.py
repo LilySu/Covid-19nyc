@@ -1540,6 +1540,45 @@ shopAnnouncementsCenter = dbc.Col(
     md=8,
 )
 
+taxesAnnouncementsCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+                    dbc.Jumbotron(
+                        [
+                            html.H1("Filing Income Tax", className="display-6", style={"color":"#03607d"}),
+                            html.Span(' ', className='mr-1'),
+                            html.P("New York State's income tax filing deadline is delayed until July 15, 2020.", style={"color":"#03607d"}, className="lead"),
+                            html.Hr(className="my-2"),
+                            html.P("Because New York State requires electronic filing, the date for filing state personal income taxes automatically travels with the federal filing date, which is now July 15. ", style={"color":"#03607d"}),
+                            html.P(dbc.Button("Read more", color="info", href="https://www.tax.ny.gov/default.htm"), className="lead"),
+                        ]
+                    )
+            ]
+        )
+    ],
+    md=8,
+)
+
+unemploymentAnnouncementsCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+                    dbc.Jumbotron(
+                        [
+                            html.H1("Filing for Unemployment", className="display-6", style={"color":"#03607d"}),
+                            html.Span(' ', className='mr-1'),
+                            html.P("If you filed for unemployment during the COVID-19 pandemic, you do not need to prove you are searching for employment to make a claim. ", style={"color":"#03607d"}, className="lead"),
+                            html.Hr(className="my-2"),
+                            html.P("Department of Labor Commissioner Reardon has signed a new order that limits all work search activities for all unemployment claimants. No activities are required during the pandemic to receive unemployment benefits.", style={"color":"#03607d"}),
+                            html.P(dbc.Button("Read more", color="info", href="https://labor.ny.gov/ui/how_to_file_claim.shtm"), className="lead"),
+                        ]
+                    )
+            ]
+        )
+    ],
+    md=8,
+)
 
 
 
@@ -1848,6 +1887,8 @@ layout = [
         dbc.Row([collapseEniqueArticleL,announcementsHeader,collapseEniqueArticleR]),
         dbc.Row([announcementsL, annoucementsCenter, announcementsR]),
         dbc.Row([announcementsL, shopAnnouncementsCenter, announcementsR]),
+        dbc.Row([announcementsL, taxesAnnouncementsCenter, announcementsR]),
+        dbc.Row([announcementsL, unemploymentAnnouncementsCenter, announcementsR]),
 
         dbc.Row([selectedWritingsHeaderL, selectedWritingsHeaderCenter, selectedWritingsHeaderR]),
 
