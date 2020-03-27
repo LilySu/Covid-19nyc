@@ -95,9 +95,9 @@ color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_demo = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo.add_trace(go.Pie(labels=age, values=[495, 10145, 7869, 2627, 1935, 41], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_demo.add_trace(go.Pie(labels=age, values=[524, 11202, 8745, 2894, 2141, 67], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[10124,12948], name="Gender",marker=dict(colors=color2)),
+fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[11250,13900], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
@@ -110,7 +110,7 @@ fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (23,112) IN<br>NYC AS OF MARCH 26, 2020 9 AM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (25,573) IN<br>NYC AS OF MARCH 27, 2020 9 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -138,11 +138,11 @@ color3 = ["#52D3C3","#046162"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_death = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
-fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 16, 77, 91, 181], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 16, 78, 90, 182], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_death.add_trace(go.Pie(labels=gender, values=[149,216], name="Gender",marker=dict(colors=color2)),
+fig_nyc_death.add_trace(go.Pie(labels=gender, values=[151,215], name="Gender",marker=dict(colors=color2)),
               1, 2)
-fig_nyc_death.add_trace(go.Pie(labels=underlying_illness, values=[238,10,33], name="Underlying Illness",marker=dict(colors=color3)),
+fig_nyc_death.add_trace(go.Pie(labels=underlying_illness, values=[310,11,45], name="Underlying Illness",marker=dict(colors=color3)),
               1, 3)
 
 # Use `hole` to create a donut-like pie chart
@@ -154,7 +154,7 @@ fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_death.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (365) OF COVID-19 IN <br>NYC AS OF MARCH 26, 2020 9AM",
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (366) OF COVID-19 IN <br>NYC AS OF MARCH 27, 2020 9AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1211,17 +1211,17 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('23,112', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('25,573', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('365', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYS Dept. of Health march 26, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('366', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Data above from NYC Dept. of Health march 27, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             ]
         ),
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-26_01.png'), style={'display': 'block', 'height':300})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-27_01.png'), style={'display': 'block', 'height':300})
             ]
         ),
         html.Center(
