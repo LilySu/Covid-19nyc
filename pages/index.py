@@ -479,7 +479,7 @@ for i,j in zip(range(26), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
-            y=-400,
+            y=-500,
             xref="x",
             yref="y",
             text=str(j)[:-2]+"<br> total",

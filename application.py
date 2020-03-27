@@ -142,12 +142,9 @@ footer2 = dbc.Col([
                 dbc.Alert(
                     html.Center(
                                     [
-                                        html.Br(),
-                                        html.Span('Please bear with us as the page loads...', className='mr-2'), 
-                                        html.Br(),
                                         html.Span(' ', className='mr-1'), 
                                         html.Br(),
-                                        html.A(html.I(className='fa fa-id-card mr-1'), href='http://dataanalyticsnyc.com/'), 
+                                        html.A(html.I(className='fa fa-id-card mr-1'), href='http://dataanalyticsnyc.com/',style={"marginTop": 10}), 
                                         html.A(html.I(className='fab fa-github mr-1'), href='https://github.com/LilySu/Covid-19nyc'), 
                                         html.A(html.I(className='fab fa-linkedin mr-1'), href='https://www.linkedin.com/in/lilyxsu/'),
                                         html.A(html.I(className='fab fa-twitter-square mr-1'), href='https://twitter.com/printing_3d'),
@@ -171,12 +168,13 @@ footer2 = dbc.Col([
                                         # html.Span(' ', className='mr-1'),
                                         # html.Br(),
                                         # html.Span('Please continue to practice social distancing', className='mr-1'), 
-                                        html.Br(),
-                                        html.Span(' ', className='mr-1'),
-                                        html.Br(),
-                                        html.Span('This too shall pass.', className='mr-1'), 
+                                        # html.Br(),
+                                        # html.Span(' ', className='mr-1'),
+                                        # html.Br(),
+                                        # html.Span('This too shall pass.', className='mr-1'), 
                                         html.Br(),
                                         html.Span(' ', className='mr-1'), 
+                                        html.Br(),
                                     ], 
                                     className='lead', style={ 'fontSize': 18}
                     ),
@@ -197,14 +195,26 @@ footer2 = dbc.Col([
 # dcc.Location: https://dash.plot.ly/dash-core-components/location
 # dbc.Container: https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 app.layout = html.Div([
-    dcc.Location(id='url', refresh=False), 
-    dbc.Row([columnTop]),
-    # navbar, 
-    dbc.Container(id='page-content', className='mt-12', fluid=True), 
-    html.Hr(), 
-    footer2
+                dcc.Location(id='url', refresh=False), 
+                dbc.Row([columnTop]),
+                dbc.Spinner(html.Div(
+                    children=[
+                        dbc.Container(id='page-content', className='mt-12', fluid=True), 
+                    ],
+                    id="loading-output"), color="info", style={ "width": "30rem", "height": "30rem"}),
+                html.Hr(), 
+                footer2,
 ])
 
+
+@app.callback(
+    Output("loading-output", "children"), [Input("loading-button", "n_clicks")]
+)
+
+def toggle_alert(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 # URL Routing for Multi-Page Apps: https://dash.plot.ly/urls
 @app.callback(Output('page-content', 'children'),
