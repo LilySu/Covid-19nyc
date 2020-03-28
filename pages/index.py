@@ -176,7 +176,11 @@ mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOT
 df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-27.csv')
 fig1 = go.Figure()
 
+fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
+                                    colorscale="YlOrRd", zmin=0, zmax=5,
+                                    marker_opacity=0.08, marker_line_width=0,showscale=False))
 
+# fig1.update_traces(showscale=False)  
 fig1.add_trace(go.Scattermapbox(
         lat=df["Lat"],
         lon=df["Long_"],
@@ -187,7 +191,8 @@ fig1.add_trace(go.Scattermapbox(
             color=(df['log_conf']+7)**0.001,
             opacity=0.01
         ),
-        hovertemplate ='<b>Location</b>: %{text[0]},%{text[1]},%{text[2]}<br>'+
+        hovertemplate ='<b>Location</b>:'+
+        '%{text[1]},%{text[2]}<br>'+
       '<b>Confirmed</b>: %{text[3]}<br>'+
       '<b>Deaths</b>: %{text[4]}<br>'+
       '<b>on March 27, 2020</b>',
@@ -196,32 +201,24 @@ fig1.add_trace(go.Scattermapbox(
 fig1.add_trace(go.Scattermapbox(
         lat=df["Lat"],
         lon=df["Long_"],
-        mode='markers',
+        mode='markers + text',
         text= df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
             size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
-            color='#5CD8FE',
-            opacity=0.008
+            color='rgba(166, 247, 235, 0.38)',
+            opacity=0.04
         ),
-        hovertemplate ='<b>Location</b>: %{text[0]},%{text[1]},%{text[2]}<br>'+
+
+        textfont_size=12, 
+        texttemplate ='<b>Location</b>:'+
+        '%{text[1]},%{text[2]}<br>'+
       '<b>Confirmed</b>: %{text[3]}<br>'+
-      '<b>Deaths</b>: %{text[4]}'+
+      '<b>Deaths</b>: %{text[4]}<br>'+
       '<b>on March 27, 2020</b>',
     ))
-
-fig1.add_trace(go.Scattermapbox(
-        lat=df["Lat"],
-        lon=df["Long_"],
-        # text = us_cities['Confirmed_str'].tolist(),
-        text = df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
-        mode='text',
-        # marker=go.scattermapbox.Marker(
-        #     size=5,
-        #     color='rgba(166, 247, 235, 0.38)',
-        #     opacity=1
-        # ),
-        # hoverinfo='none'
-    ))
+# fig1.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
+#       'Confirmed: %{text[3]}<br>'+
+#       'Deaths: %{text[4]}')
 
 fig1.update_layout(
     mapbox_layers=[
@@ -230,7 +227,6 @@ fig1.update_layout(
             "sourcetype": "raster",
             "source": [
                        "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-                #"https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
             ] 
         },
 
@@ -248,14 +244,11 @@ fig1.update_layout(
             lon=-73.9905038
         ),
         pitch=0,
-        zoom=7.6,
-        # style='light'
+        zoom=7.7,
     ),
 )
 
-fig1.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
-      'Confirmed: %{text[3]}<br>'+
-      'Deaths: %{text[4]}')#+
+
 
 
 # fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
