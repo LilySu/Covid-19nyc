@@ -1707,7 +1707,7 @@ restoringPeaceCenter = dbc.Col(
                                 html.Hr(),
                                 html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love:A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14}, className="card-text"),
                                 html.P('Intro and Afterword by',style={'fontSize':14},className="card-text"),
-                                dbc.Button('Wen Ping Lin', color="link",href = "www.linkedin.com/in/wenpinglin", size="sm",style={'marginBottom':0, 'marginTop':0}), 
+                                dbc.Button('Wen Ping Lin', color="link",href = "https://www.linkedin.com/in/wenpinglin", size="sm",style={'marginBottom':0, 'marginTop':0}), 
                             ])
                         )
                     ])
