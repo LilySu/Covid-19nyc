@@ -177,39 +177,51 @@ df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df
 fig1 = go.Figure()
 
 
-fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
-                                    colorscale="YlOrRd", zmin=0, zmax=3,
-                                    marker_opacity=0.08, marker_line_width=0))
-fig1.update_traces(showscale=False)
-
 fig1.add_trace(go.Scattermapbox(
         lat=df["Lat"],
         lon=df["Long_"],
         mode='markers',
+        text = df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
             size=(df['log_conf'])**1.6,
             color=(df['log_conf']+7)**0.001,
-            opacity=0.08
+            opacity=0.01
         ),
-        hoverinfo='none',
+        hovertemplate ='<b>Location</b>: %{text[0]},%{text[1]},%{text[2]}<br>'+
+      '<b>Confirmed</b>: %{text[3]}<br>'+
+      '<b>Deaths</b>: %{text[4]}<br>'+
+      '<b>on March 27, 2020</b>',
     ))
 
 fig1.add_trace(go.Scattermapbox(
         lat=df["Lat"],
         lon=df["Long_"],
         mode='markers',
-        text= df[["Combined_Key", "Confirmed","Deaths"]],
+        text= df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
             size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
-            color='rgba(166, 247, 235, 0.38)',
-            opacity=0.05
+            color='#5CD8FE',
+            opacity=0.008
         ),
-        hovertemplate ='<b>Location</b>: %{text[0]}<br>'+
-      '<b>Confirmed</b>: %{text[1]}<br>'+
-      '<b>Deaths</b>: %{text[2]}',
-
+        hovertemplate ='<b>Location</b>: %{text[0]},%{text[1]},%{text[2]}<br>'+
+      '<b>Confirmed</b>: %{text[3]}<br>'+
+      '<b>Deaths</b>: %{text[4]}'+
+      '<b>on March 27, 2020</b>',
     ))
 
+fig1.add_trace(go.Scattermapbox(
+        lat=df["Lat"],
+        lon=df["Long_"],
+        # text = us_cities['Confirmed_str'].tolist(),
+        text = df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
+        mode='text',
+        # marker=go.scattermapbox.Marker(
+        #     size=5,
+        #     color='rgba(166, 247, 235, 0.38)',
+        #     opacity=1
+        # ),
+        # hoverinfo='none'
+    ))
 
 fig1.update_layout(
     mapbox_layers=[
@@ -217,7 +229,8 @@ fig1.update_layout(
             "below": 'traces',
             "sourcetype": "raster",
             "source": [
-                       "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                       "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                #"https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
             ] 
         },
 
@@ -231,13 +244,81 @@ fig1.update_layout(
         accesstoken=mapbox_access_token,
         bearing=0,
         center=dict(
-            lat=38,
-            lon=-98
+            lat=40.7465651,
+            lon=-73.9905038
         ),
         pitch=0,
-        zoom=2.9,
+        zoom=7.6,
+        # style='light'
     ),
 )
+
+fig1.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
+      'Confirmed: %{text[3]}<br>'+
+      'Deaths: %{text[4]}')#+
+
+
+# fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
+#                                     colorscale="YlOrRd", zmin=0, zmax=3,
+#                                     marker_opacity=0.08, marker_line_width=0))
+# fig1.update_traces(showscale=False)
+
+# fig1.add_trace(go.Scattermapbox(
+#         lat=df["Lat"],
+#         lon=df["Long_"],
+#         mode='markers',
+#         marker=go.scattermapbox.Marker(
+#             size=(df['log_conf'])**1.6,
+#             color=(df['log_conf']+7)**0.001,
+#             opacity=0.08
+#         ),
+#         hoverinfo='none',
+#     ))
+
+# fig1.add_trace(go.Scattermapbox(
+#         lat=df["Lat"],
+#         lon=df["Long_"],
+#         mode='markers',
+#         text= df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
+#         marker=go.scattermapbox.Marker(
+#             size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
+#             color='rgba(166, 247, 235, 0.38)',
+#             opacity=0.05
+#         ),
+#         hovertemplate ='<b>Location</b>: %{text[:2]}<br>'+
+#       '<b>Confirmed</b>: %{text[3]}<br>'+
+#       '<b>Deaths</b>: %{text[4]}',
+
+#     ))
+
+
+# fig1.update_layout(
+#     mapbox_layers=[
+#         {
+#             "below": 'traces',
+#             "sourcetype": "raster",
+#             "source": [
+#                        "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+#             ] 
+#         },
+
+#       ],
+#     autosize=True,
+#     height=600,
+#     hovermode='closest',
+#     showlegend=False,
+#     mapbox=dict(
+#         style='white-bg',
+#         accesstoken=mapbox_access_token,
+#         bearing=0,
+#         center=dict(
+#             lat=38,
+#             lon=-98
+#         ),
+#         pitch=0,
+#         zoom=2.9,
+#     ),
+# )
 
 
 # fig1 = go.Figure()
@@ -1211,10 +1292,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('25,573', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('26,697', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('366', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYC Dept. of Health march 27, 9 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('450', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Data above from NYC Dept. of Health march 27, 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             ]
         ),
