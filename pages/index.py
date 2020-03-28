@@ -14,9 +14,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
-df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-26.csv")
-df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-26.csv")
-df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-26.csv")
+df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-27.csv")
+df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-27.csv")
+df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-27.csv")
 # df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-24.csv")
 # df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-24.csv")
 # df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
@@ -94,21 +94,21 @@ gender =["Female","Male"]
 color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
-fig_nyc_demo = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo.add_trace(go.Pie(labels=age, values=[524, 11202, 8745, 2894, 2141, 67], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_demo_pie = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
+fig_nyc_demo_pie.add_trace(go.Pie(labels=age, values=[524, 11202, 8745, 2894, 2141, 67], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo.add_trace(go.Pie(labels=gender, values=[11250,13900], name="Gender",marker=dict(colors=color2)),
+fig_nyc_demo_pie.add_trace(go.Pie(labels=gender, values=[11250,13900], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
 # Use `hole` to create a donut-like pie chart
-fig_nyc_demo.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+fig_nyc_demo_pie.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   hovertemplate = '<b>%{label}</b>'
                         '<br><b>Percentage</b>: %{percent}<br>'
                         '<b><b>Number of People</b>: %{value}<br>',
                   textposition='inside', textinfo='percent+label')
 
-fig_nyc_demo.update_layout(
+fig_nyc_demo_pie.update_layout(
     title={
         'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (25,573) IN<br>NYC AS OF MARCH 27, 2020 9 AM",
         'y':0.95,
@@ -137,22 +137,22 @@ underlying_illness =["Had Underlying Illness","Did Not"]
 color3 = ["#52D3C3","#046162"]
 
 # Create subplots: use 'domain' type for Pie subplot
-fig_nyc_death = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
-fig_nyc_death.add_trace(go.Pie(labels=age, values=[0, 16, 78, 90, 182], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_death_pie = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
+fig_nyc_death_pie.add_trace(go.Pie(labels=age, values=[0, 16, 78, 90, 182], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_death.add_trace(go.Pie(labels=gender, values=[151,215], name="Gender",marker=dict(colors=color2)),
+fig_nyc_death_pie.add_trace(go.Pie(labels=gender, values=[151,215], name="Gender",marker=dict(colors=color2)),
               1, 2)
-fig_nyc_death.add_trace(go.Pie(labels=underlying_illness, values=[310,11,45], name="Underlying Illness",marker=dict(colors=color3)),
+fig_nyc_death_pie.add_trace(go.Pie(labels=underlying_illness, values=[310,11,45], name="Underlying Illness",marker=dict(colors=color3)),
               1, 3)
 
 # Use `hole` to create a donut-like pie chart
-fig_nyc_death.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+fig_nyc_death_pie.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   hovertemplate = '<b>%{label}</b>'
                         '<br><b>Percentage</b>: %{percent}<br>'
                         '<b><b>Number of People</b>: %{value}<br>',
                   textposition='inside', textinfo='percent+label')
 
-fig_nyc_death.update_layout(
+fig_nyc_death_pie.update_layout(
     title={
         'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (366) OF COVID-19 IN <br>NYC AS OF MARCH 27, 2020 9AM",
         'y':0.95,
@@ -173,7 +173,7 @@ import json
 with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
   counties = json.load(response)
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-26.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-27.csv')
 fig1 = go.Figure()
 
 
@@ -671,7 +671,7 @@ fig4.update_layout(
         showgrid=False,
         zeroline=False,
         showline=False,
-        showticklabels=False,
+        showticklabels=True,
     ),
     autosize=True,
     margin=dict(
@@ -701,7 +701,7 @@ annotations.append(dict(xref='paper', x=.992, y=66000,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=83000,
+annotations.append(dict(xref='paper',  x=.992, y=97000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -748,7 +748,7 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color='#9e92f6',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=83000,
+                     dict(xref='paper', x=0.992, y=97000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -778,7 +778,7 @@ italy_annotations = [dict(xref='paper', x=0.992, y=74500,
                                         color='#9e92f6',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=83000,
+                     dict(xref='paper', x=0.992, y=97000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -807,7 +807,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=83000,
+                     dict(xref='paper', x=0.999, y=97000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1199,7 +1199,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 26th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig4
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 27th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig4
             ]
         ),
     ],
@@ -1240,7 +1240,7 @@ column0bottomCenter = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.Br(),
             html.Span(' ', className='mr-1'),
-            dcc.Graph(figure=fig_nyc_demo),
+            dcc.Graph(figure=fig_nyc_demo_pie),
             ]
         )
     ],
@@ -1250,7 +1250,7 @@ column0bottomCenter2 = dbc.Col(
     [
         html.Center(
             children=[
-            dcc.Graph(figure=fig_nyc_death),
+            dcc.Graph(figure=fig_nyc_death_pie),
             html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':80}),
             ]
         )
@@ -1624,7 +1624,7 @@ collapseEniqueArticle = dbc.Col(
                                 "Please practice social distancing. Communicate clearly and thoroughly from the recommended six-foot distance. Keep in mind, that if you’re on a possible collision course with someone waving is one of the best non-verbal cues that you can rely on if you’re having trouble commanding a person’s attention.",className="card-text"
                             ),
                             html.P(
-                                "Remember, if you can smell someone’s breath, cologne, or body odor you are too close."
+                                "Remember, if you can smell someone’s breath, cologne, or body odor you are too close.",className="card-text"
                             ),
                             html.H5("Wipe Everything Down",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
@@ -1654,7 +1654,7 @@ collapseEniqueArticle = dbc.Col(
                             ),
                             html.Hr(),
                             html.P(
-                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':28, 'marginBottom':40},
+                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':28, 'marginBottom':28},
                                 className="card-text"),
                             ]
                         )
@@ -1671,7 +1671,7 @@ restoringPeaceCenter = dbc.Col(
     [
         html.Center(
             children=[
-                html.Img(src=app.get_asset_url('restoringPeace.png'), style={'display': 'block', 'width':'100%'}),
+                html.Img(src=app.get_asset_url('restoringPeace.png'), style={'marginTop':60,'display': 'block', 'width':'100%'}),
                 html.Br(),
                 html.Span(' ', className='mr-1'),
                 html.Div(
