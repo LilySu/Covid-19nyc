@@ -1728,8 +1728,9 @@ collapseEniqueArticle = dbc.Col(
                             ),
                             html.Hr(),
                             html.P(
-                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':28, 'marginBottom':28},
+                                "Article written by",style={'fontSize':14, 'marginTop':35, 'marginBottom':0},
                                 className="card-text"),
+                            dbc.Button('Enrique Grijalva', color="link",href = "https://www.linkedin.com/in/enrique-grijalva-15833059", size="sm",style={'marginBottom':0, 'marginTop':0}), 
                             ]
                         )
                     )
@@ -1779,7 +1780,7 @@ restoringPeaceCenter = dbc.Col(
                                     "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!",className="card-text"
                                 ),
                                 html.Hr(),
-                                html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love:A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14}, className="card-text"),
+                                html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love:A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14, 'marginTop':35}, className="card-text"),
                                 html.P('Intro and Afterword by',style={'fontSize':14},className="card-text"),
                                 dbc.Button('Wen Ping Lin', color="link",href = "https://www.linkedin.com/in/wenpinglin", size="sm",style={'marginBottom':0, 'marginTop':0}), 
                             ])
