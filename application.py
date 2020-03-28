@@ -53,22 +53,20 @@ def favicon():
 # className='lead' : https://getbootstrap.com/docs/4.3/content/typography/#lead
 
 
-
-
 staticNav = dbc.Col(
     [
-        dbc.Table(
+        html.Div(
             html.Center(
                 children=[
                         html.Img(src=app.get_asset_url('logo.png'), style={'display': 'block', 'paddingBottom':13, 'paddingTop':11,'width': 100}),
-                        html.Img(src=app.get_asset_url('topBanner.png'), style={'height':80})
-                ]
-            ),
-            bordered=True,
+                        html.Img(src=app.get_asset_url('topBanner.png'), style={'display': 'block', 'width':'50%'})
+                ]),
         )
     ],
     md=12,
 )
+
+
 
 footer = dbc.Col([
             html.Div(

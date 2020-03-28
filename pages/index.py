@@ -1654,7 +1654,7 @@ collapseEniqueArticle = dbc.Col(
                             ),
                             html.Hr(),
                             html.P(
-                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':28, 'marginBottom':0},
+                                "Article written by Enrique Grijalva",style={'fontSize':14, 'marginTop':28, 'marginBottom':40},
                                 className="card-text"),
                             ]
                         )
@@ -1750,7 +1750,7 @@ pod1 = [
                 "Let's face it, it's likely you will get sick. Are you prepared?",
                 className="card-text",
             ),
-            dbc.Button("Get Prepared", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
+            dbc.Button("Plan", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
         ]
     ),
 ]
@@ -1764,7 +1764,7 @@ trisacard = [
                 "Watch things that make you laugh, smile, or feel good.",
                 className="card-text",
             ),
-            dbc.Button("Go to Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
+            dbc.Button("To Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
         ]
     ),
 ]
