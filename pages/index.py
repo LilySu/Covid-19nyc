@@ -30,7 +30,7 @@ top5 = top.tail()
 
 fig_bar_nyc_last_5_days = px.bar(top5, x='date_found_positive', y='New York',
              hover_data=['New York', 'date_found_positive'], color='New York',
-             color_continuous_scale=px.colors.diverging.BrBG,
+             color_continuous_scale=[(0.00, "#553000"), (0.25, "#BF1F58"), (0.5, "#F2B2C0"),(0.75, "#94D6CC"),  (1.00, "#003D30")],
              labels={'date_found_positive':'Date'},
              text = 'New York', height = 220)
 
