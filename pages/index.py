@@ -1747,7 +1747,7 @@ pod1 = [
         [
             html.H5("What's your Plan", className="card-title"),
             html.P(
-                "Let's face it, it's likely you will get sick. Are you prepared?",
+                "Are you prepared if you get sick?",
                 className="card-text",
             ),
             dbc.Button("Plan", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
