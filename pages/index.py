@@ -80,6 +80,7 @@ fig_area_nyc_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 
 #---------------------------------------------
 
 
+
 age = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over", "Unknown"]
 color1 = ["#d7e76f","#046162","#F686A9","#ffcece","#0497AE", "#047484"]
 
@@ -1300,6 +1301,19 @@ columnTopRight = dbc.Col(
     ],
     md=3,
 )
+
+
+columnNeighborhoods = dbc.Col(
+    [
+        html.Center(
+            children=[
+                html.Img(src=app.get_asset_url('ConfirmedCasesByNeighborhood.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':70}),
+                html.H6('Map Released by the  NYC DOH, on March 26', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            ]
+        )
+    ],md=10,
+)
+
 column0bottomCenter = dbc.Col(
     [
         html.Center(
@@ -1896,7 +1910,10 @@ def toggle_alert(n, is_open):
 # layout = dbc.Row([column1, column2])
 layout = [
         dbc.Row([columnTopAlert]),
-        dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]), 
+        dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]),
+
+        dbc.Row([singleColumn,columnNeighborhoods, singleColumn]),
+
         dbc.Row([column0bottomCenter]),
         dbc.Row([column0bottomCenter2]),
 
