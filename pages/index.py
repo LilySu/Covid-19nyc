@@ -147,7 +147,7 @@ fig_pie_nyc_death_age.update_traces(hole=.4, hoverinfo="label+percent+name+value
 
 fig_pie_nyc_death_age.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (517) OF COVID-19 IN <br>NYC AS OF MARCH 27, 2020 4PM",
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (517) OF COVID-19 IN <br>NYC AS OF MARCH 28, 2020 2PM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -408,20 +408,21 @@ fig_map_nyc_timeslider.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig_map_nyc_timeslider.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch27.csv")
+df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch28.csv")
 df_counties_overtime = df_counties_overtime.head(15)
 
 
-fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y='March 27', 
-             text='March 27', 
-             color = 'March 27',
+fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y='March 28', 
+             text='March 28', 
+             color = 'March 28',
              height = 350,
              color_continuous_scale=px.colors.diverging.BrBG,
-             labels={'New York State Counties':'County','March 27':'March 27th Confirmed Cases'})
+             labels={'New York State Counties':'County','March 28':'March 28th Confirmed Cases'})
 fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
 fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
     showlegend=False,
+    autosize=True,
     xaxis_title="",
     font=dict(
     color="#a3a3a3",)
@@ -449,7 +450,7 @@ fig_line_ny_overtime.update_layout(
     yaxis=dict(
         title_text="Confirmed Cases"
     ),
-    autosize=False,
+    autosize=True,
     height=220,
     plot_bgcolor='white',
     showlegend=True,
@@ -1253,7 +1254,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_area_nyc_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on March 28, 10 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on March 28, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1266,7 +1267,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 27th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 28th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1278,10 +1279,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('29,158', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('29,766', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('517', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('Data above from NYC Dept. of Health march 28, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Data above from NYS Dept. of Health march 28, 3 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             ]
         ),
@@ -1293,7 +1294,7 @@ columnTopRight = dbc.Col(
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 28, 10 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 28, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1354,7 +1355,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above interactive charts from NY State DOH for March 27th', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH for March 28th', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
@@ -1408,7 +1409,7 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on March 27, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on March 28, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
