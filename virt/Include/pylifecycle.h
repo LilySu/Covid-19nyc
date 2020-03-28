@@ -69,7 +69,7 @@ PyAPI_FUNC(_PyInitError) _PyCoreConfig_Read(_PyCoreConfig *);
 PyAPI_FUNC(void) _PyCoreConfig_Clear(_PyCoreConfig *);
 PyAPI_FUNC(int) _PyCoreConfig_Copy(
     _PyCoreConfig *config,
-    const _PyCoreConfig *config2);
+    const _PyCoreConfig *config_area_world_day_changes);
 PyAPI_FUNC(PyObject *) _PyCoreConfig_AsDict(const _PyCoreConfig *config);
 PyAPI_FUNC(void) _PyCoreConfig_SetGlobalConfig(
     const _PyCoreConfig *config);
@@ -81,7 +81,7 @@ PyAPI_FUNC(_PyInitError) _PyMainInterpreterConfig_Read(
 PyAPI_FUNC(void) _PyMainInterpreterConfig_Clear(_PyMainInterpreterConfig *);
 PyAPI_FUNC(int) _PyMainInterpreterConfig_Copy(
     _PyMainInterpreterConfig *config,
-    const _PyMainInterpreterConfig *config2);
+    const _PyMainInterpreterConfig *config_area_world_day_changes);
 /* Used by _testcapi.get_main_config() */
 PyAPI_FUNC(PyObject*) _PyMainInterpreterConfig_AsDict(
     const _PyMainInterpreterConfig *config);

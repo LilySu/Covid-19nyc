@@ -28,22 +28,15 @@ diff_from_day_before= pd.read_csv("https://raw.githubusercontent.com/LilySu/Covi
 top = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
 top5 = top.tail()
 
-fig_daily_num_NYC = px.bar(top5, x='date_found_positive', y='New York',
+fig_bar_nyc_last_5_days = px.bar(top5, x='date_found_positive', y='New York',
              hover_data=['New York', 'date_found_positive'], color='New York',
              color_continuous_scale=px.colors.diverging.BrBG,
              labels={'date_found_positive':'Date'},
              text = 'New York', height = 220)
 
-fig_daily_num_NYC.update_traces(texttemplate='%{text}', textposition='inside')
+fig_bar_nyc_last_5_days.update_traces(texttemplate='%{text}', textposition='inside')
 
-# annotationsDailyNYC = [ dict(xref='paper', yref='paper', x=0.5, y=-0.16,
-#                               xanchor='center', yanchor='top',
-#                               text='Data Provided by the New York State Department of Health',
-#                               font=dict(family='Arial',
-#                                         size=12,
-#                                         color='#05b9f0'),
-#                               showarrow=False)]
-fig_daily_num_NYC.update_layout(
+fig_bar_nyc_last_5_days.update_layout(
     showlegend=False,
     # title_text='DAILY NUMBER OF CASES<br>IN NEW YORK CITY',
     font=dict(
@@ -56,20 +49,20 @@ fig_daily_num_NYC.update_layout(
     margin=dict(l=0, r=0, t=0, b=0),
     # annotations = annotationsDailyNYC,
 )
-fig_daily_num_NYC.update_layout(coloraxis_showscale=False)
-fig_daily_num_NYC.update_xaxes(showticklabels=True)
-fig_daily_num_NYC.update_yaxes(showticklabels=False)
+fig_bar_nyc_last_5_days.update_layout(coloraxis_showscale=False)
+fig_bar_nyc_last_5_days.update_xaxes(showticklabels=True)
+fig_bar_nyc_last_5_days.update_yaxes(showticklabels=False)
 
-fig_daily_num_NYC.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
+fig_bar_nyc_last_5_days.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 #---------------------------------------------
 
 table_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/percentage_change_County.csv")
 table_h = table_h.tail(7)
 
-fig_percentage_change = go.Figure()
+fig_area_nyc_percentage_change = go.Figure()
 
-fig_percentage_change = px.area(table_h, x='dates', y='New York',
+fig_area_nyc_percentage_change = px.area(table_h, x='dates', y='New York',
              hover_data=['New York', 'dates'],
              text = 'New York',
              color_discrete_sequence=px.colors.qualitative.Pastel,
@@ -77,13 +70,13 @@ fig_percentage_change = px.area(table_h, x='dates', y='New York',
              height=210)
 
 
-fig_percentage_change.update_layout(
+fig_area_nyc_percentage_change.update_layout(
     plot_bgcolor='white',
     showlegend=False,
     font_color="#a3a3a3",
 )
 
-fig_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
+fig_area_nyc_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------
 
 
@@ -94,21 +87,21 @@ gender =["Female","Male"]
 color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
-fig_nyc_demo_pie = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo_pie.add_trace(go.Pie(labels=age, values=[573, 12590, 10019, 3354, 2568, 54], name="Age Group",marker=dict(colors=color1)),
+fig_pie_nyc_age = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
+fig_pie_nyc_age.add_trace(go.Pie(labels=age, values=[573, 12590, 10019, 3354, 2568, 54], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo_pie.add_trace(go.Pie(labels=gender, values=[12928,16192], name="Gender",marker=dict(colors=color2)),
+fig_pie_nyc_age.add_trace(go.Pie(labels=gender, values=[12928,16192], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
 # Use `hole` to create a donut-like pie chart
-fig_nyc_demo_pie.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   hovertemplate = '<b>%{label}</b>'
                         '<br><b>Percentage</b>: %{percent}<br>'
                         '<b><b>Number of People</b>: %{value}<br>',
                   textposition='inside', textinfo='percent+label')
 
-fig_nyc_demo_pie.update_layout(
+fig_pie_nyc_age.update_layout(
     title={
         'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
         'y':0.95,
@@ -137,22 +130,22 @@ underlying_illness =["Had Underlying Illness","Did Not"]
 color3 = ["#52D3C3","#046162"]
 
 # Create subplots: use 'domain' type for Pie subplot
-fig_nyc_death_pie = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
-fig_nyc_death_pie.add_trace(go.Pie(labels=age, values=[0, 20, 104, 110, 216], name="Age Group",marker=dict(colors=color1)),
+fig_pie_nyc_death_age = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
+fig_pie_nyc_death_age.add_trace(go.Pie(labels=age, values=[0, 20, 104, 110, 216], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_death_pie.add_trace(go.Pie(labels=gender, values=[181,269], name="Gender",marker=dict(colors=color2)),
+fig_pie_nyc_death_age.add_trace(go.Pie(labels=gender, values=[181,269], name="Gender",marker=dict(colors=color2)),
               1, 2)
-fig_nyc_death_pie.add_trace(go.Pie(labels=underlying_illness, values=[373,14,63], name="Underlying Illness",marker=dict(colors=color3)),
+fig_pie_nyc_death_age.add_trace(go.Pie(labels=underlying_illness, values=[373,14,63], name="Underlying Illness",marker=dict(colors=color3)),
               1, 3)
 
 # Use `hole` to create a donut-like pie chart
-fig_nyc_death_pie.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+fig_pie_nyc_death_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   hovertemplate = '<b>%{label}</b>'
                         '<br><b>Percentage</b>: %{percent}<br>'
                         '<b><b>Number of People</b>: %{value}<br>',
                   textposition='inside', textinfo='percent+label')
 
-fig_nyc_death_pie.update_layout(
+fig_pie_nyc_death_age.update_layout(
     title={
         'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (517) OF COVID-19 IN <br>NYC AS OF MARCH 27, 2020 4PM",
         'y':0.95,
@@ -174,14 +167,14 @@ fig_nyc_death_pie.update_layout(
 #   counties = json.load(response)
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
 df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-27.csv')
-fig1 = go.Figure()
+fig_map_top_center = go.Figure()
 
-# fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
+# fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
 #                                     colorscale="YlOrRd", zmin=0, zmax=5,
 #                                     marker_opacity=0.08, marker_line_width=0,showscale=False))
 
-# fig1.update_traces(showscale=False)  
-fig1.add_trace(go.Scattermapbox(
+# fig_map_top_center.update_traces(showscale=False)  
+fig_map_top_center.add_trace(go.Scattermapbox(
         lat=df["Lat"],
         lon=df["Long_"],
         mode='markers',
@@ -198,7 +191,7 @@ fig1.add_trace(go.Scattermapbox(
       '<b>on March 27, 2020</b>',
     ))
 
-# fig1.add_trace(go.Scattermapbox(
+# fig_map_top_center.add_trace(go.Scattermapbox(
 #         lat=df["Lat"],
 #         lon=df["Long_"],
 #         mode='markers + text',
@@ -216,11 +209,11 @@ fig1.add_trace(go.Scattermapbox(
 #       '<b>Deaths</b>: %{text[4]}<br>'+
 #       '<b>on March 27, 2020</b>',
 #     ))
-# fig1.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
+# fig_map_top_center.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
 #       'Confirmed: %{text[3]}<br>'+
 #       'Deaths: %{text[4]}')
 
-fig1.update_layout(
+fig_map_top_center.update_layout(
     mapbox_layers=[
         {
             "below": 'traces',
@@ -251,12 +244,12 @@ fig1.update_layout(
 
 
 
-# fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
+# fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
 #                                     colorscale="YlOrRd", zmin=0, zmax=3,
 #                                     marker_opacity=0.08, marker_line_width=0))
-# fig1.update_traces(showscale=False)
+# fig_map_top_center.update_traces(showscale=False)
 
-# fig1.add_trace(go.Scattermapbox(
+# fig_map_top_center.add_trace(go.Scattermapbox(
 #         lat=df["Lat"],
 #         lon=df["Long_"],
 #         mode='markers',
@@ -268,7 +261,7 @@ fig1.update_layout(
 #         hoverinfo='none',
 #     ))
 
-# fig1.add_trace(go.Scattermapbox(
+# fig_map_top_center.add_trace(go.Scattermapbox(
 #         lat=df["Lat"],
 #         lon=df["Long_"],
 #         mode='markers',
@@ -285,7 +278,7 @@ fig1.update_layout(
 #     ))
 
 
-# fig1.update_layout(
+# fig_map_top_center.update_layout(
 #     mapbox_layers=[
 #         {
 #             "below": 'traces',
@@ -314,8 +307,8 @@ fig1.update_layout(
 # )
 
 
-# fig1 = go.Figure()
-# fig1.add_trace(go.Scattermapbox(
+# fig_map_top_center = go.Figure()
+# fig_map_top_center.add_trace(go.Scattermapbox(
 #         lat=us_cities["Lat"],
 #         lon=us_cities["Long_"],
 #         mode='markers',
@@ -327,7 +320,7 @@ fig1.update_layout(
 #         hoverinfo='none',
 #     ))
 
-# fig1.add_trace(go.Scattermapbox(
+# fig_map_top_center.add_trace(go.Scattermapbox(
 #         lat=us_cities["Lat"],
 #         lon=us_cities["Long_"],
 #         text = us_cities[["Deaths_str"]],
@@ -340,7 +333,7 @@ fig1.update_layout(
 #         hoverinfo='none'
 #     ))
 
-# fig1.add_trace(go.Scattermapbox(
+# fig_map_top_center.add_trace(go.Scattermapbox(
 #         lat=us_cities["Lat"],
 #         lon=us_cities["Long_"],
 #         mode='markers',
@@ -356,7 +349,7 @@ fig1.update_layout(
 #       '<b>Deaths</b>: %{text[2]}',
 #     ))
 
-# fig1.update_layout(
+# fig_map_top_center.update_layout(
 #     mapbox_layers=[
 #         {
 #             "below": 'traces',
@@ -386,8 +379,8 @@ fig1.update_layout(
 #     ),
 # )
 
-# fig1.update_traces(textfont_size=14, texttemplate='%{text} Deaths')
-fig1.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
+# fig_map_top_center.update_traces(textfont_size=14, texttemplate='%{text} Deaths')
+fig_map_top_center.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 #---------------------------------------------------------------------------FIG 1Half
 import requests
 df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
@@ -395,7 +388,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df
 r = requests.get('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/nys_geojson/new-york-counties.geojson')
 geojson = r.json()
 
-fig1Half = px.choropleth_mapbox(df, geojson=geojson, 
+fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson, 
                            animation_frame="date", animation_group="total",
                            locations="county_full", 
                            featureidkey="properties.name",
@@ -411,22 +404,22 @@ fig1Half = px.choropleth_mapbox(df, geojson=geojson,
                            )
 
 
-fig1Half.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
-fig1Half.update_layout(coloraxis_showscale = False, showlegend = False)
+fig_map_nyc_timeslider.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
+fig_map_nyc_timeslider.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-fig_daily_county_cases = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch27.csv")
-fig_daily_county_cases = fig_daily_county_cases.head(15)
+df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch27.csv")
+df_counties_overtime = df_counties_overtime.head(15)
 
 
-fig_daily_county_cases = px.bar(fig_daily_county_cases, x='index', y='March 27', 
+fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y='March 27', 
              text='March 27', 
              color = 'March 27',
              height = 350,
              color_continuous_scale=px.colors.diverging.BrBG,
              labels={'New York State Counties':'County','March 27':'March 27th Confirmed Cases'})
-fig_daily_county_cases.update_traces(texttemplate='%{text}', textposition='outside')
-fig_daily_county_cases.update_layout(
+fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
+fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
     showlegend=False,
     xaxis_title="",
@@ -435,8 +428,8 @@ fig_daily_county_cases.update_layout(
     # title_text='NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY FOR THE TOP 20 COUNTIES'
 )
 
-fig_daily_county_cases.update_layout(coloraxis_showscale=False)
-fig_daily_county_cases.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
+fig_line_ny_cumulative.update_layout(coloraxis_showscale=False)
+fig_line_ny_cumulative.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
 #------------------------------------------------------------------------------------------COUNTY day-to-day changes
 table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv") #table
@@ -445,14 +438,14 @@ table_h = table.tail(7)
 collist = ['Nassau','New York', 'Suffolk', 'Rockland', 'Dutchess', 'Monroe','Dutchess', 'Westchester']
 colors = [ '#56b3ae', '#3c8682', '#aa7d7d', '#aa7d7d', '#8b5b5b','#305f4b','#baa991','#4bd2fb']#'#99d1ce',
 
-countydaytoday = go.Figure()
+fig_line_ny_overtime = go.Figure()
 
 for i, j in zip(collist, colors):
-    countydaytoday.add_trace(go.Scatter(x=table_h['date_found_positive'], y=table_h[i], name = i, text=table_h[i],mode='lines+markers',
+    fig_line_ny_overtime.add_trace(go.Scatter(x=table_h['date_found_positive'], y=table_h[i], name = i, text=table_h[i],mode='lines+markers',
     hoverinfo='text+name',line=dict(color=j, width=4)))
 
 
-countydaytoday.update_layout(
+fig_line_ny_overtime.update_layout(
     yaxis=dict(
         title_text="Confirmed Cases"
     ),
@@ -472,8 +465,8 @@ annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.122,
                                         size=12,
                                         color='#05b9f0'),
                               showarrow=False)]
-countydaytoday.update_layout(annotations=annotations)
-countydaytoday.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+fig_line_ny_overtime.update_layout(annotations=annotations)
+fig_line_ny_overtime.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 #---------------------------------------------------------------------------SYMPTOM FIGURE
 
 # x1 = np.random.randn(200)
@@ -639,16 +632,16 @@ fig_stacked_ny.update_layout(
 
 #------------------------------------------FIG 2
 
-fig2 = go.Figure()
+fig_area_world_day_changes = go.Figure()
 
-fig2.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], #fill='tozeroy',fillcolor='#B0DAAE',
+fig_area_world_day_changes.add_trace(go.Scatter(x=df_italy["date"], y=df_italy["new_Confirmed"], #fill='tozeroy',fillcolor='#B0DAAE',
                     mode= 'lines', name = 'Italy',legendgroup="group3",
                     stackgroup='two',
                     line=dict(width=0.5, color='rgba(183, 224, 240, 0.94)'),
                     text="Italy<br>New Confirmed Cases <br>from the day before",hoveron = 'points+fills', 
                     hoverinfo = 'x+text+y'))
 
-fig2.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],##fill='toself',fillcolor='rgba(133, 70, 216, 0.3)',
+fig_area_world_day_changes.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],##fill='toself',fillcolor='rgba(133, 70, 216, 0.3)',
                     mode='lines',legendgroup="group2",
                     stackgroup='one',
                     line=dict(width=0.5, color='rgba(238, 175, 206, 0.82)'),
@@ -656,7 +649,7 @@ fig2.add_trace(go.Scatter(x=df_usa["date"], y=df_usa["new_Confirmed"],##fill='to
                     hoverinfo = 'x+text+y' # override default markers+lines
                     ))
 
-fig2.add_trace(go.Scatter(x=df_china["date"], y=df_china["new_Confirmed"], #fill='tozeroy',fillcolor='#F4DBE5',
+fig_area_world_day_changes.add_trace(go.Scatter(x=df_china["date"], y=df_china["new_Confirmed"], #fill='tozeroy',fillcolor='#F4DBE5',
                     mode='lines', legendgroup="group1",
                     stackgroup='three',
                     line=dict(width=0.5, color='rgba(159, 133, 229, 0.51)'),
@@ -673,7 +666,7 @@ annotat.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
                     color="#a3a3a3"),
             showarrow=False))
 
-fig2.update_layout(
+fig_area_world_day_changes.update_layout(
     annotations = annotat,
     yaxis=dict(title_text="Confirmed Cases",color='#05b9f0'),
     title = "DAY-TO-DAY ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
@@ -685,13 +678,13 @@ fig2.update_layout(
 #--------------------------------------------------------
 
 
-#--------------------------------------------------fig4
+#--------------------------------------------------fig_line_cumulative_us_italy_china
 
 
-fig4 = go.Figure()
+fig_line_cumulative_us_italy_china = go.Figure()
 
 # Add surface trace
-fig4.add_trace(go.Scatter(x=df_usa['date'], y=df_usa['Confirmed'],
+fig_line_cumulative_us_italy_china.add_trace(go.Scatter(x=df_usa['date'], y=df_usa['Confirmed'],
                     name = "US",
                     hovertext=df_usa["Confirmed"],
                     hoverinfo='text',
@@ -702,7 +695,7 @@ fig4.add_trace(go.Scatter(x=df_usa['date'], y=df_usa['Confirmed'],
                     line_color='#68CEF3',
                     ))
 
-fig4.add_trace(go.Scatter(x=df_italy['date'], y=df_italy['Confirmed'],
+fig_line_cumulative_us_italy_china.add_trace(go.Scatter(x=df_italy['date'], y=df_italy['Confirmed'],
                     name = "Italy",
                     hovertext=df_italy["Confirmed"],
                     hoverinfo='text',
@@ -713,7 +706,7 @@ fig4.add_trace(go.Scatter(x=df_italy['date'], y=df_italy['Confirmed'],
                     line_color='#9e92f6',
                     ))
 
-fig4.add_trace(go.Scatter(x=df_china['date'], y=df_china['Confirmed'],
+fig_line_cumulative_us_italy_china.add_trace(go.Scatter(x=df_china['date'], y=df_china['Confirmed'],
                     name = "China",
                     hovertext=df_china["Confirmed"],
                     hoverinfo='text',
@@ -724,10 +717,10 @@ fig4.add_trace(go.Scatter(x=df_china['date'], y=df_china['Confirmed'],
                     line_color = '#e7b1c7',
                     ))
 
-fig4.update_traces(hoverinfo='text+name', mode='lines+markers')
+fig_line_cumulative_us_italy_china.update_traces(hoverinfo='text+name', mode='lines+markers')
 
 # Update plot sizing
-fig4.update_layout(
+fig_line_cumulative_us_italy_china.update_layout(
     xaxis=dict(
         showline=True,
         showgrid=False,
@@ -759,7 +752,7 @@ fig4.update_layout(
 )
 
 # Update 3D scene options
-fig4.update_scenes(
+fig_line_cumulative_us_italy_china.update_scenes(
     aspectratio=dict(x=1, y=1, z=0.7),
     aspectmode="manual"
 )
@@ -903,7 +896,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                                         color='rgb(150,150,150)'),
                               showarrow=False)]
 
-fig4.update_layout(
+fig_line_cumulative_us_italy_china.update_layout(
     updatemenus=[
         dict(
             type="buttons",
@@ -935,7 +928,7 @@ fig4.update_layout(
     ])
 
 
-fig4.update_layout(annotations=annotations)
+fig_line_cumulative_us_italy_china.update_layout(annotations=annotations)
 
 #========================================================================
 
@@ -1245,10 +1238,10 @@ columnTopLeft = dbc.Col(
             html.H6('NYC', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':5}),
             html.H6('Confirmed Cases', style={'fontSize':13, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
             html.H6('Last 5 Days', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            # html.H1('38', style={'fontSize':60, 'color':'#05b9f0', 'marginBottom':0}),#fig4
+            # html.H1('38', style={'fontSize':60, 'color':'#05b9f0', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
-        dcc.Graph(figure=fig_daily_num_NYC),
+        dcc.Graph(figure=fig_bar_nyc_last_5_days),
         html.Center(
             children=[
             html.H6('Day-to-day % Increases', style={'fontSize':11, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
@@ -1257,7 +1250,7 @@ columnTopLeft = dbc.Col(
             html.H6('NYC', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':6, 'marginBottom':10}),
             ]
         ),
-        dcc.Graph(figure=fig_percentage_change),
+        dcc.Graph(figure=fig_area_nyc_percentage_change),
         html.Center(
             children=[
         html.H6('Data from NY State DOH on March 28, 10 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
@@ -1269,11 +1262,11 @@ columnTopLeft = dbc.Col(
 
 columnTopCenter = dbc.Col(
     [
-        dcc.Graph(figure=fig1,style={'paddingTop':0, 'paddingBottom':0}),
+        dcc.Graph(figure=fig_map_top_center,style={'paddingTop':0, 'paddingBottom':0}),
         html.Center(
             children=[
-                html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig4
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 27th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig4
+                html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 27th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1284,11 +1277,11 @@ columnTopRight = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('29,158', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('517', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYC Dept. of Health march 28, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H1('29,158', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('517', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Data above from NYC Dept. of Health march 28, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             ]
         ),
@@ -1314,7 +1307,7 @@ column0bottomCenter = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.Br(),
             html.Span(' ', className='mr-1'),
-            dcc.Graph(figure=fig_nyc_demo_pie),
+            dcc.Graph(figure=fig_pie_nyc_age),
             ]
         )
     ],
@@ -1324,7 +1317,7 @@ column0bottomCenter2 = dbc.Col(
     [
         html.Center(
             children=[
-            dcc.Graph(figure=fig_nyc_death_pie),
+            dcc.Graph(figure=fig_pie_nyc_death_age),
             html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':80}),
             ]
         )
@@ -1336,7 +1329,7 @@ column1Left = dbc.Col(
     [
         html.Center(
             children=[
-                dcc.Graph(figure=fig1Half),
+                dcc.Graph(figure=fig_map_nyc_timeslider),
             ]
         )
     ],
@@ -1348,10 +1341,10 @@ column1Right = dbc.Col(
             children=[
                 html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':40, 'marginBottom':10}),
                 html.H6('FOR THE TOP 15 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
-                dcc.Graph(figure=fig_daily_county_cases),
+                dcc.Graph(figure=fig_line_ny_cumulative),
                 html.H6('TOTAL POSITIVE CASES OF COVID-19 BY COUNTY OVER TIME', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
                 html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
-                dcc.Graph(figure=countydaytoday),
+                dcc.Graph(figure=fig_line_ny_overtime),
             ]
         )
     ],
@@ -1403,7 +1396,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on March 27, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NY State DOH, last updated there on March 27, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
     ],
@@ -1415,8 +1408,8 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on March 27, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig4
+            html.H6('Data from NY State DOH, last updated there on March 27, 2 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
     ],
@@ -1433,7 +1426,7 @@ column3CenterAll = dbc.Col(
                 html.Br(),
                 html.Span(' ', className='mr-1'),
                 #html.H6('DAY-TO-DAY CHANGES IN CONFIRMED CASES ITALY VS U.S. VS CHINA', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-                dcc.Graph(figure=fig2),
+                dcc.Graph(figure=fig_area_world_day_changes),
             ]
         )
     ]
@@ -1499,7 +1492,7 @@ column3CenterAll = dbc.Col(
 #     [
 #         html.Center(
 #             children=[
-#             html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':8}),#fig4
+#             html.H6('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
 #             ]
 #         )
 #     ],
@@ -1512,7 +1505,7 @@ column4CenterAll = dbc.Col(
     [
         html.Br(),
         html.Span(' ', className='mr-1'),
-        dcc.Graph(figure=fig4),
+        dcc.Graph(figure=fig_line_cumulative_us_italy_china),
         html.Br(),
         html.Span(' ', className='mr-1'),
     ]
@@ -1728,11 +1721,11 @@ collapseEniqueArticle = dbc.Col(
                             ),
                             html.Hr(),
                             html.P(
-                                "Article written by",style={'fontSize':14, 'marginTop':35, 'marginBottom':0},
+                                "Article written by",style={'fontSize':14, 'marginTop':45, 'marginBottom':0},
                                 className="card-text"),
                             dbc.Button('Enrique Grijalva', color="link",href = "https://www.linkedin.com/in/enrique-grijalva-15833059", size="sm",style={'marginBottom':0, 'marginTop':0}), 
                             ]
-                        )
+                        ), color="light"
                     )
                 ]
             )
@@ -1756,7 +1749,7 @@ restoringPeaceCenter = dbc.Col(
                             [
                                 html.H4("Restoring Peace Within Yourself",className="card-text",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
                                 html.P(
-                                    "We understand how a pandemic can create anxiety, panic and stress, especially with how fast the worldwide spread has been. We would like to help you restore peace of mind within yourself by introducing the mindfulness practice taught by Thich Nhat Hanh, the father of mindfulness. The following comes from the chapter “Restoring Peace Within Yourself” from his book True Love.",className="card-text"
+                                    "We understand how a pandemic can create anxiety, panic and stress, especially with how fast the worldwide spread has been. We would like to help you restore peace of mind within yourself by introducing the mindfulness practice taught by Thich Nhat Hanh, the father of mindfulness. The following comes from the chapter “Restoring Peace Within Yourself” from his book True Love.",className="blockquote"
                                 ),
                                 html.P(
                                     "During the day, if you practice walking meditation, each step brings you back to the present moment; each step enables you to touch what is beautiful, what is true. And in this way, after a few weeks of practice, joy will become something possible, you will be able to undo many knots within yourself, and you will be able to transform negative energies into joy and peace. The Buddha said this: “The object of your practice should first of all be yourself. Your love for the other, your ability to love another person, depends on your ability to love yourself.” If you are not able to take care of yourself, if you are not able to accept yourself, how could you accept another person and how could you love him or her? So it is necessary to come back to yourself in order to be able to achieve the transformation.",className="card-text"
@@ -1777,13 +1770,13 @@ restoringPeaceCenter = dbc.Col(
                                     "If you can do it this way, three weeks are enough to transform the pain inside you, to bring back your joy in living, to cultivate the energy of compassion with which you can help the person you love. The practice of being there with what is beautiful and with what is healing is something we should do every day, and it is possible to do this in everyday life."
                                 ),
                                 html.P(
-                                    "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!",className="card-text"
+                                    "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!", className="blockquote"
                                 ),
                                 html.Hr(),
-                                html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love:A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14, 'marginTop':35}, className="card-text"),
+                                html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love:A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14, 'marginTop':45}, className="card-text"),
                                 html.P('Intro and Afterword by',style={'fontSize':14},className="card-text"),
                                 dbc.Button('Wen Ping Lin', color="link",href = "https://www.linkedin.com/in/wenpinglin", size="sm",style={'marginBottom':0, 'marginTop':0}), 
-                            ])
+                            ]), color="light"
                         )
                     ])
                 ]

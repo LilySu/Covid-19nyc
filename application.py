@@ -58,8 +58,8 @@ staticNav = dbc.Col(
         html.Div(
             html.Center(
                 children=[
-                        html.Img(src=app.get_asset_url('logo.png'), style={'display': 'block', 'paddingBottom':13, 'paddingTop':11,'width': 100}),
-                        html.Img(src=app.get_asset_url('topBanner.png'), style={'display': 'block', 'width':'50%'})
+                        html.Img(src=app.get_asset_url('logo.png'), style={'display': 'block', 'paddingBottom':11, 'paddingTop':11,'width': 130}),
+                        html.Img(src=app.get_asset_url('topBanner.png'), style={'display': 'block', 'width':'42%'})
                 ]),
         )
     ],
