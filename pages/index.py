@@ -1260,7 +1260,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on March 27, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on March 28, 10 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
