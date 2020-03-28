@@ -95,9 +95,9 @@ color2 = ["#52D3C3","#047484"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_demo_pie = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_nyc_demo_pie.add_trace(go.Pie(labels=age, values=[524, 11202, 8745, 2894, 2141, 67], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_demo_pie.add_trace(go.Pie(labels=age, values=[573, 12590, 10019, 3354, 2568, 54], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_demo_pie.add_trace(go.Pie(labels=gender, values=[11250,13900], name="Gender",marker=dict(colors=color2)),
+fig_nyc_demo_pie.add_trace(go.Pie(labels=gender, values=[12928,16192], name="Gender",marker=dict(colors=color2)),
               1, 2)
 
 
@@ -110,7 +110,7 @@ fig_nyc_demo_pie.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_demo_pie.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (25,573) IN<br>NYC AS OF MARCH 27, 2020 9 AM",
+        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -138,11 +138,11 @@ color3 = ["#52D3C3","#046162"]
 
 # Create subplots: use 'domain' type for Pie subplot
 fig_nyc_death_pie = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
-fig_nyc_death_pie.add_trace(go.Pie(labels=age, values=[0, 16, 78, 90, 182], name="Age Group",marker=dict(colors=color1)),
+fig_nyc_death_pie.add_trace(go.Pie(labels=age, values=[0, 20, 104, 110, 216], name="Age Group",marker=dict(colors=color1)),
               1, 1)
-fig_nyc_death_pie.add_trace(go.Pie(labels=gender, values=[151,215], name="Gender",marker=dict(colors=color2)),
+fig_nyc_death_pie.add_trace(go.Pie(labels=gender, values=[181,269], name="Gender",marker=dict(colors=color2)),
               1, 2)
-fig_nyc_death_pie.add_trace(go.Pie(labels=underlying_illness, values=[310,11,45], name="Underlying Illness",marker=dict(colors=color3)),
+fig_nyc_death_pie.add_trace(go.Pie(labels=underlying_illness, values=[373,14,63], name="Underlying Illness",marker=dict(colors=color3)),
               1, 3)
 
 # Use `hole` to create a donut-like pie chart
@@ -154,7 +154,7 @@ fig_nyc_death_pie.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_nyc_death_pie.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (366) OF COVID-19 IN <br>NYC AS OF MARCH 27, 2020 9AM",
+        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (517) OF COVID-19 IN <br>NYC AS OF MARCH 27, 2020 4PM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -168,17 +168,17 @@ fig_nyc_death_pie.update_layout(
                 dict(text='Underlying Illness', x=0.91, y=0.5, font_size=11, showarrow=False)])
 
 #---------------------------------------------
-from urllib.request import urlopen
-import json
-with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
-  counties = json.load(response)
+# from urllib.request import urlopen
+# import json
+# with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+#   counties = json.load(response)
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
 df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-27.csv')
 fig1 = go.Figure()
 
-fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
-                                    colorscale="YlOrRd", zmin=0, zmax=5,
-                                    marker_opacity=0.08, marker_line_width=0,showscale=False))
+# fig1 = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
+#                                     colorscale="YlOrRd", zmin=0, zmax=5,
+#                                     marker_opacity=0.08, marker_line_width=0,showscale=False))
 
 # fig1.update_traces(showscale=False)  
 fig1.add_trace(go.Scattermapbox(
@@ -198,24 +198,24 @@ fig1.add_trace(go.Scattermapbox(
       '<b>on March 27, 2020</b>',
     ))
 
-fig1.add_trace(go.Scattermapbox(
-        lat=df["Lat"],
-        lon=df["Long_"],
-        mode='markers + text',
-        text= df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
-        marker=go.scattermapbox.Marker(
-            size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
-            color='rgba(166, 247, 235, 0.38)',
-            opacity=0.04
-        ),
+# fig1.add_trace(go.Scattermapbox(
+#         lat=df["Lat"],
+#         lon=df["Long_"],
+#         mode='markers + text',
+#         text= df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
+#         marker=go.scattermapbox.Marker(
+#             size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
+#             color='rgba(166, 247, 235, 0.38)',
+#             opacity=0.04
+#         ),
 
-        textfont_size=12, 
-        texttemplate ='<b>Location</b>:'+
-        '%{text[1]},%{text[2]}<br>'+
-      '<b>Confirmed</b>: %{text[3]}<br>'+
-      '<b>Deaths</b>: %{text[4]}<br>'+
-      '<b>on March 27, 2020</b>',
-    ))
+#         textfont_size=12, 
+#         texttemplate ='<b>Location</b>:'+
+#         '%{text[1]},%{text[2]}<br>'+
+#       '<b>Confirmed</b>: %{text[3]}<br>'+
+#       '<b>Deaths</b>: %{text[4]}<br>'+
+#       '<b>on March 27, 2020</b>',
+#     ))
 # fig1.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
 #       'Confirmed: %{text[3]}<br>'+
 #       'Deaths: %{text[4]}')
@@ -1285,22 +1285,22 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig4
-            html.H1('26,697', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H1('29,158', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig4
-            html.H6('450', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
-            html.H6('Data above from NYC Dept. of Health march 27, 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
+            html.H6('517', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig4
+            html.H6('Data above from NYC Dept. of Health march 28, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig4
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             ]
         ),
 
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-27_01.png'), style={'display': 'block', 'height':300})
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-28_01.png'), style={'display': 'block', 'height':300})
             ]
         ),
         html.Center(
             children=[
-            html.H6('Data from NYC DOH, last updated there on March 27, 9 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            html.H6('Data from NYC DOH, last updated there on March 28, 10 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1839,7 +1839,7 @@ trisacard = [
                 "Watch things that make you laugh, smile, or feel good.",
                 className="card-text",
             ),
-            dbc.Button("To Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PLBFvjBkVbTH_bvwjbBnyIeCicqCJ1y_Zg'),
+            dbc.Button("To Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PL7ESOL-2KOIUs4s61OyCJ8oO9C5n996_b'),
         ]
     ),
 ]
@@ -1850,7 +1850,7 @@ pod2 = [
         [
             html.H5("Our go-to Podcasts", className="card-title"),
             html.P(
-                "Let's get informed and work on a better version of ourselves.",
+                "Get informed and work on a better self.",
                 className="card-text",
             ),
             dbc.Button("Listen Now", className="mr-1", color="info", href="https://open.spotify.com/playlist/65XgqkWUTIdLZm9rXqTp3x"),
