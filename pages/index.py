@@ -575,7 +575,7 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            height = 720,
                            color = 'total',
                            color_continuous_scale=px.colors.sequential.Teal,
-                           custom_data = ['March 27'],
+                           custom_data = ['28_Mar_Cov_Pos'],
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -1969,7 +1969,7 @@ collapseEniqueArticle = dbc.Col(
                             ),
                             html.Hr(),
                             html.P(
-                                "Written by",style={'fontSize':14, 'marginTop':40, 'marginBottom':0},
+                                "Written by:",style={'fontSize':14, 'marginTop':40, 'marginBottom':0},
                                 className="card-text"),
                             dbc.Button('Enrique Grijalva', color="link",href = "https://www.linkedin.com/in/enrique-grijalva-15833059", size="sm",style={'marginBottom':0, 'marginTop':0}), 
                             ]
@@ -2021,7 +2021,7 @@ restoringPeaceCenter = dbc.Col(
                                     "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!", className="blockquote"
                                 ),
                                 html.Hr(),
-                                html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love:A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14, 'marginTop':45}, className="card-text"),
+                                html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love: A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14, 'marginTop':45}, className="card-text"),
                                 html.P('Intro and Afterword by',style={'fontSize':14},className="card-text"),
                                 dbc.Button('Wen Ping Lin', color="link",href = "https://www.linkedin.com/in/wenpinglin", size="sm",style={'marginBottom':0, 'marginTop':0}), 
                             ]), color="light"
@@ -2089,7 +2089,7 @@ onSelfReflectionCenter = dbc.Col(
                                 
                                 html.Hr(),
                                 html.P(
-                                    "Written by",style={'fontSize':14, 'marginTop':40, 'marginBottom':0},
+                                    "Written by:",style={'fontSize':14, 'marginTop':40, 'marginBottom':0},
                                     className="card-text"),
                                 dbc.Button('Jenny Wegbrands', color="link",href = "https://www.linkedin.com/in/jenny-a-kai-06b89329/", size="sm",style={'marginBottom':0, 'marginTop':0}), 
                             ]), color="light"
