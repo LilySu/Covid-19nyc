@@ -575,7 +575,7 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            height = 720,
                            color = 'total',
                            color_continuous_scale=px.colors.sequential.Teal,
-                           custom_data = ['28_Mar_Cov_Pos'],
+                           custom_data = ['29_Mar_Cov_Pos'],
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -1456,10 +1456,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('32,308', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('33,768', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('678', style={'fontSize':32, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('Data above from NYC Dept. of Health march 29, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Data above from NYS Dept. of Health march 29, 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-29_01.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NYC DOH, last updated there on March 29, 10 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
@@ -1602,7 +1602,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above interactive charts from NY State DOH for March 28th Except for New York City Updated March 29', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH Updated March 29', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
@@ -1618,7 +1618,7 @@ column2Center = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-28_annotated.png'), style={'display': 'block', 'width':'100%'}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-29_annotated.png'), style={'display': 'block', 'width':'100%'}),
             ]
         )
     ],
@@ -1634,7 +1634,7 @@ column2Right = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-28.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-29.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
             ]
         )
     ],
