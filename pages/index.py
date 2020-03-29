@@ -95,9 +95,9 @@ fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   textposition='inside', textinfo='percent+label+value')
 
 fig_pie_pop_queens.update_layout(
-    annotations = [dict(text=pop_queens[0], x=0.498, y=0.998, font_size=12, showarrow=True)],
+    annotations = [dict(text=pop_queens[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF MARCH 29, 2020 10 AM"",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -123,7 +123,7 @@ fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_pie_nyc_age.update_layout(
     title={
-        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (32308) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
+        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (32308) IN<br>NYC AS OF MARCH 29, 2020 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -225,7 +225,7 @@ fig_pie_nyc_death_illness.update_traces(hole=.4, hoverinfo="label+percent+name+v
 
 fig_pie_nyc_death_illness.update_layout(
     title={
-        'text':"EXISTENCE OF UNDERLYING ILLNESS OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (678) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
+        'text':"EXISTENCE OF UNDERLYING ILLNESS OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (678) IN<br>NYC AS OF MARCH 29, 2020 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1459,9 +1459,9 @@ columnTopRight = dbc.Col(
             html.H1('32,308', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':13, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('678', style={'fontSize':32, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('Data above from NYS Dept. of Health march 28, 3 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Data above from NYC Dept. of Health march 29, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-28_01.png'), style={'display': 'block', 'height':300}),
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-29_01.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NYC DOH, last updated there on March 29, 10 am', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
