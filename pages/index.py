@@ -97,7 +97,7 @@ fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_pie_pop_queens.update_layout(
     annotations = [dict(text=pop_queens[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF MARCH 29, 2020 10 AM"",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF MARCH 29, 2020 10 AM",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -516,7 +516,7 @@ fig_stacked_change_borough_cases.update_layout(
     annotations=[
         dict(
             x=0,
-            y=-400,
+            y=-300,
             xref="x",
             yref="y",
             text="10764<br> total",
@@ -529,7 +529,7 @@ fig_stacked_change_borough_cases.update_layout(
 )
 
 annotation_borough = []
-for i,j in zip(range(0, 7), df_nyc['total']):
+for i,j in zip(range(0, 8), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
@@ -585,16 +585,16 @@ fig_map_nyc_timeslider.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig_map_nyc_timeslider.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch28.csv")
+df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch29.csv")
 df_counties_overtime = df_counties_overtime.head(15)
 
 
-fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y='March 28', 
-             text='March 28', 
-             color = 'March 28',
+fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y='March 29', 
+             text='March 29', 
+             color = 'March 29',
              height = 350,
              color_continuous_scale=px.colors.diverging.BrBG,
-             labels={'New York State Counties':'County','March 28':'March 28th Confirmed Cases'})
+             labels={'New York State Counties':'County','March 29':'March 29th Confirmed Cases'})
 fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
 fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
