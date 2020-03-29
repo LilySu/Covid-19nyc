@@ -79,89 +79,160 @@ fig_area_nyc_percentage_change.update_layout(
 )
 
 fig_area_nyc_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
-#---------------------------------------------
+
+#-------------------------------------------------------------POPULATION OF PEOPLE POSITIVE IN QUEENS
+
+pop_queens =["Queens Residents Positive with Covid-19","Rest of Queens Residents"]
+color_pop_queens = ["#d16666","b6c649"]
+
+fig_pie_pop_queens = go.Figure(data=[go.Pie(labels=pop_queens, values=[9928,2263072],marker=dict(colors=color_pop_queens))])#,pull=[0.4, 0]
+
+# Use `hole` to create a donut-like pie chart
+fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+                  hovertemplate = '<b>%{label}</b>'
+                        '<br><b>Percentage</b>: %{percent}<br>'
+                        '<b><b>Number of People</b>: %{value}<br>',
+                  textposition='inside', textinfo='percent+label+value')
+
+fig_pie_pop_queens.update_layout(
+    annotations = [dict(text=pop_queens[0], x=0.495, y=0.998, font_size=12, showarrow=True)],
+    title={
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION",
+        'y':.95,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+    font_size=11,
+    font_color="#05b9f0",
+    showlegend=True)
 
 
+#-------------------------------------------------------------AGE RANGE OF PEOPLE POSITIVE
 
-age = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over", "Unknown"]
-color1 = ["#d7e76f","#046162","#F686A9","#ffcece","#0497AE", "#047484"]
+age = ["0 to 17<br>years old", "18 to 44<br>years old", "45 to 64<br>years old", "65 to 74<br>years old", "75 years old<br>and over", "Unknown"]
+age_color = ["#d7e76f","#046162","#F686A9","#ffcece","#0497AE", "#047484"]
 
-gender =["Female","Male"]
-color2 = ["#52D3C3","#047484"]
-
-# Create subplots: use 'domain' type for Pie subplot
-fig_pie_nyc_age = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]])
-fig_pie_nyc_age.add_trace(go.Pie(labels=age, values=[573, 12590, 10019, 3354, 2568, 54], name="Age Group",marker=dict(colors=color1)),
-              1, 1)
-fig_pie_nyc_age.add_trace(go.Pie(labels=gender, values=[12928,16192], name="Gender",marker=dict(colors=color2)),
-              1, 2)
-
+fig_pie_nyc_age = go.Figure(data=[go.Pie(labels=age, values=[573, 12590, 10019, 3354, 2568, 54], name="Age Group",marker=dict(colors=age_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   hovertemplate = '<b>%{label}</b>'
                         '<br><b>Percentage</b>: %{percent}<br>'
                         '<b><b>Number of People</b>: %{value}<br>',
-                  textposition='inside', textinfo='percent+label')
+                  textposition='inside', textinfo='percent+label+value')
 
 fig_pie_nyc_age.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE <br>WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
+        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
         'yanchor': 'top'},
-    font_size=14,
+    font_size=11,
     font_color="#05b9f0",
-    showlegend=False,
-    # Add annotations in the center of the donut pies.
-    annotations=[dict(text='Age Groups', x=0.18, y=0.5, font_size=13, showarrow=False),
-        dict(text='Gender', x=0.81, y=0.5, font_size=18, showarrow=False)])
+    showlegend=False)
 
 
-#---------------------------------------------
+#-------------------------------------------------------------AGE RANGE OF PEOPLE POSITIVE
 
-
-#DEATHS
-age = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over"]
-color1 = ["#0497AE","#046162","#F686A9","#ffcece","#0497AE"]
 
 gender =["Female","Male"]
-color2 = ["#d7e76f","#26505E"]
+gender_color = ["#52D3C3","#047484"]
 
-underlying_illness =["Had Underlying Illness","Did Not"]
-color3 = ["#52D3C3","#046162"]
+fig_pie_nyc_gender = go.Figure(data=[go.Pie(labels=gender, values=[12928,16192], name="Gender",marker=dict(colors=gender_color))])#,pull=[0.4, 0]
 
-# Create subplots: use 'domain' type for Pie subplot
-fig_pie_nyc_death_age = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]])
-fig_pie_nyc_death_age.add_trace(go.Pie(labels=age, values=[0, 20, 104, 110, 216], name="Age Group",marker=dict(colors=color1)),
-              1, 1)
-fig_pie_nyc_death_age.add_trace(go.Pie(labels=gender, values=[181,269], name="Gender",marker=dict(colors=color2)),
-              1, 2)
-fig_pie_nyc_death_age.add_trace(go.Pie(labels=underlying_illness, values=[373,14,63], name="Underlying Illness",marker=dict(colors=color3)),
-              1, 3)
+# Use `hole` to create a donut-like pie chart
+fig_pie_nyc_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+                  hovertemplate = '<b>%{label}</b>'
+                        '<br><b>Percentage</b>: %{percent}<br>'
+                        '<b><b>Number of People</b>: %{value}<br>',
+                  textposition='inside', textinfo='percent+label+value')
+
+fig_pie_nyc_gender.update_layout(
+    title={
+        'text':"GENDER IDENTITY OF PEOPLE <br>WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
+        'y':0.95,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+    font_size=11,
+    font_color="#05b9f0",
+    showlegend=False)
+
+#-------------------------------------------------------------AGE RANGE OF PEOPLE PASSED AWAY
+
+age_of_death = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over"]
+death_age_color = ["#0497AE","#046162","#F686A9","#ffcece","#0497AE"]
+
+fig_pie_nyc_death_age = go.Figure(data=[go.Pie(labels=age_of_death, values=[0, 20, 104, 110, 216], name="Age of Death",marker=dict(colors=death_age_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_death_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   hovertemplate = '<b>%{label}</b>'
                         '<br><b>Percentage</b>: %{percent}<br>'
                         '<b><b>Number of People</b>: %{value}<br>',
-                  textposition='inside', textinfo='percent+label')
+                  textposition='inside', textinfo='percent+label+value')
 
 fig_pie_nyc_death_age.update_layout(
     title={
-        'text':"DEMOGRAPHICS OF PEOPLE WHO DIED (517) OF COVID-19 IN <br>NYC AS OF MARCH 28, 2020 2PM",
+        'text':"AGE RANGE OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
         'yanchor': 'top'},
-    font_size=14,
+    font_size=11,
     font_color="#05b9f0",
-    showlegend=False,
-    # Add annotations in the center of the donut pies.
-    annotations=[dict(text='Age Groups', x=0.10, y=0.5, font_size=13, showarrow=False),
-                dict(text='Gender', x=0.5, y=0.5, font_size=18, showarrow=False),
-                dict(text='Underlying Illness', x=0.91, y=0.5, font_size=11, showarrow=False)])
+    showlegend=False)
+
+#-------------------------------------------------------------GENDER IDENTITY OF PEOPLE PASSED AWAY
+
+gender_death =["Female","Male"]
+color_gender_death = ["#d7e76f","#26505E"]
+
+fig_pie_nyc_death_gender = go.Figure(data=[go.Pie(labels=gender_death, values=[181,269], name="Age of Death",marker=dict(colors=color_gender_death))])#,pull=[0.4, 0]
+
+# Use `hole` to create a donut-like pie chart
+fig_pie_nyc_death_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+                  hovertemplate = '<b>%{label}</b>'
+                        '<br><b>Percentage</b>: %{percent}<br>'
+                        '<b><b>Number of People</b>: %{value}<br>',
+                  textposition='inside', textinfo='percent+label+value')
+
+fig_pie_nyc_death_gender.update_layout(
+    title={
+        'text':"GENDER IDENTITY OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
+        'y':0.95,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+    font_size=11,
+    font_color="#05b9f0",
+    showlegend=False)
+
+#-------------------------------------------------------------UNDERLYING ILLNESS OF PEOPLE PASSED AWAY 
+
+underlying_illness =["Had Underlying Illness","Did Not"]
+underlying_illness_color = ["#52D3C3","#046162"]
+
+fig_pie_nyc_death_illness = go.Figure(data=[go.Pie(labels=underlying_illness, values=[181,269], name="Age of Death",marker=dict(colors=underlying_illness_color))])#,pull=[0.4, 0]
+
+# Use `hole` to create a donut-like pie chart
+fig_pie_nyc_death_illness.update_traces(hole=.4, hoverinfo="label+percent+name+value",
+                  hovertemplate = '<b>%{label}</b>'
+                        '<br><b>Percentage</b>: %{percent}<br>'
+                        '<b><b>Number of People</b>: %{value}<br>',
+                  textposition='inside', textinfo='percent+label+value')
+
+fig_pie_nyc_death_illness.update_layout(
+    title={
+        'text':"EXISTENCE OF UNDERLYING ILLNESS OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (29,158) IN<br>NYC AS OF MARCH 28, 2020 10 AM",
+        'y':0.95,
+        'x':0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+    font_size=11,
+    font_color="#05b9f0",
+    showlegend=False)
 
 #---------------------------------------------
 # from urllib.request import urlopen
@@ -649,7 +720,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(27), diff_from_day_before['total']):
+for i,j in zip(range(28), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -775,7 +846,7 @@ annotat.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
 
 fig_area_world_day_changes.update_layout(
     annotations = annotat,
-    yaxis=dict(title_text="Confirmed Cases",color='#05b9f0'),
+    yaxis=dict(title_text="Confirmed Cases",color='#a3a3a3'),
     title = "DAY-TO-DAY NEW ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
     font=dict(family='Arial',
     color='rgb(37,37,37)'),
@@ -1386,7 +1457,7 @@ columnTopRight = dbc.Col(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H1('29,766', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':20, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':13, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('517', style={'fontSize':32, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
             html.H6('Data above from NYS Dept. of Health march 28, 3 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
@@ -1423,25 +1494,78 @@ column_nyc_stats = dbc.Col(
     md=10
 )
 
-column0bottomCenter = dbc.Col(
+column_pie_queens_pop = dbc.Col(
     [
         html.Center(
             children=[
-            html.Br(),
-            html.Span(' ', className='mr-1'),
-            html.Br(),
-            html.Span(' ', className='mr-1'),
-            dcc.Graph(figure=fig_pie_nyc_age),
+                dcc.Graph(figure=fig_pie_pop_queens),
             ]
         )
     ],
-    md=12,
+    md=12
 )
-column0bottomCenter2 = dbc.Col(
+
+column_pie_age_positive = dbc.Col(
     [
         html.Center(
             children=[
-            dcc.Graph(figure=fig_pie_nyc_death_age),
+                dcc.Graph(figure=fig_pie_nyc_age),
+            ]
+        )
+    ],
+    md=6
+) 
+
+column_pie_gender_positive = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dcc.Graph(figure=fig_pie_nyc_gender),
+            ]
+        )
+    ],
+    md=6
+) 
+
+column_pie_age_passed = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dcc.Graph(figure=fig_pie_nyc_death_age),
+            ]
+        )
+    ],
+    md=4
+) 
+
+column_pie_gender_passed = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dcc.Graph(figure=fig_pie_nyc_death_gender),
+            ]
+        )
+    ],
+    md=4
+) 
+
+column_pie_illness_passed = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dcc.Graph(figure=fig_pie_nyc_death_illness),
+            ]
+        )
+    ],
+    md=4
+) 
+
+
+
+columnpiebottom = dbc.Col(
+    [
+        html.Center(
+            children=[
             html.H6('Data for above pie charts from NYC DOH', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':80}),
             ]
         )
@@ -2005,6 +2129,7 @@ singleColumn = dbc.Col([],md=1)
 doubleColumn = dbc.Col([],md=2)
 tripleColumn = dbc.Col([],md=3)
 
+
 @app.callback(
     Output("alert-auto", "is_open"),
     [Input("alert-toggle-auto", "n_clicks")],
@@ -2024,8 +2149,12 @@ layout = [
         dbc.Row([singleColumn,columnNeighborhoods, singleColumn]), 
         dbc.Row([singleColumn,column_nyc_stats, singleColumn]),
 
-        dbc.Row([column0bottomCenter]),
-        dbc.Row([column0bottomCenter2]),
+        dbc.Row([column_pie_queens_pop]),
+        dbc.Row([column_pie_age_positive, column_pie_gender_positive]),
+        dbc.Row([column_pie_age_passed, column_pie_gender_passed, column_pie_illness_passed]),
+
+
+        dbc.Row([columnpiebottom]),
 
         dbc.Row([column1Left,column1Right]),
         dbc.Row([column1bottomCenter]),
