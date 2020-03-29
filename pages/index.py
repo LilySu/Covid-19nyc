@@ -22,6 +22,8 @@ df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/maste
 # df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
 diff_from_day_before= pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/diff_from_day_before_county2.csv")
 
+df_nyc = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_borough.csv")
+
 
 #-----------------------fig
 
@@ -382,7 +384,110 @@ fig_map_top_center.update_layout(
 
 # fig_map_top_center.update_traces(textfont_size=14, texttemplate='%{text} Deaths')
 fig_map_top_center.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
-#---------------------------------------------------------------------------FIG 1Half
+#---------------------------------------------------------------------------LINE CHART BY BOROUGH
+
+borough = ['Bronx', 'Brooklyn', 'Manhattan', 'Queens', 'Staten Island']
+borough_colors = ['#553000','#94D6CC','#F3B3C2', '#006b54','#BF1F57']
+fig_line_nyc_borough_day_change = go.Figure()
+for i,j in zip(borough, borough_colors):
+  fig_line_nyc_borough_day_change.add_trace(go.Scatter(x=df_nyc['date'], y=df_nyc[i], name = i, text=df_nyc[i],mode='lines+markers',hoverinfo='text+name', line=dict(color=j, width=4)))
+
+fig_line_nyc_borough_day_change.update_layout(
+    plot_bgcolor='white',
+    showlegend=True,
+    autosize=True,
+    title_text='DAILY NUMBER OF CASES OF COVID-19 BY BOROUGH'
+)
+annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.122,
+                              xanchor='center', yanchor='top',
+                              text='Data Provided by the New York City Department of Health',
+                              font=dict(family='Arial',
+                                        size=12,
+                                        color='rgb(150,150,150)'),
+                              showarrow=False)]
+fig_line_nyc_borough_day_change.update_layout(annotations=annotations)
+
+fig_line_nyc_borough_day_change.update_layout(
+    plot_bgcolor='white'
+)
+
+#---------------------------------------------------------------------------BOROUGH STACKED CASES DAY TO DAY
+
+
+fig_stacked_change_borough_cases = go.Figure()
+
+borough = ['Bronx', 'Brooklyn', 'Manhattan', 'Queens', 'Staten Island']
+borough_colors = ['#553000','#94D6CC','#F3B3C2', '#006b54','#BF1F57']
+
+
+for i,j in zip(borough, borough_colors):
+  fig_stacked_change_borough_cases.add_trace(go.Scatter(x = df_nyc['date'], y = df_nyc[i],line_shape='spline', mode='lines', stackgroup='one', # define stack group
+                           name = i, text=df_nyc[i], hoveron = 'points+fills', fillcolor=j,line=dict(width=0.5, color=j),
+                           hovertemplate = "<b>" + i +"<br><b>%{text}</b>"+" Total Cases <br>on " + df_nyc['date']))
+    
+fig_stacked_change_borough_cases.update_traces(hoverinfo='text+name', mode='lines+markers')
+fig_stacked_change_borough_cases.update_layout(
+    plot_bgcolor='white',
+    showlegend=True,
+    title_text='NUMBER OF POSITIVE CASES OF COVID-19 BY BOROUGH STACKED TOGETHER'
+)
+annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.13,
+                              xanchor='center', yanchor='top',
+                              text='Data Provided by the New York City Department of Health',
+                              font=dict(family='Arial',
+                                        size=12,
+                                        color='rgb(150,150,150)'),
+                              showarrow=False)]
+fig_stacked_change_borough_cases.update_layout(annotations=annotations)
+
+fig_stacked_change_borough_cases.update_layout(
+    showlegend=False,
+    annotations=[
+        dict(
+            x=0,
+            y=-400,
+            xref="x",
+            yref="y",
+            text="10764<br> total",
+            showarrow=False,
+            ax=0,
+            ay=-40,
+            font=dict(size=13, color='#000'),
+        )
+    ]
+)
+
+annotation_borough = []
+for i,j in zip(range(0, 7), df_nyc['total']):
+  annotation_borough.append(
+        dict(
+            x=i,
+            y=-2000,
+            xref="x",
+            yref="y",
+            text=str(j) +"<br> total",
+            showarrow=False,
+            ax=0,
+            ay=-40))
+annotation_borough.append(
+  dict(xref='paper', yref='paper', x=0.5, y=-0.122,
+  xanchor='center', yanchor='top',
+  text='Data Provided by the New York City Department of Health',
+  font=dict(family='Arial',
+            size=12,
+            color='rgb(150,150,150)'),
+  showarrow=False))
+
+
+fig_stacked_change_borough_cases.update_layout(
+    plot_bgcolor='white',
+    showlegend=True,
+    annotations = annotation_borough
+)
+
+
+
+#---------------------------------------------------------------------------TIMESLIDER
 import requests
 df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
 
@@ -399,7 +504,7 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            height = 720,
                            color = 'total',
                            color_continuous_scale=px.colors.sequential.Teal,
-                           custom_data = ['26_Mar_Cov_Pos'],
+                           custom_data = ['March 27'],
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -515,7 +620,7 @@ for i,j in zip(collist, color43):
     
 fig_stacked_change_county_cases.update_traces(hoverinfo='text+name', mode='lines+markers')
 fig_stacked_change_county_cases.update_layout(
-    title_text='DAY-TO-DAY CHANGES IN ACTUAL NUMBER OF POSITIVE CASES BY COUNTY (drag-zoom to see detail)'
+    title_text='DAY-TO-DAY CHANGES IN NEW ADDITIONAL POSITIVE CASES BY COUNTY (drag-zoom to see detail)'
 )
 annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.13,
                               xanchor='center', yanchor='top',
@@ -583,7 +688,7 @@ for i,j in zip(collist, color43):
     
 fig_stacked_ny.update_traces(hoverinfo='text+name', mode='lines+markers')
 fig_stacked_ny.update_layout(
-    title_text='DAY-TO-DAY CHANGES IN ACTUAL NUMBER OF POSITIVE CASES NEW YORK'
+    title_text='DAY-TO-DAY CHANGES IN NEW ADDITIONAL POSITIVE CASES NEW YORK'
 )
 annotations = [ dict(xref='paper', yref='paper', x=0.5, y=-0.13,
                               xanchor='center', yanchor='top',
@@ -671,7 +776,7 @@ annotat.append(dict(xref='paper', yref='paper', x=0.5, y=-0.1,
 fig_area_world_day_changes.update_layout(
     annotations = annotat,
     yaxis=dict(title_text="Confirmed Cases",color='#05b9f0'),
-    title = "DAY-TO-DAY ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
+    title = "DAY-TO-DAY NEW ADDITIONS IN CONFIRMED CASES IN U.S. VS. CHINA VS. ITALY",paper_bgcolor='rgba(0,0,0,0)',
     font=dict(family='Arial',
     color='rgb(37,37,37)'),
     plot_bgcolor='rgba(0,0,0,0)', 
@@ -1281,20 +1386,11 @@ columnTopRight = dbc.Col(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H1('29,766', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('517', style={'fontSize':32, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':20, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('517', style={'fontSize':32, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
             html.H6('Data above from NYS Dept. of Health march 28, 3 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
-            ]
-        ),
-
-        html.Center(
-            children=[
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-28_01.png'), style={'display': 'block', 'height':300})
-            ]
-        ),
-        html.Center(
-            children=[
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-28_01.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NYC DOH, last updated there on March 28, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
@@ -1312,6 +1408,19 @@ columnNeighborhoods = dbc.Col(
             ]
         )
     ],md=10,
+)
+
+
+column_nyc_stats = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dcc.Graph(figure=fig_line_nyc_borough_day_change),
+                dcc.Graph(figure=fig_stacked_change_borough_cases),
+            ]
+        )
+    ],
+    md=10
 )
 
 column0bottomCenter = dbc.Col(
@@ -1912,7 +2021,8 @@ layout = [
         dbc.Row([columnTopAlert]),
         dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]),
 
-        dbc.Row([singleColumn,columnNeighborhoods, singleColumn]),
+        dbc.Row([singleColumn,columnNeighborhoods, singleColumn]), 
+        dbc.Row([singleColumn,column_nyc_stats, singleColumn]),
 
         dbc.Row([column0bottomCenter]),
         dbc.Row([column0bottomCenter2]),
