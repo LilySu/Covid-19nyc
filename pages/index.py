@@ -14,9 +14,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
-df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-27.csv")
-df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-27.csv")
-df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-27.csv")
+df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-29.csv")
+df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-29.csv")
+df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-29.csv")
 # df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-24.csv")
 # df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-24.csv")
 # df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
@@ -240,7 +240,7 @@ fig_pie_nyc_death_illness.update_layout(
 # with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
 #   counties = json.load(response)
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-27.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-29.csv')
 fig_map_top_center = go.Figure()
 
 # fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
@@ -938,7 +938,7 @@ fig_line_cumulative_us_italy_china.update_scenes(
 
 annotations = []
 
-annotations.append(dict(xref='paper', x=.992, y=66000,
+annotations.append(dict(xref='paper', x=.992, y=89700,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
@@ -946,7 +946,7 @@ annotations.append(dict(xref='paper', x=.992, y=66000,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=97000,
+annotations.append(dict(xref='paper',  x=.992, y=135000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -986,14 +986,14 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                   dict(xref='paper', x=0.992, y=66000,
+                   dict(xref='paper', x=0.992, y=89700,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         color='#9e92f6',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=97000,
+                     dict(xref='paper', x=0.992, y=135000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1016,14 +1016,14 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                               showarrow=False)]
 
 
-italy_annotations = [dict(xref='paper', x=0.992, y=74500,
+italy_annotations = [dict(xref='paper', x=0.992, y=89700,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         color='#9e92f6',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=97000,
+                     dict(xref='paper', x=0.992, y=135000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1052,7 +1052,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=97000,
+                     dict(xref='paper', x=0.999, y=135000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1782,7 +1782,7 @@ card_content_iceland = [
 
 card_content_talks = [
     dbc.CardHeader(
-    dbc.CardLink("Daily live online conversations with US and Global Theatre Artists.", href="www.theSegalCenter.org", style={'color':'#e2fdf1'}),
+    dbc.CardLink("Daily Live Online Conversations With US and Global Theatre Artists.", href="www.theSegalCenter.org", style={'color':'#e2fdf1'}),
     ),
     dbc.CardBody(
         [
@@ -1797,7 +1797,7 @@ card_content_talks = [
 
 card_content_testinginfo = [
     dbc.CardHeader(
-    dbc.CardLink("How do the Test for Covid-19 Work? Here's a Graphic that Explains!", href="https://www.compoundchem.com/2020/03/19/covid-19-testing/", style={'color':'#e2fdf1'}),
+    dbc.CardLink("How Does the Test for Covid-19 Work? Here's an Infographic that Explains.", href="https://www.compoundchem.com/2020/03/19/covid-19-testing/", style={'color':'#e2fdf1'}),
     ),
     dbc.CardBody(
         [
