@@ -788,7 +788,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(27), diff_from_day_before['total']):
+for i,j in zip(range(28), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -1756,7 +1756,76 @@ column4CenterAll = dbc.Col(
         dcc.Graph(figure=fig_line_cumulative_us_italy_china),
         html.Br(),
         html.Span(' ', className='mr-1'),
+        html.Br(),
+        html.Span(' ', className='mr-1'),
+        html.Br(),
+        html.Span(' ', className='mr-1'),
     ]
+)
+
+
+
+card_content_iceland = [
+    dbc.CardHeader(
+    dbc.CardLink("Iceland's Mass Testing Finds Half of Carriers Show No Symptoms", href="https://english.alarabiya.net/en/features/2020/03/25/Coronavirus-Iceland-s-mass-testing-finds-half-of-carriers-show-no-symptoms", style={'color':'#e2fdf1'}),
+    ),
+    dbc.CardBody(
+        [
+            html.H5("News Snippet", className="card-title"),
+            html.P(
+                "Iceland has conducted the highest Covid-19 tests per capita, including testing for those who don’t exhibit any symptoms and have found that about half of those who tested positive are non-symptomatic.",
+                className="card-text",
+            ),
+        ]
+    ),
+]
+
+card_content_talks = [
+    dbc.CardHeader(
+    dbc.CardLink("Daily live online conversations with US and Global Theatre Artists.", href="www.theSegalCenter.org", style={'color':'#e2fdf1'}),
+    ),
+    dbc.CardBody(
+        [
+            html.H5("Online Event", className="card-title"),
+            html.P(
+                "Artists, curators, researchers and academics will talk about life and art in the Time of Corona and speak about challenges, sorrows, and hopes for the new Weltzustand -- the State of the World.",
+                className="card-text",
+            ),
+        ]
+    ),
+]
+
+card_content_testinginfo = [
+    dbc.CardHeader(
+    dbc.CardLink("How do the Test for Covid-19 Work? Here's a Graphic that Explains!", href="https://www.compoundchem.com/2020/03/19/covid-19-testing/", style={'color':'#e2fdf1'}),
+    ),
+    dbc.CardBody(
+        [
+            html.H5("Learn...", className="card-title"),
+            html.P(
+                "Less testing means it is harder to track the spread of the infection and isolate the contacts of the infected. Current tests cannot tell us whether someone had the virus but have subsequently recovered.",
+                className="card-text",
+            ),
+        ]
+    ),
+]
+
+newscards = dbc.Col(
+    [
+        html.Div(
+            [
+                dbc.Row(
+                    [
+                        dbc.Col(dbc.Card(card_content_iceland, color="info", inverse=True)),
+                        dbc.Col(dbc.Card(card_content_talks, color="info", inverse=True)),
+                        dbc.Col(dbc.Card(card_content_testinginfo, color="info", inverse=True)),
+                    ],
+                    className="mb-4",
+                ),
+            ]
+        )
+    ],
+    md=8,
 )
 
 
@@ -1764,7 +1833,7 @@ announcementsHeader = dbc.Col(
     [
         html.Center(
             children=[
-            html.Img(src=app.get_asset_url('helpfulInfo.png'), style={'display': 'block', 'width':'100%'})
+            html.Img(src=app.get_asset_url('helpfulInfo.png'), style={'display': 'block', 'width':'100%','marginTop':70})
             ]
         )
     ],
@@ -1804,7 +1873,11 @@ shopAnnouncementsCenter = dbc.Col(
             children=[
                 dbc.Jumbotron(
                     [
-                        html.H1("Special Shopping Hours", className="display-6", style={"color":"#03607d"}),
+                        html.H1("Emergency Food Assistance", className="display-6", style={"color":"#03607d"}),
+                        html.Span(' ', className='mr-1'),
+                        html.P("Everyone is eligible for emergency food assistance, regardless of immigration status or how much money you have.", style={"color":"#03607d"}, className="lead"),
+                        html.P(dbc.Button("Read more", color="info", href="https://access.nyc.gov/programs/emergency-food-assistance/"), className="lead"),
+                        html.H1("Special Shopping Hours", className="display-6", style={"color":"#03607d", 'marginTop':70}),
                         html.Span(' ', className='mr-1'),
                         html.P("Whole Foods are open one hour before their normal opening time for seniors 60 and above every day.", style={"color":"#03607d"}, className="lead"),
                         html.P("Trader Joe's are open just for seniors 65 and above 9 a.m. to 10 a.m. every day.", className="lead", style={"color":"#03607d"}),
@@ -1844,6 +1917,29 @@ taxesAnnouncementsCenter = dbc.Col(
     md=8,
 )
 
+testingAnnouncementsCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dbc.Jumbotron(
+                    [
+                        html.H1("Getting Tested for Covid-19", className="display-6", style={"color":"#03607d"}),
+                        html.Span(' ', className='mr-1'),
+                        html.P("Residents who would like to be tested must call: 888-364-3065.", style={"color":"#03607d"}, className="lead"),
+                        html.P("Priority will go to higher-risk individuals.", style={"color":"#03607d"}, className="lead"),
+                        html.Hr(className="my-2"),
+                        html.P("If you would like to be tested, you must show up in a vehicle.", style={"color":"#03607d"}),
+                        html.P("Starting Monday, March 30, 2020, 10am, a facility will be open onwards Monday - Sunday, 8am - 6pm ", style={"color":"#03607d"}),
+                        html.P("Bay Plaza AMC Theater at 2210 Bartow Ave. ", style={"color":"#03607d"}),
+                        html.P(dbc.Button("Read more", color="info", href="https://www.governor.ny.gov/news/governor-cuomo-speaker-heastie-senator-bailey-and-assemblyman-benedetto-announce-new-covid-19)", className="lead"),),
+                    ]
+                )
+            ]
+        )
+    ],
+    md=8,
+)
+
 unemploymentAnnouncementsCenter = dbc.Col(
     [
         html.Center(
@@ -1863,6 +1959,8 @@ unemploymentAnnouncementsCenter = dbc.Col(
     ],
     md=8,
 )
+
+
 
 
 selectedWritingsHeaderCenter = dbc.Col(
@@ -2020,6 +2118,9 @@ restoringPeaceCenter = dbc.Col(
                                 html.P(
                                     "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!", className="blockquote"
                                 ),
+                                dbc.CardLink("More on Insight Timer", href="https://insighttimer.com/", style={'color':'#16849c'}),
+                                dbc.CardLink("More on Calm", href="https://www.calm.com/", style={'color':'#16849c'}),
+                                dbc.CardLink("More on Headspace", href="https://www.headspace.com/", style={'color':'#16849c'}),
                                 html.Hr(),
                                 html.P('Excerpt from Zen Master Thich Nhat Hanh. "True Love: A Practice for Awakening the Heart."Penguin Random House, 2004. Chapter 8.',style={'fontSize':14, 'marginTop':45}, className="card-text"),
                                 html.P('Intro and Afterword by',style={'fontSize':14},className="card-text"),
@@ -2066,27 +2167,31 @@ onSelfReflectionCenter = dbc.Col(
                                 html.P(
                                     "Here are some ways to ease into a mindset that is open to self-reflection:",className="card-text"
                                 ),
-
                                 html.H5("Meditation",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
 
                                 html.P(
-                                    "As mentioned, the ultimate practice for sitting with the self is meditation. There are some amazing apps, my favorite being Insight Timer, for home meditation. If you find it difficult to meditate alone, set aside time with those you live with or schedule a session virtually with friends! For beginners who find it difficult to sit in one place for a long time, you can easily adopt other mindfulness practices including mindful eating and mindful walking in the local park.",className="card-text"
+                                    "As mentioned, the ultimate practice for sitting with the self is meditation. There are some amazing apps, my favorite being Insight Timer, for home meditation. ",className="card-text"),
+                                html.P(
+                                    "If you find it difficult to meditate alone, set aside time with those you live with or schedule a session virtually with friends! For beginners who find it difficult to sit in one place for a long time, you can easily adopt other mindfulness practices including mindful eating and mindful walking in the local park.",className="card-text"
                                 ),
+                                dbc.CardLink("More on Insight Timer", href="https://insighttimer.com/", style={'color':'#16849c'}),
+                                dbc.CardLink("Helpful Link for Mindful Eating", href="https://www.health.harvard.edu/staying-healthy/8-steps-to-mindful-eating", style={'color':'#16849c'}),
+                                dbc.CardLink("Helpful Link for Mindful Walking", href="https://chopra.com/articles/mindful-walking-practice-how-to-get-started", style={'color':'#16849c'}),
                                 html.H5("Journaling",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
-
                                 html.P(
                                     "Whether you are a seasoned journaler or not, writing out your thoughts and feelings can be a therapeutic way to decompress. What can be helpful is setting aside a time to write regularly around the same time. For instance, every Sunday evening before bed. Keeping a gratitude journal of sorts can help as well. For those who struggle with writing you can write one sentence daily on what you are grateful for. ", className="card-text"
                                 ),
+                                dbc.CardLink("On Keeping a Gratitude Journal", href="https://greatergood.berkeley.edu/article/item/tips_for_keeping_a_gratitude_journal", style={'color':'#16849c'}),
                                 html.H5("Walking",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                                 html.P(
                                     "Getting outside in the fresh air for a short while (preferably alone) can be helpful. If there is a garden or park nearby take advantage of it and soak in the spring breeze! Walking has been known to improve creativity and the thought process according to a study by Stanford University. You can opt to walk with a companion but considering the number of restrictions in many countries regarding self-isolation this is not advised unless you live with them. That being said, solo is probably best so you can focus on your thoughts.", className="card-text"
                                 ),
+                                dbc.CardLink("Study on the Correlation Between Walking & Creativity", href="https://news.stanford.edu/2014/04/24/walking-vs-sitting-042414/", style={'color':'#16849c'}),
                                 html.H5("Exploring Happiness",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                                 html.P(
                                     "Lots of people have the misconception of what happiness means. For many it is something that is a sustained state to aspire to. But in reality, happiness is constantly in a flux and related to self-resilience. Resilience means building the muscle to allow for living joyfully while in full awareness of life’s inherent ups and downs. This is a great moment in time to exercise that muscle! Two great resources include “The Happiness Project” by Gretchen Rubin and a free Coursera module, “The Science of Well-Being,” taught by Professor Laurie Santos at Yale University.", className="card-text"
                                 ),
-
-                                
+                                dbc.CardLink("Article on How Resilience is Tied to Happiness", href="https://qz.com/1289236/resilience-is-the-new-happiness/", style={'color':'#16849c'}),
                                 html.Hr(),
                                 html.P(
                                     "Written by:",style={'fontSize':14, 'marginTop':40, 'marginBottom':0},
@@ -2131,7 +2236,7 @@ pod1 = [
         [
             html.H5("What's your Plan", className="card-title"),
             html.P(
-                "Are you prepared if you get sick?",
+                "Create a binder with all important documents as a just in case.",
                 className="card-text",
             ),
             dbc.Button("Plan", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
@@ -2240,9 +2345,12 @@ layout = [
         # dbc.Row([columnDistC, columnDistR, columnDistL]),
         # dbc.Row([columnDistbottomCenter]),  
 
+        dbc.Row([doubleColumn,newscards,doubleColumn]),
+
         dbc.Row([doubleColumn,announcementsHeader,doubleColumn]),
         dbc.Row([doubleColumn, annoucementsCenter, doubleColumn]),
-        dbc.Row([doubleColumn, shopAnnouncementsCenter, doubleColumn]),
+        dbc.Row([doubleColumn, shopAnnouncementsCenter, doubleColumn]), 
+        dbc.Row([doubleColumn, testingAnnouncementsCenter, doubleColumn]),
         dbc.Row([doubleColumn, taxesAnnouncementsCenter, doubleColumn]),
         dbc.Row([doubleColumn, unemploymentAnnouncementsCenter, doubleColumn]),
 
