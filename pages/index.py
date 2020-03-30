@@ -1988,82 +1988,82 @@ collapseEniqueArticle = dbc.Col(
                         [
                             html.H4("Mindfulness When Shopping",className="card-text",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
                             html.P(
-                                "It’s difficult to stay home during this crisis if we’re ill-prepared. We have to stock up on food, snacks, vitamins, hand sanitizer and, of course, toilet paper. It’s important to have a clean booty during a pandemic.",className="card-text"
+                                "It’s difficult to stay home during this crisis if we’re ill-prepared. We have to stock up on food, snacks, vitamins, hand sanitizer and, of course, toilet paper. It’s important to have a clean booty during a pandemic.",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "That’s why shopping for quarantine life has become an event. Thanks to the hours of predictive programming instilled into our minds by post-apocalyptic movies centering on societal collapse, we haven’t been reduced to chaotic creatures. However, as someone who is still assisting customers, both young and old, I have noticed an array of mindfulness and lack thereof when it comes to shopping. ",className="card-text"
+                                "That’s why shopping for quarantine life has become an event. Thanks to the hours of predictive programming instilled into our minds by post-apocalyptic movies centering on societal collapse, we haven’t been reduced to chaotic creatures. However, as someone who is still assisting customers, both young and old, I have noticed an array of mindfulness and lack thereof when it comes to shopping. ",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "So here are a few tips you can use to protect yourself and others when shopping.",className="card-text"
+                                "So here are a few tips you can use to protect yourself and others when shopping.",className="card-text",style={'text-align':'left'}
                             ),
                             html.H5("Mask & Gloves ",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "Seriously. We’re at a point where you have to assume someone has touched the item you just grabbed, whether it’s an employee or another customer. It helps you, the employees, fellow customers, and your loved ones. The addition of the mask can help ease any anxieties that employees may have, and it adds a layer of protection for you, too. ",className="card-text"
+                                "Seriously. We’re at a point where you have to assume someone has touched the item you just grabbed, whether it’s an employee or another customer. It helps you, the employees, fellow customers, and your loved ones. The addition of the mask can help ease any anxieties that employees may have, and it adds a layer of protection for you, too. ",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "According to the Centers for Disease Control and Prevention (CDC), It is recommended to use nitrile gloves, natural rubber gloves, or polychloroprene gloves, as they provide higher elasticity than vinyl gloves. "
+                                "According to the Centers for Disease Control and Prevention (CDC), It is recommended to use nitrile gloves, natural rubber gloves, or polychloroprene gloves, as they provide higher elasticity than vinyl gloves. ",style={'text-align':'left'}
                             ),
                             html.P(
-                                "For masks, as you may already know, the N-95 Respirator comes highly recommended, for its tight fight and ability to reduce 95 percent of the wearer’s exposure to small particles and large droplets. A surgical mask may work in a pinch, however, it will not provide the needed protection against smaller airborne particles."
+                                "For masks, as you may already know, the N-95 Respirator comes highly recommended, for its tight fight and ability to reduce 95 percent of the wearer’s exposure to small particles and large droplets. A surgical mask may work in a pinch, however, it will not provide the needed protection against smaller airborne particles.",style={'text-align':'left'}
                             ),
                             html.P(
-                                "Ideally, it is suggested that these masks be thrown away after each use. But given the current deficiencies of Personal Protective Equipment (PPE) that hospitals are facing, it would be considerate if you did not hoard masks, which could be accomplished by giving each individual mask a longer service life."
+                                "Ideally, it is suggested that these masks be thrown away after each use. But given the current deficiencies of Personal Protective Equipment (PPE) that hospitals are facing, it would be considerate if you did not hoard masks, which could be accomplished by giving each individual mask a longer service life.",style={'text-align':'left'}
                             ),
                             html.P(
-                                "If possible, you can help by reaching out to local hospitals and donating masks. "
+                                "If possible, you can help by reaching out to local hospitals and donating masks. ",style={'text-align':'left'}
                             ),
                             html.H5("What to Do",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "One store will not operate like the other, especially if you are frequenting independent pharmacies, grocery stores, and food processors. Make an attempt to learn their style of operations, checkout procedures, payment options, hours, and safety precautions.For example, Stop and Shop allow senior citizens (60-year-olds and over) to shop between 6-7:30 am, while Trader Joe’s is only allowing 30 customers in the store at one time.",className="card-text"
+                                "One store will not operate like the other, especially if you are frequenting independent pharmacies, grocery stores, and food processors. Make an attempt to learn their style of operations, checkout procedures, payment options, hours, and safety precautions.For example, Stop and Shop allow senior citizens (60-year-olds and over) to shop between 6-7:30 am, while Trader Joe’s is only allowing 30 customers in the store at one time.",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "Generally, you can avoid the crowds during the early mornings, because as the saying goes: the early bird catches the worm. Just pay attention to any updates that shops may have via their social media accounts, or call ahead if you’re not sure.",className="card-text"
+                                "Generally, you can avoid the crowds during the early mornings, because as the saying goes: the early bird catches the worm. Just pay attention to any updates that shops may have via their social media accounts, or call ahead if you’re not sure.",className="card-text",style={'text-align':'left'}
                             ),
                             html.H5("Know What You Want",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "For real, this isn’t the time to be window shopping. With the ever-increasing descent upon grocery stores and pharmacies, it’s imperative to have a list of the items you will be needing. "
+                                "For real, this isn’t the time to be window shopping. With the ever-increasing descent upon grocery stores and pharmacies, it’s imperative to have a list of the items you will be needing. ",style={'text-align':'left'}
                             ),
                             html.P(
-                                "The quicker you are the quicker the checkout line will move, which will result in shorter exposure times. If you need help figuring out how to shop, refer to the god-awful film, “Jingle All the Way” starring Arnold Schwarzenegger and Sinbad.",className="card-text"
+                                "The quicker you are the quicker the checkout line will move, which will result in shorter exposure times. If you need help figuring out how to shop, refer to the god-awful film, “Jingle All the Way” starring Arnold Schwarzenegger and Sinbad.",className="card-text",style={'text-align':'left'}
                             ),
                             html.H5("Gimme Some Space",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "People are touching, smiling, and not respecting your personal space. The whole time my mind is thinking, 'Gimme some space, bro!' "
+                                "People are touching, smiling, and not respecting your personal space. The whole time my mind is thinking, 'Gimme some space, bro!' ",style={'text-align':'left'}
                             ),
                             html.P(
-                                "Do you people even understand what’s happening out here? I’m not trying to add to the fear-mongering tactics some have accused the media of using, but if we don’t take this seriously we will be risking people’s health by extending this pandemic’s life span.",className="card-text"
+                                "Do you people even understand what’s happening out here? I’m not trying to add to the fear-mongering tactics some have accused the media of using, but if we don’t take this seriously we will be risking people’s health by extending this pandemic’s life span.",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "Please practice social distancing. Communicate clearly and thoroughly from the recommended six-foot distance. Keep in mind, that if you’re on a possible collision course with someone waving is one of the best non-verbal cues that you can rely on if you’re having trouble commanding a person’s attention.",className="card-text"
+                                "Please practice social distancing. Communicate clearly and thoroughly from the recommended six-foot distance. Keep in mind, that if you’re on a possible collision course with someone waving is one of the best non-verbal cues that you can rely on if you’re having trouble commanding a person’s attention.",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "Remember, if you can smell someone’s breath, cologne, or body odor you are too close.",className="card-text"
+                                "Remember, if you can smell someone’s breath, cologne, or body odor you are too close.",className="card-text",style={'text-align':'left'}
                             ),
                             html.H5("Wipe Everything Down",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "Once you’re home, it’s important to wipe down any of the items you may have purchased, whether it’s packaged food products, produce, or home supplies. If it’s possible, designate an area at home that will be used to place outside items on. Wipe down this area after everything is put away. ",className="card-text"
+                                "Once you’re home, it’s important to wipe down any of the items you may have purchased, whether it’s packaged food products, produce, or home supplies. If it’s possible, designate an area at home that will be used to place outside items on. Wipe down this area after everything is put away. ",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "A thorough cleaning of fruits and veggies is crucial before they are stored away, even for fruits that are protected by an out layer, like oranges, bananas, and melons. A simple soak/wash in a bowl of water with vinegar (apple cider vinegar or white vinegar) and a gentle scrub with soap would suffice.",className="card-text"
+                                "A thorough cleaning of fruits and veggies is crucial before they are stored away, even for fruits that are protected by an out layer, like oranges, bananas, and melons. A simple soak/wash in a bowl of water with vinegar (apple cider vinegar or white vinegar) and a gentle scrub with soap would suffice.",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "For those of you that use reusable bags, especially those made from cloth, it’s also essential to clean the bag, too. ",className="card-text"
+                                "For those of you that use reusable bags, especially those made from cloth, it’s also essential to clean the bag, too. ",className="card-text",style={'text-align':'left'}
                             ),
                             html.H5("R-E-S-P-E-C-T",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                             html.P(
-                                "In America, we live in such a desensitized society that people watch police killings on their phones while eating their avocado toast. ",className="card-text"
+                                "In America, we live in such a desensitized society that people watch police killings on their phones while eating their avocado toast. ",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
                                 "We lack empathy.", className="blockquote"
                             ),
                             html.P(
-                                "You don’t care about my plight or the social injustices that affect me? Whatever. That was before this new situation engulfed America, and now we’re in this together.",className="card-text"
+                                "You don’t care about my plight or the social injustices that affect me? Whatever. That was before this new situation engulfed America, and now we’re in this together.",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "So you may have looked down on or ignored the so-called low-skilled workers two months ago, but now we’re the ones you seek for cleanliness, supplies, food, transportation, education, and the normality that dissolved, due to this pandemic, yet you still yearn for to calm your anxieties. ",className="card-text"
+                                "So you may have looked down on or ignored the so-called low-skilled workers two months ago, but now we’re the ones you seek for cleanliness, supplies, food, transportation, education, and the normality that dissolved, due to this pandemic, yet you still yearn for to calm your anxieties. ",className="card-text",style={'text-align':'left'}
                             ),
                             html.P(
-                                "We don’t want to be out here, but we are. We’re risking our own health and that of our loved ones, which is making your life easier. Please take the time to show your appreciation in a non-condescending fashion. We are essential workers. ",className="card-text"
+                                "We don’t want to be out here, but we are. We’re risking our own health and that of our loved ones, which is making your life easier. Please take the time to show your appreciation in a non-condescending fashion. We are essential workers. ",className="card-text",style={'text-align':'left'}
                             ),
                             html.Hr(),
                             html.P(
@@ -2081,6 +2081,8 @@ collapseEniqueArticle = dbc.Col(
 )
 
 
+
+
 restoringPeaceCenter = dbc.Col(
     [
         html.Center(
@@ -2095,28 +2097,28 @@ restoringPeaceCenter = dbc.Col(
                             [
                                 html.H4("Restoring Peace Within Yourself",className="card-text",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
                                 html.P(
-                                    "We understand how a pandemic can create anxiety, panic and stress, especially with how fast the worldwide spread has been. We would like to help you restore peace of mind within yourself by introducing the mindfulness practice taught by Thich Nhat Hanh, the father of mindfulness. The following comes from the chapter “Restoring Peace Within Yourself” from his book True Love.",className="blockquote"
+                                    "We understand how a pandemic can create anxiety, panic and stress, especially with how fast the worldwide spread has been. We would like to help you restore peace of mind within yourself by introducing the mindfulness practice taught by Thich Nhat Hanh, the father of mindfulness. The following comes from the chapter “Restoring Peace Within Yourself” from his book True Love.",className="blockquote",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "During the day, if you practice walking meditation, each step brings you back to the present moment; each step enables you to touch what is beautiful, what is true. And in this way, after a few weeks of practice, joy will become something possible, you will be able to undo many knots within yourself, and you will be able to transform negative energies into joy and peace. The Buddha said this: “The object of your practice should first of all be yourself. Your love for the other, your ability to love another person, depends on your ability to love yourself.” If you are not able to take care of yourself, if you are not able to accept yourself, how could you accept another person and how could you love him or her? So it is necessary to come back to yourself in order to be able to achieve the transformation.",className="card-text"
+                                    "During the day, if you practice walking meditation, each step brings you back to the present moment; each step enables you to touch what is beautiful, what is true. And in this way, after a few weeks of practice, joy will become something possible, you will be able to undo many knots within yourself, and you will be able to transform negative energies into joy and peace. The Buddha said this: “The object of your practice should first of all be yourself. Your love for the other, your ability to love another person, depends on your ability to love yourself.” If you are not able to take care of yourself, if you are not able to accept yourself, how could you accept another person and how could you love him or her? So it is necessary to come back to yourself in order to be able to achieve the transformation.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "Each of us is a king who reigns over a very vast territory that has five rivers. The first river is our body, which we do not know well enough. The second is the river of sensations. Each sensation is a drop of water in this river. There are pleasant sensations, others that are unpleasant, and neutral sensations. To meditate is to sit down on the bank of the river of sensations and identify each sensation as it arises. The third is the river of perceptions, which it is necessary to observe. You must look deeply into their nature in order to understand. The fourth is the river of mental formations, of which there are fifty-one. And finally, the fifth is the river of consciousness.",className="card-text"
+                                    "Each of us is a king who reigns over a very vast territory that has five rivers. The first river is our body, which we do not know well enough. The second is the river of sensations. Each sensation is a drop of water in this river. There are pleasant sensations, others that are unpleasant, and neutral sensations. To meditate is to sit down on the bank of the river of sensations and identify each sensation as it arises. The third is the river of perceptions, which it is necessary to observe. You must look deeply into their nature in order to understand. The fourth is the river of mental formations, of which there are fifty-one. And finally, the fifth is the river of consciousness.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "Our territory is really very vast, but we are not responsible kings or queens. We always try to dodge away and we do not keep up a real surveillance of our territory. We have the feeling that there are immense conflicts there, too much suffering, too much pain—that is the reason we are very hesitant to get back to our territory. Our daily practice consists in running away. If we have a moment free, we will make use of it to watch television or read a magazine article so we will not have to go back to our territory. We are afraid of the suffering that is inside us, afraid of war and conflicts.",className="card-text"
+                                    "Our territory is really very vast, but we are not responsible kings or queens. We always try to dodge away and we do not keep up a real surveillance of our territory. We have the feeling that there are immense conflicts there, too much suffering, too much pain—that is the reason we are very hesitant to get back to our territory. Our daily practice consists in running away. If we have a moment free, we will make use of it to watch television or read a magazine article so we will not have to go back to our territory. We are afraid of the suffering that is inside us, afraid of war and conflicts.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "The practice of mindfulness, the practice of meditation, consists of coming back to ourselves in order to restore peace and harmony. The energy with which we can do this is the energy of mindfulness. Mindfulness is a kind of energy that carries with it concentration, understanding, and love. If we come back to ourselves to restore peace and harmony, then helping another person will be a much easier thing.",className="card-text"
+                                    "The practice of mindfulness, the practice of meditation, consists of coming back to ourselves in order to restore peace and harmony. The energy with which we can do this is the energy of mindfulness. Mindfulness is a kind of energy that carries with it concentration, understanding, and love. If we come back to ourselves to restore peace and harmony, then helping another person will be a much easier thing.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "Caring for yourself, reestablishing peace in yourself, is the basic condition for helping someone else. So that the other can stop being a bomb, a source of pain for ourselves and others, you really have to help him to defuse the bomb. To be able to provide help, we have to have a little calm, a little joy, a little compassion in ourselves. This is what we get from mindfulness in everyday life, because mindfulness is not something that is only done in a meditation hall; it is also done in the kitchen, in the garden, when we are on the telephone, when we are driving a car, when we are doing the dishes.",className="card-text"
+                                    "Caring for yourself, reestablishing peace in yourself, is the basic condition for helping someone else. So that the other can stop being a bomb, a source of pain for ourselves and others, you really have to help him to defuse the bomb. To be able to provide help, we have to have a little calm, a little joy, a little compassion in ourselves. This is what we get from mindfulness in everyday life, because mindfulness is not something that is only done in a meditation hall; it is also done in the kitchen, in the garden, when we are on the telephone, when we are driving a car, when we are doing the dishes.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "If you can do it this way, three weeks are enough to transform the pain inside you, to bring back your joy in living, to cultivate the energy of compassion with which you can help the person you love. The practice of being there with what is beautiful and with what is healing is something we should do every day, and it is possible to do this in everyday life.",className="card-text"
+                                    "If you can do it this way, three weeks are enough to transform the pain inside you, to bring back your joy in living, to cultivate the energy of compassion with which you can help the person you love. The practice of being there with what is beautiful and with what is healing is something we should do every day, and it is possible to do this in everyday life.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!", className="blockquote"
+                                    "In order to support your mindfulness practice, you might be interested in trying some mobile apps, such as Insight Timer, Calm, Headspace, with which you can practice mindfulness wherever you go. Hope peace of mind and love be with you, especially in this extraordinarily challenging time!", className="blockquote",style={'text-align':'left'}
                                 ),
                                 dbc.CardLink("More on Insight Timer", href="https://insighttimer.com/", style={'color':'#16849c'}),
                                 dbc.CardLink("More on Calm", href="https://www.calm.com/", style={'color':'#16849c'}),
@@ -2150,46 +2152,47 @@ onSelfReflectionCenter = dbc.Col(
                             [
                                 html.H4("Self-Reflection as a Fundamental Activity",className="card-text",style={'fontSize':32, 'marginTop':40, 'marginBottom':55}),
                                 html.P(
-                                    "Approaching the second week of self-isolation has felt momentous. The first week was filled with anxiety of the unknown and the flurry of stocking up at the supermarket and pharmacy. But now having found some semblance of a routine - grocery shopping once a week, rotating working areas within the apartment to keep things stimulating, taking up new hobbies, and reconnecting with friends and family, this all feels a bit more bearable. ",className="card-text"
+                                    "Approaching the second week of self-isolation has felt momentous. The first week was filled with anxiety of the unknown and the flurry of stocking up at the supermarket and pharmacy. But now having found some semblance of a routine - grocery shopping once a week, rotating working areas within the apartment to keep things stimulating, taking up new hobbies, and reconnecting with friends and family, this all feels a bit more bearable. ",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "Each of us is a king who reigns over a very vast territory that has five rivers. The first river is our body, which we do not know well enough. The second is the river of sensations. Each sensation is a drop of water in this river. There are pleasant sensations, others that are unpleasant, and neutral sensations. To meditate is to sit down on the bank of the river of sensations and identify each sensation as it arises. The third is the river of perceptions, which it is necessary to observe. You must look deeply into their nature in order to understand. The fourth is the river of mental formations, of which there are fifty-one. And finally, the fifth is the river of consciousness.",className="card-text"
+                                    "Each of us is a king who reigns over a very vast territory that has five rivers. The first river is our body, which we do not know well enough. The second is the river of sensations. Each sensation is a drop of water in this river. There are pleasant sensations, others that are unpleasant, and neutral sensations. To meditate is to sit down on the bank of the river of sensations and identify each sensation as it arises. The third is the river of perceptions, which it is necessary to observe. You must look deeply into their nature in order to understand. The fourth is the river of mental formations, of which there are fifty-one. And finally, the fifth is the river of consciousness.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "But more time indoors has meant more time for introspection. This means getting reacquainted with the self, all of the neuroses, nagging thoughts, and feelings. For many, life is just too busy to allow for moments of self-reflection. Coming face to face with your own thoughts is also not easy. But now that we have more time and less distractions to hide behind, we are being forced to do so. Remember that one time you tried to meditate? Yes, I mean sitting with ALL of your thoughts and feelings and letting them go. Even on a normal day this is difficult to do. But worries are running higher than normal around the well-being of family, job security, parenting and working from home, and general uncertainty of the future.",className="card-text"
+                                    "But more time indoors has meant more time for introspection. This means getting reacquainted with the self, all of the neuroses, nagging thoughts, and feelings. For many, life is just too busy to allow for moments of self-reflection. Coming face to face with your own thoughts is also not easy. But now that we have more time and less distractions to hide behind, we are being forced to do so. Remember that one time you tried to meditate? Yes, I mean sitting with ALL of your thoughts and feelings and letting them go. Even on a normal day this is difficult to do. But worries are running higher than normal around the well-being of family, job security, parenting and working from home, and general uncertainty of the future.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "We need to understand that the only way is working through these complex thoughts and feelings. The truth is, this is a great time for self-reflection as individuals and as humanity. Are you living your best self? What do you truly value? What should we as humanity value? What is fundamentally broken in our society? How can we fix it? What is our civic role and duty in society? What does it mean to be interconnected? Perhaps this introspection will mean we can be better sons and daughters, mothers and fathers, citizens, citizens of the world when we emerge from the other side.",className="card-text"
+                                    "We need to understand that the only way is working through these complex thoughts and feelings. The truth is, this is a great time for self-reflection as individuals and as humanity. Are you living your best self? What do you truly value? What should we as humanity value? What is fundamentally broken in our society? How can we fix it? What is our civic role and duty in society? What does it mean to be interconnected? Perhaps this introspection will mean we can be better sons and daughters, mothers and fathers, citizens, citizens of the world when we emerge from the other side.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "I have resolved to embrace this moment in time. To view this as a profound lesson. Rather than fighting feelings of anxiety, depression, or loneliness, accept them, learn from them and let them go. I invite you to join me to do the same! My hope is that this moment in time will be a great learning opportunity for individuals. Embrace yourself and others. Be kind to one another in awareness that we are all going through a difficult time together.",className="card-text"
+                                    "I have resolved to embrace this moment in time. To view this as a profound lesson. Rather than fighting feelings of anxiety, depression, or loneliness, accept them, learn from them and let them go. I invite you to join me to do the same! My hope is that this moment in time will be a great learning opportunity for individuals. Embrace yourself and others. Be kind to one another in awareness that we are all going through a difficult time together.",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "Here are some ways to ease into a mindset that is open to self-reflection:",className="card-text"
+                                    "Here are some ways to ease into a mindset that is open to self-reflection:",className="card-text",style={'text-align':'left'}
                                 ),
                                 html.H5("Meditation",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
 
                                 html.P(
-                                    "As mentioned, the ultimate practice for sitting with the self is meditation. There are some amazing apps, my favorite being Insight Timer, for home meditation. ",className="card-text"),
+                                    "As mentioned, the ultimate practice for sitting with the self is meditation. There are some amazing apps, my favorite being Insight Timer, for home meditation. ",className="card-text",style={'text-align':'left'}
+                                ),
                                 html.P(
-                                    "If you find it difficult to meditate alone, set aside time with those you live with or schedule a session virtually with friends! For beginners who find it difficult to sit in one place for a long time, you can easily adopt other mindfulness practices including mindful eating and mindful walking in the local park.",className="card-text"
+                                    "If you find it difficult to meditate alone, set aside time with those you live with or schedule a session virtually with friends! For beginners who find it difficult to sit in one place for a long time, you can easily adopt other mindfulness practices including mindful eating and mindful walking in the local park.",className="card-text",style={'text-align':'left'}
                                 ),
                                 dbc.CardLink("More on Insight Timer", href="https://insighttimer.com/", style={'color':'#16849c'}),
                                 dbc.CardLink("Helpful Link for Mindful Eating", href="https://www.health.harvard.edu/staying-healthy/8-steps-to-mindful-eating", style={'color':'#16849c'}),
                                 dbc.CardLink("Helpful Link for Mindful Walking", href="https://chopra.com/articles/mindful-walking-practice-how-to-get-started", style={'color':'#16849c'}),
                                 html.H5("Journaling",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                                 html.P(
-                                    "Whether you are a seasoned journaler or not, writing out your thoughts and feelings can be a therapeutic way to decompress. What can be helpful is setting aside a time to write regularly around the same time. For instance, every Sunday evening before bed. Keeping a gratitude journal of sorts can help as well. For those who struggle with writing you can write one sentence daily on what you are grateful for. ", className="card-text"
+                                    "Whether you are a seasoned journaler or not, writing out your thoughts and feelings can be a therapeutic way to decompress. What can be helpful is setting aside a time to write regularly around the same time. For instance, every Sunday evening before bed. Keeping a gratitude journal of sorts can help as well. For those who struggle with writing you can write one sentence daily on what you are grateful for. ", className="card-text",style={'text-align':'left'}
                                 ),
                                 dbc.CardLink("On Keeping a Gratitude Journal", href="https://greatergood.berkeley.edu/article/item/tips_for_keeping_a_gratitude_journal", style={'color':'#16849c'}),
                                 html.H5("Walking",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                                 html.P(
-                                    "Getting outside in the fresh air for a short while (preferably alone) can be helpful. If there is a garden or park nearby take advantage of it and soak in the spring breeze! Walking has been known to improve creativity and the thought process according to a study by Stanford University. You can opt to walk with a companion but considering the number of restrictions in many countries regarding self-isolation this is not advised unless you live with them. That being said, solo is probably best so you can focus on your thoughts.", className="card-text"
+                                    "Getting outside in the fresh air for a short while (preferably alone) can be helpful. If there is a garden or park nearby take advantage of it and soak in the spring breeze! Walking has been known to improve creativity and the thought process according to a study by Stanford University. You can opt to walk with a companion but considering the number of restrictions in many countries regarding self-isolation this is not advised unless you live with them. That being said, solo is probably best so you can focus on your thoughts.", className="card-text",style={'text-align':'left'}
                                 ),
                                 dbc.CardLink("Study on the Correlation Between Walking & Creativity", href="https://news.stanford.edu/2014/04/24/walking-vs-sitting-042414/", style={'color':'#16849c'}),
                                 html.H5("Exploring Happiness",className="card-text",style={'fontSize':26, 'marginTop':35, 'marginBottom':35}),
                                 html.P(
-                                    "Lots of people have the misconception of what happiness means. For many it is something that is a sustained state to aspire to. But in reality, happiness is constantly in a flux and related to self-resilience. Resilience means building the muscle to allow for living joyfully while in full awareness of life’s inherent ups and downs. This is a great moment in time to exercise that muscle! Two great resources include “The Happiness Project” by Gretchen Rubin and a free Coursera module, “The Science of Well-Being,” taught by Professor Laurie Santos at Yale University.", className="card-text"
+                                    "Lots of people have the misconception of what happiness means. For many it is something that is a sustained state to aspire to. But in reality, happiness is constantly in a flux and related to self-resilience. Resilience means building the muscle to allow for living joyfully while in full awareness of life’s inherent ups and downs. This is a great moment in time to exercise that muscle! Two great resources include “The Happiness Project” by Gretchen Rubin and a free Coursera module, “The Science of Well-Being,” taught by Professor Laurie Santos at Yale University.", className="card-text",style={'text-align':'left'}
                                 ),
                                 dbc.CardLink("Article on How Resilience is Tied to Happiness", href="https://qz.com/1289236/resilience-is-the-new-happiness/", style={'color':'#16849c'}),
                                 html.Hr(),
