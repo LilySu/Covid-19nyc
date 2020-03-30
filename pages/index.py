@@ -282,6 +282,7 @@ fig_map_top_center.add_trace(go.Scattermapbox(
         text = df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
         marker=go.scattermapbox.Marker(
             size=(df['log_conf'])**1.6,
+            colorscale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],
             color=(df['log_conf']+7)**0.001,
             opacity=0.01
         ),
@@ -556,7 +557,7 @@ fig_stacked_change_borough_cases.update_layout(
 )
 
 annotation_borough = []
-for i,j in zip(range(0, 8), df_nyc['total']):
+for i,j in zip(range(0, 9), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
@@ -612,16 +613,16 @@ fig_map_nyc_timeslider.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig_map_nyc_timeslider.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_tableMarch29.csv")
+df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_table_today.csv")
 df_counties_overtime = df_counties_overtime.head(15)
 
 
-fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y='March 29', 
-             text='March 29', 
-             color = 'March 29',
+fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y='March 30', 
+             text='March 30', 
+             color = 'March 30',
              height = 350,
              color_continuous_scale=[(0.00, "#553000"), (0.25, "#BF1F58"), (0.5, "#F2B2C0"),(0.75, "#94D6CC"),  (1.00, "#003D30")],
-             labels={'New York State Counties':'County','March 29':'March 29th Confirmed Cases'})
+             labels={'New York State Counties':'County','March 30':'March 30th Confirmed Cases'})
 fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
 fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
@@ -776,7 +777,7 @@ fig_stacked_ny = go.Figure()
 
 collist = ['New York']
 
-color43=["#94D7CD"]
+color43=["rgba(122, 226, 235, 0.62)"]
 
 
 for i,j in zip(collist, color43):
@@ -1488,7 +1489,7 @@ columnTopRight = dbc.Col(
             html.H6('790', style={'fontSize':32, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
             html.H6('Data above from NYC Dept. of Health march 30, 11 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
-            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-29_01.png'), style={'display': 'block', 'height':300}),
+            html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-30_01.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NYC DOH, last updated there on March 30, 11 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
