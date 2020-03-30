@@ -748,11 +748,11 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(28), diff_from_day_before['total']):
+for i,j in zip(range(30), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
-            y=-500,
+            y=-700,
             xref="x",
             yref="y",
             text=str(j)[:-2]+"<br> total",
@@ -816,7 +816,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(28), diff_from_day_before['total']):
+for i,j in zip(range(30), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -1459,7 +1459,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_area_nyc_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on March 29, 4 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on March 30, 4 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1484,10 +1484,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('36,221', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('37,453', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('790', style={'fontSize':32, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('Data above from NYC Dept. of Health march 30, 11 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Data above from NYS Dept. of Health march 30, 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_03-30_01.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NYC DOH, last updated there on March 30, 11 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
@@ -1641,7 +1641,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above interactive charts from NY State DOH Updated March 29', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH Updated March 30', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
@@ -1683,7 +1683,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on March 29, 4 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on March 30, 4 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
     ],
@@ -1695,7 +1695,7 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on March 29, 4 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on March 30, 4 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
@@ -1966,11 +1966,16 @@ testingAnnouncementsCenter = dbc.Col(
                         html.Span(' ', className='mr-1'),
                         html.P("Residents who would like to be tested must call: 888-364-3065.", style={"color":"#03607d"}, className="lead"),
                         html.P("Priority will go to higher-risk individuals.", style={"color":"#03607d"}, className="lead"),
+                        html.P("High risk includes being over 65 years old, includes serious obesity (defined as BMI >40), lung disease, asthma, heart condition, diabetes, kidney or liver or autoimmune issues, cancer treatment, smoking according to coronavirus.gov. ", style={"color":"#03607d"}, className="lead"),
                         html.Hr(className="my-2"),
                         html.P("If you would like to be tested, you must show up in a vehicle.", style={"color":"#03607d"}),
-                        html.P("Starting Monday, March 30, 2020, 10am, a facility will be open onwards Monday - Sunday, 8am - 6pm ", style={"color":"#03607d"}),
+                        html.P("Starting Monday, March 30, 2020, 10am, a facility will be open Monday - Sunday, 8am - 6pm ", style={"color":"#03607d"}),
                         html.P("Bay Plaza AMC Theater at 2210 Bartow Ave. ", style={"color":"#03607d"}),
                         html.P(dbc.Button("Read more", color="info", href="https://www.governor.ny.gov/news/governor-cuomo-speaker-heastie-senator-bailey-and-assemblyman-benedetto-announce-new-covid-19)", className="lead"),),
+                        html.H1("Have You Recovered From Having Covid-19?", className="display-6", style={"color":"#03607d",'marginTop':70}),
+                        html.Span(' ', className='mr-1'),
+                        html.P("If you have had Covid-19 and have recovered and cleared, consider helping doctors who are working on finding a cure.", style={"color":"#03607d"}, className="lead"),
+                        html.P(dbc.Button("Learn more", color="info", href="https://www.facebook.com/desireedawns/posts/10121953787625504)", className="lead"),),
                     ]
                 )
             ]
@@ -1991,6 +1996,20 @@ unemploymentAnnouncementsCenter = dbc.Col(
                         html.Hr(className="my-2"),
                         html.P("Department of Labor Commissioner Reardon has signed a new order that limits all work search activities for all unemployment claimants. No activities are required during the pandemic to receive unemployment benefits.", style={"color":"#03607d"}),
                         html.P(dbc.Button("Read more", color="info", href="https://labor.ny.gov/ui/how_to_file_claim.shtm"), className="lead"),
+
+                        html.H1("What Industries are Hiring", className="display-6", style={"color":"#03607d",'marginTop':70}),
+                        html.Span(' ', className='mr-1'),
+                        html.P("Healthcare", style={"color":"#03607d"}, className="lead"),
+                        html.P("Telecom & Remote Work", style={"color":"#03607d"}, className="lead"),
+                        html.P("Supply Chain & Essential Businesses", style={"color":"#03607d"}, className="lead"),
+                        html.P("E-Commerce & Online Only Stores", style={"color":"#03607d"}, className="lead"),
+                        html.P("Insurance", style={"color":"#03607d"}, className="lead"),
+                        html.Hr(className="my-2"),
+                        html.P("Here's a helpful spreadsheet for tracking your job applications originally published on TheMuse. Please make a copy for yourself!", style={"color":"#03607d"}),
+                        html.P(dbc.Button("Go to Spreadsheet", color="info", href="https://docs.google.com/spreadsheets/d/1b4_lpHeLb9NldVWgWKq14nMxHEvlF3qMpEd3QdOc7Ck/edit"), className="lead"),
+                        html.Hr(className="my-2"),
+                        html.P("Live-Updated Hiring Status of 1313 Companies", style={"color":"#03607d"}),
+                        html.P(dbc.Button("See Who's Hiring", color="info", href="https://candor.co/hiring-freezes/"), className="lead"),
                     ]
                 )
             ]
