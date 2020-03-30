@@ -262,7 +262,7 @@ fig_map_top_center.add_trace(go.Scattermapbox(
         '%{text[1]},%{text[2]}<br>'+
       '<b>Confirmed</b>: %{text[3]}<br>'+
       '<b>Deaths</b>: %{text[4]}<br>'+
-      '<b>on March 27, 2020</b>',
+      '<b>on March 29, 2020</b>',###################################################CHANGE THIS########################
     ))
 
 # fig_map_top_center.add_trace(go.Scattermapbox(
@@ -1431,7 +1431,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_area_nyc_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on March 28, 3 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on March 29, 4 pm', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1444,7 +1444,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 28th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 29th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -2239,7 +2239,7 @@ pod1 = [
         [
             html.H5("What's your Plan", className="card-title"),
             html.P(
-                "Create a binder with all important documents as a just in case.",
+                "Create a binder with all important documents.",
                 className="card-text",
             ),
             dbc.Button("Plan", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
