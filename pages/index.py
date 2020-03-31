@@ -14,9 +14,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
-df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19-3-29.csv")
-df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19-3-29.csv")
-df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19-3-29.csv")
+df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19.csv")
+df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19.csv")
+df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19.csv")
 # df_usa_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/UsaTotal_Covid19-3-24.csv")
 # df_italy_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ItalyTotal_Covid19-3-24.csv")
 # df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
@@ -267,7 +267,7 @@ fig_pie_nyc_death_illness.update_layout(
 # with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
 #   counties = json.load(response)
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19-3-29.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19.csv')
 fig_map_top_center = go.Figure()
 
 # fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
@@ -290,7 +290,7 @@ fig_map_top_center.add_trace(go.Scattermapbox(
         '%{text[1]},%{text[2]}<br>'+
       '<b>Confirmed</b>: %{text[3]}<br>'+
       '<b>Deaths</b>: %{text[4]}<br>'+
-      '<b>on March 29, 2020</b>',###################################################CHANGE THIS########################
+      '<b>on March 30, 2020</b>',###################################################CHANGE THIS########################
     ))
 
 # fig_map_top_center.add_trace(go.Scattermapbox(
@@ -603,7 +603,7 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            height = 720,
                            color = 'total',
                            color_continuous_scale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],#553000
-                           custom_data = ['29_Mar_Cov_Pos'],
+                           custom_data = ['30_Mar_Cov_Pos'],################################################CHANGE THIS
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -974,7 +974,7 @@ annotations.append(dict(xref='paper', x=.992, y=89700,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=135000,
+annotations.append(dict(xref='paper',  x=.992, y=155000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1021,7 +1021,7 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=135000,
+                     dict(xref='paper', x=0.992, y=155000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1051,7 +1051,7 @@ italy_annotations = [dict(xref='paper', x=0.992, y=89700,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=135000,
+                     dict(xref='paper', x=0.992, y=155000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1080,7 +1080,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=135000,
+                     dict(xref='paper', x=0.999, y=155000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1472,7 +1472,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 29th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 30th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1657,7 +1657,7 @@ column2Center = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_03-29_annotated.png'), style={'display': 'block', 'width':'100%'}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_annotated.png'), style={'display': 'block', 'width':'100%'}),
             ]
         )
     ],
@@ -1673,7 +1673,7 @@ column2Right = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_2020-03-29.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
+            html.Img(src=app.get_asset_url('Covid-19_animated_Cases_NYS.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
             ]
         )
     ],
