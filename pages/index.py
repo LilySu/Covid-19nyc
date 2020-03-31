@@ -1803,6 +1803,44 @@ column4CenterAll = dbc.Col(
 )
 
 
+column_data_sources = dbc.Col(
+    [
+        html.Center(
+            children=[
+                html.H6('Data Sources' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+                html.Hr(className="my-2"),
+                dbc.Button('New York City Government Department of Health', color="link",href = "https://www1.nyc.gov/assets/doh/downloads/pdf/imm/covid-19-daily-data-summary.pdf",style={'marginBottom':0, 'marginTop':0}), 
+                html.P('The official New York City Government Department of Health website.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                dbc.Button('New York State Government Department of Health', color="link",href = "https://coronavirus.health.ny.gov/county-county-breakdown-positive-cases",style={'marginBottom':0, 'marginTop':0}), 
+                html.P('The official New York State Government Department of Health website.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                dbc.Button('Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', color="link",href = "https://github.com/CSSEGISandData/COVID-19",style={'marginBottom':0, 'marginTop':0}), 
+                html.P('An open source data repository that pools current data from the WHO and CDC for conversion into programmable data formats.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                dbc.Button('United States Centers for Disease Control and Prevention', color="link",href = "https://www.cdc.gov/coronavirus/2019-ncov/index.html",style={'marginBottom':0, 'marginTop':0}), 
+                html.P('Official United States of America COVID-19 resource provided by the CDC.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                dbc.Button('World Health Organization (WHO)', color="link",href = "https://www.who.int/",style={'marginBottom':0, 'marginTop':0}), 
+                html.P("The World Health Organization directs international health within the United Nations' system and leads partners in global health responses.", style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':40}),
+
+                html.Hr(className="my-2"),
+                html.P('Please note that the data provided on this site is only as accurate and recent as the sources cited.' , style={'fontSize':16, 'color':'#0496c3', 'marginTop':0, 'marginBottom':8}),
+                html.P('Confirmed number of cases is only an indication of the availability of testing and willingness of those infected to test.', style={'fontSize':16, 'color':'#0496c3', 'marginTop':10, 'marginBottom':0}),
+                html.P('We recommend using the death count as a more accurate guideline for actual number of cases.', style={'fontSize':16, 'color':'#0496c3', 'marginTop':10, 'marginBottom':0}),
+                html.P('The death rate of Covid-19 is believed to be around 3%.', style={'fontSize':16, 'color':'#0496c3', 'marginTop':10, 'marginBottom':0}),
+                html.P('Please also be aware that there may be a delay in reporting by the above sources on any numbers displayed.', style={'fontSize':16, 'color':'#0496c3', 'marginTop':10, 'marginBottom':200}),
+            
+                html.H6('Our Mission' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
+                html.Hr(className="my-2"),
+                html.P("Our goal is to inform NYC residents of the current state of the Covid-19 pandemic as it pertains to the local community.", style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.P("We seek to provide the best possible tools in which to understand the data gathered from trusted, recognizable sources.", style={'fontSize':16, 'color':'link', 'marginTop':10, 'marginBottom':0}),
+                html.P("As the situation develops, we will continue to help provide the best information possible.", style={'fontSize':16, 'color':'link', 'marginTop':10, 'marginBottom':0}),
+                html.P("Below, we have provided curated content that helps to enhance our connection to humanity, to allow ourselves to be more at peace within, and to be better prepared for what is ahead. Please read on...", style={'fontSize':16, 'color':'link', 'marginTop':10, 'marginBottom':230}),
+
+            ]
+        ),
+    ],
+    md=8,
+)
+
+
 
 card_content_iceland = [
     dbc.CardHeader(
@@ -1974,8 +2012,8 @@ testingAnnouncementsCenter = dbc.Col(
                         html.P(dbc.Button("Read more", color="info", href="https://www.governor.ny.gov/news/governor-cuomo-speaker-heastie-senator-bailey-and-assemblyman-benedetto-announce-new-covid-19)", className="lead"),),
                         html.H1("Have You Recovered From Having Covid-19?", className="display-6", style={"color":"#03607d",'marginTop':70}),
                         html.Span(' ', className='mr-1'),
-                        html.P("If you have had Covid-19 and have recovered and cleared, consider helping doctors who are working on finding a cure.", style={"color":"#03607d"}, className="lead"),
-                        html.P(dbc.Button("Learn more", color="info", href="https://www.facebook.com/desireedawns/posts/10121953787625504)", className="lead"),),
+                        html.P("If you have had Covid-19 and have recovered and cleared, consider participating in studies in helping doctors who are working on finding a cure.", style={"color":"#03607d"}, className="lead"),
+                        html.P(dbc.Button("How you can help", color="info", href="https://www.facebook.com/desireedawns/posts/10121953787625504)", className="lead"),),
                     ]
                 )
             ]
@@ -2007,8 +2045,8 @@ unemploymentAnnouncementsCenter = dbc.Col(
                         html.Hr(className="my-2"),
                         html.P("Here's a helpful spreadsheet for tracking your job applications originally published on TheMuse. Please make a copy for yourself!", style={"color":"#03607d"}),
                         html.P(dbc.Button("Go to Spreadsheet", color="info", href="https://docs.google.com/spreadsheets/d/1b4_lpHeLb9NldVWgWKq14nMxHEvlF3qMpEd3QdOc7Ck/edit"), className="lead"),
-                        html.Hr(className="my-2"),
-                        html.P("Live-Updated Hiring Status of 1313 Companies", style={"color":"#03607d"}),
+
+                        html.P("Get the live-updated hiring status of various organizations.", style={"color":"#03607d",'margintop':70}),
                         html.P(dbc.Button("See Who's Hiring", color="info", href="https://candor.co/hiring-freezes/"), className="lead"),
                     ]
                 )
@@ -2406,6 +2444,7 @@ layout = [
         # dbc.Row([columnDistC, columnDistR, columnDistL]),
         # dbc.Row([columnDistbottomCenter]),  
 
+        dbc.Row([doubleColumn,column_data_sources,doubleColumn]),
         dbc.Row([doubleColumn,newscards,doubleColumn]),
 
         dbc.Row([doubleColumn,announcementsHeader,doubleColumn]),
