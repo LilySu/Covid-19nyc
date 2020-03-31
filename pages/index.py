@@ -1503,7 +1503,8 @@ columnNeighborhoods = dbc.Col(
         html.Center(
             children=[
                 html.Img(src=app.get_asset_url('ConfirmedCasesByNeighborhood.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':70}),
-                html.H6('Map Released by the  NYC DOH, on March 28', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+                html.Img(src=app.get_asset_url('covid-19-hospital_rates.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':70}),
+                html.H6('Map Released by the  NYC DOH, on March 30', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         )
     ],md=10,
