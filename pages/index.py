@@ -1675,7 +1675,7 @@ column2Right = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_animated_Cases_NYS.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_animated.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
             ]
         )
     ],
