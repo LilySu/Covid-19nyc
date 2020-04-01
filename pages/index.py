@@ -1812,9 +1812,9 @@ column_predictions = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('Our Prediction' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
+                html.H6('Our Prediction of Confirmed cases for the next few days for the United States' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
                 html.Hr(className="my-2"),
-                html.P('Here is our prediction of Confirmed cases for the next few days for the United States. This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 400,000. The capacity is a completely arbitrary number to fit the curve. We originally tried 3 million, the population of the U.S. and the existing did not fit correctly.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 400,000. The capacity is a completely arbitrary number to fit the curve. We originally tried 3 million, the population of the U.S. and the existing did not fit correctly.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.P('The black dots are existing recorded confirmed cases for the United States.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('fb_prophet_confirmed.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
                 html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
