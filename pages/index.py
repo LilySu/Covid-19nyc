@@ -1820,9 +1820,9 @@ column_predictions = dbc.Col(
                 html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('logistic_regression_population_growth.PNG'), style={'display': 'block', 'width':'75%','marginTop':20,'marginBottom':0}),
                 html.P('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':12, 'color':'link', 'marginTop':15, 'marginBottom':0}),
-                dbc.Button('More on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':230, 'marginTop':0}), 
-                dbc.Button('More aere is the Law of Population Growth using defining carrying capacity:bout Facebook Prophet',size="sm", color="link",href = "https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth",style={'marginBottom':170, 'marginTop':0}), 
-                html.Img(src=app.get_asset_url('revolution.jpg'), style={'display': 'block', 'width':'40%','marginTop':20,'marginBottom':200}),
+                dbc.Button('More on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':100, 'marginTop':0}), 
+                dbc.Button('More about Facebook Prophet',size="sm", color="link",href = "https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth",style={'marginBottom':100, 'marginTop':0}), 
+                html.Img(src=app.get_asset_url('revolution.jpg'), style={'display': 'block', 'width':'40%','marginTop':20,'marginBottom':170}),
             ]
         ),
     ],
