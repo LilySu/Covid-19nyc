@@ -290,7 +290,7 @@ fig_map_top_center.add_trace(go.Scattermapbox(
         '%{text[1]},%{text[2]}<br>'+
       '<b>Confirmed</b>: %{text[3]}<br>'+
       '<b>Deaths</b>: %{text[4]}<br>'+
-      '<b>on March 30, 2020</b>',###################################################CHANGE THIS########################
+      '<b>on March 31, 2020</b>',###################################################CHANGE THIS########################
     ))
 
 # fig_map_top_center.add_trace(go.Scattermapbox(
@@ -974,7 +974,7 @@ annotations.append(dict(xref='paper', x=.992, y=89700,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=155000,
+annotations.append(dict(xref='paper',  x=.992, y=180000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1021,7 +1021,7 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=155000,
+                     dict(xref='paper', x=0.992, y=180000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1051,7 +1051,7 @@ italy_annotations = [dict(xref='paper', x=0.992, y=89700,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=155000,
+                     dict(xref='paper', x=0.992, y=180000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1080,7 +1080,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=155000,
+                     dict(xref='paper', x=0.999, y=180000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1103,6 +1103,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                               showarrow=False)]
 
 fig_line_cumulative_us_italy_china.update_layout(
+    height=550,
     updatemenus=[
         dict(
             type="buttons",
@@ -1472,7 +1473,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 30th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 31th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1805,6 +1806,27 @@ column4CenterAll = dbc.Col(
 )
 
 
+
+
+column_predictions = dbc.Col(
+    [
+        html.Center(
+            children=[
+                html.H6('Our Prediction for the next 14 days' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
+                html.Hr(className="my-2"),
+                html.P('Here is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 400,000.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('fb_prophet_confirmed.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('logistic_regression_population_growth.png'), style={'display': 'block', 'width':'85%','marginTop':20,'marginBottom':0}),
+                dbc.Button('Here is some wiki info on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':230, 'marginTop':0}), 
+                dbc.Button('Read more about Facebook Prophet',size="sm", color="link",href = "https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth",style={'marginBottom':230, 'marginTop':0}), 
+            ]
+        ),
+    ],
+    md=8,
+)
+
+
 column_data_sources = dbc.Col(
     [
         html.Center(
@@ -2009,7 +2031,7 @@ testingAnnouncementsCenter = dbc.Col(
                         html.P("High risk includes being over 65 years old, includes serious obesity (defined as BMI >40), lung disease, asthma, heart condition, diabetes, kidney or liver or autoimmune issues, cancer treatment, smoking according to coronavirus.gov. ", style={"color":"#03607d"}, className="lead"),
                         html.Hr(className="my-2"),
                         html.P("If you would like to be tested, you must show up in a vehicle.", style={"color":"#03607d"}),
-                        html.P("Starting Monday, March 30, 2020, 10am, a facility will be open Monday - Sunday, 8am - 6pm ", style={"color":"#03607d"}),
+                        html.P("The facility is open Monday - Sunday, 8am - 6pm ", style={"color":"#03607d"}),
                         html.P("Bay Plaza AMC Theater at 2210 Bartow Ave. ", style={"color":"#03607d"}),
                         html.P(dbc.Button("Read more", color="info", href="https://www.governor.ny.gov/news/governor-cuomo-speaker-heastie-senator-bailey-and-assemblyman-benedetto-announce-new-covid-19)", className="lead"),),
                         html.H1("Have You Recovered From Having Covid-19?", className="display-6", style={"color":"#03607d",'marginTop':70}),
@@ -2443,6 +2465,7 @@ layout = [
         # dbc.Row([columnDistC, columnDistR, columnDistL]),
         # dbc.Row([columnDistbottomCenter]),  
 
+        dbc.Row([doubleColumn,column_predictions,doubleColumn]),
         dbc.Row([doubleColumn,column_data_sources,doubleColumn]),
         dbc.Row([doubleColumn,newscards,doubleColumn]),
 
