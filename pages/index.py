@@ -1812,14 +1812,15 @@ column_predictions = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('Our Prediction for the next 14 days' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
+                html.H6('Our Prediction' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
                 html.Hr(className="my-2"),
-                html.P('Here is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 400,000.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.P('Here is our prediction of Confirmed cases for the next few days for the United States. This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 400,000. The capacity is a completely arbitrary number to fit the curve. We originally tried 3 million, the population of the U.S. and the existing did not fit correctly.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.P('The black dots are existing recorded confirmed cases for the United States.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('fb_prophet_confirmed.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
-                html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
-                html.Img(src=app.get_asset_url('logistic_regression_population_growth.png'), style={'display': 'block', 'width':'85%','marginTop':20,'marginBottom':0}),
-                dbc.Button('Here is some wiki info on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':230, 'marginTop':0}), 
-                dbc.Button('Read more about Facebook Prophet',size="sm", color="link",href = "https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth",style={'marginBottom':230, 'marginTop':0}), 
+                html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('logistic_regression_population_growth.png'), style={'display': 'block', 'width':'75%','marginTop':20,'marginBottom':0}),
+                dbc.Button('More on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':230, 'marginTop':0}), 
+                dbc.Button('More about Facebook Prophet',size="sm", color="link",href = "https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth",style={'marginBottom':230, 'marginTop':0}), 
             ]
         ),
     ],
