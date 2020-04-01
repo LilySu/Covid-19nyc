@@ -150,7 +150,7 @@ fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_pie_nyc_age.update_layout(
     title={
-        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (44915) IN<br>NYC AS OF MARCH 31, 2020 10 AM",
+        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (44915) IN<br>NYC AS OF April 1 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1644,7 +1644,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above interactive charts from NY State DOH Updated March 31', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH Updated April 1', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
@@ -1686,7 +1686,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on MARCH 31 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on April 1 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
     ],
@@ -1698,7 +1698,7 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on MARCH 31 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on April 1 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
