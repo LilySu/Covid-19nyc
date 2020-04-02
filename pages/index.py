@@ -859,7 +859,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(32), diff_from_day_before['total']):
+for i,j in zip(range(33), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -927,7 +927,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(32), diff_from_day_before['total']):
+for i,j in zip(range(33), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
