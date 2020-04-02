@@ -1812,17 +1812,18 @@ column_predictions = dbc.Col(
     [
         html.Center(
             children=[
-                html.H6('Our Prediction of Confirmed cases for the next few days for the United States' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
+                html.H6('Our Prediction for the next few days for the United States' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
                 html.Hr(className="my-2"),
                 html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 380,000. The capacity is the most optimistic projection to fit the existing data. We believe this graph is helpful in understanding the best case scenario for how long it will take for life to get back to normal.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.P('The black dots are existing recorded information for the United States. We believe that any prediction after April 4-5 are obsolete.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('prediction_confirmed.gif'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
                 html.Img(src=app.get_asset_url('fb_prophet_deaths_10000.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.P('Our conclusion from this prediction is that in the best case scenario, the curve will flatten in mid-April and everyone should be assuming their normal life in mid-May.', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('logistic_regression_population_growth.PNG'), style={'display': 'block', 'width':'75%','marginTop':20,'marginBottom':0}),
                 html.P('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':12, 'color':'link', 'marginTop':15, 'marginBottom':0}),
-                dbc.Button('More on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':100, 'marginTop':0}), 
-                dbc.Button('More about Facebook Prophet',size="sm", color="link",href = "https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth",style={'marginBottom':100, 'marginTop':0}), 
+                dbc.Button('More on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':100, 'marginTop':15}), 
+                dbc.Button('More about Facebook Prophet',size="sm", color="link",href = "https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth",style={'marginBottom':100, 'marginTop':15}), 
                 html.Img(src=app.get_asset_url('revolution.jpg'), style={'display': 'block', 'width':'40%','marginTop':20,'marginBottom':170}),
             ]
         ),
