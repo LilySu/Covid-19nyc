@@ -262,58 +262,44 @@ fig_pie_nyc_death_illness.update_layout(
     showlegend=False)
 
 #---------------------------------------------
-# from urllib.request import urlopen
-# import json
-# with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
-#   counties = json.load(response)
+df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_zipcode.csv')
+
+
+import plotly.graph_objects as go
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/nyc_geojson/nyc_zip_code_tabulation_areas_polygons.geojson') as response:
+  geojson = json.load(response)
+
 mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
-df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19.csv')
+
 fig_map_top_center = go.Figure()
 
-# fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
-#                                     colorscale="YlOrRd", zmin=0, zmax=5,
-#                                     marker_opacity=0.08, marker_line_width=0,showscale=False))
 
-# fig_map_top_center.update_traces(showscale=False)  
-fig_map_top_center.add_trace(go.Scattermapbox(
-        lat=df["Lat"],
-        lon=df["Long_"],
-        mode='markers',
-        text = df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
-        marker=go.scattermapbox.Marker(
-            size=(df['log_conf'])**1.6,
-            colorscale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],
-            color=(df['log_conf']+7)**0.001,
-            opacity=0.01
-        ),
-        hovertemplate ='<b>Location</b>:'+
-        '%{text[1]},%{text[2]}<br>'+
-      '<b>Confirmed</b>: %{text[3]}<br>'+
-      '<b>Deaths</b>: %{text[4]}<br>'+
-      '<b>on April 1st, 2020</b>',###################################################CHANGE THIS########################
-    ))
+fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=geojson, #locations=df.FIPS, z=df.Confirmed,
+                                     z=df['Positive'],
+                                     locations=df["MODZCTA"], #zipcode in dataframe
+                                     featureidkey="properties.postalcode",
+                                     text= df[["MODZCTA", "Positive",'Positive_Percentage_of_Population']],
+                                      hovertemplate ='<b>Zipcode</b>: %{text[0]}<br>'+
+                                    '<b>Confirmed</b>:  %{text[1]}<br>'#+
+                                    '<b>Percentage of Population Positive</b>: %{text[2]:.2f}'+'%',
+                                     ))
+                                    #colorscale="YlOrRd", zmin=0, zmax=3,
+                                    #marker_opacity=0.08, marker_line_width=0))
+fig_map_top_center.update_traces(showscale=True, 
+                   marker_opacity=.5,
+                   colorscale = [(0, "#94D6CC"), (0.25, "#00755c"),(0.5, "#553000"), (0.75, "#F2B2C0"), (1.00, "#BF1F57")],
+                   )
 
 # fig_map_top_center.add_trace(go.Scattermapbox(
-#         lat=df["Lat"],
-#         lon=df["Long_"],
-#         mode='markers + text',
-#         text= df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
-#         marker=go.scattermapbox.Marker(
-#             size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
-#             color='rgba(166, 247, 235, 0.38)',
-#             opacity=0.04
-#         ),
+#         lat=df["lat"],
+#         lon=df["lng"],
+#         text= df[["MODZCTA",'Positive_Percentage_of_Population']],
+#         mode='text',
+#         hoverinfo='text'
 
-#         textfont_size=12, 
-#         texttemplate ='<b>Location</b>:'+
-#         '%{text[1]},%{text[2]}<br>'+
-#       '<b>Confirmed</b>: %{text[3]}<br>'+
-#       '<b>Deaths</b>: %{text[4]}<br>'+
-#       '<b>on March 27, 2020</b>',
 #     ))
-# fig_map_top_center.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
-#       'Confirmed: %{text[3]}<br>'+
-#       'Deaths: %{text[4]}')
 
 fig_map_top_center.update_layout(
     mapbox_layers=[
@@ -321,7 +307,8 @@ fig_map_top_center.update_layout(
             "below": 'traces',
             "sourcetype": "raster",
             "source": [
-                       "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                       #"https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+                        "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
             ] 
         },
 
@@ -335,15 +322,100 @@ fig_map_top_center.update_layout(
         accesstoken=mapbox_access_token,
         bearing=0,
         center=dict(
-            lat=40.7465651,
-            lon=-73.9905038
+            lat=40.7374253,
+            lon=-73.9559889
         ),
         pitch=0,
-        zoom=7.7,
+        zoom=10,
     ),
 )
 
 
+#---------------------------------------------TRISTATE SCATTERPLOT
+
+
+# # from urllib.request import urlopen
+# # import json
+# # with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+# #   counties = json.load(response)
+# mapbox_access_token = "pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+# df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Covid19.csv')
+# fig_map_top_center = go.Figure()
+
+# # fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
+# #                                     colorscale="YlOrRd", zmin=0, zmax=5,
+# #                                     marker_opacity=0.08, marker_line_width=0,showscale=False))
+
+# # fig_map_top_center.update_traces(showscale=False)  
+# fig_map_top_center.add_trace(go.Scattermapbox(
+#         lat=df["Lat"],
+#         lon=df["Long_"],
+#         mode='markers',
+#         text = df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
+#         marker=go.scattermapbox.Marker(
+#             size=(df['log_conf'])**1.6,
+#             colorscale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],
+#             color=(df['log_conf']+7)**0.001,
+#             opacity=0.01
+#         ),
+#         hovertemplate ='<b>Location</b>:'+
+#         '%{text[1]},%{text[2]}<br>'+
+#       '<b>Confirmed</b>: %{text[3]}<br>'+
+#       '<b>Deaths</b>: %{text[4]}<br>'+
+#       '<b>on April 1st, 2020</b>',###################################################CHANGE THIS########################
+#     ))
+
+# # fig_map_top_center.add_trace(go.Scattermapbox(
+# #         lat=df["Lat"],
+# #         lon=df["Long_"],
+# #         mode='markers + text',
+# #         text= df[["CITY","COUNTYNAME","Combined_Key", "Confirmed","Deaths"]],
+# #         marker=go.scattermapbox.Marker(
+# #             size=((df['log_conf'])**1.6)-(df['log_conf']**1.7)*(0.08),
+# #             color='rgba(166, 247, 235, 0.38)',
+# #             opacity=0.04
+# #         ),
+
+# #         textfont_size=12, 
+# #         texttemplate ='<b>Location</b>:'+
+# #         '%{text[1]},%{text[2]}<br>'+
+# #       '<b>Confirmed</b>: %{text[3]}<br>'+
+# #       '<b>Deaths</b>: %{text[4]}<br>'+
+# #       '<b>on March 27, 2020</b>',
+# #     ))
+# # fig_map_top_center.update_traces(textfont_size=12, texttemplate='%{text[1]}, %{text[2]}<br>'+
+# #       'Confirmed: %{text[3]}<br>'+
+# #       'Deaths: %{text[4]}')
+
+# fig_map_top_center.update_layout(
+#     mapbox_layers=[
+#         {
+#             "below": 'traces',
+#             "sourcetype": "raster",
+#             "source": [
+#                        "https://api.mapbox.com/styles/v1/lilysu/ck7v7bqqy08ae1irye0k0jcot/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+#             ] 
+#         },
+
+#       ],
+#     autosize=True,
+#     height=600,
+#     hovermode='closest',
+#     showlegend=False,
+#     mapbox=dict(
+#         style='white-bg',
+#         accesstoken=mapbox_access_token,
+#         bearing=0,
+#         center=dict(
+#             lat=40.7465651,
+#             lon=-73.9905038
+#         ),
+#         pitch=0,
+#         zoom=7.7,
+#     ),
+# )
+
+#---------------------------------------------------------------------------
 
 
 # fig_map_top_center = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.FIPS, z=df.Confirmed,
@@ -1469,11 +1541,16 @@ columnTopLeft = dbc.Col(
 
 columnTopCenter = dbc.Col(
     [
+        html.Center(
+            children=[
+                html.H6('Confirmed Cases of Covid-19 by Zip Code', style={'fontSize':14, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':5}),#fig_line_cumulative_us_italy_china
+                
+            ]),
         dcc.Graph(figure=fig_map_top_center,style={'paddingTop':0, 'paddingBottom':0}),
         html.Center(
             children=[
-                html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on April 1st.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Please hover over dots for more info. Confirmed cases is only a function availability and willingness to test.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the New York City Department of Health on April 1st.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
