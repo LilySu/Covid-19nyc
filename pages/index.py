@@ -689,12 +689,12 @@ df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Cov
 df_counties_overtime = df_counties_overtime.head(15)
 
 
-fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y="April 01", 
-             text="April 01", 
-             color = "April 01",
+fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y="April 02", 
+             text="April 02", 
+             color = "April 02",
              height = 350,
              color_continuous_scale=[(0.00, "#553000"), (0.25, "#BF1F58"), (0.5, "#F2B2C0"),(0.75, "#94D6CC"),  (1.00, "#003D30")],
-             labels={'New York State Counties':'County',"April 01":'April 1st Confirmed Cases'})
+             labels={'New York State Counties':'County',"April 02":'April 2nd Confirmed Cases'})
 fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
 fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
@@ -1523,7 +1523,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_bar_nyc_last_5_days),
         html.Center(
             children=[
-            html.H6('Day-to-day % Increases', style={'fontSize':11, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
+            html.H6('Day-to-day % Increases', style={'fontSize':14, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
             html.H6('in Number of', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':6, 'marginBottom':0}),
             html.H6('Confirmed Cases', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':6, 'marginBottom':0}),
             html.H6('NYC', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':6, 'marginBottom':10}),
@@ -1550,7 +1550,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info. Confirmed cases is only a function availability and willingness to test.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the New York City Department of Health on April 1st.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the New York City Department of Health on March 31st.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1564,7 +1564,7 @@ columnTopRight = dbc.Col(
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H1('48,462', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('1397', style={'fontSize':32, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
+            html.H6('1397', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
             html.H6('Data above from NYC Dept. of Health April 2, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
@@ -1582,9 +1582,9 @@ columnNeighborhoods = dbc.Col(
             children=[
                 html.Img(src=app.get_asset_url('ConfirmedCasesByNeighborhood.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':70}),
                 html.H6('Map Released by the  NYC DOH, on March 30', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
-                html.Img(src=app.get_asset_url('covid-19-hospital_rates.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':70}),
+                html.Img(src=app.get_asset_url('covid-19-hospital_rates.jpg'), style={'display': 'block', 'width':'90%', 'marginTop':70}),
                 html.H6('Line Chart Released by the  NYC DOH, on March 29', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
-                html.Img(src=app.get_asset_url('confirmed_by_zipcode.PNG'), style={'display': 'block', 'width':'100%', 'marginTop':70}),
+                html.Img(src=app.get_asset_url('confirmed_by_zipcode.PNG'), style={'display': 'block', 'width':'85%', 'marginTop':70}),
                 html.H6('Line Chart Released by the  NYC DOH, on March 31 based off 38,936 total cases. Please be aware that confirmed cases is only a function of availability of testing and willingness to test. Only those who show up to a hospital with select symptoms and those who can show up to the testing sites in a vehicle are tested at this time.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         )
