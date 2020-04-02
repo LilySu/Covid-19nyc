@@ -122,7 +122,7 @@ fig_pie_pop_nyc.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   textposition='inside', textinfo='percent+label+value')
 
 fig_pie_pop_nyc.update_layout(
-    annotations = [dict(text=pop_queens[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
+    annotations = [dict(text=pop_nyc[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
         'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>ALL OF NYC ASSUMING THE POPULATION IS 8.5 MILLION AS OF April 2, 10 AM",
         'y':.95,
@@ -261,7 +261,7 @@ fig_pie_nyc_death_illness.update_layout(
     font_color="#05b9f0",
     showlegend=False)
 
-#---------------------------------------------
+#---------------------------------------------#Main Map
 df = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_zipcode.csv')
 
 
@@ -291,15 +291,6 @@ fig_map_top_center.update_traces(showscale=True,
                    marker_opacity=.5,
                    colorscale = [(0, "#94D6CC"), (0.25, "#00755c"),(0.5, "#553000"), (0.75, "#F2B2C0"), (1.00, "#BF1F57")],
                    )
-
-# fig_map_top_center.add_trace(go.Scattermapbox(
-#         lat=df["lat"],
-#         lon=df["lng"],
-#         text= df[["MODZCTA",'Positive_Percentage_of_Population']],
-#         mode='text',
-#         hoverinfo='text'
-
-#     ))
 
 fig_map_top_center.update_layout(
     mapbox_layers=[
@@ -331,6 +322,54 @@ fig_map_top_center.update_layout(
 )
 
 
+#---------------------------------------------#Positive Cases by Population
+
+
+fig1 = go.Figure()
+fig1 = go.Figure(go.Choroplethmapbox(geojson=geojson, #locations=df.FIPS, z=df.Confirmed,
+                                     z=df['Positive_Percentage_of_Population'],
+                                     locations=df["MODZCTA"], #zipcode in dataframe
+                                     featureidkey="properties.postalcode",
+                                     text= df[["MODZCTA", "Positive",'Positive_Percentage_of_Population','population','density']],
+                                      hovertemplate = '<b>Percentage of Population Positive</b>: %{text[2]:.2f}'+'%<br>'+
+                                      '<b>Zipcode</b>: %{text[0]}<br>'+
+                                    '<b>Confirmed</b>:  %{text[1]}<br>'+
+                                     '<b>Population in Zip Code</b>:  %{text[3]}<br>'+
+                                     '<b>Density</b>:  %{text[4]}<br>'
+                                     ))
+fig1.update_traces(showscale=True, 
+                   marker_opacity=.8,
+                   colorscale = [(0, "#DEDBD2"), (0.25, "#F7E1D7"),(0.5, "#EDAFB8"), (0.75, "#B0C4B1"), (1.00, "#4A5759")],
+                   )
+
+fig1.update_layout(
+    mapbox_layers=[
+        {
+            "below": 'traces',
+            "sourcetype": "raster",
+            "source": [
+                       "https://api.mapbox.com/styles/v1/lilysu/ck81nlmtm0fwq1iqkv33jiu2r/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibGlseXN1IiwiYSI6ImNrN2txb28zYjAwNjMzZWxvc2liOTFveGMifQ.wuFm9PLDxO3lhL_bVqMvaA"
+            ] 
+        },
+
+      ],
+    autosize=True,
+    height=800,
+    hovermode='closest',
+    showlegend=False,
+    mapbox=dict(
+        style='white-bg',
+        accesstoken=mapbox_access_token,
+        bearing=0,
+        center=dict(
+            lat=40.7374253,
+            lon=-73.9559889
+        ),
+        pitch=0,
+        zoom=10,
+    ),
+)
+fig1.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 #---------------------------------------------TRISTATE SCATTERPLOT
 
 
@@ -629,7 +668,7 @@ fig_stacked_change_borough_cases.update_layout(
 )
 
 annotation_borough = []
-for i,j in zip(range(0, 11), df_nyc['total']):
+for i,j in zip(range(0, 12), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
@@ -1562,7 +1601,7 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('48,462', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('51,809', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('1397', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
             html.H6('Data above from NYC Dept. of Health April 2, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
@@ -1580,12 +1619,14 @@ columnNeighborhoods = dbc.Col(
     [
         html.Center(
             children=[
-                html.Img(src=app.get_asset_url('ConfirmedCasesByNeighborhood.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':70}),
+                html.Img(src=app.get_asset_url('ConfirmedCasesByNeighborhood.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':170}),
                 html.H6('Map Released by the  NYC DOH, on March 30', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
                 html.Img(src=app.get_asset_url('covid-19-hospital_rates.jpg'), style={'display': 'block', 'width':'90%', 'marginTop':70}),
                 html.H6('Line Chart Released by the  NYC DOH, on March 29', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
-                html.Img(src=app.get_asset_url('confirmed_by_zipcode.PNG'), style={'display': 'block', 'width':'85%', 'marginTop':70}),
-                html.H6('Line Chart Released by the  NYC DOH, on March 31 based off 38,936 total cases. Please be aware that confirmed cases is only a function of availability of testing and willingness to test. Only those who show up to a hospital with select symptoms and those who can show up to the testing sites in a vehicle are tested at this time.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+                # html.Img(src=app.get_asset_url('confirmed_by_zipcode.PNG'), style={'display': 'block', 'width':'85%', 'marginTop':70}),
+                html.H6('Confirmed Cases of Covid-19 as a Percentage of Census Population in Corresponding Zip Code', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':50, 'marginBottom':5}),
+                dcc.Graph(figure=fig1),
+                html.H6('Data Released by the  NYC DOH, on March 31. Please be aware that confirmed cases is only a function of availability of testing and willingness to test. Only those who show up to a hospital with select symptoms and those who can show up to the testing sites in a vehicle are tested at this time.', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':100}),
             ]
         )
     ],md=10,
