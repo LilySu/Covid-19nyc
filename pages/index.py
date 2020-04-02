@@ -700,7 +700,7 @@ fig_stacked_change_borough_cases.update_layout(
 #---------------------------------------------------------------------------TIMESLIDER
 import requests
 df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
-
+df = df.iloc[::-1]
 r = requests.get('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/nys_geojson/new-york-counties.geojson')
 geojson = r.json()
 
@@ -714,7 +714,7 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            height = 720,
                            color = 'total',
                            color_continuous_scale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],#553000
-                           custom_data = ['01_Apr_Cov_Pos'],################################################CHANGE THIS
+                           custom_data = ['02_Apr_Cov_Pos'],################################################CHANGE THIS
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -1780,33 +1780,33 @@ column2Center = dbc.Col(
             html.Span(' ', className='mr-1'),
             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':60, 'marginBottom':10}),
             html.H6('IN NEW YORK STATE BY COUNTY', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_annotated.png'), style={'display': 'block', 'width':'100%'}),
+            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_annotated.png'), style={'display': 'block', 'width':'70%'}),
             ]
         )
     ],
-    md=7,
+    md=12,
 )
-column2Right = dbc.Col(
-    [
-        html.Center(
-            children=[
-            html.Br(),
-            html.Span(' ', className='mr-1'),
-            html.Br(),
-            html.Span(' ', className='mr-1'),
-            html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
-            html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
-            html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_animated.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
-            ]
-        )
-    ],
-    md=5,
-)
+# column2Right = dbc.Col(
+#     [
+#         html.Center(
+#             children=[
+#             html.Br(),
+#             html.Span(' ', className='mr-1'),
+#             html.Br(),
+#             html.Span(' ', className='mr-1'),
+#             html.H6('NUMBER OF CONFIRMED CASES OF COVID-19', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':10}),
+#             html.H6('IN NEW YORK STATE BY DATE', style={'fontSize':19, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':10}),
+#             html.Img(src=app.get_asset_url('Covid-19_Cases_NYS_animated.gif'), style={'display': 'block', 'width':'100%','marginTop':130, 'marginBottom':100}),
+#             ]
+#         )
+#     ],
+#     md=5,
+# )
 column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on April 1 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on April 2 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
     ],
@@ -2577,7 +2577,7 @@ layout = [
         dbc.Row([column1Left,column1Right]),
         dbc.Row([column1bottomCenter]),
 
-        dbc.Row([column2Center, column2Right]),
+        dbc.Row([column2Center]), #, column2Right
         dbc.Row([column2bottomCenter]),
 
         dbc.Row([columnStackedCounty]),
