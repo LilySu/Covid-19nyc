@@ -290,7 +290,7 @@ fig_map_top_center.add_trace(go.Scattermapbox(
         '%{text[1]},%{text[2]}<br>'+
       '<b>Confirmed</b>: %{text[3]}<br>'+
       '<b>Deaths</b>: %{text[4]}<br>'+
-      '<b>on March 31, 2020</b>',###################################################CHANGE THIS########################
+      '<b>on April 1st, 2020</b>',###################################################CHANGE THIS########################
     ))
 
 # fig_map_top_center.add_trace(go.Scattermapbox(
@@ -974,7 +974,7 @@ annotations.append(dict(xref='paper', x=.992, y=89700,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=180000,
+annotations.append(dict(xref='paper',  x=.992, y=200000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1021,7 +1021,7 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=180000,
+                     dict(xref='paper', x=0.992, y=200000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1051,7 +1051,7 @@ italy_annotations = [dict(xref='paper', x=0.992, y=89700,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=180000,
+                     dict(xref='paper', x=0.992, y=200000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1080,7 +1080,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=180000,
+                     dict(xref='paper', x=0.999, y=200000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1473,7 +1473,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the Johns Hopkins University CSSE updated on March 31th.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the Johns Hopkins University CSSE updated on April 1st.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1814,9 +1814,10 @@ column_predictions = dbc.Col(
             children=[
                 html.H6('Our Prediction of Confirmed cases for the next few days for the United States' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
                 html.Hr(className="my-2"),
-                html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 400,000. The capacity is a completely arbitrary number to fit the curve. We originally tried 3 million, the population of the U.S. and the existing did not fit correctly.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
-                html.P('The black dots are existing recorded confirmed cases for the United States. We believe that any prediction after April 4-5 are obsolete.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
-                html.Img(src=app.get_asset_url('fb_prophet_confirmed.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 380,000. The capacity is the most optimistic projection to fit the existing data. We believe this graph is helpful in understanding the best case scenario for how long it will take for life to get back to normal.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.P('The black dots are existing recorded information for the United States. We believe that any prediction after April 4-5 are obsolete.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('prediction_confirmed.gif'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.Img(src=app.get_asset_url('fb_prophet_deaths_10000.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
                 html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('logistic_regression_population_growth.PNG'), style={'display': 'block', 'width':'75%','marginTop':20,'marginBottom':0}),
                 html.P('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':12, 'color':'link', 'marginTop':15, 'marginBottom':0}),
