@@ -1085,7 +1085,7 @@ annotations.append(dict(xref='paper', x=.992, y=89700,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=200000,
+annotations.append(dict(xref='paper',  x=.992, y=230000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1132,7 +1132,7 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=200000,
+                     dict(xref='paper', x=0.992, y=230000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1162,7 +1162,7 @@ italy_annotations = [dict(xref='paper', x=0.992, y=89700,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=200000,
+                     dict(xref='paper', x=0.992, y=230000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1191,7 +1191,7 @@ china_annotations = [dict(xref='paper', x=1.01, y=74600,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=200000,
+                     dict(xref='paper', x=0.999, y=230000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1764,7 +1764,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above interactive charts from NY State DOH Updated April 1', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH Updated April 2', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
@@ -1818,7 +1818,7 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on April 1 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on April 2 4 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
