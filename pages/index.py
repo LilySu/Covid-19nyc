@@ -863,10 +863,10 @@ for i,j in zip(range(34), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
-            y=-700,
+            y=-1100,
             xref="x",
             yref="y",
-            text=str(j)[:-2]+"<br> total",
+            text=str(j)[:-2]+"<br> more",
             showarrow=False,
             #arrowhead=7,
             ax=0,
@@ -927,14 +927,14 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(34), diff_from_day_before['total']):
+for i,j in zip(range(34), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
             y=-700,
             xref="x",
             yref="y",
-            text=str(j)[:-2]+"<br> total",
+            text=str(j)[:-2]+"<br> more",#<br> NYC <br>total <br> change
             showarrow=False,
             #arrowhead=7,
             ax=0,
@@ -1806,7 +1806,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on April 3 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on April 3, 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
     ],
@@ -1818,7 +1818,7 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on April 3 P PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated there on April 3, 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
