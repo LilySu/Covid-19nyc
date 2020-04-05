@@ -85,7 +85,7 @@ fig_area_nyc_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 
 pop_queens =["Queens Residents Positive with Covid-19","Rest of Queens Residents"]
 color_pop_queens = ["#C02059","#94D7CD"]
 
-fig_pie_pop_queens = go.Figure(data=[go.Pie(labels=pop_queens, values=[20,114,2229886],marker=dict(colors=color_pop_queens))])#,pull=[0.4, 0]
+fig_pie_pop_queens = go.Figure(data=[go.Pie(labels=pop_queens, values=[20114,2229886],marker=dict(colors=color_pop_queens))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -700,7 +700,7 @@ fig_stacked_change_borough_cases.update_layout(
 #---------------------------------------------------------------------------TIMESLIDER
 import requests
 df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
-df = df.iloc[::-1]
+# df = df.iloc[::-1]
 r = requests.get('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/nys_geojson/new-york-counties.geojson')
 geojson = r.json()
 
@@ -712,9 +712,10 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            mapbox_style="carto-positron", zoom=5.7,
                            opacity = .7,
                            height = 720,
-                           color = 'total',
+                           color = 'total_normalized',
+                        #    color_continuous_scale=px.colors.sequential.Teal,
                            color_continuous_scale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],#553000
-                           custom_data = ['03_Apr_Cov_Pos'],################################################CHANGE THIS
+                           custom_data = ['04_Apr_Cov_Pos'],################################################CHANGE THIS
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -1940,7 +1941,7 @@ column_predictions = dbc.Col(
                 html.P('Prediction of deaths in the next few days with a carrying capacity going towards 20,000 in the next 14 days. We believe that any prediction after April 12 is obsolete:', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('fb_prophet_deaths_20000_4_03.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
                 html.P('Our conclusion from this prediction is that in the best case scenario, the curve will flatten in mid-April and everyone should be assuming their normal life in mid-May.', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
-                html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
+                html.P('Here is the Law of Population Growth formula we are using to show you how we define carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('logistic_regression_population_growth.PNG'), style={'display': 'block', 'width':'75%','marginTop':20,'marginBottom':0}),
                 html.P('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':12, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 dbc.Button('More on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':100, 'marginTop':15}), 
