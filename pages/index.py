@@ -85,7 +85,7 @@ fig_area_nyc_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 
 pop_queens =["Queens Residents Positive with Covid-19","Rest of Queens Residents"]
 color_pop_queens = ["#C02059","#94D7CD"]
 
-fig_pie_pop_queens = go.Figure(data=[go.Pie(labels=pop_queens, values=[20114,2229886],marker=dict(colors=color_pop_queens))])#,pull=[0.4, 0]
+fig_pie_pop_queens = go.Figure(data=[go.Pie(labels=pop_queens, values=[21342,2251658],marker=dict(colors=color_pop_queens))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -97,7 +97,7 @@ fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_pie_pop_queens.update_layout(
     annotations = [dict(text=pop_queens[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF April 4",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF April 5, 10 AM",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -112,7 +112,7 @@ fig_pie_pop_queens.update_layout(
 pop_nyc =["NYC Residents Positive with Covid-19","Rest of NYC Residents"]
 color_pop_nyc = ["#C02059","#003C30"]
 
-fig_pie_pop_nyc = go.Figure(data=[go.Pie(labels=pop_nyc, values=[63306,8436694],marker=dict(colors=color_pop_nyc))])#,pull=[0.4, 0]
+fig_pie_pop_nyc = go.Figure(data=[go.Pie(labels=pop_nyc, values=[63767,8436233],marker=dict(colors=color_pop_nyc))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_pop_nyc.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -124,7 +124,7 @@ fig_pie_pop_nyc.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_pie_pop_nyc.update_layout(
     annotations = [dict(text=pop_nyc[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>ALL OF NYC ASSUMING THE POPULATION IS 8.5 MILLION AS OF April 4",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>ALL OF NYC ASSUMING THE POPULATION IS 8.5 MILLION AS OF April 5, 10 AM",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -139,7 +139,7 @@ fig_pie_pop_nyc.update_layout(
 age = ["0 to 17<br>years old", "18 to 44<br>years old", "45 to 64<br>years old", "65 to 74<br>years old", "75 years old<br>and over", "Unknown"]
 age_color = ["#94D6CC","#003D30","#F3B3C3","#ffcece","#543000", "#047484"]
 
-fig_pie_nyc_age = go.Figure(data=[go.Pie(labels=age, values=[988, 22434, 19971, 7064, 5709, 123], name="Age Group",marker=dict(colors=age_color))])#,pull=[0.4, 0]
+fig_pie_nyc_age = go.Figure(data=[go.Pie(labels=age, values=[1124, 24994, 22694, 8097, 6722, 136], name="Age Group",marker=dict(colors=age_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -150,7 +150,7 @@ fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_pie_nyc_age.update_layout(
     title={
-        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (63,306) IN<br>NYC AS OF April 4",
+        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (63,767) IN<br>NYC AS OF April 5, 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -163,10 +163,10 @@ fig_pie_nyc_age.update_layout(
 #-------------------------------------------------------------AGE RANGE OF PEOPLE POSITIVE
 
 
-gender =["Female","Male"]
-gender_color = ["#94D6CC","#003C30"]
+gender =["Female","Male","Unknown"]
+gender_color = ["#94D6CC","#003C30","#003D30"]
 
-fig_pie_nyc_gender = go.Figure(data=[go.Pie(labels=gender, values=[25536,30672], name="Gender",marker=dict(colors=gender_color))])#,pull=[0.4, 0]
+fig_pie_nyc_gender = go.Figure(data=[go.Pie(labels=gender, values=[29037,34640,90], name="Gender",marker=dict(colors=gender_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -177,7 +177,7 @@ fig_pie_nyc_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_pie_nyc_gender.update_layout(
     title={
-        'text':"GENDER IDENTITY OF PEOPLE <br>WITH COVID-19 (63,306) IN<br>NYC AS OF April 4",
+        'text':"GENDER IDENTITY OF PEOPLE <br>WITH COVID-19 (63,767) IN<br>NYC AS OF April 5, 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -191,7 +191,7 @@ fig_pie_nyc_gender.update_layout(
 age_of_death = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over"]
 death_age_color = ["#94D6CC","#003D30","#F3B3C3","#ffcece","#047484"]
 
-fig_pie_nyc_death_age = go.Figure(data=[go.Pie(labels=age_of_death, values=[1, 110, 442, 461, 853], name="Age of Death",marker=dict(colors=death_age_color))])#,pull=[0.4, 0]
+fig_pie_nyc_death_age = go.Figure(data=[go.Pie(labels=age_of_death, values=[2, 132, 535, 557, 1030], name="Age of Death",marker=dict(colors=death_age_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_death_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -202,7 +202,7 @@ fig_pie_nyc_death_age.update_traces(hole=.4, hoverinfo="label+percent+name+value
 
 fig_pie_nyc_death_age.update_layout(
     title={
-        'text':"AGE RANGE OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (2,624) IN<br>NYC AS OF April 4",
+        'text':"AGE RANGE OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (2,256) IN<br>NYC AS OF April 5, 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -216,7 +216,7 @@ fig_pie_nyc_death_age.update_layout(
 gender_death =["Female","Male"]
 color_gender_death = ["#94D6CC","#003C30"]
 
-fig_pie_nyc_death_gender = go.Figure(data=[go.Pie(labels=gender_death, values=[706, 1159], name="Age of Death",marker=dict(colors=color_gender_death))])#,pull=[0.4, 0]
+fig_pie_nyc_death_gender = go.Figure(data=[go.Pie(labels=gender_death, values=[837, 1417], name="Age of Death",marker=dict(colors=color_gender_death))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_death_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -227,7 +227,7 @@ fig_pie_nyc_death_gender.update_traces(hole=.4, hoverinfo="label+percent+name+va
 
 fig_pie_nyc_death_gender.update_layout(
     title={
-        'text':"GENDER IDENTITY OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (2,624) IN<br>NYC AS OF April 4",
+        'text':"GENDER IDENTITY OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (2,256) IN<br>NYC AS OF April 5, 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -241,7 +241,7 @@ fig_pie_nyc_death_gender.update_layout(
 underlying_illness =["Had Underlying Illness","Did Not", "Unknown"]
 underlying_illness_color = ["#BF1F57","#94D7CD","#003C2F"]
 
-fig_pie_nyc_death_illness = go.Figure(data=[go.Pie(labels=underlying_illness, values=[1285,28,554], name="Age of Death",marker=dict(colors=underlying_illness_color))])#,pull=[0.4, 0]
+fig_pie_nyc_death_illness = go.Figure(data=[go.Pie(labels=underlying_illness, values=[1503,38,715], name="Age of Death",marker=dict(colors=underlying_illness_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_death_illness.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -252,7 +252,7 @@ fig_pie_nyc_death_illness.update_traces(hole=.4, hoverinfo="label+percent+name+v
 
 fig_pie_nyc_death_illness.update_layout(
     title={
-        'text':"EXISTENCE OF UNDERLYING ILLNESS OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (2,624) IN<br>NYC AS OF April 4",
+        'text':"EXISTENCE OF UNDERLYING ILLNESS OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (2,256) IN<br>NYC AS OF April 5, 10 AM",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1602,13 +1602,13 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('63,306', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('63,767', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('2,624*', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('* We believe there may be a discrepancy as on Friday, April 3rd, the cumulative deaths for NYC was around 1,800. Data above from NY State Dept. of Health April 4', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('2,256', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
+            html.H6('The data above is from the NYC Dept. of Health updated there on April 5, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
-            html.H6('Data from NY State Dept. of Health April 4', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            html.H6('Data from NY State Dept. of Health April 5, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1960,7 +1960,7 @@ column_data_sources = dbc.Col(
             children=[
                 html.H6('Data Sources' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
                 html.Hr(className="my-2"),
-                dbc.Button('New York City Government Department of Health', color="link",href = "https://www1.nyc.gov/assets/doh/downloads/pdf/imm/covid-19-daily-data-summary.pdf",style={'marginBottom':0, 'marginTop':0}), 
+                dbc.Button('New York City Government Department of Health', color="link",href = "https://www1.nyc.gov/assets/doh/downloads/pdf/imm/covid-19-daily-data-summary-04052020-1.pdf",style={'marginBottom':0, 'marginTop':0}), 
                 html.P('The official New York City Government Department of Health website.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 dbc.Button('New York State Government Department of Health', color="link",href = "https://coronavirus.health.ny.gov/county-county-breakdown-positive-cases",style={'marginBottom':0, 'marginTop':0}), 
                 html.P('The official New York State Government Department of Health website.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
