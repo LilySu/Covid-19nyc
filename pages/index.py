@@ -715,7 +715,7 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            color = 'total_normalized',
                            color_continuous_scale=px.colors.sequential.Teal,
                            #color_continuous_scale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],#553000
-                           custom_data = ['04_Apr_Cov_Pos'],################################################CHANGE THIS
+                           custom_data = ['05_Apr_Cov_Pos'],################################################CHANGE THIS
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -1086,7 +1086,7 @@ annotations.append(dict(xref='paper', x=.992, y=110700,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=292000,
+annotations.append(dict(xref='paper',  x=.992, y=322000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1133,7 +1133,7 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=292000,
+                     dict(xref='paper', x=0.992, y=322000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1163,7 +1163,7 @@ italy_annotations = [dict(xref='paper', x=0.992, y=110700,
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=292000,
+                     dict(xref='paper', x=0.992, y=322000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1192,7 +1192,7 @@ china_annotations = [dict(xref='paper', x=0.992, y=74600,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=292000,
+                     dict(xref='paper', x=0.992, y=322000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1605,7 +1605,7 @@ columnTopRight = dbc.Col(
             html.H1('67,551', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('3,128', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('The data above is from the NY State Dept. of Health updated April 5', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from the NY State Dept. of Health updated April 5', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NY State Dept. of Health April 5', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
