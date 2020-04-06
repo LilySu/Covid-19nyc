@@ -11,6 +11,9 @@ import dash_core_components as dcc
 
 from dash.dependencies import Input, Output
 from flask import Flask, send_from_directory
+# from flask_sqlalchemy import SQLAlchemy
+
+
 
 #serve favicon
 server = Flask(__name__, static_folder='static')
@@ -19,6 +22,15 @@ def favicon():
     return send_from_directory(os.path.join(server.root_path, 'static'),
                                'favicon.ico', mimetype='assets/favicon.ico')
 
+# application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@postgres2.chtkfsooypac.us-east-1.rds.amazonaws.com/postgres'
+# db = SQLAlchemy(application)
+
+
+# class User(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+
+#     def __repr__(self):
+#         return "<User(id='%s')>" % self.id
 
 # Navbar docs: https://dash-bootstrap-components.opensource.faculty.ai/l/components/navbar
 # navbar = dbc.NavbarSimple(
@@ -133,4 +145,4 @@ def display_page(pathname):
 
 # Run app server: https://dash.plot.ly/getting-started
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run(debug=False)
