@@ -85,7 +85,7 @@ fig_area_nyc_percentage_change.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 
 pop_queens =["Queens Residents Positive with Covid-19","Rest of Queens Residents"]
 color_pop_queens = ["#C02059","#94D7CD"]
 
-fig_pie_pop_queens = go.Figure(data=[go.Pie(labels=pop_queens, values=[17832,2255168],marker=dict(colors=color_pop_queens))])#,pull=[0.4, 0]
+fig_pie_pop_queens = go.Figure(data=[go.Pie(labels=pop_queens, values=[23083,2249917],marker=dict(colors=color_pop_queens))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -97,7 +97,7 @@ fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_pie_pop_queens.update_layout(
     annotations = [dict(text=pop_queens[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF April 3, 10 AM",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF April 5, 10 AM",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -112,7 +112,7 @@ fig_pie_pop_queens.update_layout(
 pop_nyc =["NYC Residents Positive with Covid-19","Rest of NYC Residents"]
 color_pop_nyc = ["#C02059","#003C30"]
 
-fig_pie_pop_nyc = go.Figure(data=[go.Pie(labels=pop_nyc, values=[52948,8447052],marker=dict(colors=color_pop_nyc))])#,pull=[0.4, 0]
+fig_pie_pop_nyc = go.Figure(data=[go.Pie(labels=pop_nyc, values=[72181,8427819],marker=dict(colors=color_pop_nyc))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_pop_nyc.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -124,7 +124,7 @@ fig_pie_pop_nyc.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_pie_pop_nyc.update_layout(
     annotations = [dict(text=pop_nyc[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>ALL OF NYC ASSUMING THE POPULATION IS 8.5 MILLION AS OF April 3, 10 AM",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>ALL OF NYC ASSUMING THE POPULATION IS 8.5 MILLION AS OF April 5, 10 AM",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -139,7 +139,7 @@ fig_pie_pop_nyc.update_layout(
 age = ["0 to 17<br>years old", "18 to 44<br>years old", "45 to 64<br>years old", "65 to 74<br>years old", "75 years old<br>and over", "Unknown"]
 age_color = ["#94D6CC","#003D30","#F3B3C3","#ffcece","#543000", "#047484"]
 
-fig_pie_nyc_age = go.Figure(data=[go.Pie(labels=age, values=[933, 21423, 18700, 6565, 5211, 116], name="Age Group",marker=dict(colors=age_color))])#,pull=[0.4, 0]
+fig_pie_nyc_age = go.Figure(data=[go.Pie(labels=age, values=[1204, 26716, 24627, 8749, 7345, 135], name="Age Group",marker=dict(colors=age_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -150,7 +150,7 @@ fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_pie_nyc_age.update_layout(
     title={
-        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (52,948) IN<br>NYC AS OF April 3, 10 AM",
+        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (72,181) IN<br>NYC AS OF April 6",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -163,10 +163,10 @@ fig_pie_nyc_age.update_layout(
 #-------------------------------------------------------------AGE RANGE OF PEOPLE POSITIVE
 
 
-gender =["Female","Male"]
-gender_color = ["#94D6CC","#003C30"]
+gender =["Female","Male","Unknown"]
+gender_color = ["#94D6CC","#003C30","#003D30"]
 
-fig_pie_nyc_gender = go.Figure(data=[go.Pie(labels=gender, values=[24020,28852], name="Gender",marker=dict(colors=gender_color))])#,pull=[0.4, 0]
+fig_pie_nyc_gender = go.Figure(data=[go.Pie(labels=gender, values=[31319,37361,96], name="Gender",marker=dict(colors=gender_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -177,7 +177,7 @@ fig_pie_nyc_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 
 fig_pie_nyc_gender.update_layout(
     title={
-        'text':"GENDER IDENTITY OF PEOPLE <br>WITH COVID-19 (52,948) IN<br>NYC AS OF April 3, 10 AM",
+        'text':"GENDER IDENTITY OF PEOPLE <br>WITH COVID-19 (72,181) IN<br>NYC AS OF April 6",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -191,7 +191,7 @@ fig_pie_nyc_gender.update_layout(
 age_of_death = ["0 to 17", "18 to 44", "45 to 64", "65 to 74 ", "75 and over"]
 death_age_color = ["#94D6CC","#003D30","#F3B3C3","#ffcece","#047484"]
 
-fig_pie_nyc_death_age = go.Figure(data=[go.Pie(labels=age_of_death, values=[1, 92, 384, 385, 722], name="Age of Death",marker=dict(colors=death_age_color))])#,pull=[0.4, 0]
+fig_pie_nyc_death_age = go.Figure(data=[go.Pie(labels=age_of_death, values=[2, 148, 652, 686, 1250], name="Age of Death",marker=dict(colors=death_age_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_death_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -202,7 +202,7 @@ fig_pie_nyc_death_age.update_traces(hole=.4, hoverinfo="label+percent+name+value
 
 fig_pie_nyc_death_age.update_layout(
     title={
-        'text':"AGE RANGE OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (1,584) IN<br>NYC AS OF April 3, 10 AM",
+        'text':"AGE RANGE OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (3,575) IN<br>NYC AS OF April 6",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -216,7 +216,7 @@ fig_pie_nyc_death_age.update_layout(
 gender_death =["Female","Male"]
 color_gender_death = ["#94D6CC","#003C30"]
 
-fig_pie_nyc_death_gender = go.Figure(data=[go.Pie(labels=gender_death, values=[597, 985], name="Age of Death",marker=dict(colors=color_gender_death))])#,pull=[0.4, 0]
+fig_pie_nyc_death_gender = go.Figure(data=[go.Pie(labels=gender_death, values=[1017, 1719], name="Age of Death",marker=dict(colors=color_gender_death))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_death_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -227,7 +227,7 @@ fig_pie_nyc_death_gender.update_traces(hole=.4, hoverinfo="label+percent+name+va
 
 fig_pie_nyc_death_gender.update_layout(
     title={
-        'text':"GENDER IDENTITY OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (1,584) IN<br>NYC AS OF April 3, 10 AM",
+        'text':"GENDER IDENTITY OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (3,575) IN<br>NYC AS OF April 6",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -241,7 +241,7 @@ fig_pie_nyc_death_gender.update_layout(
 underlying_illness =["Had Underlying Illness","Did Not", "Unknown"]
 underlying_illness_color = ["#BF1F57","#94D7CD","#003C2F"]
 
-fig_pie_nyc_death_illness = go.Figure(data=[go.Pie(labels=underlying_illness, values=[1178,26,380], name="Age of Death",marker=dict(colors=underlying_illness_color))])#,pull=[0.4, 0]
+fig_pie_nyc_death_illness = go.Figure(data=[go.Pie(labels=underlying_illness, values=[1893,48,997], name="Age of Death",marker=dict(colors=underlying_illness_color))])#,pull=[0.4, 0]
 
 # Use `hole` to create a donut-like pie chart
 fig_pie_nyc_death_illness.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -252,7 +252,7 @@ fig_pie_nyc_death_illness.update_traces(hole=.4, hoverinfo="label+percent+name+v
 
 fig_pie_nyc_death_illness.update_layout(
     title={
-        'text':"EXISTENCE OF UNDERLYING ILLNESS OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (1,584) IN<br>NYC AS OF April 3, 10 AM",
+        'text':"EXISTENCE OF UNDERLYING ILLNESS OF PEOPLE WHO<br>PASSED AWAY FROM WITH COVID-19 (3,575) IN<br>NYC AS OF April 6",
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -668,7 +668,7 @@ fig_stacked_change_borough_cases.update_layout(
 )
 
 annotation_borough = []
-for i,j in zip(range(0, 13), df_nyc['total']):
+for i,j in zip(range(0, 16), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
@@ -700,7 +700,7 @@ fig_stacked_change_borough_cases.update_layout(
 #---------------------------------------------------------------------------TIMESLIDER
 import requests
 df = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
-df = df.iloc[::-1]
+# df = df.iloc[::-1]
 r = requests.get('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/nys_geojson/new-york-counties.geojson')
 geojson = r.json()
 
@@ -712,9 +712,10 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            mapbox_style="carto-positron", zoom=5.7,
                            opacity = .7,
                            height = 720,
-                           color = 'total',
-                           color_continuous_scale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],#553000
-                           custom_data = ['03_Apr_Cov_Pos'],################################################CHANGE THIS
+                           color = 'total_normalized',
+                           color_continuous_scale=px.colors.sequential.Teal,
+                           #color_continuous_scale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],#553000
+                           custom_data = ['05_Apr_Cov_Pos'],################################################CHANGE THIS
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
@@ -728,12 +729,12 @@ df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Cov
 df_counties_overtime = df_counties_overtime.head(15)
 
 
-fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y="April 03", 
-             text="April 03", 
-             color = "April 03",
+fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y="April 06", 
+             text="April 06", 
+             color = "April 06",
              height = 350,
              color_continuous_scale=[(0.00, "#553000"), (0.25, "#BF1F58"), (0.5, "#F2B2C0"),(0.75, "#94D6CC"),  (1.00, "#003D30")],
-             labels={'New York State Counties':'County',"April 03":'April 3rd Confirmed Cases'})
+             labels={'New York State Counties':'County',"April 06":'April 6th Confirmed Cases'})
 fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
 fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
@@ -859,14 +860,14 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(34), diff_from_day_before['total']):
+for i,j in zip(range(36), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
-            y=-700,
+            y=-1100,
             xref="x",
             yref="y",
-            text=str(j)[:-2]+"<br> total",
+            text=str(j)[:-2]+"<br> more",
             showarrow=False,
             #arrowhead=7,
             ax=0,
@@ -927,14 +928,14 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(34), diff_from_day_before['total']):
+for i,j in zip(range(36), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
             y=-700,
             xref="x",
             yref="y",
-            text=str(j)[:-2]+"<br> total",
+            text=str(j)[:-2]+"<br> more",#<br> NYC <br>total <br> change
             showarrow=False,
             #arrowhead=7,
             ax=0,
@@ -1077,7 +1078,7 @@ fig_line_cumulative_us_italy_china.update_scenes(
 
 annotations = []
 
-annotations.append(dict(xref='paper', x=.992, y=89700,
+annotations.append(dict(xref='paper', x=.992, y=110700,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
@@ -1085,7 +1086,7 @@ annotations.append(dict(xref='paper', x=.992, y=89700,
                                         size=20),
                               showarrow=False))
 
-annotations.append(dict(xref='paper',  x=.992, y=230000,
+annotations.append(dict(xref='paper',  x=.992, y=352000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1125,14 +1126,14 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                   dict(xref='paper', x=0.992, y=89700,
+                   dict(xref='paper', x=0.992, y=110700,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=230000,
+                     dict(xref='paper', x=0.992, y=352000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1155,14 +1156,14 @@ all_annotations = [dict(xref='paper', x=1.002, y=74500,
                               showarrow=False)]
 
 
-italy_annotations = [dict(xref='paper', x=0.992, y=89700,
+italy_annotations = [dict(xref='paper', x=0.992, y=110700,
                               xanchor='right', yanchor='bottom',
                               text='Italy',
                               font=dict(family='Arial',
                                         color='#008064',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.992, y=230000,
+                     dict(xref='paper', x=0.992, y=352000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1171,7 +1172,7 @@ italy_annotations = [dict(xref='paper', x=0.992, y=89700,
                               showarrow=False),
                      dict(xref='paper', yref='paper', x=0.0, y=1.05,
                               xanchor='left', yanchor='bottom',
-                              text='China vs. Italy vs. United States, Covid-19 Confirmed Cases',
+                              text='CHINA VS. ITALY VS. UNITED STATES, COVID-19 CONFIRMED CASES',
                               font=dict(family='Arial',
                                         size=20,
                                         color='rgb(37,37,37)'),
@@ -1184,14 +1185,14 @@ italy_annotations = [dict(xref='paper', x=0.992, y=89700,
                                         color='rgb(150,150,150)'),
                               showarrow=False)]
 
-china_annotations = [dict(xref='paper', x=1.01, y=74600,
+china_annotations = [dict(xref='paper', x=0.992, y=74600,
                               xanchor='right', yanchor='bottom',
                               text='China',
                               font=dict(family='Arial',
                                         color = '#e7b1c7',
                                         size=20),
                               showarrow=False),
-                     dict(xref='paper', x=0.999, y=230000,
+                     dict(xref='paper', x=0.992, y=352000,
                               xanchor='right', yanchor='bottom',
                               text='U.S.',
                               font=dict(family='Arial',
@@ -1571,7 +1572,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_area_nyc_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on April 3, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on April 5', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1601,13 +1602,13 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('57,159', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('76,876', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('1,584', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('Data above from NYC & NY State Dept. of Health April 3, 10AM & 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('4,111', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from the NY State Dept. of Health updated April 7', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
-            html.H6('Data from NY State Dept. of Health April 3, 5 PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            html.H6('Data from NY State Dept. of Health April 7', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1764,7 +1765,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above interactive charts from NY State DOH Updated April 3rd, 2020', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH Updated April 6', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
@@ -1806,7 +1807,7 @@ column2bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data from NY State DOH, last updated there on April 3 P PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated April 6', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
     ],
@@ -1818,7 +1819,7 @@ columnStackedCounty = dbc.Col(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
             dcc.Graph(figure=fig_stacked_change_county_cases),
-            html.H6('Data from NY State DOH, last updated there on April 3 P PM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from NY State DOH, last updated April 6', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
         )
@@ -1934,12 +1935,13 @@ column_predictions = dbc.Col(
             children=[
                 html.H6('Our Prediction for the next few days for the United States' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
                 html.Hr(className="my-2"),
-                html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 380,000 up to April 1st, then 400,000 to better fit the curve on April 2nd. The capacity is the most optimistic projection to fit the existing data. We believe this graph is helpful in understanding the best case scenario for how long it will take for life to get back to normal.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
-                html.P('The black dots are existing recorded information for the United States. We believe that any prediction after April 4-5 are obsolete.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
-                html.Img(src=app.get_asset_url('prediction_confirmed.gif'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
-                html.Img(src=app.get_asset_url('fb_prophet_deaths_10000.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 500,000. The capacity is the most optimistic projection to fit the existing data. We believe this graph is helpful in understanding the best case scenario for how long it will take for life to get back to normal.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.P('The black dots are existing recorded information for the United States. We believe that any prediction after April 12 is obsolete.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('fb_prophet_confirmed_500000_4_03.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.P('Prediction of deaths in the next few days with a carrying capacity going towards 20,000 in the next 14 days. We believe that any prediction after April 12 is obsolete:', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('fb_prophet_deaths_20000_4_03.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
                 html.P('Our conclusion from this prediction is that in the best case scenario, the curve will flatten in mid-April and everyone should be assuming their normal life in mid-May.', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
-                html.P('Here is the Law of Population Growth using defining carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
+                html.P('Here is the Law of Population Growth formula we are using to show you how we define carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('logistic_regression_population_growth.PNG'), style={'display': 'block', 'width':'75%','marginTop':20,'marginBottom':0}),
                 html.P('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':12, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 dbc.Button('More on Logistic Regression', size="sm", color="link",href = "https://en.wikipedia.org/wiki/Logistic_function",style={'marginBottom':100, 'marginTop':15}), 
@@ -1958,7 +1960,7 @@ column_data_sources = dbc.Col(
             children=[
                 html.H6('Data Sources' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
                 html.Hr(className="my-2"),
-                dbc.Button('New York City Government Department of Health', color="link",href = "https://www1.nyc.gov/assets/doh/downloads/pdf/imm/covid-19-daily-data-summary.pdf",style={'marginBottom':0, 'marginTop':0}), 
+                dbc.Button('New York City Government Department of Health', color="link",href = "https://www1.nyc.gov/assets/doh/downloads/pdf/imm/covid-19-daily-data-summary-04052020-1.pdf",style={'marginBottom':0, 'marginTop':0}), 
                 html.P('The official New York City Government Department of Health website.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 dbc.Button('New York State Government Department of Health', color="link",href = "https://coronavirus.health.ny.gov/county-county-breakdown-positive-cases",style={'marginBottom':0, 'marginTop':0}), 
                 html.P('The official New York State Government Department of Health website.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
