@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from flask import Flask
 from os import environ
 #Local Imports
+=======
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.sql import func
+from os import environ
+>>>>>>> c81f5b724ad603ab6a4211138c394a31d3772a1a
 from sql_queries.sql_counties import execute_scrape_counties_wikipedia
 
 
