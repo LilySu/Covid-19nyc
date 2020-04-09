@@ -14,6 +14,13 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
+from sqlalchemy import create_engine
+import mysql.connector
+import psycopg2
+
+
+engine = create_engine('postgresql+psycopg2://postgres:postgres@postgres2.chtkfsooypac.us-east-1.rds.amazonaws.com:5432/postgres', echo=False)
+
 df_china = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/China_Covid19.csv")
 df_italy = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Italy_Covid19.csv")
 df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/Usa_Covid19.csv")
@@ -27,7 +34,30 @@ df_nyc = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/maste
 
 #-----------------------fig
 
-top = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
+def get_historic_counties_records():
+  sql = f'''
+  SELECT * 
+  FROM combined_county_table;
+  '''
+  with engine.connect() as conn:
+    return [record for record in conn.execute(sql)]
+
+data = get_historic_counties_records()
+county = pd.DataFrame(data, columns= ['Albany', 'Allegany', 'Broome', 'Cattaraugus', 'Cayuga', 'Chautauqua',
+       'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland', 'Delaware',
+       'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton', 'Genesee', 'Greene',
+       'Hamilton', 'Herkimer', 'Jefferson', 'Lewis', 'Livingston', 'Madison',
+       'Monroe', 'Montgomery', 'Nassau', 'Niagara', 'Oneida', 'Onondaga',
+       'Ontario', 'Orange', 'Orleans', 'Oswego', 'Otsego', 'Putnam',
+       'Rensselaer', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
+       'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
+       'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
+       'Westchester', 'Wyoming', 'Yates', 'date_found_positive', 'New York', 'Queens',
+       'Kings', 'Richmond', 'Bronx', 'total'])
+
+
+# top = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
+top = county[::-1]
 top5 = top.tail()
 
 fig_bar_nyc_last_5_days = px.bar(top5, x='date_found_positive', y='New York',
@@ -59,7 +89,19 @@ fig_bar_nyc_last_5_days.layout.margin.update({'t':0, 'b':0, 'r': 0, 'l': 0})
 
 #---------------------------------------------
 
-table_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/percentage_change_County.csv")
+def get_historic_counties_records():
+  sql = f'''
+  SELECT * 
+  FROM nyc_percentage_daily_change_table;
+  '''
+  with engine.connect() as conn:
+    return [record for record in conn.execute(sql)]
+
+data = get_historic_counties_records()
+table_h = pd.DataFrame(data, columns= ['New York','dates'])
+
+
+# table_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/percentage_change_County.csv")
 table_h = table_h.tail(7)
 
 fig_area_nyc_percentage_change = go.Figure()
@@ -725,16 +767,31 @@ fig_map_nyc_timeslider.update_layout(margin={"r":0,"t":40,"l":0,"b":0})
 fig_map_nyc_timeslider.update_layout(coloraxis_showscale = False, showlegend = False)
 
 #------------------------------------------------------------------------------------------COUNTY CASES
-df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_table_today.csv")
-df_counties_overtime = df_counties_overtime.head(15)
+# df_counties_overtime = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/county_table_today.csv")
+# df_counties_overtime = df_counties_overtime.head(15)
+
+def get_today_counties_records():
+  sql = f'''
+  SELECT * 
+  FROM scraped_county_table;
+  '''
+  with engine.connect() as conn:
+    return [record for record in conn.execute(sql)]
+
+data = get_today_counties_records()
+county = pd.DataFrame(data, columns= ['County', 'Confirmed', 'Deaths', 'Recoveries', 'Population','Deaths2Confirmed', 'Confirmed2Population','lastupdate'])
+
+df_counties_overtime = county.sort_values(by=['Confirmed'], ascending=False)
+df_counties_overtime = df_counties_overtime.head(12)
+# latest_date = df_counties_overtime['lastupdate'][1]
 
 
-fig_line_ny_cumulative = px.bar(df_counties_overtime, x='index', y="April 06", 
-             text="April 06", 
-             color = "April 06",
+fig_line_ny_cumulative = px.bar(df_counties_overtime, x='County', y='Confirmed', 
+             text='Confirmed', 
+             color = 'Confirmed',
              height = 350,
              color_continuous_scale=[(0.00, "#553000"), (0.25, "#BF1F58"), (0.5, "#F2B2C0"),(0.75, "#94D6CC"),  (1.00, "#003D30")],
-             labels={'New York State Counties':'County',"April 06":'April 6th Confirmed Cases'})
+             labels={'New York State Counties':'County','Confirmed':'Confirmed as of last update'})
 fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
 fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
@@ -1602,10 +1659,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('76,876', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('81,803', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('4,111', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('Data from the NY State Dept. of Health updated April 7', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('4,755', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from the NY State Dept. of Health updated April 9', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NY State Dept. of Health April 7', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
@@ -1751,7 +1808,7 @@ column1Right = dbc.Col(
         html.Center(
             children=[
                 html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':40, 'marginBottom':10}),
-                html.H6('FOR THE TOP 15 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
+                html.H6('FOR THE TOP 12 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
                 dcc.Graph(figure=fig_line_ny_cumulative),
                 html.H6('TOTAL POSITIVE CASES OF COVID-19 BY COUNTY OVER TIME', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
                 html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
