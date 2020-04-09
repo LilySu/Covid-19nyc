@@ -34,7 +34,7 @@ df_nyc = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/maste
 
 #-----------------------fig
 
-def get_historic_counties_records():
+def get_combined_counties_records():
   sql = f'''
   SELECT * 
   FROM combined_county_table;
@@ -42,7 +42,7 @@ def get_historic_counties_records():
   with engine.connect() as conn:
     return [record for record in conn.execute(sql)]
 
-data = get_historic_counties_records()
+data = get_combined_counties_records()
 county = pd.DataFrame(data, columns= ['Albany', 'Allegany', 'Broome', 'Cattaraugus', 'Cayuga', 'Chautauqua',
        'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland', 'Delaware',
        'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton', 'Genesee', 'Greene',
@@ -780,9 +780,15 @@ def get_today_counties_records():
 
 data = get_today_counties_records()
 county = pd.DataFrame(data, columns= ['County', 'Confirmed', 'Deaths', 'Recoveries', 'Population','Deaths2Confirmed', 'Confirmed2Population','lastupdate'])
+# collist = ['Confirmed', 'Deaths', 'Recoveries', 'Population']
+# for i in collist:
+#     county[i] = county[i].str.replace(' ', '')
+#     county[i] = county[i].str.replace(',', '')
+#     county[i] = county[i].fillna(0)
+#     county[i] = county[i].astype('float64')
 
-df_counties_overtime = county.sort_values(by=['Confirmed'], ascending=False)
-df_counties_overtime = df_counties_overtime.head(12)
+# df_counties_overtime = county.sort_values(by=['Confirmed'], ascending=False)
+df_counties_overtime = county.head(12)
 # latest_date = df_counties_overtime['lastupdate'][1]
 
 
@@ -807,9 +813,31 @@ fig_line_ny_cumulative.update_layout(coloraxis_showscale=False)
 fig_line_ny_cumulative.update_layout(margin={"r":0,"t":15,"l":0,"b":0})
 
 #------------------------------------------------------------------------------------------COUNTY day-to-day changes
-table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv") #table
+# table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv") #table
 
-table_h = table.tail(7)
+def get_combined_counties_records():
+  sql = f'''
+  SELECT * 
+  FROM combined_county_table;
+  '''
+  with engine.connect() as conn:
+    return [record for record in conn.execute(sql)]
+
+data = get_combined_counties_records()
+county = pd.DataFrame(data, columns= ['Albany', 'Allegany', 'Broome', 'Cattaraugus', 'Cayuga', 'Chautauqua',
+       'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland', 'Delaware',
+       'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton', 'Genesee', 'Greene',
+       'Hamilton', 'Herkimer', 'Jefferson', 'Lewis', 'Livingston', 'Madison',
+       'Monroe', 'Montgomery', 'Nassau', 'Niagara', 'Oneida', 'Onondaga',
+       'Ontario', 'Orange', 'Orleans', 'Oswego', 'Otsego', 'Putnam',
+       'Rensselaer', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
+       'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
+       'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
+       'Westchester', 'Wyoming', 'Yates', 'date_found_positive', 'New York', 'Queens',
+       'Kings', 'Richmond', 'Bronx', 'total'])
+
+table_h = county[::-1]
+table_h = table_h.tail(7)
 collist = ['Nassau','New York', 'Suffolk', 'Rockland', 'Dutchess', 'Monroe','Dutchess', 'Westchester']
 colors = [ '#94D7CD', '#BF1F57', '#F3B3C2', "#008064","#F3B3C3","#ffcece",'#4bd2fb']#'#99d1ce',
 
@@ -860,7 +888,27 @@ fig_line_ny_overtime.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 # figA.update_layout(title_text='IT TAKES ON AVERAGE OF 14 DAYS FOR THE SYMPTOMS TO APPEAR')
 #-------------------------------------------------------------------------------------STACKED COUNTIES
 
+def get_counties_new_daily_cases():
+  sql = f'''
+  SELECT * 
+  FROM counties_new_daily_cases_table;
+  '''
+  with engine.connect() as conn:
+    return [record for record in conn.execute(sql)]
 
+data = get_counties_new_daily_cases()
+
+diff_from_day_before = pd.DataFrame(data, columns=['Albany', 'Allegany', 'Broome', 'Cattaraugus', 'Cayuga', 'Chautauqua',
+       'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland', 'Delaware',
+       'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton', 'Genesee', 'Greene',
+       'Hamilton', 'Herkimer', 'Jefferson', 'Lewis', 'Livingston', 'Madison',
+       'Monroe', 'Montgomery', 'Nassau', 'Niagara', 'Oneida', 'Onondaga',
+       'Ontario', 'Orange', 'Orleans', 'Oswego', 'Otsego', 'Putnam',
+       'Rensselaer', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
+       'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
+       'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
+       'Westchester', 'Wyoming', 'Yates', 'New York', 'Queens', 'Kings',
+       'Richmond', 'Bronx', 'date', 'total', 'average'])
 
 fig_stacked_change_county_cases = go.Figure()
 
@@ -882,9 +930,9 @@ color43=["#4ed4b7", "#EA8AA1","#92CBD2", "#58B69A","#102A6B", "#103D58","#4788A8
 
 
 for i,j in zip(collist, color43):
-  fig_stacked_change_county_cases.add_trace(go.Scatter(x = diff_from_day_before['dates'], y = diff_from_day_before[i],line_shape='spline', mode='lines', stackgroup='one', # define stack group
+  fig_stacked_change_county_cases.add_trace(go.Scatter(x = diff_from_day_before['date'], y = diff_from_day_before[i],line_shape='spline', mode='lines', stackgroup='one', # define stack group
                            name = i, text=diff_from_day_before[i], hoveron = 'points+fills', fillcolor=j,line=dict(width=2.5, color=j),
-                           hovertemplate = "<b>" + i + " County</b>" +"<br><b>%{text} </b>"+" New Cases <br>on " + diff_from_day_before['dates']))
+                           hovertemplate = "<b>" + i + " County</b>" +"<br><b>%{text} </b>"+" New Cases <br>on " + diff_from_day_before['date']))
     
 fig_stacked_change_county_cases.update_traces(hoverinfo='text+name', mode='lines+markers')
 fig_stacked_change_county_cases.update_layout(
@@ -917,7 +965,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(36), diff_from_day_before['total']):
+for i,j in zip(range(39), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -950,9 +998,9 @@ color43=["rgba(122, 226, 235, 0.62)"]
 
 
 for i,j in zip(collist, color43):
-  fig_stacked_ny.add_trace(go.Scatter(x = diff_from_day_before['dates'], y = diff_from_day_before[i],line_shape='spline', mode='lines', stackgroup='one', # define stack group
+  fig_stacked_ny.add_trace(go.Scatter(x = diff_from_day_before['date'], y = diff_from_day_before[i],line_shape='spline', mode='lines', stackgroup='one', # define stack group
                            name = i, text=diff_from_day_before[i], hoveron = 'points+fills', fillcolor=j,line=dict(width=2.5, color=j),
-                           hovertemplate = "<b>" + i + " County</b>" +"<br><b>%{text} </b>"+" New Cases <br>on " + diff_from_day_before['dates']))
+                           hovertemplate = "<b>" + i + " County</b>" +"<br><b>%{text} </b>"+" New Cases <br>on " + diff_from_day_before['date']))
     
 fig_stacked_ny.update_traces(hoverinfo='text+name', mode='lines+markers')
 fig_stacked_ny.update_layout(
@@ -985,7 +1033,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(36), diff_from_day_before['New York']):
+for i,j in zip(range(39), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
