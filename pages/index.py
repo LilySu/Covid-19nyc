@@ -1728,7 +1728,7 @@ columnNeighborhoods = dbc.Col(
                 html.Img(src=app.get_asset_url('ConfirmedCasesByNeighborhood.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':170}),
                 html.H6('Map Released by the  NYC DOH, on March 30', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
                 html.Img(src=app.get_asset_url('covid-19-hospital_rates.jpg'), style={'display': 'block', 'width':'90%', 'marginTop':70}),
-                html.H6('Line Chart Released by the  NYC DOH, on March 29', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+                html.H6('Line Chart Released by the  NYC DOH, on April 9', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
                 # html.Img(src=app.get_asset_url('confirmed_by_zipcode.PNG'), style={'display': 'block', 'width':'85%', 'marginTop':70}),
                 html.H6('Confirmed Cases of Covid-19 as a Percentage of Census Population in Corresponding Zip Code', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':50, 'marginBottom':5}),
                 dcc.Graph(figure=fig1),
