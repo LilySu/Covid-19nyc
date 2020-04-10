@@ -965,7 +965,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(39), diff_from_day_before['total']):
+for i,j in zip(range(40), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -1033,7 +1033,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(39), diff_from_day_before['New York']):
+for i,j in zip(range(40), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
@@ -1695,7 +1695,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info. Confirmed cases is only a function availability and willingness to test.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the New York City Department of Health on March 31st.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the New York City Department of Health on April 10.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1732,7 +1732,7 @@ columnNeighborhoods = dbc.Col(
                 # html.Img(src=app.get_asset_url('confirmed_by_zipcode.PNG'), style={'display': 'block', 'width':'85%', 'marginTop':70}),
                 html.H6('Confirmed Cases of Covid-19 as a Percentage of Census Population in Corresponding Zip Code', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':50, 'marginBottom':5}),
                 dcc.Graph(figure=fig1),
-                html.H6('Data Released by the  NYC DOH, on March 31. Please be aware that confirmed cases is only a function of availability of testing and willingness to test. Only those who show up to a hospital with select symptoms and those who can show up to the testing sites in a vehicle are tested at this time.', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':100}),
+                html.H6('Data Released by the  NYC DOH, on April 10. Please be aware that confirmed cases is only a function of availability of testing and willingness to test. Only those who show up to a hospital with select symptoms and those who can show up to the testing sites in a vehicle are tested at this time.', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':100}),
             ]
         )
     ],md=10,
