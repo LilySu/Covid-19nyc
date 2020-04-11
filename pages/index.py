@@ -965,7 +965,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(40), diff_from_day_before['total']):
+for i,j in zip(range(41), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -1033,7 +1033,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(40), diff_from_day_before['New York']):
+for i,j in zip(range(41), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
@@ -1858,9 +1858,9 @@ column1Right = dbc.Col(
                 html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':40, 'marginBottom':10}),
                 html.H6('FOR THE TOP 12 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
                 dcc.Graph(figure=fig_line_ny_cumulative),
-                html.H6('TOTAL POSITIVE CASES OF COVID-19 BY COUNTY OVER TIME', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
-                html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
-                dcc.Graph(figure=fig_line_ny_overtime),
+                # html.H6('TOTAL POSITIVE CASES OF COVID-19 BY COUNTY OVER TIME', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
+                # html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
+                # dcc.Graph(figure=fig_line_ny_overtime),
             ]
         )
     ],
@@ -1923,7 +1923,7 @@ columnStackedCounty = dbc.Col(
         html.Center(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
-            dcc.Graph(figure=fig_stacked_change_county_cases),
+            # dcc.Graph(figure=fig_stacked_change_county_cases),
             html.H6('Data from NY State DOH, last updated April 10, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
