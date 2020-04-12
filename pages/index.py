@@ -710,7 +710,7 @@ fig_stacked_change_borough_cases.update_layout(
 )
 
 annotation_borough = []
-for i,j in zip(range(0, 16), df_nyc['total']):
+for i,j in zip(range(0, 20), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
@@ -965,7 +965,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(41), diff_from_day_before['total']):
+for i,j in zip(range(42), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -1033,7 +1033,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(41), diff_from_day_before['New York']):
+for i,j in zip(range(42), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
