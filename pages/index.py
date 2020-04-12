@@ -43,17 +43,17 @@ def get_combined_counties_records():
     return [record for record in conn.execute(sql)]
 
 data = get_combined_counties_records()
-county = pd.DataFrame(data, columns= ['Albany', 'Allegany', 'Broome', 'Cattaraugus', 'Cayuga', 'Chautauqua',
-       'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland', 'Delaware',
-       'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton', 'Genesee', 'Greene',
-       'Hamilton', 'Herkimer', 'Jefferson', 'Lewis', 'Livingston', 'Madison',
-       'Monroe', 'Montgomery', 'Nassau', 'Niagara', 'Oneida', 'Onondaga',
-       'Ontario', 'Orange', 'Orleans', 'Oswego', 'Otsego', 'Putnam',
-       'Rensselaer', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
+county = pd.DataFrame(data, columns= ['Albany', 'Allegany', 'Bronx', 'Broome', 'Cattaraugus', 'Cayuga',
+       'Chautauqua', 'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland',
+       'Delaware', 'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton',
+       'Genesee', 'Greene', 'Hamilton', 'Herkimer', 'Jefferson', 'Kings',
+       'Lewis', 'Livingston', 'Madison', 'Monroe', 'Montgomery', 'Nassau',
+       'New York', 'Niagara', 'Oneida', 'Onondaga', 'Ontario', 'Orange',
+       'Orleans', 'Oswego', 'Otsego', 'Putnam', 'Queens', 'Rensselaer',
+       'Richmond', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
        'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
        'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
-       'Westchester', 'Wyoming', 'Yates', 'date_found_positive', 'New York', 'Queens',
-       'Kings', 'Richmond', 'Bronx', 'total'])
+       'Westchester', 'Wyoming', 'Yates', 'date_found_positive', 'total'])
 
 
 # top = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/daily_num_cases_nyc.csv")
@@ -779,7 +779,7 @@ def get_today_counties_records():
     return [record for record in conn.execute(sql)]
 
 data = get_today_counties_records()
-county = pd.DataFrame(data, columns= ['County', 'Confirmed', 'Deaths', 'Recoveries', 'Population','Deaths2Confirmed', 'Confirmed2Population','lastupdate'])
+county = pd.DataFrame(data, columns= ['County', 'Confirmed', 'Deaths', 'Recoveries', ' Population', 'Albany', ' 446', ' 9', ' 0', ' 304,204','lastupdate'])
 # collist = ['Confirmed', 'Deaths', 'Recoveries', 'Population']
 # for i in collist:
 #     county[i] = county[i].str.replace(' ', '')
@@ -797,7 +797,7 @@ fig_line_ny_cumulative = px.bar(df_counties_overtime, x='County', y='Confirmed',
              color = 'Confirmed',
              height = 350,
              color_continuous_scale=[(0.00, "#553000"), (0.25, "#BF1F58"), (0.5, "#F2B2C0"),(0.75, "#94D6CC"),  (1.00, "#003D30")],
-             labels={'New York State Counties':'County','Confirmed':'Confirmed as of last update'})
+             labels={'Confirmed':'Confirmed as of last update'})
 fig_line_ny_cumulative.update_traces(texttemplate='%{text}', textposition='outside')
 fig_line_ny_cumulative.update_layout(
     plot_bgcolor='white',
@@ -824,17 +824,17 @@ def get_combined_counties_records():
     return [record for record in conn.execute(sql)]
 
 data = get_combined_counties_records()
-county = pd.DataFrame(data, columns= ['Albany', 'Allegany', 'Broome', 'Cattaraugus', 'Cayuga', 'Chautauqua',
-       'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland', 'Delaware',
-       'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton', 'Genesee', 'Greene',
-       'Hamilton', 'Herkimer', 'Jefferson', 'Lewis', 'Livingston', 'Madison',
-       'Monroe', 'Montgomery', 'Nassau', 'Niagara', 'Oneida', 'Onondaga',
-       'Ontario', 'Orange', 'Orleans', 'Oswego', 'Otsego', 'Putnam',
-       'Rensselaer', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
+county = pd.DataFrame(data, columns= ['Albany', 'Allegany', 'Bronx', 'Broome', 'Cattaraugus', 'Cayuga',
+       'Chautauqua', 'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland',
+       'Delaware', 'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton',
+       'Genesee', 'Greene', 'Hamilton', 'Herkimer', 'Jefferson', 'Kings',
+       'Lewis', 'Livingston', 'Madison', 'Monroe', 'Montgomery', 'Nassau',
+       'New York', 'Niagara', 'Oneida', 'Onondaga', 'Ontario', 'Orange',
+       'Orleans', 'Oswego', 'Otsego', 'Putnam', 'Queens', 'Rensselaer',
+       'Richmond', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
        'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
        'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
-       'Westchester', 'Wyoming', 'Yates', 'date_found_positive', 'New York', 'Queens',
-       'Kings', 'Richmond', 'Bronx', 'total'])
+       'Westchester', 'Wyoming', 'Yates','date_found_positive','total'])
 
 table_h = county[::-1]
 table_h = table_h.tail(7)
@@ -1858,9 +1858,9 @@ column1Right = dbc.Col(
                 html.H6('NUMBER OF POSITIVE CASES OF COVID-19 BY COUNTY', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':40, 'marginBottom':10}),
                 html.H6('FOR THE TOP 12 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
                 dcc.Graph(figure=fig_line_ny_cumulative),
-                # html.H6('TOTAL POSITIVE CASES OF COVID-19 BY COUNTY OVER TIME', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
-                # html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
-                # dcc.Graph(figure=fig_line_ny_overtime),
+                html.H6('TOTAL POSITIVE CASES OF COVID-19 BY COUNTY OVER TIME', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':10}),
+                html.H6('FOR THE TOP 8 COUNTIES RANKED BY THE MOST CASES', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
+                dcc.Graph(figure=fig_line_ny_overtime),
             ]
         )
     ],
