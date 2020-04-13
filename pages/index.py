@@ -2467,15 +2467,15 @@ navbar = dbc.Col([
 ],md=10)
 
 
-@app.callback(
-    Output("alert-auto", "is_open"),
-    [Input("alert-toggle-auto", "n_clicks")],
-    [State("alert-auto", "is_open")],
-)
-def toggle_alert(n, is_open):
-    if n:
-        return not is_open
-    return is_open
+# @app.callback(
+#     Output("alert-auto", "is_open"),
+#     [Input("alert-toggle-auto", "n_clicks")],
+#     [State("alert-auto", "is_open")],
+# )
+# def toggle_alert(n, is_open):
+#     if n:
+#         return not is_open
+#     return is_open
 
 
 # layout = dbc.Row([column1, column2])

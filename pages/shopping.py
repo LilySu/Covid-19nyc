@@ -166,5 +166,7 @@ navbar = dbc.Col([
 
 
 layout = [
-        dbc.Row([singleColumn, navbar, singleColumn]),  
+        dbc.Row([singleColumn, nav, singleColumn]),  
+        dbc.Row([singleColumn, selectedWritingsHeaderCenter, singleColumn]),  
+        dbc.Row([singleColumn, collapseEniqueArticle, singleColumn]),  
         ]

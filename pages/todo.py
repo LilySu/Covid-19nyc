@@ -263,23 +263,23 @@ nav = dbc.Col(
     ],md=12
 )
 
-tab2_actions_content = dbc.Card(
-    dbc.CardBody(
-        [
-            dbc.Row([nav]), 
-            dbc.Row([thingstodoCenter]),  
-        ]
-    ),
-    className="mt-3",
-)
+# tab2_actions_content = dbc.Card(
+#     dbc.CardBody(
+#         [
+#             dbc.Row([nav]), 
+#             dbc.Row([thingstodoCenter]),  
+#         ]
+#     ),
+#     className="mt-3",
+# )
 
 
-tabs = dbc.Tabs(
-    [
-        dbc.Tab(tab2_actions_content, label="ACTIONS", label_style={'fontSize':24}, labelClassName="text-info"),
-        # dbc.Tab(tab1_data_content, label="DATA", label_style={'fontSize':24}, labelClassName="text-info"),
-    ]
-)
+# tabs = dbc.Tabs(
+#     [
+#         dbc.Tab(tab2_actions_content, label="ACTIONS", label_style={'fontSize':24}, labelClassName="text-info"),
+#         # dbc.Tab(tab1_data_content, label="DATA", label_style={'fontSize':24}, labelClassName="text-info"),
+#     ]
+# )
 
 
 
@@ -287,10 +287,12 @@ tabs = dbc.Tabs(
 singleColumn = dbc.Col([],md=1)
 doubleColumn = dbc.Col([],md=2)
 
-navbar = dbc.Col([
-    dbc.Nav([dbc.NavItem(tabs)],fill=True)
-],md=10)
+# navbar = dbc.Col([
+#     dbc.Nav([dbc.NavItem(tabs)],fill=True)
+# ],md=10)
 
 layout = [
-        dbc.Row([singleColumn, navbar, singleColumn]),  
+        # dbc.Row([nav]), 
+        dbc.Row([singleColumn, nav, singleColumn]),  
+        dbc.Row([singleColumn, thingstodoCenter, singleColumn]),  
         ]

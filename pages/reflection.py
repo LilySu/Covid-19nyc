@@ -118,5 +118,7 @@ navbar = dbc.Col([
 
 
 layout = [
-        dbc.Row([singleColumn, navbar, singleColumn]),  
+        # dbc.Row([nav]), 
+        dbc.Row([singleColumn, nav, singleColumn]),  
+        dbc.Row([singleColumn, onSelfReflectionCenter, singleColumn]),  
         ]
