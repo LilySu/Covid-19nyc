@@ -75,7 +75,7 @@ thingstodoCenter = dbc.Col(
                                     "Coursera provides free online courses from top universities from around the world, including Yale, Stanford, Columbia, and leading tech companies like Google and IBM. The only fee you’d have to pay is for accreditation for the courses you’ve completed.", className="card-text",style={'text-align':'left'}
                                 ),
                                 html.P(
-                                    "Go on now! Learn new skills so you could pay your bills! ", className="blockquote",style={'text-align':'left'}
+                                    "Go on now! Learn new skills so you could pay your bills! ", className="card-text",style={'text-align':'left'}
                                 ),
                                 dbc.CardLink("Coursera", href="https://www.coursera.org/", style={'color':'#16849c'}),
 
