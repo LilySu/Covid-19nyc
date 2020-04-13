@@ -1698,7 +1698,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info. Confirmed cases is only a function availability and willingness to test.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the New York City Department of Health on April 10.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the New York City Department of Health on April 12.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1716,7 +1716,7 @@ columnTopRight = dbc.Col(
             html.H6('Data from the NY State Dept. of Health updated April 12', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
-            html.H6('Data from NY State Dept. of Health April 10', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            html.H6('Data from NY State Dept. of Health April 12', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1873,7 +1873,7 @@ column1bottomCenter = dbc.Col(
     [
         html.Center(
             children=[
-            html.H6('Data for above interactive charts from NY State DOH Updated April 10, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
+            html.H6('Data for above interactive charts from NY State DOH Updated April 6', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':20, 'marginBottom':20}),
             ]
         )
     ],
