@@ -5,9 +5,10 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 import plotly.express as px
-
-# Imports from this application
 from app import app
+from pages import index, peace, reflection, shopping, todo
+
+import plotly.express as px
 import plotly.figure_factory as ff
 import numpy as np
 import plotly.graph_objects as go
@@ -17,6 +18,8 @@ import pandas as pd
 from sqlalchemy import create_engine
 import mysql.connector
 import psycopg2
+
+
 
 
 engine = create_engine('postgresql+psycopg2://postgres:postgres@postgres2.chtkfsooypac.us-east-1.rds.amazonaws.com:5432/postgres', echo=False)
@@ -1677,7 +1680,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_area_nyc_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on April 10', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on April 12', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1707,10 +1710,10 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('94,409', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('103,208', style={'fontSize':70, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('5,429', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('Data from the NY State Dept. of Health updated April 10', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('6,367', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from the NY State Dept. of Health updated April 12', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NY State Dept. of Health April 10', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
@@ -1732,7 +1735,7 @@ columnNeighborhoods = dbc.Col(
                 # html.Img(src=app.get_asset_url('confirmed_by_zipcode.PNG'), style={'display': 'block', 'width':'85%', 'marginTop':70}),
                 html.H6('Confirmed Cases of Covid-19 as a Percentage of Census Population in Corresponding Zip Code', style={'fontSize':18, 'color':'#05b9f0', 'marginTop':50, 'marginBottom':5}),
                 dcc.Graph(figure=fig1),
-                html.H6('Data Released by the  NYC DOH, on April 10. Please be aware that confirmed cases is only a function of availability of testing and willingness to test. Only those who show up to a hospital with select symptoms and those who can show up to the testing sites in a vehicle are tested at this time.', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':100}),
+                html.H6('Data Released by the  NYC DOH, on April 12. Please be aware that confirmed cases is only a function of availability of testing and willingness to test. Only those who show up to a hospital with select symptoms and those who can show up to the testing sites in a vehicle are tested at this time.', style={'fontSize':10, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':100}),
             ]
         )
     ],md=10,
@@ -2098,219 +2101,21 @@ column_data_sources = dbc.Col(
 
 
 
-card_content_iceland = [
-    dbc.CardHeader(
-    dbc.CardLink("Iceland's Mass Testing Finds Half of Carriers Show No Symptoms", href="https://english.alarabiya.net/en/features/2020/03/25/Coronavirus-Iceland-s-mass-testing-finds-half-of-carriers-show-no-symptoms", style={'color':'#e2fdf1'}),
-    ),
-    dbc.CardBody(
-        [
-            html.H5("News Snippet", className="card-title"),
-            html.P(
-                "Iceland has conducted the highest Covid-19 tests per capita, including testing for those who don’t exhibit any symptoms and have found that about half of those who tested positive are non-symptomatic.",
-                className="card-text",
-            ),
-        ]
-    ),
-]
-
-card_content_talks = [
-    dbc.CardHeader(
-    dbc.CardLink("Daily Live Online Conversations With US and Global Theatre Artists.", href="www.theSegalCenter.org", style={'color':'#e2fdf1'}),
-    ),
-    dbc.CardBody(
-        [
-            html.H5("Online Event", className="card-title"),
-            html.P(
-                "Artists, curators, researchers and academics will talk about life and art in the Time of Corona and speak about challenges, sorrows, and hopes for the new Weltzustand -- the State of the World.",
-                className="card-text",
-            ),
-        ]
-    ),
-]
-
-card_content_testinginfo = [
-    dbc.CardHeader(
-    dbc.CardLink("How Does the Test for Covid-19 Work? Here's an Infographic that Explains.", href="https://www.compoundchem.com/2020/03/19/covid-19-testing/", style={'color':'#e2fdf1'}),
-    ),
-    dbc.CardBody(
-        [
-            html.H5("Learn...", className="card-title"),
-            html.P(
-                "Less testing means it is harder to track the spread of the infection and isolate the contacts of the infected. Current tests cannot tell us whether someone had the virus but have subsequently recovered.",
-                className="card-text",
-            ),
-        ]
-    ),
-]
-
-newscards = dbc.Col(
-    [
-        html.Div(
-            [
-                dbc.Row(
-                    [
-                        dbc.Col(dbc.Card(card_content_iceland, color="info", inverse=True)),
-                        dbc.Col(dbc.Card(card_content_talks, color="info", inverse=True)),
-                        dbc.Col(dbc.Card(card_content_testinginfo, color="info", inverse=True)),
-                    ],
-                    className="mb-4",
-                ),
-            ]
-        )
-    ],
-    md=8,
-)
 
 
-announcementsHeader = dbc.Col(
-    [
-        html.Center(
-            children=[
-            html.Img(src=app.get_asset_url('helpfulInfo.png'), style={'display': 'block', 'width':'100%','marginTop':70})
-            ]
-        )
-    ],
-    md=8,
-)
 
 
-annoucementsCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-                dbc.Jumbotron(
-                    [
-                        html.H1("Transit", className="display-4", style={"color":"#03607d"}),
-                        html.P(
-                            "MTA Bus Riders Ride for Free "
-                            "(Express Bus Riders Still Pay)",
-                            className="lead", style={"color":"#03607d"},
-                        ),
-                        html.Hr(className="my-2"),
-                        html.P(
-                            "Subway Service Cut by a Quarter", style={"color":"#03607d"}),
-                        html.P("No. 4, 5, 6, 7 and the J and D lines, will run locally on all or part of their routes", style={"color":"#03607d"}),
-                        html.P(dbc.Button("Read more", color="info", href="https://www.nytimes.com./2020/03/24/nyregion/coronavirus-nyc-mta-cuts-.html"), className="lead"),
-                    ]
-                )
-            ]
-        )
-    ],
-    md=8,
-)
+
+#----------------------------------------------------------------------------------------------------------
 
 
-shopAnnouncementsCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-                dbc.Jumbotron(
-                    [
-                        html.H1("Emergency Food Assistance", className="display-6", style={"color":"#03607d"}),
-                        html.Span(' ', className='mr-1'),
-                        html.P("Everyone is eligible for emergency food assistance, regardless of immigration status or how much money you have.", style={"color":"#03607d"}, className="lead"),
-                        html.P(dbc.Button("Read more", color="info", href="https://access.nyc.gov/programs/emergency-food-assistance/"), className="lead"),
-                        html.H1("Special Shopping Hours", className="display-6", style={"color":"#03607d", 'marginTop':70}),
-                        html.Span(' ', className='mr-1'),
-                        html.P("Whole Foods are open one hour before their normal opening time for seniors 60 and above every day.", style={"color":"#03607d"}, className="lead"),
-                        html.P("Trader Joe's are open just for seniors 65 and above 9 a.m. to 10 a.m. every day.", className="lead", style={"color":"#03607d"}),
-                        html.Hr(className="my-2"),
-                        html.P("Stop-and-Shop's are open 6 am to 7:30 am every day for those age 60 and older and younger customers with weakened immune systems.", style={"color":"#03607d"},className="lead"),
-                        html.P("Costco's are open for seniors over age 60 on Tuesdays and Thursdays from 8 to 9 a.m.", style={"color":"#03607d"},className="lead"),
-                        html.P("Walgreens has Tuesday weekly senior hour from 8 to 9 a.m., open to caregivers and immediate families, as well.", style={"color":"#03607d"},className="lead"),
-                        html.Hr(className="my-2"),
-                        html.P("Most top retailers have begun offering senior shopping hours, please look on their website for more information.", style={"color":"#03607d"}
-                        ),
-                        html.P(dbc.Button("Read more", color="info", href="https://www.cnbc.com/2020/03/19/coronavirus-how-senior-shopping-hours-work-at-stop-shop-other-grocers.html"), className="lead"),
-                    ]
-                )
-            ]
-        )
-    ],
-    md=8,
-)
 
-taxesAnnouncementsCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-                dbc.Jumbotron(
-                    [
-                        html.H1("Filing Income Tax", className="display-6", style={"color":"#03607d"}),
-                        html.Span(' ', className='mr-1'),
-                        html.P("New York State's income tax filing deadline is delayed until July 15, 2020.", style={"color":"#03607d"}, className="lead"),
-                        html.Hr(className="my-2"),
-                        html.P("Because New York State requires electronic filing, the date for filing state personal income taxes automatically travels with the federal filing date, which is now July 15. ", style={"color":"#03607d"}),
-                        html.P(dbc.Button("Read more", color="info", href="https://www.tax.ny.gov/default.htm"), className="lead"),
-                    ]
-                )
-            ]
-        )
-    ],
-    md=8,
-)
 
-testingAnnouncementsCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-                dbc.Jumbotron(
-                    [
-                        html.H1("Getting Tested for Covid-19", className="display-6", style={"color":"#03607d"}),
-                        html.Span(' ', className='mr-1'),
-                        html.P("Residents who would like to be tested must call: 888-364-3065.", style={"color":"#03607d"}, className="lead"),
-                        html.P("Priority will go to higher-risk individuals.", style={"color":"#03607d"}, className="lead"),
-                        html.P("High risk includes being over 65 years old, includes serious obesity (defined as BMI >40), lung disease, asthma, heart condition, diabetes, kidney or liver or autoimmune issues, cancer treatment, smoking according to coronavirus.gov. ", style={"color":"#03607d"}, className="lead"),
-                        html.Hr(className="my-2"),
-                        html.P("If you would like to be tested, you must show up in a vehicle.", style={"color":"#03607d"}),
-                        html.P("The facility is open Monday - Sunday, 8am - 6pm ", style={"color":"#03607d"}),
-                        html.P("Bay Plaza AMC Theater at 2210 Bartow Ave. ", style={"color":"#03607d"}),
-                        html.P(dbc.Button("Read more", color="info", href="https://www.governor.ny.gov/news/governor-cuomo-speaker-heastie-senator-bailey-and-assemblyman-benedetto-announce-new-covid-19)", className="lead"),),
-                        html.H1("Have You Recovered From Having Covid-19?", className="display-6", style={"color":"#03607d",'marginTop':70}),
-                        html.Span(' ', className='mr-1'),
-                        html.P("If you have had Covid-19 and have recovered and cleared, consider participating in studies in helping doctors who are working on finding a cure.", style={"color":"#03607d"}, className="lead"),
-                        html.P(dbc.Button("How you can help", color="info", href="https://www.facebook.com/desireedawns/posts/10121953787625504)", className="lead"),),
-                    ]
-                )
-            ]
-        )
-    ],
-    md=8,
-)
 
-unemploymentAnnouncementsCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-                dbc.Jumbotron(
-                    [
-                        html.H1("Filing for Unemployment", className="display-6", style={"color":"#03607d"}),
-                        html.Span(' ', className='mr-1'),
-                        html.P("If you filed for unemployment during the COVID-19 pandemic, you do not need to prove you are searching for employment to make a claim. ", style={"color":"#03607d"}, className="lead"),
-                        html.Hr(className="my-2"),
-                        html.P("Department of Labor Commissioner Reardon has signed a new order that limits all work search activities for all unemployment claimants. No activities are required during the pandemic to receive unemployment benefits.", style={"color":"#03607d"}),
-                        html.P(dbc.Button("Read more", color="info", href="https://labor.ny.gov/ui/how_to_file_claim.shtm"), className="lead"),
 
-                        html.H1("What Industries are Hiring", className="display-6", style={"color":"#03607d",'marginTop':70}),
-                        html.Span(' ', className='mr-1'),
-                        html.P("Healthcare", style={"color":"#03607d"}, className="lead"),
-                        html.P("Telecom & Remote Work", style={"color":"#03607d"}, className="lead"),
-                        html.P("Supply Chain & Essential Businesses", style={"color":"#03607d"}, className="lead"),
-                        html.P("E-Commerce & Online Only Stores", style={"color":"#03607d"}, className="lead"),
-                        html.P("Insurance", style={"color":"#03607d"}, className="lead"),
-                        html.Hr(className="my-2"),
-                        html.P("Here's a helpful spreadsheet for tracking your job applications originally published on TheMuse. Please make a copy for yourself!", style={"color":"#03607d"}),
-                        html.P(dbc.Button("Go to Spreadsheet", color="info", href="https://docs.google.com/spreadsheets/d/1b4_lpHeLb9NldVWgWKq14nMxHEvlF3qMpEd3QdOc7Ck/edit"), className="lead"),
 
-                        html.P("Get the live-updated hiring status of various organizations.", style={"color":"#03607d",'margintop':70}),
-                        html.P(dbc.Button("See Who's Hiring", color="info", href="https://candor.co/hiring-freezes/"), className="lead"),
-                    ]
-                )
-            ]
-        )
-    ],
-    md=8,
-)
+
+
 
 
 
@@ -2319,8 +2124,8 @@ selectedWritingsHeaderCenter = dbc.Col(
     [
         html.Center(
             children=[
-                html.Img(src=app.get_asset_url('Covid19-Website-R7-000_0038_Layer-28.png'), style={'display': 'block', 'width':'100%'}),
-                html.Img(src=app.get_asset_url('mindfulnessShopping.gif'), style={'display': 'block', 'width':'100%'}),
+                #html.Img(src=app.get_asset_url('Covid19-Website-R7-000_0038_Layer-28.png'), style={'display': 'block', 'width':'100%'}),
+                html.Img(src=app.get_asset_url('mindfulnessShopping.gif'), style={'display': 'block', 'width':'100%', 'marginTop':30}),
                 html.Br(),
                 html.Span(' ', className='mr-1'),
             ]
@@ -2558,116 +2363,12 @@ onSelfReflectionCenter = dbc.Col(
     md=8,
 )
 
-
-washHandsC = dbc.Col(
-    [
-        html.Center(
-            children=[
-            html.Img(src=app.get_asset_url('WashHands.jpg'), style={'display': 'block', 'width':'100%', 'marginTop':70})
-            ]
-        )
-    ],
-    md=6,
-)
-
-distanceCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-            html.Img(src=app.get_asset_url('SocialDistancing.png'), style={'display': 'block', 'width':'100%'})
-            ]
-        )
-    ],
-    md=6,
-)
-
-
-pod1 = [
-    dbc.CardImg(src=app.get_asset_url('podcastButtonL.jpg'), style={'display': 'block', 'width':'70%'}, top=True),
-    dbc.CardBody(
-        [
-            html.H5("What's your Plan", className="card-title"),
-            html.P(
-                "Create a binder with all important documents.",
-                className="card-text",
-            ),
-            dbc.Button("Plan", className="mr-1", color="info", href="https://www.diypreparedness.net/how-to-make-your-own-family-emergency-binder/"),
-        ]
-    ),
-]
-
-trisacard = [
-    dbc.CardImg(src=app.get_asset_url('trisaBunny.gif'), style={'display': 'block', 'width':'70%'}, top=True),
-    dbc.CardBody(
-        [
-            html.H5("Trisa's Picks", className="card-title"),
-            html.P(
-                "Watch things that make you laugh, smile, or feel good.",
-                className="card-text",
-            ),
-            dbc.Button("To Playlist", className="mr-1", color="info",href='https://www.youtube.com/playlist?list=PL7ESOL-2KOIUs4s61OyCJ8oO9C5n996_b'),
-        ]
-    ),
-]
-
-pod2 = [
-    dbc.CardImg(src=app.get_asset_url('podcast2.jpg'), style={'display': 'block', 'width':'70%'}, top=True),
-    dbc.CardBody(
-        [
-            html.H5("Our go-to Podcasts", className="card-title"),
-            html.P(
-                "Get informed and work on a better self.",
-                className="card-text",
-            ),
-            dbc.Button("Listen Now", className="mr-1", color="info", href="https://open.spotify.com/playlist/65XgqkWUTIdLZm9rXqTp3x"),
-        ]
-    ),
-]
-
-
-recsCenter = dbc.Col(
-    [
-        html.Center(
-            children=[
-                html.Span(' ', className='mr-1'),
-                dbc.CardGroup(
-                    dbc.Card(
-                        dbc.CardBody(
-                            dbc.CardColumns(
-                                [
-                                    dbc.Card(pod1, color="light"),
-                                    dbc.Card(trisacard, color="light"),
-                                    dbc.Card(pod2, color="light"),
-                                ]
-                            )
-                        )
-                    )
-                )
-            ]
-        )
-    ],
-    md=10,
-)
-
-
 singleColumn = dbc.Col([],md=1)
 doubleColumn = dbc.Col([],md=2)
-tripleColumn = dbc.Col([],md=3)
 
-
-@app.callback(
-    Output("alert-auto", "is_open"),
-    [Input("alert-toggle-auto", "n_clicks")],
-    [State("alert-auto", "is_open")],
-)
-def toggle_alert(n, is_open):
-    if n:
-        return not is_open
-    return is_open
-
-
-# layout = dbc.Row([column1, column2])
-layout = [
+tab1_data_content = dbc.Card(
+    dbc.CardBody(
+        [
         dbc.Row([columnTopAlert]),
         dbc.Row([columnTopLeft, columnTopCenter, columnTopRight]),
 
@@ -2699,24 +2400,86 @@ layout = [
 
         dbc.Row([doubleColumn,column_predictions,doubleColumn]),
         dbc.Row([doubleColumn,column_data_sources,doubleColumn]),
-        dbc.Row([doubleColumn,newscards,doubleColumn]),
+        ]
+    ),
+    className="mt-3",
+)
 
-        dbc.Row([doubleColumn,announcementsHeader,doubleColumn]),
-        dbc.Row([doubleColumn, annoucementsCenter, doubleColumn]),
-        dbc.Row([doubleColumn, shopAnnouncementsCenter, doubleColumn]), 
-        dbc.Row([doubleColumn, testingAnnouncementsCenter, doubleColumn]),
-        dbc.Row([doubleColumn, taxesAnnouncementsCenter, doubleColumn]),
-        dbc.Row([doubleColumn, unemploymentAnnouncementsCenter, doubleColumn]),
 
-        dbc.Row([doubleColumn, selectedWritingsHeaderCenter, doubleColumn]),
+nav = dbc.Col(
+    [
+        dbc.Nav(
+            [
+                dbc.NavItem(dbc.NavLink("Things To Do", href="/todo", className='nav-link')),
+                dbc.NavItem(dbc.NavLink("On Self-Reflection", href="/reflection", className='nav-link')),
+                dbc.NavItem(dbc.NavLink("On Peace Within", href="/peace", className='nav-link')),
+                dbc.NavItem(dbc.NavLink("Mindfulness Shopping", href="/shopping", className='nav-link')),
+                # dbc.DropdownMenu(
+                #     [dbc.DropdownMenuItem("Mindfulness When Shopping"), dbc.DropdownMenuItem("Item 2")],
+                #     label="Mindfulness",
+                #     nav=True,
+                # ),
+            ],fill=True
+        )
+    ],md=12
+)
 
-        dbc.Row([doubleColumn,collapseEniqueArticle, doubleColumn]),
-        dbc.Row([doubleColumn,restoringPeaceCenter, doubleColumn]),
-        dbc.Row([doubleColumn,onSelfReflectionCenter, doubleColumn]),
+tab2_actions_content = dbc.Card(
+    dbc.CardBody(
+        [
+            dbc.Row([nav]),  
+            dbc.Row([doubleColumn, selectedWritingsHeaderCenter, doubleColumn]),
+            dbc.Row([doubleColumn,collapseEniqueArticle, doubleColumn]),
+            dbc.Row([doubleColumn,restoringPeaceCenter, doubleColumn]),
+            dbc.Row([doubleColumn,onSelfReflectionCenter, doubleColumn]),     
+        ]
+    ),
+    className="mt-3",
+)
 
-        dbc.Row([tripleColumn,washHandsC,tripleColumn]),
 
-        dbc.Row([tripleColumn, distanceCenter, tripleColumn]),
-        dbc.Row([singleColumn,recsCenter,singleColumn]),        
+tabs = dbc.Tabs(
+    [
+        dbc.Tab(tab1_data_content, label="DATA", label_style={'fontSize':24}, labelClassName="text-info"),
+        dbc.Tab(tab2_actions_content, label="ACTIONS", label_style={'fontSize':24}, labelClassName="text-info"),
+    ]
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+singleColumn = dbc.Col([],md=1)
+doubleColumn = dbc.Col([],md=2)
+tripleColumn = dbc.Col([],md=3)
+
+navbar = dbc.Col([
+    dbc.Nav([dbc.NavItem(tabs)],fill=True)
+],md=10)
+
+
+@app.callback(
+    Output("alert-auto", "is_open"),
+    [Input("alert-toggle-auto", "n_clicks")],
+    [State("alert-auto", "is_open")],
+)
+def toggle_alert(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
+
+# layout = dbc.Row([column1, column2])
+layout = [
+        dbc.Row([singleColumn, navbar, singleColumn]),  
         ]
 
