@@ -2385,8 +2385,8 @@ tab1_data_content = dbc.Card(
         dbc.Row([column1Left,column1Right]),
         dbc.Row([column1bottomCenter]),
 
-        dbc.Row([column2Center]), #, column2Right
-        dbc.Row([column2bottomCenter]),
+        # dbc.Row([column2Center]), #, column2Right New York State Counties Map Pink Purple
+        # dbc.Row([column2bottomCenter]),
 
         dbc.Row([columnStackedCounty]),
 

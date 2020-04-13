@@ -70,16 +70,24 @@ card_content_iceland = [
 
 card_content_talks = [
     dbc.CardHeader(
-    dbc.CardLink("Daily Live Online Conversations With US and Global Theatre Artists.", href="www.theSegalCenter.org", style={'color':'#e2fdf1'}),
-    ),
-    dbc.CardBody(
-        [
-            html.H5("Online Event", className="card-title"),
-            html.P(
-                "Artists, curators, researchers and academics will talk about life and art in the Time of Corona and speak about challenges, sorrows, and hopes for the new Weltzustand -- the State of the World.",
-                className="card-text",
-            ),
+        children=[
+            dbc.CardLink("Youtube Live Yoga Classes. A daily livestream of classes at 10 AM, 3PM, 5PM, 8PM", href="https://www.youtube.com/playlist?list=PL4z1_0UdNR70GZE9eGuDY_VlQBE78ebQ8&", style={'color':'#e2fdf1'}),
+            dbc.CardBody([
+                dbc.CardLink("Apartment-friendly Cardio", href="https://www.youtube.com/channel/UCpQ34afVgk8cRQBjSJ1xuJQ", style={'color':'#e2fdf1'}),
+            ]),
+            dbc.CardLink("30-Day Yoga for Beginners", href="https://www.youtube.com/watch?v=KWBfQjuwp4E&list=PLui6Eyny-UzzFFfpiil94CUrWKVMaqmkm", style={'color':'#e2fdf1'}),
+            dbc.CardBody([
+                dbc.CardLink("Live Stream a Dance Party and Dance Along Every Night 11pm - Midnight", href="http://www.instagram.com/clubquarantine", style={'color':'#e2fdf1'}),
+            ]),
         ]
+    # dbc.CardBody(
+    #     [
+    #         html.H5("Online Event", className="card-title"),
+    #         html.P(
+    #             "A daily livestream of classes at 10 AM, 3PM, 5PM, 8PM",
+    #             className="card-text",
+    #         ),
+    #     ]
     ),
 ]
 
