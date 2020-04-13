@@ -137,7 +137,7 @@ announcementsHeader = dbc.Col(
 )
 
 
-annoucementsCenter = dbc.Col(
+transitAnnoucementsCenter = dbc.Col(
     [
         html.Center(
             children=[
@@ -153,7 +153,32 @@ annoucementsCenter = dbc.Col(
                         html.P(
                             "Subway Service Cut by a Quarter", style={"color":"#03607d"}),
                         html.P("No. 4, 5, 6, 7 and the J and D lines, will run locally on all or part of their routes", style={"color":"#03607d"}),
-                        html.P(dbc.Button("Read more", color="info", href="https://www.nytimes.com./2020/03/24/nyregion/coronavirus-nyc-mta-cuts-.html"), className="lead"),
+                        html.P(dbc.Button("Go To The NY State of Health", color="info", href="https://www.nytimes.com./2020/03/24/nyregion/coronavirus-nyc-mta-cuts-.html"), className="lead"),
+                    ]
+                )
+            ]
+        )
+    ],
+    md=8,
+)
+
+
+healthInsuranceAnnoucementsCenter = dbc.Col(
+    [
+        html.Center(
+            children=[
+                dbc.Jumbotron(
+                    [
+                        html.H1("Getting Health Insurance", className="display-4", style={"color":"#03607d"}),
+                        html.P(
+                            "NY State of Health",
+                            className="lead", style={"color":"#03607d"},
+                        ),
+                        html.Hr(className="my-2"),
+                        html.P(
+                            "NY State of Health is working on helping New Yorkers get the coverage they need", style={"color":"#03607d"}),
+                        html.P("Contact the Marketplace directly at 518-486-9102 or NYSOH@health.ny.gov", style={"color":"#03607d"}),
+                        html.P(dbc.Button("Read more", color="info", href="https://nystateofhealth.ny.gov/"), className="lead"),
                     ]
                 )
             ]
@@ -425,9 +450,10 @@ app.layout = html.Div([
                         dbc.Container(id='page-content', className='mt-12', fluid=True), 
                     ],
                     id="loading-output"), color="info"),
-                dbc.Row([doubleColumn,newscards,doubleColumn]),  
-                dbc.Row([doubleColumn,announcementsHeader,doubleColumn]),
-                dbc.Row([doubleColumn, annoucementsCenter, doubleColumn]),
+                dbc.Row([doubleColumn,newscards,doubleColumn]),   
+                dbc.Row([doubleColumn, announcementsHeader,doubleColumn]),
+                dbc.Row([doubleColumn, healthInsuranceAnnoucementsCenter, doubleColumn]),
+                dbc.Row([doubleColumn, transitAnnoucementsCenter, doubleColumn]),
                 dbc.Row([doubleColumn, shopAnnouncementsCenter, doubleColumn]), 
                 dbc.Row([doubleColumn, testingAnnouncementsCenter, doubleColumn]),
                 dbc.Row([doubleColumn, taxesAnnouncementsCenter, doubleColumn]),
