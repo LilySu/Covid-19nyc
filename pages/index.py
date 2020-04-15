@@ -968,7 +968,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(42), diff_from_day_before['total']):
+for i,j in zip(range(45), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -1036,7 +1036,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(42), diff_from_day_before['New York']):
+for i,j in zip(range(45), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
@@ -1680,7 +1680,7 @@ columnTopLeft = dbc.Col(
         dcc.Graph(figure=fig_area_nyc_percentage_change),
         html.Center(
             children=[
-        html.H6('Data from NY State DOH on April 12', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
+        html.H6('Data from NY State DOH on April 14', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1698,7 +1698,7 @@ columnTopCenter = dbc.Col(
         html.Center(
             children=[
                 html.H6('Please hover over dots for more info. Confirmed cases is only a function availability and willingness to test.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':15, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-                html.H6('Data Provided by the New York City Department of Health on April 12.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+                html.H6('Data Provided by the New York City Department of Health on April 14.', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             ]
         ),
     ],
@@ -1713,10 +1713,10 @@ columnTopRight = dbc.Col(
             html.H1('110,425', style={'fontSize':50, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('7,905', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
-            html.H6('Data from the NY State Dept. of Health updated April 12', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H6('Data from the NY State Dept. of Health updated April 14', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
-            html.H6('Data from NY State Dept. of Health April 12', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
+            html.H6('Data from NY State Dept. of Health April 14', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
         ),
     ],
@@ -1926,7 +1926,7 @@ columnStackedCounty = dbc.Col(
         html.Center(
             children=[
             dcc.Graph(figure=fig_stacked_ny),
-            # dcc.Graph(figure=fig_stacked_change_county_cases),
+            dcc.Graph(figure=fig_stacked_change_county_cases),
             html.H6('Data from NY State DOH, last updated April 10, 10 AM', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             html.H6('Please be mindful that only a limited amount of people are given tests at this time.', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
             ]
