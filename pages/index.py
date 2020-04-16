@@ -700,14 +700,14 @@ fig_stacked_change_borough_cases.update_layout(
     annotations=[
         dict(
             x=0,
-            y=-350,
+            y=-3500,
             xref="x",
             yref="y",
             text="10764<br> total",
             showarrow=False,
             ax=0,
             ay=-40,
-            font=dict(size=13, color='#000'),
+            font=dict(size=8, color='rgb(150,150,150)0'),
         )
     ]
 )
@@ -717,10 +717,12 @@ for i,j in zip(range(0, 20), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
-            y=-4000,
+            y=-8000,
             xref="x",
             yref="y",
             text=str(j) +"<br> total",
+            font=dict(family='Arial',
+            size=8,
             showarrow=False,
             ax=0,
             ay=-40))
@@ -1710,7 +1712,7 @@ columnTopRight = dbc.Col(
         html.Center(
             children=[
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':8}),#fig_line_cumulative_us_italy_china
-            html.H1('118,302', style={'fontSize':50, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
+            html.H1('123,146', style={'fontSize':50, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('Deaths NYC', style={'fontSize':11, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
             html.H6('10,899', style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),#fig_line_cumulative_us_italy_china
             html.H6('Data from the NY State Dept. of Health updated April 14', style={'fontSize':8, 'color':'#05b9f0', 'marginTop':10, 'marginBottom':0}),#fig_line_cumulative_us_italy_china
