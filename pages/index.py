@@ -713,7 +713,7 @@ fig_stacked_change_borough_cases.update_layout(
 )
 
 annotation_borough = []
-for i,j in zip(range(0, 20), df_nyc['total']):
+for i,j in zip(range(0, 25), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
