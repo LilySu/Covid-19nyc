@@ -707,7 +707,7 @@ fig_stacked_change_borough_cases.update_layout(
             showarrow=False,
             ax=0,
             ay=-40,
-            font=dict(size=8, color='rgb(150,150,150)0'),
+            font=dict(size=8, color='rgb(150,150,150)'),
         )
     ]
 )
@@ -723,6 +723,7 @@ for i,j in zip(range(0, 25), df_nyc['total']):
             text=str(j) +"<br> total",
             font=dict(family='Arial',
             size=8,
+            color='rgb(150,150,150)'),
             showarrow=False,
             ax=0,
             ay=-40))
@@ -731,7 +732,7 @@ annotation_borough.append(
   xanchor='center', yanchor='top',
   text='Data Provided by the New York City Department of Health',
   font=dict(family='Arial',
-            size=12,
+            size=8,
             color='rgb(150,150,150)'),
   showarrow=False))
 
@@ -741,7 +742,6 @@ fig_stacked_change_borough_cases.update_layout(
     showlegend=True,
     annotations = annotation_borough
 )
-
 
 
 #---------------------------------------------------------------------------TIMESLIDER
