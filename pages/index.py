@@ -142,7 +142,7 @@ fig_pie_pop_queens.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_pie_pop_queens.update_layout(
     annotations = [dict(text=pop_queens[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS 2.273 MILLION AS OF April 18, 2 PM",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>QUEENS NYC ASSUMING THE POPULATION IS <br>2.273 MILLION AS OF April 18, 2 PM",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -169,7 +169,7 @@ fig_pie_pop_nyc.update_traces(hole=.4, hoverinfo="label+percent+name+value",
 fig_pie_pop_nyc.update_layout(
     annotations = [dict(text=pop_nyc[0], x=0.498, y=0.998, font_size=11, showarrow=True)],
     title={
-        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>ALL OF NYC ASSUMING THE POPULATION IS 8.5 MILLION AS OF April 18, 2 PM",
+        'text':"PERCENTAGE OF PEOPLE WITH COVID-19 IN<br>ALL OF NYC ASSUMING THE POPULATION IS <br>8.5 MILLION AS OF April 18, 2 PM",
         'y':.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1708,7 +1708,7 @@ columnTopRight = dbc.Col(
             html.H6('Positive Cases NYC', style={'fontSize':20, 'color':'#14c5fa', 'marginTop':0, 'marginBottom':10}),#fig_line_cumulative_us_italy_china
             html.H6('As of '+nyc_confirmed_latest_date, style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':8}),
             html.H1(nyc_confirmed_latest, style={'fontSize':50, 'color':'#5CD8FE', 'marginBottom':0}),#fig_line_cumulative_us_italy_china
-            html.H6('Deaths NYC', style={'fontSize':18, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':20}),#fig_line_cumulative_us_italy_china
+            html.H6('Deaths NYC', style={'fontSize':18, 'color':'#14c5fa', 'marginTop':10, 'marginBottom':10}),#fig_line_cumulative_us_italy_china
             html.H6('As of '+nyc_confirmed_latest_date, style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
             html.H6(nyc_death_latest, style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
