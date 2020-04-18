@@ -1,0 +1,1 @@
+aws iam upload-server-certificate --server-certificate-name certificate_object_name --certificate-body file://covid19casesnyc_com.crt --private-key file://covid19casesnyc_com.PEM --certificate-chain file://covid19casesnyc_com.ca-bundle
