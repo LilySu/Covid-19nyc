@@ -32,7 +32,7 @@ df_usa = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/maste
 # df_china_total_h = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_world/ChinaTotal_Covid19-3-24.csv")
 diff_from_day_before= pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/diff_from_day_before_County.csv")
 
-df_nyc = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_borough.csv")
+df_nyc = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_borough_test.csv")
 
 
 #-----------------------fig
@@ -713,7 +713,7 @@ fig_stacked_change_borough_cases.update_layout(
 )
 
 annotation_borough = []
-for i,j in zip(range(0, 25), df_nyc['total']):
+for i,j in zip(range(0, 28), df_nyc['total']):
   annotation_borough.append(
         dict(
             x=i,
@@ -963,7 +963,7 @@ fig_stacked_change_county_cases.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(45), diff_from_day_before['total']):
+for i,j in zip(range(49), diff_from_day_before['total']):
   annotation4.append(
         dict(
             x=i,
@@ -971,6 +971,9 @@ for i,j in zip(range(45), diff_from_day_before['total']):
             xref="x",
             yref="y",
             text=str(j)[:-2]+"<br> more",
+            font=dict(family='Arial',
+            size=8,
+            color='rgb(150,150,150)'),
             showarrow=False,
             #arrowhead=7,
             ax=0,
@@ -1031,7 +1034,7 @@ fig_stacked_ny.update_layout(
 )
 
 annotation4 = []
-for i,j in zip(range(45), diff_from_day_before['New York']):
+for i,j in zip(range(49), diff_from_day_before['New York']):
   annotation4.append(
         dict(
             x=i,
@@ -1039,6 +1042,9 @@ for i,j in zip(range(45), diff_from_day_before['New York']):
             xref="x",
             yref="y",
             text=str(j)[:-2]+"<br> more",#<br> NYC <br>total <br> change
+            font=dict(family='Arial',
+            size=8,
+            color='rgb(150,150,150)'),
             showarrow=False,
             #arrowhead=7,
             ax=0,
