@@ -762,7 +762,7 @@ fig_map_nyc_timeslider = px.choropleth_mapbox(df, geojson=geojson,
                            color = 'total_normalized',
                            color_continuous_scale=px.colors.sequential.Teal,
                            #color_continuous_scale=[(0.00, "#F2B2C0"), (0.25, "#94D6CC"), (0.5, "#00755c"),(0.75, "#553000"),  (1.00, "#BF1F57")],#553000
-                           custom_data = ['05_Apr_Cov_Pos'],################################################CHANGE THIS
+                           custom_data = ['April 18'],################################################CHANGE THIS
                            #hover_data = ["date"],
                            labels = {"total":"Positive Cases", "county_full": "location"},
                            )
