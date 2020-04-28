@@ -14,24 +14,39 @@ def scrape_counties_wikipedia():
     for table in tables:
         ths = table.find_all('th')
         headings = [th.text.strip() for th in ths]
-        if headings[:5] == ['County', 'Confirmed', 'Deaths', 'Recoveries', 'Population','Deaths2Confirmed', 'Confirmed2Population']:
+        if headings[:7] == ['County', 'Confirmed', 'Deaths', 'Recoveries', 'Population']:
             break
 
-    StringData = 'County; Confirmed; Deaths; Recoveries; Population; Deaths2Confirmed; Confirmed2Population \n'
+    StringData = 'County; Confirmed; Deaths; Recoveries; Population;'
+    StringData += '\n'
     for tr in table.find_all('tr'):
         tds = tr.find_all('td')
         if not tds:
             continue
         try:
-            county, confirmed, deaths, recoveries, population, death2confirmed, confirmed2pop= [td.text.strip() for td in tds[:7]]
+            county, confirmed, deaths, recoveries, population= [td.text.strip() for td in tds[:7]]
             if '!' in county:
-                county = county[country.index('!')+1:]
+                county = county[county.index('!')+1:]
             county = re.sub('[^a-zA-Z ]+','',county)#for timeslider geojson matchup: [^a-zA-Z. ]+
             # print('; '.join([county, confirmed, deaths, recoveries, population, death2confirmed, confirmed2pop]))
-            StringData += ('; '.join([county, confirmed, deaths, recoveries, population, death2confirmed, confirmed2pop]))+'\n'
+            StringData += ('; '.join([county, confirmed, deaths, recoveries, population]))+'\n'
         except ValueError:
             pass
     String = StringIO(StringData)
+    # StringData
     df = pd.read_csv(String, sep =";") 
-    df['lastupdated'] = datetime.now(tz=pytz.timezone('EST'))
+    
+    df.drop(columns='Unnamed: 5', inplace=True)
+    df['lastupdate'] = datetime.now(tz=pytz.timezone('EST'))
+    # df['lastupdate'] = pd.to_datetime(df['lastupdate'], format = '%Y-%m-%d')
+    df['lastupdate'] = df['lastupdate'].apply(lambda x: x.strftime('%B %d %H:%M' ))
+    collist = [' Confirmed', ' Deaths', ' Recoveries', ' Population']
+    for i in collist:
+        df[i] = df[i].str.replace(' ', '')
+        df[i] = df[i].str.replace(',', '')
+        df[i] = df[i].fillna(0)
+        df[i] = df[i].astype('int')
+    # df[collist] = df[collist].apply(pd.to_numeric, errors='coerce')#could not use this because need to remove commas
+    df = df.sort_values(by=[' Confirmed'], ascending=False)
+    df['County'] = df['County'].str.replace('New York City a', 'New York City')
     return df
