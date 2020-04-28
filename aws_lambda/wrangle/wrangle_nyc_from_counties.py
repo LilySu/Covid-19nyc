@@ -1,13 +1,24 @@
 import pandas as pd
 import numpy as np 
 #Local Imports
+from sql_queries.sql_get import get_combined_counties # gets df_confirmed
 
-#df_confirmed
 
 def wrangle_nyc_percentage_daily_change():
+    df_confirmed = get_combined_counties()
+    df_confirmed = pd.DataFrame(df_confirmed, columns=['Albany', 'Allegany', 'Bronx', 'Broome', 'Cattaraugus', 'Cayuga',
+       'Chautauqua', 'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland',
+       'Delaware', 'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton',
+       'Genesee', 'Greene', 'Hamilton', 'Herkimer', 'Jefferson', 'Kings',
+       'Lewis', 'Livingston', 'Madison', 'Monroe', 'Montgomery', 'Nassau',
+       'New York', 'Niagara', 'Oneida', 'Onondaga', 'Ontario', 'Orange',
+       'Orleans', 'Oswego', 'Otsego', 'Putnam', 'Queens', 'Rensselaer',
+       'Richmond', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
+       'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
+       'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
+       'Westchester', 'Wyoming', 'Yates', 'date', 'total'])
 
     df_confirmed_r = df_confirmed.iloc[::-1]
-    del df_confirmed
 
     df_confirmed_r = df_confirmed_r[['Albany', 'Allegany', 'Broome', 'Cattaraugus', 'Cayuga', 'Chautauqua',
         'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland', 'Delaware',
@@ -28,6 +39,7 @@ def wrangle_nyc_percentage_daily_change():
     df_confirmed_r = df_confirmed_r.replace(-np.inf, 0)
 
     dc = df_confirmed.iloc[::-1]
+    del df_confirmed
     dates = list(dc['date'])
     del dc
     df_confirmed_r['date'] = dates

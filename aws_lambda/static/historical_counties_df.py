@@ -265,15 +265,22 @@ def wrangle_historical_county_df():
     df37["date_sort"] = 37
     df37 = df37.reset_index()
 
-    data = {'Albany': [333], 'Allegany':[17], 'Broome': [86],'Cattaraugus':[13],'Cayuga':[14],'Chautauqua':[16],'Chemung':[49], 'Chenango': [51], 'Clinton': [37], 'Columbia':[61],'Cortland':[16], 'Delaware': [36], 'Dutchess': [1249], 'Erie': [1135], 'Essex': [7],'Franklin':[10], 'Fulton':[13], 'Genesee':[33], 'Greene': [24], 'Hamilton': [2], 'Herkimer': [27],'Jefferson':[39],'Lewis':[6],'Livingston':[23],'Madison':[88], 'Monroe': [596], 'Montgomery': [18], 'Nassau': [16610], 'Niagara': [126], 'New York': [76876], 'Oneida':[118], 'Onondaga': [335], 'Ontario':[33], 'Orange': [3599],'Orleans':[15], 'Oswego':[31],'Otsego':[34], 'Putnam': [366], 'Rensselaer':[67], 'Rockland': [5990], 'Saratoga': [155], 'Schenectady': [145],'Schoharie':[12],'Schuyler':[4],'Seneca':[10],'St Lawrence':[60], 'Steuben':[75], 'Suffolk': [14517], 'Sullivan': [270],'Tioga': [8], 'Tompkins': [97], 'Ulster': [398], 'Warren': [31], 'Washington': [19], 'Wayne':[35], 'Westchester': [14804], 'Wyoming': [23],'Yates':[1], 'Kings': [76876], 'Queens': [76876], 'Bronx': [76876], 'Richmond':[76876]}
+    data = {'Albany': [333],'Allegany':[17],'Bronx': [76876],'Broome': [86],'Cattaraugus':[13],'Cayuga':[14],'Chautauqua':[16],'Chemung':[49],'Chenango': [51],'Clinton': [37],'Columbia':[61],'Cortland':[16],'Delaware': [36],'Dutchess': [1249],'Erie': [1135],'Essex': [7],'Franklin':[10],'Fulton':[13],'Genesee':[33],'Greene': [24],'Hamilton': [2],'Herkimer': [27],'Jefferson':[39],'Kings': [76876],'Lewis':[6],'Livingston':[23],'Madison':[88],'Monroe': [596],'Montgomery': [18],'Nassau': [16610],'New York': [76876],'Niagara': [126],'Oneida':[118],'Onondaga': [335],'Ontario':[33],'Orange': [3599],'Orleans':[15],'Oswego':[31],'Otsego':[34],'Putnam': [366],'Queens': [76876],'Rensselaer':[67],'Richmond':[76876],'Rockland': [5990],'Saratoga': [155],'Schenectady': [145],'Schoharie':[12],'Schuyler':[4],'Seneca':[10],'St Lawrence':[60],'Steuben':[75],'Suffolk': [14517],'Sullivan': [270],'Tioga': [8],'Tompkins': [97],'Ulster': [398],'Warren': [31],'Washington': [19],'Wayne':[35],'Westchester': [14804],'Wyoming': [23],'Yates':[1]}
     df38 = pd.DataFrame.from_dict(data, orient='index')
     df38 = df38.rename(columns={0: "April 07"})
     df38["date"] = "April 07"
     df38["date_sort"] = 38
     df38 = df38.reset_index()
+    
+    data = {'Albany': [342],'Allegany':[21],'Bronx': [81803],'Broome': [93],'Cattaraugus':[13],'Cayuga':[14],'Chautauqua':[21],'Chemung':[55],'Chenango': [53],'Clinton': [39],'Columbia':[63],'Cortland':[19],'Delaware': [37],'Dutchess': [1395],'Erie': [1345],'Essex': [7],'Franklin':[10],'Fulton':[14],'Genesee':[47],'Greene': [25],'Hamilton': [2],'Herkimer': [29],'Jefferson':[40],'Kings': [81803],'Lewis':[6],'Livingston':[29],'Madison':[96],'Monroe': [627],'Montgomery': [18],'Nassau': [18548],'New York': [81803],'Niagara': [155],'Oneida':[129],'Onondaga': [422],'Ontario':[39],'Orange': [4075],'Orleans':[16],'Oswego':[36],'Otsego':[38],'Putnam': [403],'Queens': [81803],'Rensselaer':[75],'Richmond':[81803],'Rockland': [6413],'Saratoga': [162],'Schenectady': [149],'Schoharie':[12],'Schuyler':[4],'Seneca':[12],'St Lawrence':[69],'Steuben':[82],'Suffolk': [17008],'Sullivan': [279],'Tioga': [12],'Tompkins': [105],'Ulster': [422],'Warren': [33],'Washington': [20],'Wayne':[39],'Westchester': [15887],'Wyoming': [27],'Yates':[2]}
+    df39 = pd.DataFrame.from_dict(data, orient='index')
+    df39 = df39.rename(columns={0: "April 08"})
+    df39["date"] = "April 08"
+    df39["date_sort"] = 39
+    df39 = df39.reset_index()
 
-    df_confirmed_historical = pd.concat([df38, df37, df36, df35, df34, df33, df32, df31, df30, df29, df28, df27, df26, df25, df24, df23, df22, df21, df20, df19, df18, df17, df16, df15, df14, df13, df12, df11, df10, df9, df8, df7, df6, df5, df4, df3, df2, df1], axis=1)
-    del [df38, df37, df36, df35, df34, df33, df32, df31, df30, df29, df28, df27, df26, df25, df24, df23, df22, df21, df20, df19, df18, df17, df16, df15, df14, df13, df12, df11, df10, df9, df8, df7, df6, df5, df4, df3, df2, df1]
+    df_confirmed_historical = pd.concat([df39, df38, df37, df36, df35, df34, df33, df32, df31, df30, df29, df28, df27, df26, df25, df24, df23, df22, df21, df20, df19, df18, df17, df16, df15, df14, df13, df12, df11, df10, df9, df8, df7, df6, df5, df4, df3, df2, df1], axis=1)
+    del [df39, df38, df37, df36, df35, df34, df33, df32, df31, df30, df29, df28, df27, df26, df25, df24, df23, df22, df21, df20, df19, df18, df17, df16, df15, df14, df13, df12, df11, df10, df9, df8, df7, df6, df5, df4, df3, df2, df1]
     df_confirmed_historical_T = df_confirmed_historical.T
     del df_confirmed_historical
     df_confirmed_historical_T.columns = df_confirmed_historical_T.iloc[0]
