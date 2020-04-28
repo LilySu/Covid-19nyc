@@ -41,5 +41,6 @@ def wrangle_counties_for_timeslider():
         df[i] = df[i].astype('float64')
     df['total'] = df[collist].sum(axis=1)
     df['total_normalized'] = np.log10(df["total"])
+    df['county'] = df['county'].str.replace('St Lawrence', 'St. Lawrence')
     df['county_full'] = df['county'] + ' County'
     return df
