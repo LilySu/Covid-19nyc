@@ -8,9 +8,11 @@ import pytz
 
 #Local Imports
 from extract_data.get_new_nyc_borough_confirmed import get_borough_confirmed
+from extract_data.get_nyc_zipcodes import update_nyc_zipcode_data
 from combine.combine_nyc import combine_scraped_and_historical
 from sql_queries.get_nyc_age_sex import get_age_nyc_data
 from sql_queries.get_nyc_age_sex import get_sex_nyc_data
+
 
 
 engine = create_engine('postgresql+psycopg2://postgres:postgres@postgres2.chtkfsooypac.us-east-1.rds.amazonaws.com:5432/postgres', echo=False)
@@ -42,3 +44,8 @@ def execute_update_sex_nyc():
     headers = ['AGE_GROUP', 'COVID_CASE_RATE', 'HOSPITALIZED_CASE_RATE', 'DEATH_RATE']
     sex = pd.DataFrame(data, columns=headers)
     sex.to_sql(name='sex_nyc_table', con=engine, index=False, if_exists="replace")
+    
+def execute_update_zipcode_nyc():
+    df_nyc_zipcode = update_nyc_zipcode_data()
+    df_nyc_zipcode.to_sql(name='nyc_zipcode_table', con=engine, index=False, if_exists="replace")
+    

@@ -59,7 +59,7 @@ def combine_counties_scraped_and_historical():
     del df_for_total
     
     last_historical_nyc_num = df_confirmed_historical_T['New York'][0]
-    [scraped_nyc_num] = df_confirmed['New York City a'].values.T.tolist()
+    [scraped_nyc_num] = df_confirmed['New York City'].values.T.tolist()
     
     if last_historical_nyc_num < scraped_nyc_num: # if this update showed a different nyc number from before
         df_confirmed = df_confirmed.loc[:,~df_confirmed.columns.duplicated()]

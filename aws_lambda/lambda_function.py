@@ -14,6 +14,7 @@ from sql_queries.sql_nyc import store_historical_nyc
 from sql_queries.sql_nyc import execute_combine_nyc_scraped_and_historical
 from sql_queries.sql_nyc import execute_update_age_nyc
 from sql_queries.sql_nyc import execute_update_sex_nyc
+from sql_queries.sql_nyc import execute_update_zipcode_nyc
 from sql_queries.sql_world import execute_update_world
 
 def lambda_handler(event, context):
@@ -54,12 +55,19 @@ def lambda_handler(event, context):
             # time.sleep(5)
             
             execute_combine_nyc_scraped_and_historical()
+            time.sleep(3)
             
             ##### NYC ###### FOR PIE CHARTS
             
             execute_update_age_nyc()
             
             execute_update_sex_nyc()
+            time.sleep(2)
+            
+            ##### NYC ###### ZIPCODES
+            
+            execute_update_zipcode_nyc()
+            time.sleep(2)
             
             ##### WORLD #####
             execute_update_world()
