@@ -39,24 +39,9 @@ except HTTPError as e:
     diff_from_day_before_nyc= pd.read_csv("https://covidnyc.s3.us-east-1.amazonaws.com/df_nyc/daily_num_cases_nyc.csv")
 
 try:
-    df_nyc = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_borough.csv")
-except HTTPError as e:
-    df_nyc = pd.read_csv("https://covidnyc.s3.us-east-1.amazonaws.com/df_nyc/nyc_borough_test.csv")
-
-try:
     df_percentage_change = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/percentage_change_County.csv")
 except HTTPError as e:
     df_percentage_change = pd.read_csv("https://covidnyc.s3.us-east-1.amazonaws.com/df_ny/percentage_change_County.csv")
-
-try:
-    df_main_map = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_zipcode.csv')
-except HTTPError as e:
-    df_main_map = pd.read_csv('https://covidnyc.s3.us-east-1.amazonaws.com/df_nyc/nyc_zipcode.csv')
-
-try:
-    df_new_york_counties_timeslider = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
-except HTTPError as e:
-    df_new_york_counties_timeslider = pd.read_csv("https://covidnyc.s3.us-east-1.amazonaws.com/df_ny/new_york_counties_timeslider.csv")
 
 try:
     df_combined_county_table = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/df_combined_county_table.csv")
@@ -83,6 +68,27 @@ try:
 except HTTPError as e:
     with urlopen('https://covidnyc.s3.us-east-1.amazonaws.com/nys_geojson/new-york-counties.geojson') as response:
         geojson_counties = json.load(response)
+
+
+def get_nyc_zipcode_data():
+  sql = f'''
+  SELECT * 
+  FROM nyc_zipcode_table;
+  '''
+  with engine.connect() as conn:
+    return [record for record in conn.execute(sql)]
+
+try:
+    data = get_nyc_zipcode_data()
+    df_main_map = pd.DataFrame(data, columns= ['MODZCTA', 'Positive', 'Total', 'zcta_cum.perc_pos', 'ZIP', 'LAT',
+       'LNG', 'zip', 'lat', 'lng', 'city', 'state_id', 'state_name', 'zcta',
+       'parent_zcta', 'population', 'density', 'county_fips', 'county_name',
+       'county_weights', 'county_names_all', 'county_fips_all', 'imprecise',
+       'military', 'timezone', 'Positive_Percentage_of_Population'])
+except (sqlalchemy.exc.ProgrammingError, ValueError) as err:
+    df_main_map = pd.read_csv('https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_nyc/nyc_zipcode.csv')
+except HTTPError as e:
+    df_main_map = pd.read_csv('https://covidnyc.s3.us-east-1.amazonaws.com/df_nyc/nyc_zipcode.csv')
 
 
 
@@ -123,6 +129,7 @@ def get_historical_nyc_data():
     return [record for record in conn.execute(sql)]
 
 data = get_historical_nyc_data()
+
 headers = ['BOROUGH_GROUP']+date_list
 try: 
     df_historical_nyc = pd.DataFrame(data, columns=headers)
@@ -133,7 +140,7 @@ except (sqlalchemy.exc.ProgrammingError, ValueError) as err:
     date_list = [i.strftime('%B %d') for i in date_list]
     headers = ['BOROUGH_GROUP']+date_list
     df_historical_nyc = pd.DataFrame(data, columns=headers)
-except (sqlalchemy.exc.ProgrammingError, ValueError) as err:
+except:
     df_historical_nyc = pd.read_csv('https://covidnyc.s3.us-east-1.amazonaws.com/df_nyc/df_horizontal_nyc.csv')
 
 df_nyc = df_historical_nyc.T
@@ -198,6 +205,33 @@ for i in sex['COVID_CASE_RATE']:
 p_death_sex = []
 for i in sex['DEATH_RATE']:
   p_death_sex.append(i)
+
+
+def get_counties_timeslider_data():
+  sql = f'''
+  SELECT * 
+  FROM counties_timeslider_table;
+  '''
+  with engine.connect() as conn:
+    return [record for record in conn.execute(sql)]
+
+today_for_range = datetime.now(timezone('UTC')) + timedelta(days=1)
+first_date_recorded = 'March 02 2020'
+first_date_recorded = datetime.strptime(first_date_recorded,'%B %d %Y')
+first_date_recorded = first_date_recorded.astimezone(timezone('UTC'))
+date_list = pd.date_range(first_date_recorded, today_for_range).tolist()
+date_list = [i.astimezone(timezone('EST')) for i in date_list]
+date_list = [i.strftime('%B %d') for i in date_list]
+
+data = get_counties_timeslider_data()
+headers = ['county']+[date_list[0]]+['date']+date_list[1::]+['total','total_normalized','county_full']
+try: 
+    df_new_york_counties_timeslider = pd.DataFrame(data, columns=headers)
+except (sqlalchemy.exc.ProgrammingError, ValueError) as err:
+    df_new_york_counties_timeslider = pd.read_csv("https://raw.githubusercontent.com/LilySu/Covid-19nyc/master/df_ny/new_york_counties_timeslider.csv")
+except HTTPError as e:
+    df_new_york_counties_timeslider = pd.read_csv("https://covidnyc.s3.us-east-1.amazonaws.com/df_ny/new_york_counties_timeslider.csv")
+
 
 
 def get_china_data():
@@ -410,7 +444,7 @@ fig_pie_nyc_age.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   textposition='inside', textinfo='percent+label+value')
 fig_pie_nyc_age.update_layout(
     title={
-        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 (145,855) IN<br>NYC AS OF " + nyc_confirmed_latest_date,
+        'text':"AGE RANGE OF PEOPLE <br>WITH COVID-19 IN<br>NYC AS OF " + nyc_confirmed_latest_date,
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -424,8 +458,8 @@ fig_pie_nyc_age.update_layout(
 #-------------------------------------------------------------AGE RANGE OF PEOPLE POSITIVE
 
 
-gender =["Female","Male","Unknown"]
-gender_color = ["#94D6CC","#003C30","#003D30"]
+gender =["Female","Male"]
+gender_color = ["#94D6CC","#003C30"]
 
 fig_pie_nyc_gender = go.Figure(data=[go.Pie(labels=gender, values=p_case_sex, name="Gender",marker=dict(colors=gender_color))])#,pull=[0.4, 0]
 fig_pie_nyc_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
@@ -435,7 +469,7 @@ fig_pie_nyc_gender.update_traces(hole=.4, hoverinfo="label+percent+name+value",
                   textposition='inside', textinfo='percent+label+value')
 fig_pie_nyc_gender.update_layout(
     title={
-        'text':"GENDER IDENTITY OF PEOPLE <br>WITH COVID-19 (145,855) IN<br>NYC AS OF " + nyc_confirmed_latest_date,
+        'text':"GENDER IDENTITY OF PEOPLE <br>WITH COVID-19 IN<br>NYC AS OF " + nyc_confirmed_latest_date,
         'y':0.95,
         'x':0.5,
         'xanchor': 'center',
@@ -1295,7 +1329,7 @@ columnTopRight = dbc.Col(
             html.H6('As of '+ nyc_confirmed_latest_date, style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
             html.H6(nyc_death_latest, style={'fontSize':42, 'color':'#5CD8FE', 'marginTop':10}),
             html.H6('Positive Cases by Borough', style={'fontSize':20, 'color':'#208fb1', 'marginTop':20}),
-            html.H6('As of April 23', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
+            html.H6('As of May 03', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':0, 'marginBottom':0}),
             html.Img(src=app.get_asset_url('NYC_Covid-19_Cases_today.png'), style={'display': 'block', 'height':300}),
             html.H6('Data from NY State Dept. of Health', style={'fontSize':12, 'color':'#05b9f0', 'marginTop':30, 'marginBottom':8}),
             ]
@@ -1571,12 +1605,14 @@ column_predictions = dbc.Col(
             children=[
                 html.H6('Our Prediction for the next few days for the United States' , style={'fontSize':23, 'color':'#05b9f0', 'marginTop':70, 'marginBottom':8}),
                 html.Hr(className="my-2"),
-                html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 500,000. The capacity is the most optimistic projection to fit the existing data. We believe this graph is helpful in understanding the best case scenario for how long it will take for life to get back to normal.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.P('This is a basic prediction using logistic regression with Facebook Prophet, setting the carrying capacity at 500,000 on April 3, 1,000,000 for May 2. The capacity is the most optimistic projection to fit the existing data. We believe this graph is helpful in understanding the best case scenario for how long it will take for life to get back to normal.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.P('The black dots are existing recorded information for the United States. We believe that any prediction after April 12 is obsolete.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('fb_prophet_confirmed_500000_4_03.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
-                html.P('Prediction of deaths in the next few days with a carrying capacity going towards 20,000 in the next 14 days. We believe that any prediction after April 12 is obsolete:', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('fb_prophet_confirmed_1000000_5_02.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.P('Prediction of deaths in the next few days with a carrying capacity going towards 80,000 in within the next 14 days.', style={'fontSize':16, 'color':'link', 'marginTop':0, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('fb_prophet_deaths_20000_4_03.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
-                html.P('Our conclusion from this prediction is that in the best case scenario, the curve will flatten in mid-April and everyone should be assuming their normal life in mid-May.', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
+                html.Img(src=app.get_asset_url('fb_prophet_deaths_80000_5_02.png'), style={'display': 'block', 'width':'100%','marginTop':20,'marginBottom':0}),
+                html.P('Our conclusion from this prediction is that in the best case scenario, the curve will flatten for the whole of the U.S. within this month and everyone should be assuming their normal life in late May.', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.P('Here is the Law of Population Growth formula we are using to show you how we define carrying capacity:', style={'fontSize':16, 'color':'link', 'marginTop':15, 'marginBottom':0}),
                 html.Img(src=app.get_asset_url('logistic_regression_population_growth.PNG'), style={'display': 'block', 'width':'75%','marginTop':20,'marginBottom':0}),
                 html.P('Data Provided by the Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE)', style={'fontSize':12, 'color':'link', 'marginTop':15, 'marginBottom':0}),
