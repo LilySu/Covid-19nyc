@@ -1,6 +1,9 @@
 # Covid-19 Informational Site to Help NYC Residents Feel Calmer and More Humanized After Searching the Term "Covid-19 Cases NYC"
 Dashboard for visualizing Covid-19 cases in NYC. 
 
+[Talk on why we made the site](https://www.youtube.com/watch?v=hhVuUESnl6Q&t=6s)
+
+
 * AWS Lambda Functions pull up-to-date data from city, state and world to store into a relational database to update plotly graphs on the site. 
 * We used Route53 to route our Elastic Beanstalk app to covid19casesnyc.com.
 * We are working on implementing AWS CloudFront as a CDN Elastic Cache to speed up loading performance. 
