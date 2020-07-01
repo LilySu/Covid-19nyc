@@ -1,46 +1,39 @@
 import pandas as pd
 import numpy as np 
 #Local Imports
-from sql_queries.sql_get import get_combined_counties # gets df_confirmed
+from sql_queries.sql_get_counties import get_combined_counties # gets df_confirmed
+from sql_queries.sql_get_counties import get_historical_county_data
 
 
 def wrangle_counties_for_timeslider():
-    df_confirmed = get_combined_counties()
-    df_confirmed = pd.DataFrame(df_confirmed, columns=['Albany', 'Allegany', 'Bronx', 'Broome', 'Cattaraugus', 'Cayuga',
-       'Chautauqua', 'Chemung', 'Chenango', 'Clinton', 'Columbia', 'Cortland',
-       'Delaware', 'Dutchess', 'Erie', 'Essex', 'Franklin', 'Fulton',
-       'Genesee', 'Greene', 'Hamilton', 'Herkimer', 'Jefferson', 'Kings',
-       'Lewis', 'Livingston', 'Madison', 'Monroe', 'Montgomery', 'Nassau',
-       'New York', 'Niagara', 'Oneida', 'Onondaga', 'Ontario', 'Orange',
-       'Orleans', 'Oswego', 'Otsego', 'Putnam', 'Queens', 'Rensselaer',
-       'Richmond', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
-       'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
-       'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
-       'Westchester', 'Wyoming', 'Yates','date','total'])
-    df_combined_t = df_confirmed.T
-    df_combined_t = df_combined_t.reset_index()
-    df_combined_t.columns = df_combined_t.iloc[-2]
-    df_combined_t = df_combined_t.drop(df_combined_t.index[-2])
-    df_combined_t.rename(columns={'date':'county'}, inplace=True)
-    collist = df_combined_t.columns.drop(['county'])
-    
-    df = df_combined_t[['county','March 22']]
-    df['date'] = 'March 22'
+    """ 
+    -Dataframe is formatted for Plotly timeslider
+    -Each county has its own row for each day since March 1
+    -Each date has its own column
+    -Boroughs of nyc are all totals for all 5 boroughts
+    -county | March 1 | date | March 2 | March 3 | ... | June 26 | June 27 | total | total_normalized | county_full
+    """
+    df_confirmed_historical_T = get_historical_county_data()
+    a = df_confirmed_historical_T.T
+    a = a.reset_index()
+    a.columns = a.iloc[-2]
+    a = a.drop(a.index[-2])
+    a.rename(columns={'date':'county'}, inplace=True)
+    collist = a.columns.drop(['county'])
+    c = a[['county','April 18']]
+    c['date'] = 'April 18'
     for i in collist:
-      df_for_appending = df_combined_t[['county',i]]
-      df_for_appending['date'] = i
-      df = pd.concat([df_for_appending,df], axis=0, sort=False)
-    df.fillna(0, inplace=True)
-    collist = df.columns.drop(['county','date'])
-    
-    
-    
-    collist = df.columns.drop(['county','date'])
+      b = a[['county',i]]
+      b['date'] = i
+      c = pd.concat([b,c], axis=0, sort=False)
+    c.fillna(0, inplace=True)
+    c = c.drop_duplicates()
+    df = c
+    collist = c.columns.drop(['county','date'])
     for i in collist:
         df[i] = df[i].fillna(0)
         df[i] = df[i].astype('float64')
     df['total'] = df[collist].sum(axis=1)
     df['total_normalized'] = np.log10(df["total"])
-    df['county'] = df['county'].str.replace('St Lawrence', 'St. Lawrence')
     df['county_full'] = df['county'] + ' County'
     return df

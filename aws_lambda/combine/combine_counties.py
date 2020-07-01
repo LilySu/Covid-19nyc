@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np 
 #Local Imports
 #from static.historical_counties_df import wrangle_historical_county_df # just in case there needs to be manual tweaks
-from sql_queries.sql_get import get_scraped_counties, get_historic_counties_records, get_combined_counties # gets df, df_confirmed_historical_T
+from sql_queries.sql_get_counties import get_scraped_counties, get_historic_counties_records, get_combined_counties # gets df, df_confirmed_historical_T
 import pytz
 
 
@@ -30,7 +30,7 @@ def combine_counties_scraped_and_historical():
         'New York', 'Niagara', 'Oneida', 'Onondaga', 'Ontario', 'Orange',
         'Orleans', 'Oswego', 'Otsego', 'Putnam', 'Queens', 'Rensselaer',
         'Richmond', 'Rockland', 'Saratoga', 'Schenectady', 'Schoharie',
-        'Schuyler', 'Seneca', 'St Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
+        'Schuyler', 'Seneca', 'St. Lawrence', 'Steuben', 'Suffolk', 'Sullivan',
         'Tioga', 'Tompkins', 'Ulster', 'Warren', 'Washington', 'Wayne',
         'Westchester', 'Wyoming', 'Yates','date','total'])
     df_confirmed_historical_T.reset_index(drop=True, inplace=True) # reset index for later retrieval of the latest numbers to compare if there was an update
@@ -64,12 +64,12 @@ def combine_counties_scraped_and_historical():
     if last_historical_nyc_num < scraped_nyc_num: # if this update showed a different nyc number from before
         df_confirmed = df_confirmed.loc[:,~df_confirmed.columns.duplicated()]
         # match wikipedia scrape
-        df_confirmed.loc[:,'New York'] = df_confirmed['New York City a'] 
+        df_confirmed.loc[:,'New York'] = df_confirmed['New York City'] 
         df_confirmed.loc[:,'Queens'] = df_confirmed['New York']
         df_confirmed.loc[:,'Kings'] = df_confirmed['New York']
         df_confirmed.loc[:,'Richmond'] = df_confirmed['New York']
         df_confirmed.loc[:,'Bronx'] = df_confirmed['New York']
-        df_confirmed.drop(columns=['Status','New York City a'], inplace=True)
+        df_confirmed.drop(columns=['Status','New York City'], inplace=True)
         df_confirmed = pd.concat([df_confirmed,df_confirmed_historical_T],axis=0, ignore_index=True, sort=True) #combine tables
         del df_confirmed_historical_T
         current_time = datetime.now(tz=pytz.timezone('EST'))

@@ -26,3 +26,4 @@ def execute_update_world():
     logdict = {'world_tables_updated_on':[current_time]}
     df_update_log = pd.DataFrame(data = logdict)
     df_update_log.to_sql(name='log_world_tables', con=engine, index=False, if_exists="append")
+
