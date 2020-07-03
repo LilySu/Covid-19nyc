@@ -1,6 +1,8 @@
 # Covid-19 Informational Site to Help NYC Residents Feel Calmer and More Humanized After Searching the Term "Covid-19 Cases NYC"
 Dashboard for visualizing Covid-19 cases in NYC. 
 
+Technology used: Plotly Dash, Flask, AWS RDS, AWS Elastic Beanstalk, AWS Lambda
+
 [Talk on why we made the site](https://www.youtube.com/watch?v=hhVuUESnl6Q&t=6s)
 
 
