@@ -22,3 +22,4 @@ Technology used: Plotly Dash, Flask, AWS RDS, AWS Elastic Beanstalk, AWS Lambda
 ![us china italy day to day changes](https://i.imgur.com/6sY4QwC.png)
 ![us predictions](https://i.imgur.com/gFOkNtl.png)
 ![data sources](https://i.imgur.com/onG401r.png)
+![Google Analytics](https://i.imgur.com/m6D1rj3.jpg)
