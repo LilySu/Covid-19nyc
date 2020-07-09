@@ -26,3 +26,5 @@ Technology used: Plotly Dash, Flask, AWS RDS, AWS Elastic Beanstalk, AWS Lambda
 ![us predictions](https://i.imgur.com/gFOkNtl.png)
 ![data sources](https://i.imgur.com/onG401r.png)
 ![Google Analytics](https://i.imgur.com/m6D1rj3.jpg)
+Past Iterations
+![Older Dashboard](https://imgur.com/dxx7yh6.jpg)
