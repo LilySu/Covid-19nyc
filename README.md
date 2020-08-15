@@ -1,5 +1,7 @@
 # Covid-19 Informational Site to Help NYC Residents Feel Calmer and More Humanized After Searching the Term "Covid-19 Cases NYC"
 
+![latter dashboard iteration](https://j.gifs.com/OMBWMp.gif)
+
 As of July 4th 2020, the routes for this project has been terminated due to recurring costs to maintain the project. 
 
 Dashboard for visualizing Covid-19 cases in NYC. 
