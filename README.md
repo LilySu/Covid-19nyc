@@ -7,6 +7,7 @@ Dashboard for visualizing Covid-19 cases in NYC.
 Technology used: Plotly Dash, Flask, AWS RDS, AWS Elastic Beanstalk, AWS Lambda
 
 [Talk on why we made the site](https://www.youtube.com/watch?v=hhVuUESnl6Q&t=6s)
+Here's a snippet of the latter iteration of the dashboard:
 ![latter dashboard iteration](https://i.imgur.com/4cu9WNg.gif)
 
 
