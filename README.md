@@ -8,7 +8,7 @@ Technology used: Plotly Dash, Flask, AWS RDS, AWS Elastic Beanstalk, AWS Lambda
 
 [Talk on why we made the site](https://www.youtube.com/watch?v=hhVuUESnl6Q&t=6s)
 Here's a snippet of the latter iteration of the dashboard:
-![latter dashboard iteration](/OMBWM.gif)
+![latter dashboard iteration](OMBWMp.gif)
 
 
 * AWS Lambda Functions pull up-to-date data from city, state and world to store into a relational database to update plotly graphs on the site. 
