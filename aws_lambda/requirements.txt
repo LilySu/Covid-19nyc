@@ -11,7 +11,7 @@ Jinja2==2.11.1
 lxml==4.5.0
 MarkupSafe==1.1.1
 mysql-connector-python-rf==2.2.2
-numpy==1.18.2
+numpy==1.22.0
 pandas==1.0.3
 psycopg2-binary==2.8.5
 python-dateutil==2.8.1
